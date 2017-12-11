@@ -1,6 +1,3 @@
-library(RCurl)
-library(rjson)
-
 #______________________Set URL____________________________________________________________________________________________
 # use URLencode for encoding spaces in an URL
 # you get entries only from the first page (page = '1'), to consider the other pages you have to change the parameter page
@@ -40,10 +37,10 @@ url_secAccNo <- URLencode(paste0(secAccNo,searchterm_secAccNo,'/?format=json'))
 #______________________Retrieve data__________________________________________________________________________________________
 # Instead of url_cultureno you can use another url from above.
 #
-response <- getURL(url_secAccNo,userpwd="{your email}:{your password}", httpauth = 1L)
+response <- RCurl::getURL(url_secAccNo,userpwd="{your email}:{your password}", httpauth = 1L)
 print(response)
 
 
 #______________________Transform JSON to list_________________________________________________________________________________
-jsondata <- fromJSON(response)
+jsondata <- rjson::fromJSON(response)
 print(jsondata)
