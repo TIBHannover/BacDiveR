@@ -29,7 +29,7 @@ cultureno <- 'https://bacdive.dsmz.de/api/bacdive/culturecollectionno/'
 searchterm_cultureno <- 'DSM 319'
 url_cultureno <- URLencode(paste0(cultureno,searchterm_cultureno,'/?format=json'))
 
-secAccNo <- 'http://bacdive.dsmz.de/api/bacdive/sequence/'
+secAccNo <- 'https://bacdive.dsmz.de/api/bacdive/sequence/'
 searchterm_secAccNo <- 'AF000162'
 url_secAccNo <- URLencode(paste0(secAccNo,searchterm_secAccNo,'/?format=json'))
 
