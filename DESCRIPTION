@@ -1,0 +1,9 @@
+Package: BacDiveR
+Version: 0.0.0.9000
+Authors@R: person("Katrin", "Leinweber", email = "katrin.leinweber@tib.eu", role = c("aut", "cre"))
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+ByteCompile: true
+Suggests: 
+    testthat
