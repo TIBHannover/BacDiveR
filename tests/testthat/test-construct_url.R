@@ -17,4 +17,14 @@ test_that("URL constructions work", {
     construct_url("DSM 319", searchType = "culturecollectionno"),
     "https://bacdive.dsmz.de/api/bacdive/culturecollectionno/DSM%20319/"
   )
+
+  expect_equal(
+    construct_url("Pseudomonas", searchType = "taxon"),
+    "https://bacdive.dsmz.de/api/bacdive/taxon/Pseudomonas/"
+  )
+
+  expect_equal(
+    construct_url("Bacillus subtilis subtilis", searchType = "taxon"),
+    "https://bacdive.dsmz.de/api/bacdive/taxon/Bacillus/subtilis/subtilis/"
+  )
 })
