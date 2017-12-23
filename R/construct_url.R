@@ -38,5 +38,14 @@ sanitise_input <- function(searchTerm, searchType) {
                         # because list items aren't themselves pasted together.
                         strsplit(searchTerm, " ")[[1]])
   }
+  else if (searchType != "sequence" &
+           grepl(pattern = "([A-Z][0-9]{5}|[A-Z]{2}[0-9]{6})",
+                 x = searchTerm)) {
+    # detect nucleotide accession / sequence numbers by matching:
+    # 1 letter + 5 numerals OR 2 letters + 6 numerals
+    # https://www.ncbi.nlm.nih.gov/Sequin/acc.html
+    searchType <- "sequence"
+  }
+
   c(searchTerm, searchType)
 }
