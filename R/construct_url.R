@@ -16,14 +16,9 @@
 #'   construct_url("Bacillus subtilis subtilis", searchType = "taxon")
 construct_url <- function(searchTerm,
                           searchType = "bacdive_id") {
-  # reconstruct taxon search from "Genus species subspecies" input, or
-  # hierarchical part thereof
-  if (searchType == "taxon") {
-    searchTerm <- paste(collapse = "/",
-                        # paste0() or paste(sep = "/", …) not useful here,
-                        # because list items aren't themselves pasted together.
-                        strsplit(searchTerm, " ")[[1]])
-  }
+  sanitised <- sanitise_input(searchTerm, searchType)
+  searchTerm <- sanitised[1]
+  searchType <- sanitised[2]
 
   URLencode(paste0(
     "https://bacdive.dsmz.de/api/bacdive/",
@@ -32,4 +27,16 @@ construct_url <- function(searchTerm,
     searchTerm,
     "/"
   ))
+}
+
+sanitise_input <- function(searchTerm, searchType) {
+  if (searchType == "taxon") {
+    # reconstruct taxon search from "Genus species subspecies" input, or
+    # hierarchical part thereof
+    searchTerm <- paste(collapse = "/",
+                        # paste0() or paste(sep = "/", …) not useful here,
+                        # because list items aren't themselves pasted together.
+                        strsplit(searchTerm, " ")[[1]])
+  }
+  c(searchTerm, searchType)
 }
