@@ -1,29 +1,51 @@
 context("test-construct_url.R")
 
 test_that("URL constructions work", {
+  int <- sample(seq(100000, 999999), size = 1)
 
   expect_equal(
-    construct_url(717),
-    construct_url("717"),
-    "https://bacdive.dsmz.de/api/bacdive/bacdive_id/717/"
+    construct_url(int),
+    construct_url(as.character(int)),
+    paste0(
+      "https://bacdive.dsmz.de/api/bacdive/bacdive_id/",
+      int,
+      "/"
+    )
   )
 
-  expect_equal(
-    construct_url("AF12345", searchType = "sequence"),
-    construct_url("AF12345", searchType = "taxon"),
-    construct_url("AF12345"),
-    "https://bacdive.dsmz.de/api/bacdive/sequence/AF12345/"
-  )
+
+  acc <-
+    paste0(paste(sample(LETTERS, size = 2), collapse = ""), int)
 
   expect_equal(
-    construct_url("D86002"),
-    construct_url("D86002", searchType = "culturecollectionno"),
-    "https://bacdive.dsmz.de/api/bacdive/sequence/D86002/"
+    construct_url(acc, searchType = "sequence"),
+    construct_url(acc, searchType = "taxon"),
+    construct_url(acc),
+    paste0("https://bacdive.dsmz.de/api/bacdive/sequence/", acc, "/")
   )
 
+  acc <-
+    paste0(sample(LETTERS, size = 1), round(int / 10))
+
   expect_equal(
-    construct_url("DSM 319", searchType = "culturecollectionno"),
-    "https://bacdive.dsmz.de/api/bacdive/culturecollectionno/DSM%20319/"
+    construct_url(acc),
+    construct_url(acc, searchType = "culturecollectionno"),
+    paste0("https://bacdive.dsmz.de/api/bacdive/sequence/", acc, "/")
+  )
+
+
+  ccn <- paste("DSM", round(int / 1000))
+
+  expect_equal(
+    construct_url(ccn, searchType = "culturecollectionno"),
+    construct_url(ccn),
+    construct_url(ccn, searchType = "taxon"),
+    construct_url(ccn, searchType = "sequence"),
+    paste0(
+      "https://bacdive.dsmz.de/api/bacdive/culturecollectionno/DSM%20",
+      round(int / 1000),
+      "/"
+    )
   )
 
   expect_equal(
