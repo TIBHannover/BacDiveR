@@ -10,12 +10,14 @@ test_that("URL constructions work", {
 
   expect_equal(
     construct_url("AF12345", searchType = "sequence"),
+    construct_url("AF12345", searchType = "taxon"),
     construct_url("AF12345"),
     "https://bacdive.dsmz.de/api/bacdive/sequence/AF12345/"
   )
 
   expect_equal(
     construct_url("D86002"),
+    construct_url("D86002", searchType = "culturecollectionno"),
     "https://bacdive.dsmz.de/api/bacdive/sequence/D86002/"
   )
 
