@@ -30,6 +30,9 @@ construct_url <- function(searchTerm,
 }
 
 sanitise_input <- function(searchTerm, searchType) {
+  # [ ] enable different spellings, abbreviations etc. by funneling them to the
+  #   searchTypes / endpoint designations
+
   if (searchType != "sequence" &
       grepl(pattern = "([A-Z][0-9]{5}|[A-Z]{2}[0-9]{6})",
             x = searchTerm)) {
@@ -37,6 +40,11 @@ sanitise_input <- function(searchTerm, searchType) {
     # 1 letter + 5 numerals OR 2 letters + 6 numerals
     # https://www.ncbi.nlm.nih.gov/Sequin/acc.html
     searchType <- "sequence"
+  }
+  else if (searchType != "culturecollectionno" &
+           grepl("(ACM|ATCC|CIP|DSM|ICPB|JCM|LMG|NCDO|NCTC|PS|QUM)+ [0-9]+(-[0-9]+)?",
+                 searchTerm)) {
+    searchType <- "culturecollectionno"
   }
   else if (searchType == "taxon") {
     # reconstruct taxon search from "Genus species subspecies" input, or
