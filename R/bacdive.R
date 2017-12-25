@@ -33,14 +33,5 @@ secAccNo <- 'https://bacdive.dsmz.de/api/bacdive/sequence/'
 searchterm_secAccNo <- 'AF000162'
 url_secAccNo <- URLencode(paste0(secAccNo,searchterm_secAccNo,'/?format=json'))
 
-
-#______________________Retrieve data__________________________________________________________________________________________
-# Instead of url_cultureno you can use another url from above.
 #
-response <- RCurl::getURL(url_secAccNo,userpwd="{your email}:{your password}", httpauth = 1L)
-print(response)
 
-
-#______________________Transform JSON to list_________________________________________________________________________________
-jsondata <- rjson::fromJSON(response)
-print(jsondata)
