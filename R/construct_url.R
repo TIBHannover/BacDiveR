@@ -33,9 +33,12 @@ sanitise_input <- function(searchTerm, searchType) {
   # [ ] enable different spellings, abbreviations etc. by funneling them to the
   #   searchTypes / endpoint designations
 
-  if (searchType != "sequence" &
-      grepl(pattern = "([A-Z][0-9]{5}|[A-Z]{2}[0-9]{6})",
-            x = searchTerm)) {
+  if (searchType != "bacdive_id" &
+      (grepl("^[0-9]+$", searchTerm))) {
+    searchType <- "bacdive_id"
+  } else if (searchType != "sequence" &
+             grepl(pattern = "([A-Z][0-9]{5}|[A-Z]{2}[0-9]{6})",
+                   x = searchTerm)) {
     # detect nucleotide accession / sequence numbers by matching:
     # 1 letter + 5 numerals OR 2 letters + 6 numerals
     # https://www.ncbi.nlm.nih.gov/Sequin/acc.html

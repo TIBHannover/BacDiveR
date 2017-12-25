@@ -6,6 +6,7 @@ test_that("URL constructions work", {
   expect_equal(
     construct_url(int),
     construct_url(as.character(int)),
+    construct_url(int, searchType = "sequence"),
     paste0(
       "https://bacdive.dsmz.de/api/bacdive/bacdive_id/?format=json",
       int,
