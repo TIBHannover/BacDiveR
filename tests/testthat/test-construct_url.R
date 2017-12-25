@@ -1,51 +1,29 @@
 context("test-construct_url.R")
 
 test_that("URL constructions work", {
-  int <- sample(seq(100000, 999999), size = 1)
 
   expect_equal(
-    construct_url(int),
-    construct_url(as.character(int)),
-    construct_url(int, searchType = "sequence"),
-    paste0(
-      "https://bacdive.dsmz.de/api/bacdive/bacdive_id/?format=json",
-      int,
-      "/"
+    construct_url(717),
+    construct_url("717", searchType = "sequence"),
+    "https://bacdive.dsmz.de/api/bacdive/bacdive_id/717/?format=json"
     )
-  )
-
-
-  acc <-
-    paste0(paste(sample(LETTERS, size = 2), collapse = ""), int)
 
   expect_equal(
-    construct_url(acc, searchType = "sequence"),
-    construct_url(acc, searchType = "taxon"),
-    construct_url(acc),
-    paste0("https://bacdive.dsmz.de/api/bacdive/sequence/", acc, "/?format=json")
+    construct_url("AJ000733", searchType = "sequence"),
+    construct_url("AJ000733", searchType = "taxon"),
+    construct_url("AJ000733"),
+    "https://bacdive.dsmz.de/api/bacdive/sequence/AF12345/?format=json"
   )
 
-  acc <-
-    paste0(sample(LETTERS, size = 1), round(int / 10))
-
   expect_equal(
-    construct_url(acc),
-    construct_url(acc, searchType = "culturecollectionno"),
-    paste0("https://bacdive.dsmz.de/api/bacdive/sequence/", acc, "/?format=json")
+    construct_url("D86002"),
+    construct_url("D86002", searchType = "culturecollectionno"),
+    "https://bacdive.dsmz.de/api/bacdive/sequence/D86002/?format=json"
   )
 
-
-  ccn <- paste("DSM", round(int / 1000))
-
   expect_equal(
-    construct_url(ccn, searchType = "culturecollectionno"),
-    construct_url(ccn),
-    construct_url(ccn, searchType = "taxon"),
-    construct_url(ccn, searchType = "sequence"),
-    paste0(
-      "https://bacdive.dsmz.de/api/bacdive/culturecollectionno/DSM%20",
-      round(int / 1000),
-      "/?format=json"
+    construct_url("DSM 319", searchType = "culturecollectionno"),
+    "https://bacdive.dsmz.de/api/bacdive/culturecollectionno/DSM%20319/?format=json"
     )
 
   expect_equal(

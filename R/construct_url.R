@@ -21,6 +21,8 @@ construct_url <- function(searchTerm,
 sanitise_input <- function(searchTerm, searchType) {
   # [ ] enable different spellings, abbreviations etc. by funneling them to the
   #   searchTypes / endpoint designations
+  # [ ] warnings for each automatic substitions
+  # [ ] force = TRUE to prevent substitions
 
   if (searchType != "bacdive_id" &
       (grepl("^[0-9]+$", searchTerm))) {
