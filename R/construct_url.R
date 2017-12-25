@@ -25,8 +25,8 @@ construct_url <- function(searchTerm,
     searchType,
     "/",
     searchTerm,
-    "/"
   ))
+      "/?format=json"
 }
 
 sanitise_input <- function(searchTerm, searchType) {

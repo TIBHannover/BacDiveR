@@ -7,7 +7,7 @@ test_that("URL constructions work", {
     construct_url(int),
     construct_url(as.character(int)),
     paste0(
-      "https://bacdive.dsmz.de/api/bacdive/bacdive_id/",
+      "https://bacdive.dsmz.de/api/bacdive/bacdive_id/?format=json",
       int,
       "/"
     )
@@ -21,7 +21,7 @@ test_that("URL constructions work", {
     construct_url(acc, searchType = "sequence"),
     construct_url(acc, searchType = "taxon"),
     construct_url(acc),
-    paste0("https://bacdive.dsmz.de/api/bacdive/sequence/", acc, "/")
+    paste0("https://bacdive.dsmz.de/api/bacdive/sequence/", acc, "/?format=json")
   )
 
   acc <-
@@ -30,7 +30,7 @@ test_that("URL constructions work", {
   expect_equal(
     construct_url(acc),
     construct_url(acc, searchType = "culturecollectionno"),
-    paste0("https://bacdive.dsmz.de/api/bacdive/sequence/", acc, "/")
+    paste0("https://bacdive.dsmz.de/api/bacdive/sequence/", acc, "/?format=json")
   )
 
 
@@ -44,17 +44,17 @@ test_that("URL constructions work", {
     paste0(
       "https://bacdive.dsmz.de/api/bacdive/culturecollectionno/DSM%20",
       round(int / 1000),
-      "/"
+      "/?format=json"
     )
   )
 
   expect_equal(
     construct_url("Pseudomonas", searchType = "taxon"),
-    "https://bacdive.dsmz.de/api/bacdive/taxon/Pseudomonas/"
+    "https://bacdive.dsmz.de/api/bacdive/taxon/Pseudomonas/?format=json"
   )
 
   expect_equal(
     construct_url("Bacillus subtilis subtilis", searchType = "taxon"),
-    "https://bacdive.dsmz.de/api/bacdive/taxon/Bacillus/subtilis/subtilis/"
+    "https://bacdive.dsmz.de/api/bacdive/taxon/Bacillus/subtilis/subtilis/?format=json"
   )
 })
