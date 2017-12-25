@@ -54,6 +54,9 @@ sanitise_input <- function(searchTerm, searchType) {
              searchTerm
            )) {
     searchType <- "culturecollectionno"
+  } else if (searchType != "taxon" &
+             !grepl("[0-9]+", x = searchTerm)) {
+    searchType <- "taxon"
   }
 
   if (searchType != searchType_ori) {
