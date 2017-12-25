@@ -16,12 +16,6 @@ test_that("URL constructions work", {
   )
 
   expect_equal(
-    construct_url("D86002"),
-    construct_url("D86002", searchType = "culturecollectionno"),
-    "https://bacdive.dsmz.de/api/bacdive/sequence/D86002/?format=json"
-  )
-
-  expect_equal(
     construct_url("DSM 319", searchType = "culturecollectionno"),
     "https://bacdive.dsmz.de/api/bacdive/culturecollectionno/DSM%20319/?format=json"
     )
