@@ -11,3 +11,8 @@ Programmatic interface for the [Bacterial Diversity Metadatabase](https://bacdiv
 > [Nucleic Acids Res. 2015](https://academic.oup.com/nar/article/44/D1/D581/2503137). 
 > [doi: 10.1093/nar/gkv983](https://doi.org/10.1093/nar/gkv983). 
 > Epub 2015 Sep 30. [PMID: 26424852](https://www.ncbi.nlm.nih.gov/pubmed/26424852)
+
+## Assumptions in the code. If you disagree with any of them, please [raise a constructive issue](https://github.com/katrinleinweber/BacDiveR/issues/new).
+
+- taxons (genus, species & subspecies names) do not contain numbers
+- accession / sequence numbers and culture collection numbers can be distinguished with [regular](https://github.com/katrinleinweber/BacDiveR/blob/master/R/construct_url.R#L41) [expressions](https://github.com/katrinleinweber/BacDiveR/blob/master/R/construct_url.R#L51)
