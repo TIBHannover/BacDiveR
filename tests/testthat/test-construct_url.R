@@ -10,7 +10,7 @@ test_that("URL constructions work", {
 
   expect_equal(
     construct_url("AJ000733", searchType = "sequence"),
-    "https://bacdive.dsmz.de/api/bacdive/sequence/AF12345/?format=json"
+    "https://bacdive.dsmz.de/api/bacdive/sequence/AJ000733/?format=json"
   )
 
   expect_equal(
