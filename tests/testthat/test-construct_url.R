@@ -47,7 +47,6 @@ test_that("URL constructions work", {
       round(int / 1000),
       "/?format=json"
     )
-  )
 
   expect_equal(
     construct_url("Pseudomonas", searchType = "taxon"),

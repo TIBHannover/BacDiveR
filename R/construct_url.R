@@ -20,13 +20,15 @@ construct_url <- function(searchTerm,
   searchTerm <- sanitised[1]
   searchType <- sanitised[2]
 
-  URLencode(paste0(
-    "https://bacdive.dsmz.de/api/bacdive/",
-    searchType,
-    "/",
-    searchTerm,
-  ))
+  URLencode(
+    paste0(
+      "https://bacdive.dsmz.de/api/bacdive/",
+      searchType,
+      "/",
+      searchTerm,
       "/?format=json"
+    )
+  )
 }
 
 sanitise_input <- function(searchTerm, searchType) {
@@ -45,8 +47,10 @@ sanitise_input <- function(searchTerm, searchType) {
     searchType <- "sequence"
   }
   else if (searchType != "culturecollectionno" &
-           grepl("(ACM|ATCC|CIP|DSM|ICPB|JCM|LMG|NCDO|NCTC|PS|QUM)+ [0-9]+(-[0-9]+)?",
-                 searchTerm)) {
+           grepl(
+             "(ACM|ATCC|CIP|DSM|ICPB|JCM|LMG|NCDO|NCTC|PS|QUM)+ [0-9]+(-[0-9]+)?",
+             searchTerm
+           )) {
     searchType <- "culturecollectionno"
   }
   else if (searchType == "taxon") {
