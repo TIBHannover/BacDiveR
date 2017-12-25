@@ -15,9 +15,9 @@ construct_url <- function(searchTerm,
   }
 
   if (!force) {
-  sanitised <- sanitise_input(searchTerm, searchType)
-  searchTerm <- sanitised[1]
-  searchType <- sanitised[2]
+    sanitised <- sanitise_input(searchTerm, searchType)
+    searchTerm <- sanitised[1]
+    searchType <- sanitised[2]
   }
 
   URLencode(
