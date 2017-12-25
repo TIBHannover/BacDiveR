@@ -6,6 +6,8 @@
 #' @param searchType Mandatory character string that specifies which type of
 #'   search will be performed (technically, which API endpoint). Can be
 #'   `bacdive_id` (default), `sequence`, `culturecollectionno` or `taxon`.
+#' @param force Logical. Whether or not the searchType should be enforced
+#'   strictly, even if it appears to mismatch the searchTerm. See examples.
 #'
 #' @inherit rjson::fromJSON return
 #'
@@ -15,10 +17,17 @@
 #'   retrieve_data(searchTerm = "DSM 319", "culturecollectionno")
 #'   retrieve_data("Pseudomonas", searchType = "taxon")
 #'   retrieve_data("Bacillus subtilis subtilis", searchType = "taxon")
+#'
+#'   # forcing an apparently mismatched searchType will most likely result in
+#'   # an error.
+#'   retrieve_data(searchTerm = "AJ000733", searchType = "bacdive_id", force = TRUE) without specifying
+#'   `searchType = "sequence"` should lead to an internal re-specification,
+#'   and execution of the intended search.
 retrieve_data <- function(searchTerm,
-                          searchType = "bacdive_id") {
+                          searchType = "bacdive_id",
+                          force = FALSE) {
   x <-
-    rjson::fromJSON(download(construct_url(searchTerm, searchType)))
+    rjson::fromJSON(download(construct_url(searchTerm, searchType, force)))
 
   # repeat download, if API returned an ID, instead of a full dataset
   id <- x[[1]]$url
