@@ -34,7 +34,6 @@ construct_url <- function(searchTerm,
 sanitise_input <- function(searchTerm, searchType) {
   # [ ] enable different spellings, abbreviations etc. by funneling them to the
   #   searchTypes / endpoint designations
-  # [ ] warnings for each automatic substitions
 
   if (searchType != "bacdive_id" &
       (grepl("^[0-9]+$", searchTerm))) {
@@ -54,6 +53,14 @@ sanitise_input <- function(searchTerm, searchType) {
            )) {
     searchType <- "culturecollectionno"
   }
+
+  warning(
+    paste0(
+      "searchType looked very much like a ",
+      searchType,
+      ", so I set it to that. If you don't want me to second-guess your inputs, please set force = FALSE"
+    )
+  )
 
   c(searchTerm, searchType)
 }

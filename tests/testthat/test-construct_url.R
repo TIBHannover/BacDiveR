@@ -4,14 +4,12 @@ test_that("URL constructions work", {
 
   expect_equal(
     construct_url(717),
-    construct_url("717", searchType = "sequence"),
+    construct_url("717"),
     "https://bacdive.dsmz.de/api/bacdive/bacdive_id/717/?format=json"
     )
 
   expect_equal(
     construct_url("AJ000733", searchType = "sequence"),
-    construct_url("AJ000733", searchType = "taxon"),
-    construct_url("AJ000733"),
     "https://bacdive.dsmz.de/api/bacdive/sequence/AF12345/?format=json"
   )
 
@@ -30,3 +28,11 @@ test_that("URL constructions work", {
     "https://bacdive.dsmz.de/api/bacdive/taxon/Bacillus/subtilis/subtilis/?format=json"
   )
 })
+
+test_that("mismatched searchTerm and searchType are corrected with warnings",
+          {
+            expect_warning(construct_url("717", searchType = "sequence"))
+            expect_warning(construct_url("AJ000733", searchType = "taxon"))
+            expect_warning(construct_url("AJ000733"))
+            expect_warning(construct_url("Bacillus subtilis subtilis"))
+          })
