@@ -32,9 +32,9 @@ guess_searchType <- function(searchTerm, searchType) {
   if (searchType != searchType_ori) {
     warning(
       paste0(
-        "searchType looked very much like a ",
+        "Your searchTerm seems to mismatch the provided searchType, but matches a '",
         searchType,
-        ", so I set it to that. If you don't want me to second-guess your inputs, please set force = FALSE"
+        "', so I searched for that. If you don't want me to second-guess your searchTerm-to-searchType combination, please set force = FALSE."
       )
     )
   }
