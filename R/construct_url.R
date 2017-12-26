@@ -5,14 +5,8 @@ construct_url <- function(searchTerm,
                           searchType = "bacdive_id",
                           force = FALSE) {
 
-  if (searchType == "taxon") {
-    # reconstruct taxon search from "Genus species subspecies" input, or
-    # hierarchical part thereof
-    searchTerm <- paste(collapse = "/",
-                        # paste0() or paste(sep = "/", …) not useful here,
-                        # because list items aren't themselves pasted together.
-                        strsplit(searchTerm, " ")[[1]])
-  }
+  if (searchType == "taxon" & grepl(pattern = " ", x = searchTerm))
+    searchTerm <- split_taxon_term(searchTerm)
 
   if (!force) {
     sanitised <- sanitise_input(searchTerm, searchType)
