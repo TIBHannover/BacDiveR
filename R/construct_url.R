@@ -5,13 +5,12 @@ construct_url <- function(searchTerm,
                           searchType = "bacdive_id",
                           force = FALSE) {
 
-  if (searchType == "taxon" & grepl(pattern = " ", x = searchTerm))
-    searchTerm <- split_taxon_term(searchTerm)
+  searchTerm <- sanitise_input(searchTerm, searchType)
 
   if (!force) {
-    sanitised <- sanitise_input(searchTerm, searchType)
-    searchTerm <- sanitised[1]
-    searchType <- sanitised[2]
+    guessed <- guess_searchType(searchTerm, searchType)
+    searchTerm <- guessed[1]
+    searchType <- guessed[2]
   }
 
   URLencode(
@@ -25,7 +24,7 @@ construct_url <- function(searchTerm,
   )
 }
 
-sanitise_input <- function(searchTerm, searchType) {
+guess_searchType <- function(searchTerm, searchType) {
   # [ ] enable different spellings, abbreviations etc. by funneling them to the
   #   searchTypes / endpoint designations
 
