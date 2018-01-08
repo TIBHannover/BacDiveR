@@ -35,3 +35,6 @@ vignettes/*.pdf
 # from usethis
 .Ruserdata
 .Rproj.user
+
+# credentials file
+.Renviron
