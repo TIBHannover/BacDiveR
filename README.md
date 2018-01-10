@@ -15,4 +15,5 @@ Programmatic interface for the [Bacterial Diversity Metadatabase](https://bacdiv
 ## Assumptions in the code. If you disagree with any of them, please [raise a constructive issue](https://github.com/katrinleinweber/BacDiveR/issues/new).
 
 - taxons (genus, species & subspecies names) do not contain numbers
-- accession / sequence numbers and culture collection numbers can be distinguished with [regular](https://github.com/katrinleinweber/BacDiveR/blob/master/R/construct_url.R#L41) [expressions](https://github.com/katrinleinweber/BacDiveR/blob/master/R/construct_url.R#L51)
+- accession / sequence numbers and culture collection numbers can be distinguished with [regular expressions](https://github.com/katrinleinweber/BacDiveR/blob/master/R/guess_searchType.R)
+

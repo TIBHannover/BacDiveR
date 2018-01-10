@@ -7,11 +7,8 @@ construct_url <- function(searchTerm,
 
   searchTerm <- sanitise_input(searchTerm, searchType)
 
-  if (!force) {
-    guessed <- guess_searchType(searchTerm, searchType)
-    searchTerm <- guessed[1]
-    searchType <- guessed[2]
-  }
+  if (!force)
+    searchType <- guess_searchType(searchTerm, searchType)
 
   URLencode(
     paste0(

@@ -1,3 +1,11 @@
+#' Guess Search Type
+#'
+#' @inheritParams retrieve_data
+#'
+#' @return a character vector containing the searchTerm again, and the possibly
+#'   second-guessed searchType
+#'
+#' @examples guess_searchType(searchTerm = "DSM 319", searchType = "bacdive_id")
 guess_searchType <- function(searchTerm, searchType) {
   searchType_ori <- searchType
 
@@ -34,10 +42,10 @@ guess_searchType <- function(searchTerm, searchType) {
       paste0(
         "Your searchTerm seems to mismatch the provided searchType, but matches a '",
         searchType,
-        "', so I searched for that. If you don't want me to second-guess your searchTerm-to-searchType combination, please set force = FALSE."
+        "', so I searched for that. If you don't want me to second-guess your searchTerm-to-searchType combinations, please set force = FALSE."
       )
     )
   }
 
-  c(searchTerm, searchType)
+  return(searchType)
 }
