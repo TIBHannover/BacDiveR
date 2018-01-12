@@ -7,7 +7,7 @@ get_Renviron_path <- function() {
 
 
 
-save_credential <- function(type, credential, force = FALSE) {
+save_credential <- function(type, credential, overwrite_existing = FALSE) {
 
   r_env_file <- get_Renviron_path()
 
@@ -15,13 +15,13 @@ save_credential <- function(type, credential, force = FALSE) {
     # Check if credential  has been set before
     r_env_lines <- readLines(r_env_file)
     if (any(grepl(paste0("^BacDive_", type), r_env_lines))) {
-      if (!force) {
+      if (!overwrite_existing) {
         stop(
           paste0(
             "There is an existing '",
             type,
             "' environment variable.
-            Use force = TRUE if you wish to overwrite it."
+            Use 'overwrite_existing = TRUE' if you wish to overwrite it."
           )
         )
       }
