@@ -42,10 +42,10 @@ retrieve_data <- function(searchTerm,
   return(x)
 }
 
-download <- function(URL) {
+download <- function(URL, userpwd = paste(get_credentials(), collapse = ":")) {
   RCurl::getURL(
     URL,
-    userpwd = paste(BacDive_username, BacDive_password, sep = ":"),
+    userpwd = userpwd,
     httpauth = 1L
   )
 }
