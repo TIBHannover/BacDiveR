@@ -4,6 +4,16 @@ Programmatic interface for the [Bacterial Diversity Metadatabase](https://bacdiv
 
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
 
+## Installation
+
+1. in any R console, run the following command: `if (!"devtools" %in% installed.packages()) install.packages("devtools"); devtools::install_github("katrinleinweber/BacDiveR")`
+1. run the command: `file.edit('~/.Renviron')`,
+1. on a new line, add: `BacDive_email=`,
+1. add the email address directly behind the `=`,
+1. on another line, add: `BacDive_password=`,
+1. add your BacDive password directly behind the `=`.
+1. run: `readRenviron('~/.Renviron')`
+
 ## References
 
 > BacDive - the Bacterial Diversity Metadatabase
