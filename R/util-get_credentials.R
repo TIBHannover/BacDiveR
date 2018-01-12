@@ -5,10 +5,10 @@ get_credentials <- function(test = FALSE) {
   if (test == TRUE) {
     id <- Sys.getenv("BacDive_test_email")
     pw <- Sys.getenv("BacDive_test_password")
+  } else {
+    id <- Sys.getenv("BacDive_email")
+    pw <- Sys.getenv("BacDive_password")
   }
-
-  id <- Sys.getenv("BacDive_email")
-  pw <- Sys.getenv("BacDive_password")
 
   if (!nzchar(id) | !nzchar(pw))
     stop(
