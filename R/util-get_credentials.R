@@ -1,5 +1,7 @@
 get_credentials <- function(test = FALSE) {
 
+  readRenviron(get_Renviron_path())
+
   if (test == TRUE) {
     id <- Sys.getenv("BacDive_test_email")
     pw <- Sys.getenv("BacDive_test_password")
