@@ -7,42 +7,32 @@ get_Renviron_path <- function() {
 
 
 
-save_credential <- function(type, credential, overwrite_existing = FALSE) {
-
+prepare_Renviron <- function() {
   r_env_file <- get_Renviron_path()
 
-  if (file.exists(r_env_file)) {
-    # Check if credential  has been set before
-    r_env_lines <- readLines(r_env_file)
-    if (any(grepl(paste0("^BacDive_", type), r_env_lines))) {
-      if (!overwrite_existing) {
-        stop(
-          paste0(
-            "There is an existing '",
-            type,
-            "' environment variable.
-            Use 'overwrite_existing = TRUE' if you wish to overwrite it."
-          )
-        )
-      }
-
-      r_env_lines[grepl(paste0("^BacDive_", type), r_env_lines)] <-
-        paste0("BacDive_", type, "=", credential)
-      writeLines(r_env_lines, r_env_file)
-      Sys.setenv(type = credential)
-      return(message(sprintf("Updated %s.", type)))
-    }
-  } else {
-    # Create .Renviron if it doesn't already exist
+  if (!file.exists(r_env_file))
     file.create(r_env_file)
+
+  write("", file = r_env_file, append = TRUE)
+
+  for (type in c("email", "password")) {
+    start_of_line <- paste0("BacDive_", type, "=")
+    if (!any(grepl(
+      paste0("^", start_of_line),
+      readLines(r_env_file, warn = FALSE)
+    )))
+      write(start_of_line, file = r_env_file, append = TRUE)
   }
 
-  write(paste0("BacDive_", type, "=", credential), r_env_file, append = TRUE)
-  Sys.setenv(type = credential)
-  message(sprintf("Saved BacDive_%s.", type))
+  if (any(grepl(paste0("^", start_of_line, "$"), readLines(r_env_file))))
+    message(
+      "~/.Renviron file prepared. Now please open the ReadMe -- https://github.com/katrinleinweber/BacDiveR/ -- and follow the installation instructions."
+    )
 }
 
 .onAttach <- function(libname, pkgname) {
-
   id_pw <- get_credentials()
+  id <- id_pw[1]
+  pw <- id_pw[2]
+  prepare_Renviron()
 }
