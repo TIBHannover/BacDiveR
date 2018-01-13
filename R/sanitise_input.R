@@ -4,11 +4,8 @@
 #'
 #' @return A character string with possibly sanitised searchType, see examples.
 #'
-#' @examples sanitise_input("Bacillus subtilis")
-#'   => "Bacillus/subtilis"
-#'
-#'   sanitise_input("B. subtilis")
-#'   => ERROR
+#' @examples sanitise_input("Bacillus subtilis") # "Bacillus/subtilis"
+#'   sanitise_input("B. subtilis") # ERROR
 sanitise_input <- function(searchTerm, searchType) {
   if (grepl(pattern = "[^[:alnum:] ]", x = searchTerm))
     stop(

@@ -16,7 +16,10 @@ search will be performed (technically, which API endpoint). Can be
 \code{bacdive_id} (default), \code{sequence}, \code{culturecollectionno} or \code{taxon}.}
 
 \item{force}{Logical. Whether or not the searchType should be enforced
-strictly, even if it appears to mismatch the searchTerm. See examples.}
+strictly, even if it appears to mismatch the searchTerm. Please note:
+forcing an apparently mismatched searchType will most likely result in an
+error: \code{retrieve_data(searchTerm = "AJ000733", searchType = "bacdive_id", force = TRUE)} without specifying \code{searchType = "sequence"} should lead to
+an internal re-specification, and execution of the intended search.}
 }
 \value{
 R object that corresponds to the JSON object
@@ -30,10 +33,4 @@ retrieve_data(searchTerm = 717)
   retrieve_data(searchTerm = "DSM 319", "culturecollectionno")
   retrieve_data("Pseudomonas", searchType = "taxon")
   retrieve_data("Bacillus subtilis subtilis", searchType = "taxon")
-
-  # forcing an apparently mismatched searchType will most likely result in
-  # an error.
-  retrieve_data(searchTerm = "AJ000733", searchType = "bacdive_id", force = TRUE) without specifying
-  `searchType = "sequence"` should lead to an internal re-specification,
-  and execution of the intended search.
 }

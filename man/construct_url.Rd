@@ -16,7 +16,10 @@ search will be performed (technically, which API endpoint). Can be
 \code{bacdive_id} (default), \code{sequence}, \code{culturecollectionno} or \code{taxon}.}
 
 \item{force}{Logical. Whether or not the searchType should be enforced
-strictly, even if it appears to mismatch the searchTerm. See examples.}
+strictly, even if it appears to mismatch the searchTerm. Please note:
+forcing an apparently mismatched searchType will most likely result in an
+error: \code{retrieve_data(searchTerm = "AJ000733", searchType = "bacdive_id", force = TRUE)} without specifying \code{searchType = "sequence"} should lead to
+an internal re-specification, and execution of the intended search.}
 }
 \description{
 Construct URLs of API searches

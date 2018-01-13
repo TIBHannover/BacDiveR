@@ -1,11 +1,3 @@
-#' Guess Search Type
-#'
-#' @inheritParams retrieve_data
-#'
-#' @return a character vector containing the searchTerm again, and the possibly
-#'   second-guessed searchType
-#'
-#' @examples guess_searchType(searchTerm = "DSM 319", searchType = "bacdive_id")
 guess_searchType <- function(searchTerm, searchType) {
   searchType_ori <- searchType
 
