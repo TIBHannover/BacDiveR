@@ -13,8 +13,6 @@ prepare_Renviron <- function() {
   if (!file.exists(r_env_file))
     file.create(r_env_file)
 
-  write <- "x"
-
   message <- "add your BacDive login credentials.\n# See https://github.com/katrinleinweber/BacDiveR/\n# for more installation instructions."
 
   # add credential keys if none exist
