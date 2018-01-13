@@ -7,7 +7,7 @@ get_Renviron_path <- function() {
 
 
 
-save_credential <- function(type, credential, overwrite_existing = FALSE) {
+save_credential <- function(type = NULL, credential = NULL, overwrite_existing = FALSE) {
 
   r_env_file <- get_Renviron_path()
 
@@ -33,13 +33,11 @@ save_credential <- function(type, credential, overwrite_existing = FALSE) {
       return(message(sprintf("Updated %s.", type)))
     }
   } else {
-    # Create .Renviron if it doesn't already exist
     file.create(r_env_file)
+    write(paste0("BacDive_", type, "=", credential), r_env_file, append = TRUE)
+    Sys.setenv(type = credential)
+    message(sprintf("Saved BacDive_%s.", type))
   }
-
-  write(paste0("BacDive_", type, "=", credential), r_env_file, append = TRUE)
-  Sys.setenv(type = credential)
-  message(sprintf("Saved BacDive_%s.", type))
 }
 
 .onAttach <- function(libname, pkgname) {
