@@ -15,4 +15,4 @@ Imports:
     magrittr,
     RCurl,
     rjson,
-    utils,
+    utils
