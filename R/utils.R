@@ -13,6 +13,11 @@ prepare_Renviron <- function() {
   if (!file.exists(r_env_file))
     file.create(r_env_file)
 
+  write <- "x"
+
+  message <- "add your BacDive login credentials.\n# See https://github.com/katrinleinweber/BacDiveR/\n# for more installation instructions."
+
+  # add credential keys if none exist
   for (type in c("email", "password")) {
     start_of_line <- paste0("BacDive_", type, "=")
     if (!any(grepl(
@@ -20,15 +25,16 @@ prepare_Renviron <- function() {
       readLines(r_env_file, warn = FALSE)
     ))) {
       if (type == "email")
-        write("\n", file = r_env_file, append = TRUE)
+        write(paste("\n# Please", message), file = r_env_file, append = TRUE)
       write(start_of_line, file = r_env_file, append = TRUE)
     }
   }
 
-  if (any(grepl(paste0("^", start_of_line, "$"), readLines(r_env_file))))
-    message(
-      "~/.Renviron file prepared. Now please open the ReadMe -- https://github.com/katrinleinweber/BacDiveR/ -- and follow the installation instructions."
-    )
+  # prompt user to fill empty credential values/variables
+  if (any(grepl(paste0("^", start_of_line, "$"), readLines(r_env_file)))) {
+    message(paste(r_env_file, "prepared. If you don't see it open now, please run `file.edit(r_env_file)` and", message))
+    file.edit(r_env_file)
+  }
 }
 
 .onAttach <- function(libname, pkgname) {
