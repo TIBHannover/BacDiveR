@@ -2,7 +2,7 @@
 % Please edit documentation in R/retrieve_data.R
 \name{retrieve_data}
 \alias{retrieve_data}
-\title{Download a dataset from BacDive}
+\title{Retrieve data from BacDive}
 \usage{
 retrieve_data(searchTerm, searchType = "bacdive_id", force = FALSE)
 }
@@ -22,15 +22,18 @@ error: \code{retrieve_data(searchTerm = "AJ000733", searchType = "bacdive_id", f
 an internal re-specification, and execution of the intended search.}
 }
 \value{
-R object that corresponds to the JSON object
+EITHER (from an unambiguous searchTerm) a list of lists containing a
+single BacDive datase,
+OR (from a _am_biguous searchTerm) a numeric vector of BacDive-IDs, which
+can be fed back into \code{retrieve_data()} to retrieve the individual data
+sets.
 }
 \description{
-Download a dataset from BacDive
+Retrieve data from BacDive
 }
 \examples{
 retrieve_data(searchTerm = 717)
-  retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
-  retrieve_data(searchTerm = "DSM 319", "culturecollectionno")
-  retrieve_data("Pseudomonas", searchType = "taxon")
+  retrieve_data("AJ000733", searchType = "sequence")
+  retrieve_data("DSM 319", "culturecollectionno")
   retrieve_data("Bacillus subtilis subtilis", searchType = "taxon")
 }
