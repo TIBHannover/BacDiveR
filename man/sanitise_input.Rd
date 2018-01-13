@@ -21,7 +21,3 @@ A character string with possibly sanitised searchType, see examples.
 \description{
 Split taxon searchTerm
 }
-\examples{
-sanitise_input("Bacillus subtilis") # "Bacillus/subtilis"
-  sanitise_input("B. subtilis") # ERROR
-}
