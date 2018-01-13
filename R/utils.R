@@ -13,15 +13,16 @@ prepare_Renviron <- function() {
   if (!file.exists(r_env_file))
     file.create(r_env_file)
 
-  write("", file = r_env_file, append = TRUE)
-
   for (type in c("email", "password")) {
     start_of_line <- paste0("BacDive_", type, "=")
     if (!any(grepl(
       paste0("^", start_of_line),
       readLines(r_env_file, warn = FALSE)
-    )))
+    ))) {
+      if (type == "email")
+        write("\n", file = r_env_file, append = TRUE)
       write(start_of_line, file = r_env_file, append = TRUE)
+    }
   }
 
   if (any(grepl(paste0("^", start_of_line, "$"), readLines(r_env_file))))
