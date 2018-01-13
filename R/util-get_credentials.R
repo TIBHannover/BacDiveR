@@ -1,5 +1,4 @@
 get_credentials <- function(test = FALSE) {
-
   readRenviron(get_Renviron_path())
 
   if (test == TRUE) {
@@ -11,9 +10,7 @@ get_credentials <- function(test = FALSE) {
   }
 
   if (!nzchar(id) | !nzchar(pw))
-    stop(
-      "BacDive login credentials not set completely. Please find the README -- https://github.com/katrinleinweber/BacDiveR/ -- and follow the installation instructions."
-    )
+    stop("BacDive login credentials not set completely. Please run prepare_Renviron().")
 
   return(c(id, pw))
 }
