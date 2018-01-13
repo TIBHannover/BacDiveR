@@ -35,3 +35,6 @@ vignettes/*.pdf
 # from usethis
 .Ruserdata
 .Rproj.user
+
+### custom ignores
+*.pdf
