@@ -23,7 +23,7 @@
 #' @examples retrieve_data(searchTerm = 717)
 #'   retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
 #'   retrieve_data(searchTerm = "DSM 319", "culturecollectionno")
-#'   retrieve_data("Bacillus subtilis subtilis", searchType = "taxon")
+#'   retrieve_data("Bacillus subtilis", searchType = "taxon")
 retrieve_data <- function(searchTerm,
                           searchType = "bacdive_id",
                           force = FALSE) {
@@ -34,9 +34,8 @@ retrieve_data <- function(searchTerm,
 
     IDs <- aggregate_result_IDs(x$results)
 
-    # r <- 1
-    # while (r < ceil...)
-    for (r in seq(1, ceiling(x$count/100))) {
+    r <- 1
+    while (r <= ceiling(x$count/100)) {
       x$`next` %>%
         download() %>%
         rjson::fromJSON() ->
@@ -45,9 +44,10 @@ retrieve_data <- function(searchTerm,
       aggregate_result_IDs(x$results) %>%
         c(IDs, .) ->
         IDs
-      return(IDs)
+
+      r <- r + 1
     }
-    # r <- r+1
+    return(IDs)
   } else if (is.list(x) && length(x) == 1) {
     # repeat download, if API returned a single ID, instead of a full dataset
     x <- rjson::fromJSON(download(paste0(x[[1]][1]$url, "?format=json")))
