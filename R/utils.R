@@ -36,8 +36,6 @@ prepare_Renviron <- function() {
 }
 
 .onAttach <- function(libname, pkgname) {
-  id_pw <- get_credentials()
-  id <- id_pw[1]
-  pw <- id_pw[2]
+  get_credentials()
   prepare_Renviron()
 }
