@@ -19,7 +19,6 @@
 #' @examples retrieve_data(searchTerm = 717)
 #'   retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
 #'   retrieve_data(searchTerm = "DSM 319", "culturecollectionno")
-#'   retrieve_data("Pseudomonas", searchType = "taxon")
 #'   retrieve_data("Bacillus subtilis subtilis", searchType = "taxon")
 retrieve_data <- function(searchTerm,
                           searchType = "bacdive_id",
