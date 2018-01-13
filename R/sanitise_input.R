@@ -1,15 +1,18 @@
 #' Split taxon searchTerm
 #'
-#' @inherit retrieve_data param searchTerm
+#' @inheritParams retrieve_data
 #'
-#' @inherit paste return
+#' @return A character string with possibly sanitised searchType, see examples.
 #'
-#' @examples split_taxon_URL("Bacillus subtilis subtilis")
-#'   => "Bacillus/subtilis/subtilis"
+#' @examples sanitise_input("Bacillus subtilis")
+#'   => "Bacillus/subtilis"
+#'
+#'   sanitise_input("B. subtilis")
+#'   => ERROR
 sanitise_input <- function(searchTerm, searchType) {
   if (grepl(pattern = "[^[:alnum:] ]", x = searchTerm))
     stop(
-      "Illegal character detected! Your search can only contain letters, numbers and white-space. For example, abbreviations with dot ('B. subtilis') is not supported, I'm sorry. Please spell out your searchTerm ('Bacillus subtilis') and don't use any 'special' characters."
+      "Illegal character detected! My apologies, but your search can only contain letters, numbers and white-space. Abbreviating genus names (e.g. 'B. subtilis') is not supported. Please spell out your searchTerm ('Bacillus subtilis'), don't use any 'special' characters and try again."
     )
 
   if (searchType == "taxon" & grepl(pattern = " ", x = searchTerm))
