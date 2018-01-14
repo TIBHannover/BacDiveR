@@ -38,15 +38,8 @@ retrieve_data <- function(searchTerm,
     # quoting necessary, because it's an R base::Control keyword :-/
     `next` <- x$`next`
     while (!is.null(`next`)) {
-      `next` %>%
-        download() %>%
-        rjson::fromJSON() ->
-        x
-
-      aggregate_result_IDs(x$results) %>%
-        c(IDs, .) ->
-        IDs
-
+      x <- rjson::fromJSON(download(`next`))
+      IDs <- c(IDs, aggregate_result_IDs(x$results))
       `next` <- x$`next`
     }
     return(IDs)
@@ -89,9 +82,12 @@ download <- function(URL, userpwd = paste(get_credentials(), collapse = ":")) {
 #'
 #' @return An integer vector of all BacDive IDs within the results.
 aggregate_result_IDs <- function(results) {
-  results %>%
-    unlist() %>%
-    strsplit("/") %>%
-    sapply(., function(x) x[7]) %>%
-    as.numeric()
+  as.numeric(sapply(strsplit(
+    x = unlist(results), split = "/"
+  ), function(x)
+    x[7]))
+  # IDs the 7th part in the URls resulting from an ambiguous searchTerm
+  # e.g. https://bacdive.dsmz.de/api/bacdive/bacdive_id/138982/
+  # => [1] "https:"          ""                "bacdive.dsmz.de" "api"
+  # => [5] "bacdive"         "bacdive_id"      "138982
 }

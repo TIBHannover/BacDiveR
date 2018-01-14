@@ -7,7 +7,14 @@ test_that("downloading a dataset via BacDive ID works", {
 })
 
 test_that("downloading a set of BacDive ID works", {
+  B_subtilis_IDs <-
+    rjson::fromJSON(
+      download(
+        "https://bacdive.dsmz.de/api/bacdive/taxon/Bacillus/subtilis/subtilis/?format=json"
+      )
+    )
 
-expect_equal(download("https://bacdive.dsmz.de/api/bacdive/taxon/Bacillus/subtilis/subtilis/?format=json") %>% rjson::fromJSON() %>% names(),
-             c("count", "next", "previous", "results"))
+  expect_equal(names(B_subtilis_IDs),
+               c("count", "next", "previous", "results"))
+  expect_true(is.numeric(aggregate_result_IDs(B_subtilis_IDs$results)))
 })
