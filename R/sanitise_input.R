@@ -3,8 +3,6 @@
 #' @inheritParams retrieve_data
 #'
 #' @return A character string with possibly sanitised searchType, see example.
-#'
-#' @examples sanitise_input("Bacillus subtilis", "taxon")
 sanitise_input <- function(searchTerm, searchType) {
   if (grepl(pattern = "[^[:alnum:] ]", x = searchTerm, ignore.case = TRUE))
     stop(
