@@ -23,7 +23,7 @@ an internal re-specification, and execution of the intended search.}
 }
 \value{
 EITHER (from an unambiguous searchTerm) a list of lists containing a
-single BacDive datase,
+single BacDive dataset,
 OR (from a _am_biguous searchTerm) a numeric vector of BacDive-IDs, which
 can be fed back into \code{retrieve_data()} to retrieve the individual data
 sets.
@@ -33,7 +33,7 @@ Retrieve data from BacDive
 }
 \examples{
 retrieve_data(searchTerm = 717)
-  retrieve_data("AJ000733", searchType = "sequence")
-  retrieve_data("DSM 319", "culturecollectionno")
-  retrieve_data("Bacillus subtilis subtilis", searchType = "taxon")
+  retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
+  retrieve_data(searchTerm = "DSM 319", "culturecollectionno")
+  retrieve_data("Bacillus subtilis", searchType = "taxon")
 }

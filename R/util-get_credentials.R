@@ -1,3 +1,8 @@
+#' Read BacDive Login Credentials from .Renviron
+#'
+#' @param test Logical (default: `FALSE`). Only used by automatic tests.
+#'
+#' @return A vector or the two character strings `BacDive_email` and `BacDive_password` representing those two environment variables.
 get_credentials <- function(test = FALSE) {
   readRenviron(get_Renviron_path())
 

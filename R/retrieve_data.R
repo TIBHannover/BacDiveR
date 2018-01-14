@@ -14,7 +14,7 @@
 #'   an internal re-specification, and execution of the intended search.
 #'
 #' @return EITHER (from an unambiguous searchTerm) a list of lists containing a
-#'   single BacDive datase,
+#'   single BacDive dataset,
 #'   OR (from a _am_biguous searchTerm) a numeric vector of BacDive-IDs, which
 #'   can be fed back into `retrieve_data()` to retrieve the individual data
 #'   sets.
@@ -61,6 +61,16 @@ retrieve_data <- function(searchTerm,
   }
 }
 
+
+#' Download Something from BacDive
+#'
+#' @param URL represented by a correctly encoded character string with spaces,
+#'   thanks to utils::URLencode.
+#' @param userpwd A character string of the format
+#'   `BacDive_email:BacDive_password`. Retrieved from .Renviron my default, but
+#'   also used with something else by the tests.
+#'
+#' @inherit RCurl getURL return
 download <- function(URL, userpwd = paste(get_credentials(), collapse = ":")) {
   RCurl::getURL(
     URL,
@@ -69,6 +79,13 @@ download <- function(URL, userpwd = paste(get_credentials(), collapse = ":")) {
   )
 }
 
+
+#' Aggregate BacDive IDs from a List of Retrieved URLs
+#'
+#' @param results A list of paginated URLs resulting from an ambigous
+#'   `searchTerm` in `retrieve_data()`
+#'
+#' @return An integer vector of all BacDive IDs within the results.
 aggregate_result_IDs <- function(results) {
   results %>%
     unlist() %>%
