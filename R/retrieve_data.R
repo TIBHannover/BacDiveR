@@ -34,9 +34,11 @@ retrieve_data <- function(searchTerm,
 
     IDs <- aggregate_result_IDs(x$results)
 
-    r <- 1
-    while (r <= ceiling(x$count/100)) {
-      x$`next` %>%
+    # extract IDs from all pages
+    # quoting necessary, because it's an R base::Control keyword :-/
+    `next` <- x$`next`
+    while (!is.null(`next`)) {
+      `next` %>%
         download() %>%
         rjson::fromJSON() ->
         x
@@ -45,7 +47,7 @@ retrieve_data <- function(searchTerm,
         c(IDs, .) ->
         IDs
 
-      r <- r + 1
+      `next` <- x$`next`
     }
     return(IDs)
   } else if (is.list(x) && length(x) == 1) {
