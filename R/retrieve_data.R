@@ -6,12 +6,6 @@
 #' @param searchType Mandatory character string that specifies which type of
 #'   search will be performed (technically, which API endpoint). Can be
 #'   `bacdive_id` (default), `sequence`, `culturecollectionno` or `taxon`.
-#' @param force Logical. Whether or not the searchType should be enforced
-#'   strictly, even if it appears to mismatch the searchTerm. Please note:
-#'   forcing an apparently mismatched searchType will most likely result in an
-#'   error: `retrieve_data(searchTerm = "AJ000733", searchType = "bacdive_id",
-#'   force = TRUE)` without specifying `searchType = "sequence"` should lead to
-#'   an internal re-specification, and execution of the intended search.
 #'
 #' @return EITHER (from an unambiguous searchTerm) a list of lists containing a
 #'   single BacDive dataset,
@@ -20,15 +14,21 @@
 #'   sets.
 #'
 #' @export
-#' @examples retrieve_data(searchTerm = 717)
+#' @examples retrieve_data(searchTerm = 717, searchType = "bacdive_id")
 #'   retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
 #'   retrieve_data(searchTerm = "DSM 319", "culturecollectionno")
 #'   retrieve_data("Bacillus subtilis", searchType = "taxon")
 retrieve_data <- function(searchTerm,
-                          searchType = "bacdive_id",
-                          force = FALSE) {
+                          searchType = "bacdive_id") {
+
+  if (!searchType %in%
+                 c("bacdive_id", "sequence", "culturecollectionno", "taxon"))
+    stop(
+      "Unknown searchType provided! Please run ?retrieve_data or help(retrieve_data) to learn about the supported searchTypes."
+    )
+
   x <-
-    rjson::fromJSON(download(construct_url(searchTerm, searchType, force)))
+    rjson::fromJSON(download(construct_url(searchTerm, searchType)))
 
   if (identical(names(x), c("count", "next", "previous", "results"))) {
 

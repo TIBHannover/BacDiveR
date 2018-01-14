@@ -18,3 +18,10 @@ test_that("downloading a set of BacDive ID works", {
                c("count", "next", "previous", "results"))
   expect_true(is.numeric(aggregate_result_IDs(B_subtilis_IDs$results)))
 })
+
+
+test_that("unkown searchType provoke error", {
+  expect_error(retrieve_data(717, sample(c(
+    "bacdiveID", "culture", "seq", "taxom"
+  ))))
+})
