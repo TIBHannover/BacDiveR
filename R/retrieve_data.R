@@ -27,8 +27,21 @@
 retrieve_data <- function(searchTerm,
                           searchType = "bacdive_id",
                           force = FALSE) {
-  x <-
-    rjson::fromJSON(download(construct_url(searchTerm, searchType, force)))
+
+  searchTerm <- sanitise_input(searchTerm, searchType)
+
+  if (!force)
+    searchType <- guess_searchType(searchTerm, searchType)
+
+  x <- rjson::fromJSON(download(utils::URLencode(
+    paste0(
+      "https://bacdive.dsmz.de/api/bacdive/",
+      searchType,
+      "/",
+      searchTerm,
+      "/?format=json"
+    )
+  )))
 
   if (identical(names(x), c("count", "next", "previous", "results"))) {
 
