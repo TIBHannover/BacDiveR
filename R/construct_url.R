@@ -10,7 +10,7 @@ construct_url <- function(searchTerm,
   if (!force)
     searchType <- guess_searchType(searchTerm, searchType)
 
-  URLencode(
+  utils::URLencode(
     paste0(
       "https://bacdive.dsmz.de/api/bacdive/",
       searchType,
