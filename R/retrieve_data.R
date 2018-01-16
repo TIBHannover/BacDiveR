@@ -1,8 +1,9 @@
 #' Retrieve data from BacDive
 #'
-#' @param searchTerm Mandatory character string (in case of `sequence`,
-#'   `culturecollectionno` or `taxon` `searchType`)  or integer (in case of
+#' @param searchTerm Mandatory character string (in case of the `searchType`
+#'   `sequence`, `culturecollectionno` or `taxon`) or integer (in case of
 #'   `bacdive_id`), specifying what shall be searched for.
+#'
 #' @param searchType Mandatory character string that specifies which type of
 #'   search will be performed (technically, which API endpoint). Can be
 #'   `bacdive_id` (default), `sequence`, `culturecollectionno` or `taxon`.
@@ -23,12 +24,13 @@
 #'   an unambigous search, and may cause R(Studio) to be unresponsive. Go
 #'   walking for a few minutes ;-)
 #'
+#' @return EITHER (from an unambiguous searchTerm, or in case of
+#'   `force_taxon_download = TRUE`) a list of lists containing the single
+#'   BacDive dataset for that searchTerm,
 #'
-#' @return EITHER (from an unambiguous searchTerm) a list of lists containing a
-#'   single BacDive dataset,
-#'   OR (from a _am_biguous searchTerm) a numeric vector of BacDive-IDs, which
-#'   can be fed back into `retrieve_data()` to retrieve the individual data
-#'   sets.
+#'   OR (from a _am_biguous search; eg.g `serchType = "taxon"`) a numeric vector
+#'   of BacDive-IDs, on which you can call your own loop containing
+#'   `retrieve_data()` to retrieve the individual data sets.
 #'
 #' @export
 #' @examples retrieve_data(searchTerm = 717)
