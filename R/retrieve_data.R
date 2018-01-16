@@ -21,8 +21,8 @@
 #'   only a paged list of URLs pointing to the actual datasets. Setting
 #'   `force_taxon_download = TRUE` (default: `FALSE`) triggers many downloads of
 #'   the individual result datasets. Please note: This may take much longer than
-#'   an unambigous search, and may cause R(Studio) to be unresponsive. Go
-#'   walking for a few minutes ;-)
+#'   an unambigous search, and may cause R(Studio) to be unresponsive
+#'   intermittedly. Maybe go for a walk for a few minutes ;-)
 #'
 #' @return EITHER (from an unambiguous searchTerm, or in case of
 #'   `force_taxon_download = TRUE`) a list of lists containing the single
@@ -43,11 +43,10 @@ retrieve_data <- function(searchTerm,
                           force_search = FALSE,
                           force_taxon_download = FALSE) {
 
-  if (force_taxon_download)
-    message("OK, downloading all BacDive data for that taxon. Please note that this make take some time...")
-
   x <-
     rjson::fromJSON(download(construct_url(searchTerm, searchType, force_search)))
+
+  if (force_taxon_download && x$count > 100) warn_slow_download(x$count)
 
   if (identical(names(x), c("count", "next", "previous", "results")) &&
       !force_taxon_download) {
