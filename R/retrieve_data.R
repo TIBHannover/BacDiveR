@@ -112,7 +112,6 @@ aggregate_result_IDs <- function(results) {
   # => [5] "bacdive"         "bacdive_id"      "138982
 
   return(IDs)
-  # [ ] refactor: call as many clean-up functions as possible outsite the loop
 }
 
 
@@ -123,11 +122,11 @@ aggregate_result_IDs <- function(results) {
 #'
 #' @return An integer vector of all BacDive IDs within the results.
 aggregate_result_URLs <- function(results) {
-  URLs <- unlist(results$results, use.names = FALSE)
-  while (!is.null(results$`next`)) {
-    results <- rjson::fromJSON(download(results$`next`))
+  URLs <- c()
+  for (i in 1:ceiling(x = results$count/100)) {
     URLs <- c(URLs, unlist(results$results, use.names = FALSE))
+    if (is.null(results$`next`)) break
+    results <- rjson::fromJSON(download(results$`next`))
   }
   return(URLs)
-  # [ ] refactor: call as many clean-up functions as possible outsite the loop
 }
