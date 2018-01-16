@@ -8,7 +8,7 @@
 #'   search will be performed (technically, which API endpoint). Can be
 #'   `bacdive_id` (default), `sequence`, `culturecollectionno` or `taxon`.
 #'
-#' @param force_search Logical; default: FALSE. Whether or not the searchType
+#' @param force_search Logical; default: `FALSE`. Whether or not the searchType
 #'   should be enforced strictly, even if it appears to mismatch the searchTerm.
 #'   Please note: forcing an apparently mismatched searchType will most likely
 #'   result in an error: `retrieve_data(searchTerm = "DSM 319", searchType =
@@ -16,17 +16,17 @@
 #'   "sequence"` should lead to an internal re-specification, and execution of
 #'   the intended search.
 #'
-#' @param force_taxon_download Logical; default: FALSE. In case of a taxon
+#' @param force_taxon_download Logical; default: `FALSE`. In case of a taxon
 #'   search, BacDive will return not the actual data of the search results, but
 #'   only a paged list of URLs pointing to the actual datasets. Setting
 #'   `force_taxon_download = TRUE` (default: `FALSE`) triggers many downloads of
 #'   the individual result datasets. Please note: This may take much longer than
-#'   an unambigous search, and may cause R(Studio) to be unresponsive
-#'   intermittedly. Maybe go for a walk for a few minutes ;-)
+#'   an unambiguous search, and may cause R(Studio) to be unresponsive
+#'   temporarily Maybe go for a walk for a few minutes ;-)
 #'
 #' @return EITHER (from an unambiguous searchTerm, or in case of
 #'   `force_taxon_download = TRUE`) a list of lists containing the single
-#'   BacDive dataset for that searchTerm,
+#'   BacDive dataset for that `searchTerm`,
 #'
 #'   OR (from a _am_biguous search; eg.g `serchType = "taxon"`) a numeric vector
 #'   of BacDive-IDs, on which you can call your own loop containing
@@ -81,8 +81,8 @@ retrieve_data <- function(searchTerm,
 #' @param URL represented by a correctly encoded character string with spaces,
 #'   thanks to utils::URLencode.
 #' @param userpwd A character string of the format
-#'   `BacDive_email:BacDive_password`. Retrieved from .Renviron my default, but
-#'   also used with something else by the tests.
+#'   `BacDive_email:BacDive_password`. Retrieved from `.Renviron` my default,
+#'   but also used with something else by the tests.
 #'
 #' @inherit RCurl::getURL return
 download <- function(URL, userpwd = paste(get_credentials(), collapse = ":")) {
@@ -96,7 +96,7 @@ download <- function(URL, userpwd = paste(get_credentials(), collapse = ":")) {
 
 #' Aggregate BacDive-IDs from a Paged List of Retrieved URLs
 #'
-#' @param results A list of paginated URLs resulting from an ambigous
+#' @param results A list of paginated URLs returned by an ambiguous
 #'   `searchTerm` in `retrieve_data()`
 #'
 #' @return An integer vector of all BacDive IDs within the results.
@@ -106,7 +106,7 @@ aggregate_result_IDs <- function(results) {
     x = aggregate_result_URLs(results), split = "/"
   ), function(x)
     x[7]))
-  # IDs the 7th part in the URls resulting from an ambiguous searchTerm
+  # IDs are the 7th part in the URls returned by an ambiguous `searchTerm`
   # e.g. https://bacdive.dsmz.de/api/bacdive/bacdive_id/138982/
   # => [1] "https:"          ""                "bacdive.dsmz.de" "api"
   # => [5] "bacdive"         "bacdive_id"      "138982
@@ -118,8 +118,8 @@ aggregate_result_IDs <- function(results) {
 
 #' Aggregate BacDive-URLs from a Paged List of Retrieved URLs
 #'
-#' @param results A list of paginated URLs resulting from an ambigous
-#'   `searchTerm` in `retrieve_data()`
+#' @param results A list of paginated URLs returned by an ambiguous
+#'   `searchTerm` in `retrieve_data()`.
 #'
 #' @return An integer vector of all BacDive IDs within the results.
 aggregate_result_URLs <- function(results) {
