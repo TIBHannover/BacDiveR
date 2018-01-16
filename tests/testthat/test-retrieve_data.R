@@ -23,4 +23,15 @@ test_that("taxon search returns paged results list", {
   expect_true(is.list(B_subtilis_IDs$results))
 })
 
+test_that("aggregating a set of BacDive ID works", {
+  expect_equal(B_subtilis_IDs$count,
+               length(aggregate_result_IDs(B_subtilis_IDs)))
+  expect_true(is.numeric(aggregate_result_IDs(B_subtilis_IDs)))
+})
+
+test_that("aggregating a set of BacDive URLs works", {
+  expect_equal(B_subtilis_IDs$count,
+               length(aggregate_result_URLs(B_subtilis_IDs)))
+  expect_true(is.character(aggregate_result_URLs(B_subtilis_IDs)))
+
 })
