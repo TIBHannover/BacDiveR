@@ -55,9 +55,11 @@ retrieve_data <- function(searchTerm,
 
   } else if (identical(names(x), c("count", "next", "previous", "results")) &&
              force_taxon_download) {
-    taxon_data <- c()
-    for (u in aggregate_result_URLs(x$results)) {
-      taxon_data <- c(taxon_data, rjson::fromJSON(download(paste0(u, "?format=json"))))
+    taxon_data <- list()
+    URLs <- aggregate_result_URLs(x$results)
+    for (u in URLs) {
+      taxon_data <- c(taxon_data,
+                      rjson::fromJSON(download(paste0(u, "?format=json"))))
     }
     return(taxon_data)
 
