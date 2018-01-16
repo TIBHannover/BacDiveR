@@ -6,12 +6,23 @@
 #' @param searchType Mandatory character string that specifies which type of
 #'   search will be performed (technically, which API endpoint). Can be
 #'   `bacdive_id` (default), `sequence`, `culturecollectionno` or `taxon`.
-#' @param force Logical. Whether or not the searchType should be enforced
-#'   strictly, even if it appears to mismatch the searchTerm. Please note:
-#'   forcing an apparently mismatched searchType will most likely result in an
-#'   error: `retrieve_data(searchTerm = "AJ000733", searchType = "bacdive_id",
-#'   force = TRUE)` without specifying `searchType = "sequence"` should lead to
-#'   an internal re-specification, and execution of the intended search.
+#'
+#' @param force_search Logical; default: FALSE. Whether or not the searchType
+#'   should be enforced strictly, even if it appears to mismatch the searchTerm.
+#'   Please note: forcing an apparently mismatched searchType will most likely
+#'   result in an error: `retrieve_data(searchTerm = "DSM 319", searchType =
+#'   "bacdive_id", force_search = TRUE)` without specifying `searchType =
+#'   "sequence"` should lead to an internal re-specification, and execution of
+#'   the intended search.
+#'
+#' @param force_taxon_download Logical; default: FALSE. In case of a taxon
+#'   search, BacDive will return not the actual data of the search results, but
+#'   only a paged list of URLs pointing to the actual datasets. Setting
+#'   `force_taxon_download = TRUE` (default: `FALSE`) triggers many downloads of
+#'   the individual result datasets. Please note: This may take much longer than
+#'   an unambigous search, and may cause R(Studio) to be unresponsive. Go
+#'   walking for a few minutes ;-)
+#'
 #'
 #' @return EITHER (from an unambiguous searchTerm) a list of lists containing a
 #'   single BacDive dataset,
@@ -24,25 +35,30 @@
 #'   retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
 #'   retrieve_data(searchTerm = "DSM 319", "culturecollectionno")
 #'   retrieve_data("Bacillus subtilis", searchType = "taxon")
+#'   retrieve_data("Bacillus subtilis subtilis", searchType = "taxon", force_taxon_download = TRUE)
 retrieve_data <- function(searchTerm,
                           searchType = "bacdive_id",
-                          force = FALSE) {
+                          force_search = FALSE,
+                          force_taxon_download = FALSE) {
+
+  if (force_taxon_download)
+    message("OK, downloading all BacDive data for that taxon. Please note that this make take some time...")
+
   x <-
-    rjson::fromJSON(download(construct_url(searchTerm, searchType, force)))
+    rjson::fromJSON(download(construct_url(searchTerm, searchType, force_search)))
 
-  if (identical(names(x), c("count", "next", "previous", "results"))) {
+  if (identical(names(x), c("count", "next", "previous", "results")) &&
+      !force_taxon_download) {
+    return(aggregate_result_IDs(x$results))
 
-    IDs <- aggregate_result_IDs(x$results)
-
-    # extract IDs from all pages
-    # quoting necessary, because it's an R base::Control keyword :-/
-    `next` <- x$`next`
-    while (!is.null(`next`)) {
-      x <- rjson::fromJSON(download(`next`))
-      IDs <- c(IDs, aggregate_result_IDs(x$results))
-      `next` <- x$`next`
+  } else if (identical(names(x), c("count", "next", "previous", "results")) &&
+             force_taxon_download) {
+    taxon_data <- c()
+    for (u in aggregate_result_URLs(x$results)) {
+      taxon_data <- c(taxon_data, rjson::fromJSON(download(paste0(u, "?format=json"))))
     }
-    return(IDs)
+    return(taxon_data)
+
   } else if (is.list(x) && length(x) == 1) {
     # repeat download, if API returned a single ID, instead of a full dataset
     x <- rjson::fromJSON(download(paste0(x[[1]][1]$url, "?format=json")))
@@ -75,19 +91,40 @@ download <- function(URL, userpwd = paste(get_credentials(), collapse = ":")) {
 }
 
 
-#' Aggregate BacDive IDs from a List of Retrieved URLs
+#' Aggregate BacDive-IDs from a Paged List of Retrieved URLs
 #'
 #' @param results A list of paginated URLs resulting from an ambigous
 #'   `searchTerm` in `retrieve_data()`
 #'
 #' @return An integer vector of all BacDive IDs within the results.
 aggregate_result_IDs <- function(results) {
-  as.numeric(sapply(strsplit(
-    x = unlist(results), split = "/"
+
+  IDs <- as.numeric(sapply(strsplit(
+    x = aggregate_result_URLs(results), split = "/"
   ), function(x)
     x[7]))
   # IDs the 7th part in the URls resulting from an ambiguous searchTerm
   # e.g. https://bacdive.dsmz.de/api/bacdive/bacdive_id/138982/
   # => [1] "https:"          ""                "bacdive.dsmz.de" "api"
   # => [5] "bacdive"         "bacdive_id"      "138982
+
+  return(IDs)
+  # [ ] refactor: call as many clean-up functions as possible outsite the loop
+}
+
+
+#' Aggregate BacDive-URLs from a Paged List of Retrieved URLs
+#'
+#' @param results A list of paginated URLs resulting from an ambigous
+#'   `searchTerm` in `retrieve_data()`
+#'
+#' @return An integer vector of all BacDive IDs within the results.
+aggregate_result_URLs <- function(results) {
+  URLs <- unlist(results$results, use.names = FALSE)
+  while (!is.null(results$`next`)) {
+    results <- rjson::fromJSON(download(results$`next`))
+    URLs <- c(URLs, unlist(results$results, use.names = FALSE))
+  }
+  return(URLs)
+  # [ ] refactor: call as many clean-up functions as possible outsite the loop
 }

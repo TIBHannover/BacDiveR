@@ -41,7 +41,7 @@ guess_searchType <- function(searchTerm, searchType) {
       paste0(
         "Your searchTerm seems to mismatch the provided searchType, but matches a '",
         searchType,
-        "', so I searched for that. If you don't want me to second-guess your searchTerm-to-searchType combinations, please set force = FALSE."
+        "', so I searched for that. If you don't want me to second-guess your searchTerm-to-searchType combinations, please set force_search = FALSE."
       )
     )
   }
