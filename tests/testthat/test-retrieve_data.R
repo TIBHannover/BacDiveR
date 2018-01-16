@@ -14,7 +14,13 @@ B_subtilis_IDs <-
     )
   )
 
+test_that("taxon search returns paged results list", {
   expect_equal(names(B_subtilis_IDs),
                c("count", "next", "previous", "results"))
-  expect_true(is.numeric(aggregate_result_IDs(B_subtilis_IDs$results)))
+  expect_null(B_subtilis_IDs$previous)
+  expect_true(is.numeric(B_subtilis_IDs$count))
+  expect_true(is.character(B_subtilis_IDs$`next`))
+  expect_true(is.list(B_subtilis_IDs$results))
+})
+
 })
