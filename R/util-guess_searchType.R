@@ -25,6 +25,7 @@ guess_searchType <- function(searchTerm, searchType) {
       searchType == "accession"
     ~ "sequence",
 
+    # [ ] assume: identifiers can be reg-ex'ed
     searchType != "culturecollectionno" &
       grepl(x = searchTerm,
             pattern = "(ACM|ATCC|CIP|DSM|ICPB|JCM|LMG|NCDO|NCTC|PS|QUM)+ [0-9]+(-[0-9]+)?") |
@@ -34,6 +35,7 @@ guess_searchType <- function(searchTerm, searchType) {
       searchType == "ccn"
     ~ "culturecollectionno",
 
+    # [ ] assume: neither genus nor species names contain numbers
     searchType != "taxon" &
       !grepl("[0-9]+", x = searchTerm)
     ~ "taxon",

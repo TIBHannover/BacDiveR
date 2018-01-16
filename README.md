@@ -19,8 +19,6 @@ Programmatic interface for the [Bacterial Diversity Metadatabase](https://bacdiv
 > [Nucleic Acids Research, Volume 44, Issue D1, 4 January 2016, Pages D581–D585](https://academic.oup.com/nar/article/44/D1/D581/2503137), 
 > [doi:10.1093/nar/gkv983](https://doi.org/10.1093/nar/gkv983)
 
-## Assumptions in the code. If you disagree with any of them, please [raise a constructive issue](https://github.com/katrinleinweber/BacDiveR/issues/new).
+## Assumptions in the code…
 
-- taxons (genus, species & subspecies names) do not contain numbers
-- accession / sequence numbers and culture collection numbers can be distinguished with [regular expressions](https://github.com/katrinleinweber/BacDiveR/blob/master/R/guess_searchType.R)
-
+… are [marked by `[ ] assume` as comments](https://github.com/katrinleinweber/BacDiveR/search?q=assume&type=Code). If you disagree with any of them, please [raise a constructive issue](https://github.com/katrinleinweber/BacDiveR/issues/new).
