@@ -84,7 +84,7 @@ retrieve_data <- function(searchTerm,
 #'   `BacDive_email:BacDive_password`. Retrieved from `.Renviron` my default,
 #'   but also used with something else by the tests.
 #'
-#' @inherit RCurl::getURL return
+#' @return A serialised JSON string.
 download <- function(URL, userpwd = paste(get_credentials(), collapse = ":")) {
   RCurl::getURL(
     URL,
