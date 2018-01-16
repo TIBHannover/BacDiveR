@@ -35,3 +35,16 @@ test_that("aggregating a set of BacDive URLs works", {
   expect_true(is.character(aggregate_result_URLs(B_subtilis_IDs)))
 
 })
+
+
+test_that("using the taxon search for a single dataset works", {
+  P_lini <-
+    rjson::fromJSON(
+      download(
+        "https://bacdive.dsmz.de/api/bacdive/taxon/Pseudomonas/lini/?format=json"
+      )
+    )
+
+  expect_equal(P_lini$count, length(aggregate_result_IDs(P_lini)))
+  expect_equal(P_lini$count, length(aggregate_result_URLs(P_lini)))
+})
