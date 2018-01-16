@@ -1,4 +1,4 @@
-#' Guess Search Type
+#' Guess SearchType
 #'
 #' @inheritParams retrieve_data
 #'
@@ -44,9 +44,13 @@ guess_searchType <- function(searchTerm, searchType) {
   if (searchType != searchType_ori) {
     warning(
       paste0(
-        "Your searchTerm seems to mismatch the provided searchType, but matches a '",
+        "There seems to be a mismatch between your searchTerm ('",
+        searchTerm,
+        "') and your searchType ('",
+        searchType_ori,
+        "')! However, because the forlder matches the searchType '",
         searchType,
-        "', so I searched for that. If you don't want me to second-guess your searchTerm-to-searchType combinations, please set force_search = FALSE."
+        "',I searched for that. If you don't want me to second-guess your searchTerm-to-searchType combinations, please set force_search = TRUE"
       )
     )
   }
