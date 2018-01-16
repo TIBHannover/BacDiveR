@@ -1,6 +1,6 @@
 Package: BacDiveR
-Title: Interface With The Bacterial Diversity Metadatabase Of The DSMZ.
-Version: 0.0.0.9000
+Title: Interface With The Bacterial Diversity Metadatabase Of The DSMZ
+Version: 0.2.0
 Authors@R: person("Katrin", "Leinweber", email = "katrin.leinweber@tib.eu", role = c("aut", "cre"))
 Description: Programmatic interface for the Bacterial Diversity Metadatabase of the DSMZ.
 License: MIT + file LICENSE
@@ -8,8 +8,11 @@ Encoding: UTF-8
 LazyData: true
 ByteCompile: true
 Suggests: 
-    testthat
+    testthat,
+    magrittr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1.9000
 Imports: 
-    magrittr
+    RCurl,
+    rjson,
+    utils

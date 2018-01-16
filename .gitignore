@@ -35,3 +35,8 @@ vignettes/*.pdf
 # from usethis
 .Ruserdata
 .Rproj.user
+
+### custom ignores
+bacdive.R
+*.pdf
+/man/

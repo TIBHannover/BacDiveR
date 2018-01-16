@@ -1,3 +1,7 @@
+#' Construct Path of User's .Renviron File
+#'
+#' @return A character vector representing the path to the user's `.Renviron`
+#'   file.
 get_Renviron_path <- function() {
   path <- Sys.getenv("HOME")
   if (nzchar(path))
@@ -6,40 +10,7 @@ get_Renviron_path <- function() {
 }
 
 
-
-prepare_Renviron <- function() {
-  r_env_file <- get_Renviron_path()
-
-  if (!file.exists(r_env_file))
-    file.create(r_env_file)
-
-  write <- "x"
-
-  message <- "add your BacDive login credentials.\n# See https://github.com/katrinleinweber/BacDiveR/\n# for more installation instructions."
-
-  # add credential keys if none exist
-  for (type in c("email", "password")) {
-    start_of_line <- paste0("BacDive_", type, "=")
-    if (!any(grepl(
-      paste0("^", start_of_line),
-      readLines(r_env_file, warn = FALSE)
-    ))) {
-      if (type == "email")
-        write(paste("\n# Please", message), file = r_env_file, append = TRUE)
-      write(start_of_line, file = r_env_file, append = TRUE)
-    }
-  }
-
-  # prompt user to fill empty credential values/variables
-  if (any(grepl(paste0("^", start_of_line, "$"), readLines(r_env_file)))) {
-    message(paste(r_env_file, "prepared. If you don't see it open now, please run `file.edit(r_env_file)` and", message))
-    file.edit(r_env_file)
-  }
-}
-
 .onAttach <- function(libname, pkgname) {
-  id_pw <- get_credentials()
-  id <- id_pw[1]
-  pw <- id_pw[2]
+  get_credentials()
   prepare_Renviron()
 }
