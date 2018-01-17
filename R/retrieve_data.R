@@ -123,10 +123,11 @@ aggregate_result_IDs <- function(results) {
 #' @return An integer vector of all BacDive IDs within the results.
 aggregate_result_URLs <- function(results) {
   URLs <- c()
-  for (i in 1:ceiling(x = results$count/100)) {
+  continue <- TRUE
+  while (continue) {
     URLs <- c(URLs, unlist(results$results, use.names = FALSE))
-    if (is.null(results$`next`)) break
-    results <- rjson::fromJSON(download(results$`next`))
+    if (is.null(results$`next`)) continue <- FALSE
+    else results <- rjson::fromJSON(download(results$`next`))
   }
   return(URLs)
 }
