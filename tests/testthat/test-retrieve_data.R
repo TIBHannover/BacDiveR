@@ -47,6 +47,7 @@ test_that("using the taxon search for a single dataset works", {
       )
     )
 
-  expect_equal(P_lini$count, length(aggregate_result_IDs(P_lini)))
-  expect_equal(P_lini$count, length(aggregate_result_URLs(P_lini)))
+  expect_equal(P_lini$count,
+               length(aggregate_result_IDs(P_lini)),
+               length(aggregate_result_URLs(P_lini)))
 })
