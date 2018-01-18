@@ -22,7 +22,10 @@ test_that("taxon search returns paged results list", {
                c("count", "next", "previous", "results"))
   expect_null(B_subtilis_IDs$previous)
   expect_true(is.numeric(B_subtilis_IDs$count))
+
   expect_true(is.character(B_subtilis_IDs$`next`))
+  # can be NULL for taxonomic units < 100 BacDive entries
+
   expect_true(is.list(B_subtilis_IDs$results))
 })
 
