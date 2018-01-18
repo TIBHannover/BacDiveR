@@ -34,10 +34,14 @@
 #'
 #' @export
 #' @examples retrieve_data(searchTerm = "Bacillus subtilis subtilis")
+#'   # This returns a numeric vector of IDs. To download all the corresponding
+#'   # data, use:
+#'   retrieve_data("Bacillus subtilis subtilis", force_taxon_download = TRUE)
+#'
+#'   # In case the `searchTerm` is unambiguous already, the data download will
+#'   # procede automatically:
+#'   retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")
 #'   retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
-#'   retrieve_data(searchTerm = "DSM 319", "culturecollectionno")
-#'   retrieve_data("Bacillus subtilis", searchType = "taxon")
-#'   retrieve_data("Bacillus subtilis subtilis", searchType = "taxon", force_taxon_download = TRUE)
 #'   retrieve_data(searchTerm = 717, searchType = "bacdive_id)
 retrieve_data <- function(searchTerm,
                           searchType = "taxon",
