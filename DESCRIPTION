@@ -9,10 +9,13 @@ LazyData: true
 ByteCompile: true
 Suggests: 
     testthat,
-    magrittr
+    magrittr,
+    knitr,
+    rmarkdown
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1.9000
 Imports: 
     RCurl,
     rjson,
     utils
+VignetteBuilder: knitr
