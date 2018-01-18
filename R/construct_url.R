@@ -4,11 +4,10 @@
 construct_url <- function(searchTerm,
                           searchType = "bacdive_id",
                           force_search = FALSE) {
-
-  searchTerm <- sanitise_input(searchTerm, searchType)
-
   if (!force_search)
     searchType <- guess_searchType(searchTerm, searchType)
+
+  searchTerm <- sanitise_input(searchTerm, searchType)
 
   utils::URLencode(
     paste0(
