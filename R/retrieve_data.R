@@ -5,8 +5,8 @@
 #'   `bacdive_id`), specifying what shall be searched for.
 #'
 #' @param searchType Mandatory character string that specifies which type of
-#'   search will be performed (technically, which API endpoint). Can be
-#'   `bacdive_id` (default), `sequence`, `culturecollectionno` or `taxon`.
+#'   search will be performed (technically, which API endpoint). Can be `taxon`
+#'   (default), `bacdive_id`, `sequence`, or `culturecollectionno`.
 #'
 #' @param force_search Logical; default: `FALSE`. Whether or not the searchType
 #'   should be enforced strictly, even if it appears to mismatch the searchTerm.
@@ -33,13 +33,14 @@
 #'   `retrieve_data()` to retrieve the individual data sets.
 #'
 #' @export
-#' @examples retrieve_data(searchTerm = 717)
+#' @examples retrieve_data(searchTerm = "Bacillus subtilis subtilis")
 #'   retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
 #'   retrieve_data(searchTerm = "DSM 319", "culturecollectionno")
 #'   retrieve_data("Bacillus subtilis", searchType = "taxon")
 #'   retrieve_data("Bacillus subtilis subtilis", searchType = "taxon", force_taxon_download = TRUE)
+#'   retrieve_data(searchTerm = 717, searchType = "bacdive_id)
 retrieve_data <- function(searchTerm,
-                          searchType = "bacdive_id",
+                          searchType = "taxon",
                           force_search = FALSE,
                           force_taxon_download = FALSE) {
 
