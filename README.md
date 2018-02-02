@@ -7,9 +7,9 @@ Programmatic interface for the [Bacterial Diversity Metadatabase](https://bacdiv
 ## Installation
 
 1. in any R console, run the following command: `if (!"devtools" %in% installed.packages()) install.packages("devtools"); devtools::install_github("katrinleinweber/BacDiveR")`
-1. run `file.edit(BacDiverR::get_Renviron_path())`,
+1. run `file.edit(BacDiverR:::get_Renviron_path())`,
 2. add your BacDive email and password directly after the `=`,
-3. save the file and either a) run `readRenviron(BacDiverR::get_Renviron_path())`, or b) restart R(Studio).
+3. save the file and either a) run `readRenviron(BacDiverR:::get_Renviron_path())`, or b) restart R(Studio).
 
 ## References
 
