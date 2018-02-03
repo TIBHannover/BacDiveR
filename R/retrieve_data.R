@@ -8,14 +8,6 @@
 #'   search will be performed (technically, which API endpoint). Can be
 #'   `bacdive_id` (default), `sequence`, `culturecollectionno` or `taxon`.
 #'
-#' @param force_search Logical; default: `FALSE`. Whether or not the searchType
-#'   should be enforced strictly, even if it appears to mismatch the searchTerm.
-#'   Please note: forcing an apparently mismatched searchType will most likely
-#'   result in an error: `retrieve_data(searchTerm = "DSM 319", searchType =
-#'   "bacdive_id", force_search = TRUE)` without specifying `searchType =
-#'   "sequence"` should lead to an internal re-specification, and execution of
-#'   the intended search.
-#'
 #' @param force_taxon_download Logical; default: `FALSE`. In case of a taxon
 #'   search, BacDive will return not the actual data of the search results, but
 #'   only a paged list of URLs pointing to the actual datasets. Setting
@@ -40,11 +32,10 @@
 #'   retrieve_data("Bacillus subtilis subtilis", searchType = "taxon", force_taxon_download = TRUE)
 retrieve_data <- function(searchTerm,
                           searchType = "bacdive_id",
-                          force_search = FALSE,
                           force_taxon_download = FALSE) {
 
   x <-
-    rjson::fromJSON(download(construct_url(searchTerm, searchType, force_search)))
+    rjson::fromJSON(download(construct_url(searchTerm, searchType)))
 
   if (force_taxon_download && x$count > 100) warn_slow_download(x$count)
 

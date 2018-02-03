@@ -51,3 +51,11 @@ test_that("using the taxon search for a single dataset works", {
                length(aggregate_result_IDs(P_lini)),
                length(aggregate_result_URLs(P_lini)))
 })
+
+
+test_that("unkown searchType provokes error", {
+  expect_error(retrieve_data(searchTerm = 717,
+                             searchType = sample(
+                               c("bacdiveID", "culture", "seq", "taxom")
+                             )))
+})
