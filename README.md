@@ -1,5 +1,7 @@
 # BacDiveR
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1174888.svg)](https://doi.org/10.5281/zenodo.1174888)
+
 Programmatic interface for the [Bacterial Diversity Metadatabase](https://bacdive.dsmz.de/) of the [DSMZ](https://www.dsmz.de/about-us.html) (German Collection of Microorganisms and Cell Cultures / Deutsche Sammlung von Mikroorganismen und Zellkulturen GmbH; Leibniz Institut).
 
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
