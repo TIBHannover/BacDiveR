@@ -61,10 +61,10 @@ retrieve_data <- function(searchTerm,
              force_taxon_download) {
     taxon_data <- list()
     URLs <- aggregate_result_URLs(x)
-    for (u in URLs) {
-      taxon_data <- c(taxon_data,
-                      rjson::fromJSON(download(paste0(u, "?format=json"))))
+    for (i in seq(length(URLs))) {
+      taxon_data[i] <- download(paste0(URLs[i], "?format=json"))
     }
+    taxon_data <- lapply(taxon_data, jsonlite::fromJSON)
     return(taxon_data)
 
   } else if (is.list(x) && length(x) == 1) {

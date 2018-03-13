@@ -54,3 +54,13 @@ test_that("using the taxon search for a single dataset works", {
                length(aggregate_result_IDs(P_lini)),
                length(aggregate_result_URLs(P_lini)))
 })
+
+test_that("extracting a single field from a taxon-wide search works", {
+  expect_equal(30,
+               unique(unlist(
+                 purrr::map(
+                   .x = retrieve_data("Aminobacter aminovorans", force_taxon_download = TRUE),
+                   .f = ~ as.numeric(.x$culture_growth_condition$culture_temp$temp)
+                 )
+               )))
+})
