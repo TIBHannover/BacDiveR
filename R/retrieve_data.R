@@ -49,7 +49,7 @@ retrieve_data <- function(searchTerm,
                           force_taxon_download = FALSE) {
 
   x <-
-    rjson::fromJSON(download(construct_url(searchTerm, searchType, force_search)))
+    jsonlite::fromJSON(download(construct_url(searchTerm, searchType, force_search)))
 
   if (force_taxon_download && x$count > 100) warn_slow_download(x$count)
 
@@ -69,7 +69,7 @@ retrieve_data <- function(searchTerm,
 
   } else if (is.list(x) && length(x) == 1) {
     # repeat download, if API returned a single ID, instead of a full dataset
-    x <- rjson::fromJSON(download(paste0(x[[1]][1]$url, "?format=json")))
+    x <- jsonlite::fromJSON(download(paste0(x[[1]][1]$url, "?format=json")))
     return(x)
   } else if (identical(x$detail, "Not found")) {
     stop(
@@ -131,7 +131,7 @@ aggregate_result_URLs <- function(results) {
   while (TRUE) {
     URLs <- c(URLs, unlist(results$results, use.names = FALSE))
     if (!is.null(results$`next`))
-      results <- rjson::fromJSON(download(results$`next`))
+      results <- jsonlite::fromJSON(download(results$`next`))
     else break
   }
   return(URLs)

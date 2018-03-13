@@ -11,7 +11,7 @@ test_that("downloading a dataset via BacDive ID works", {
 
 
 B_subtilis_IDs <-
-  rjson::fromJSON(
+  jsonlite::fromJSON(
     download(
       "https://bacdive.dsmz.de/api/bacdive/taxon/Bacillus/subtilis/subtilis/?format=json"
     )
@@ -44,7 +44,7 @@ test_that("aggregating a set of BacDive URLs works", {
 
 test_that("using the taxon search for a single dataset works", {
   P_lini <-
-    rjson::fromJSON(
+    jsonlite::fromJSON(
       download(
         "https://bacdive.dsmz.de/api/bacdive/taxon/Pseudomonas/lini/?format=json"
       )
