@@ -2,11 +2,11 @@ warn_slow_download <- function(N_datasets) {
   warning(
     paste0(
       N_datasets,
-      " BacDive datasets are being downloaded... Please note: Depending on your internet connection speed, and the BacDive server load right now, this might take some time and may cause R(Studio) to be unresponsive temporarily. Maybe go for a walk for a few (I'm guessing: ",
+      " BacDive datasets are being downloaded... Please note: Depending on your internet connection speed, and the BacDive server load right now, this might take some time and may cause R(Studio) to become temporarily unresponsive Maybe go for a walk for a few (I'm guessing: ",
       round(N_datasets / 4 / 60, 1),
       " to ",
       round(N_datasets / 3 / 60, 1),
-      ") minutes ;-)"
+      ") minutes ;-)\n\n"
     )
   )
   # numbers based on a microbenchmark of:
