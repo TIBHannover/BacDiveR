@@ -2,7 +2,7 @@ Package: BacDiveR
 Title: Programmatic Interface For DSMZ's Bacterial Diversity Metadatabase.
 Version: 0.2.0
 Authors@R: person("Katrin", "Leinweber", email = "katrin.leinweber@tib.eu", role = c("aut", "cre"))
-Description: Programmatic interface for the Bacterial Diversity Metadatabase of the DSMZ.
+Description: BacDive focuses providing organism-linked information covering the multifarious aspects of bacterial biodiversity. The BacDive portal offers information on taxonomic classification, morphology, physiology, cultivation, origin and natural habitat for bacterial and archeal strains. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
