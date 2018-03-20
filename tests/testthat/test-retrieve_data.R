@@ -60,7 +60,8 @@ test_that("extracting a single field from a taxon-wide search works", {
   expect_equal(30,
                unique(unlist(
                  purrr::map(
-                   .x = retrieve_data("Aminobacter aminovorans", force_taxon_download = TRUE),
+                   .x = retrieve_data("Aminobacter aminovorans",
+                                      force_taxon_download = TRUE),
                    .f = ~ as.numeric(.x$culture_growth_condition$culture_temp$temp)
                  )
                )))
