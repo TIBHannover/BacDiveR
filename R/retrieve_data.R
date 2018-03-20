@@ -51,7 +51,9 @@ retrieve_data <- function(searchTerm,
   x <-
     jsonlite::fromJSON(download(construct_url(searchTerm, searchType, force_search)))
 
-  if (force_taxon_download && x$count > 100) warn_slow_download(x$count)
+  if (force_taxon_download &&
+      !is.null(x$count) && x$count > 100)
+    warn_slow_download(x$count)
 
   if (identical(names(x), c("count", "next", "previous", "results")) &&
       !force_taxon_download) {
