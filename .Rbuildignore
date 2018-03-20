@@ -4,3 +4,4 @@
 ^.*\.pdf$
 ^bacdive\.R$
 ^README\.Rmd$
+^docs$
