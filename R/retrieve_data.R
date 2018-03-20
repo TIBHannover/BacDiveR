@@ -51,7 +51,9 @@ retrieve_data <- function(searchTerm,
   x <-
     jsonlite::fromJSON(download(construct_url(searchTerm, searchType, force_search)))
 
-  if (force_taxon_download && x$count > 100) warn_slow_download(x$count)
+  if (force_taxon_download &&
+      !is.null(x$count) && x$count > 100)
+    warn_slow_download(x$count)
 
   if (identical(names(x), c("count", "next", "previous", "results")) &&
       !force_taxon_download) {
@@ -61,7 +63,9 @@ retrieve_data <- function(searchTerm,
              force_taxon_download) {
     taxon_data <- list()
     URLs <- aggregate_result_URLs(x)
+    message("Data download in progress for BacDive-IDs: ", appendLF = FALSE)
     for (i in seq(length(URLs))) {
+      message(strsplit(URLs[i], "/")[[1]][7], " ", appendLF = FALSE)
       taxon_data[i] <- download(paste0(URLs[i], "?format=json"))
     }
     taxon_data <- lapply(taxon_data, jsonlite::fromJSON)
@@ -91,10 +95,17 @@ retrieve_data <- function(searchTerm,
 #'
 #' @return A serialised JSON string.
 download <- function(URL, userpwd = paste(get_credentials(), collapse = ":")) {
+  gsub(
+    pattern = "[[:space:]]+",
+    replacement = " ",
+    perl = TRUE,
+    # Prevent "lexical error: invalid character inside string."
+    # https://github.com/jeroen/jsonlite/issues/47
   RCurl::getURL(
     URL,
     userpwd = userpwd,
     httpauth = 1L
+    )
   )
 }
 

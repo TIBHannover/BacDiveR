@@ -64,3 +64,15 @@ test_that("extracting a single field from a taxon-wide search works", {
                  )
                )))
 })
+
+test_that("normalising invalid JSON newlines works", {
+  is.list(retrieve_data(searchTerm = "Bacillus cytotoxicus",
+                        force_taxon_download = TRUE))
+  # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1323/?format=json
+  # contains "sample_type": "Vegetable puree,severe food poisoning\noutbreak in France"
+
+  is.list(retrieve_data(searchTerm = "Bacillus halotolerans",
+                        force_taxon_download = TRUE))
+  # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1847/?format=json
+  # contains "medium_composition": "Name: ISP 2 / Yeast Malt Agar (5265); 5265\r\nComposition
+})
