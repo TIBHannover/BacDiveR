@@ -21,8 +21,8 @@
 #'   only a paged list of URLs pointing to the actual datasets. Setting
 #'   `force_taxon_download = TRUE` (default: `FALSE`) triggers many downloads of
 #'   the individual result datasets. Please note: This may take much longer than
-#'   an unambiguous search, and may cause R(Studio) to be unresponsive
-#'   temporarily Maybe go for a walk for a few minutes ;-)
+#'   an unambiguous search, and may cause R(Studio) to become temporarily
+#'   unresponsive. Maybe go for a walk for a few minutes ;-)
 #'
 #' @return EITHER (from an unambiguous searchTerm, or in case of
 #'   `force_taxon_download = TRUE`) a list of lists containing the single
