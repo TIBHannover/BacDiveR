@@ -45,11 +45,10 @@
 #'   retrieve_data(searchTerm = 717, searchType = "bacdive_id)
 retrieve_data <- function(searchTerm,
                           searchType = "taxon",
-                          force_search = FALSE,
                           force_taxon_download = FALSE) {
 
   x <-
-    jsonlite::fromJSON(download(construct_url(searchTerm, searchType, force_search)))
+    jsonlite::fromJSON(download(construct_url(searchTerm, searchType)))
 
   if (force_taxon_download &&
       !is.null(x$count) && x$count > 100)

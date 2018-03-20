@@ -55,6 +55,7 @@ test_that("using the taxon search for a single dataset works", {
                length(aggregate_result_URLs(P_lini)))
 })
 
+
 test_that("extracting a single field from a taxon-wide search works", {
   expect_equal(30,
                unique(unlist(

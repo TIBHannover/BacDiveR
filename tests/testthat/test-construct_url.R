@@ -27,20 +27,3 @@ test_that("URL constructions work", {
     "https://bacdive.dsmz.de/api/bacdive/taxon/Bacillus/subtilis/subtilis/?format=json"
   )
 })
-
-test_that("mismatched searchTerm and searchType are corrected with warnings",
-          {
-            expect_warning(construct_url("717", searchType = "sequence"))
-            expect_warning(construct_url("AJ000733", searchType = "taxon"))
-            expect_warning(construct_url("AJ000733"))
-            expect_warning(construct_url("Bacillus subtilis subtilis"))
-          })
-
-test_that("taxon URLs never contain %20",
-          {
-            expect_false(grepl(
-              pattern = "%20",
-              x = construct_url("Bacillus subtilis", searchType = "taxon")
-            ))
-            expect_warning(construct_url("Bacillus subtilis"))
-          })

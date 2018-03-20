@@ -2,10 +2,7 @@
 #'
 #' @inheritParams retrieve_data
 construct_url <- function(searchTerm,
-                          searchType = "bacdive_id",
-                          force_search = FALSE) {
-  if (!force_search)
-    searchType <- guess_searchType(searchTerm, searchType)
+                          searchType = "bacdive_id") {
 
   searchTerm <- sanitise_input(searchTerm, searchType)
 
