@@ -5,8 +5,16 @@
 #'   `bacdive_id`), specifying what shall be searched for.
 #'
 #' @param searchType Mandatory character string that specifies which type of
-#'   search will be performed (technically, which API endpoint). Can be
-#'   `bacdive_id` (default), `sequence`, `culturecollectionno` or `taxon`.
+#'   search will be performed (technically, which API endpoint). Can be `taxon`
+#'   (default), `bacdive_id`, `sequence`, or `culturecollectionno`.
+#'
+#' @param force_search Logical; default: `FALSE`. Whether or not the searchType
+#'   should be enforced strictly, even if it appears to mismatch the searchTerm.
+#'   Please note: forcing an apparently mismatched searchType will most likely
+#'   result in an error: `retrieve_data(searchTerm = "DSM 319", searchType =
+#'   "bacdive_id", force_search = TRUE)` without specifying `searchType =
+#'   "sequence"` should lead to an internal re-specification, and execution of
+#'   the intended search.
 #'
 #' @param force_taxon_download Logical; default: `FALSE`. In case of a taxon
 #'   search, BacDive will return not the actual data of the search results, but
@@ -25,19 +33,26 @@
 #'   `retrieve_data()` to retrieve the individual data sets.
 #'
 #' @export
-#' @examples retrieve_data(searchTerm = 717)
+#' @examples retrieve_data(searchTerm = "Bacillus subtilis subtilis")
+#'   # This returns a numeric vector of IDs. To download all the corresponding
+#'   # data, use:
+#'   retrieve_data("Bacillus subtilis subtilis", force_taxon_download = TRUE)
+#'
+#'   # In case the `searchTerm` is unambiguous already, the data download will
+#'   # procede automatically:
+#'   retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")
 #'   retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
-#'   retrieve_data(searchTerm = "DSM 319", "culturecollectionno")
-#'   retrieve_data("Bacillus subtilis", searchType = "taxon")
-#'   retrieve_data("Bacillus subtilis subtilis", searchType = "taxon", force_taxon_download = TRUE)
+#'   retrieve_data(searchTerm = 717, searchType = "bacdive_id)
 retrieve_data <- function(searchTerm,
-                          searchType = "bacdive_id",
+                          searchType = "taxon",
                           force_taxon_download = FALSE) {
 
   x <-
-    rjson::fromJSON(download(construct_url(searchTerm, searchType)))
+    jsonlite::fromJSON(download(construct_url(searchTerm, searchType)))
 
-  if (force_taxon_download && x$count > 100) warn_slow_download(x$count)
+  if (force_taxon_download &&
+      !is.null(x$count) && x$count > 100)
+    warn_slow_download(x$count)
 
   if (identical(names(x), c("count", "next", "previous", "results")) &&
       !force_taxon_download) {
@@ -47,15 +62,17 @@ retrieve_data <- function(searchTerm,
              force_taxon_download) {
     taxon_data <- list()
     URLs <- aggregate_result_URLs(x)
-    for (u in URLs) {
-      taxon_data <- c(taxon_data,
-                      rjson::fromJSON(download(paste0(u, "?format=json"))))
+    message("Data download in progress for BacDive-IDs: ", appendLF = FALSE)
+    for (i in seq(length(URLs))) {
+      message(strsplit(URLs[i], "/")[[1]][7], " ", appendLF = FALSE)
+      taxon_data[i] <- download(paste0(URLs[i], "?format=json"))
     }
+    taxon_data <- lapply(taxon_data, jsonlite::fromJSON)
     return(taxon_data)
 
   } else if (is.list(x) && length(x) == 1) {
     # repeat download, if API returned a single ID, instead of a full dataset
-    x <- rjson::fromJSON(download(paste0(x[[1]][1]$url, "?format=json")))
+    x <- jsonlite::fromJSON(download(paste0(x[[1]][1]$url, "?format=json")))
     return(x)
   } else if (identical(x$detail, "Not found")) {
     stop(
@@ -77,10 +94,17 @@ retrieve_data <- function(searchTerm,
 #'
 #' @return A serialised JSON string.
 download <- function(URL, userpwd = paste(get_credentials(), collapse = ":")) {
+  gsub(
+    pattern = "[[:space:]]+",
+    replacement = " ",
+    perl = TRUE,
+    # Prevent "lexical error: invalid character inside string."
+    # https://github.com/jeroen/jsonlite/issues/47
   RCurl::getURL(
     URL,
     userpwd = userpwd,
     httpauth = 1L
+    )
   )
 }
 
@@ -117,7 +141,7 @@ aggregate_result_URLs <- function(results) {
   while (TRUE) {
     URLs <- c(URLs, unlist(results$results, use.names = FALSE))
     if (!is.null(results$`next`))
-      results <- rjson::fromJSON(download(results$`next`))
+      results <- jsonlite::fromJSON(download(results$`next`))
     else break
   }
   return(URLs)

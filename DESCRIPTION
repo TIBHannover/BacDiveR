@@ -1,6 +1,6 @@
 Package: BacDiveR
 Title: Programmatic Interface For DSMZ's Bacterial Diversity Metadatabase.
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: person("Katrin", "Leinweber", email = "katrin.leinweber@tib.eu", role = c("aut", "cre"))
 Description: BacDive focuses providing organism-linked information covering the multifarious aspects of bacterial biodiversity. The BacDive portal offers information on taxonomic classification, morphology, physiology, cultivation, origin and natural habitat for bacterial and archeal strains. 
 License: MIT + file LICENSE
@@ -9,10 +9,14 @@ LazyData: true
 ByteCompile: true
 Suggests: 
     testthat,
-    magrittr
+    magrittr,
+    knitr,
+    rmarkdown
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1.9000
 Imports: 
+    jsonlite,
+    purrr,
     RCurl,
-    rjson,
     utils
+VignetteBuilder: knitr
