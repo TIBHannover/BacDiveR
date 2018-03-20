@@ -9,13 +9,15 @@ LazyData: true
 ByteCompile: true
 Suggests: 
     testthat,
-    magrittr,
     knitr,
     rmarkdown
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1.9000
 Imports: 
+    dplyr,
+    ggplot2,
     jsonlite,
+    magrittr,
     purrr,
     RCurl,
     utils
