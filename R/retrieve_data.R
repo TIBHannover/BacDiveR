@@ -91,10 +91,17 @@ retrieve_data <- function(searchTerm,
 #'
 #' @return A serialised JSON string.
 download <- function(URL, userpwd = paste(get_credentials(), collapse = ":")) {
+  gsub(
+    pattern = "[[:space:]]+",
+    replacement = " ",
+    perl = TRUE,
+    # Prevent "lexical error: invalid character inside string."
+    # https://github.com/jeroen/jsonlite/issues/47
   RCurl::getURL(
     URL,
     userpwd = userpwd,
     httpauth = 1L
+    )
   )
 }
 
