@@ -42,7 +42,7 @@
 #'   # procede automatically:
 #'   retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")
 #'   retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
-#'   retrieve_data(searchTerm = 717, searchType = "bacdive_id)
+#'   retrieve_data(searchTerm = 717, searchType = "bacdive_id")
 retrieve_data <- function(searchTerm,
                           searchType = "taxon",
                           force_taxon_download = FALSE) {
