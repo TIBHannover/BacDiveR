@@ -7,12 +7,6 @@ output: github_document
 
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
 
-```{r prepare_child, echo=FALSE, results='hide'}
-temp <- tempfile(fileext = "Rmd")
-on.exit(unlink(temp))
-download.file("https://raw.githubusercontent.com/katrinleinweber/BacDiveR/master/vignettes/BacDiveR.Rmd?token=AJfL9R-pcm-qDBl6tHVm8UI3Ifr2AWwBks5aupa7wA%3D%3D", temp)
-```
-
-```{r child=temp}
+```{r BacDiveR, child='vignettes/BacDiveR.Rmd'}
 
 ```
