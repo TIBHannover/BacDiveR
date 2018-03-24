@@ -56,6 +56,19 @@ test_that("using the taxon search for a single dataset works", {
 })
 
 
+test_that("downloading a single dataset via culturecollectionno works (#45)",
+          {
+            expect_type(
+              object = retrieve_data(
+                searchTerm = "DSM 319",
+                searchType = "culturecollectionno",
+                force_taxon_download = TRUE
+              ),
+              type = "list"
+            )
+          })
+
+
 test_that("extracting a single field from a taxon-wide search works", {
   expect_equal(30,
                unique(unlist(

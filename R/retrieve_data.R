@@ -72,7 +72,7 @@ retrieve_data <- function(searchTerm,
 
   } else if (is.list(x) && length(x) == 1) {
     # repeat download, if API returned a single ID, instead of a full dataset
-    x <- jsonlite::fromJSON(download(paste0(x[[1]][1]$url, "?format=json")))
+    x <- jsonlite::fromJSON(download(paste0(x[1]$url, "?format=json")))
     return(x)
   } else if (identical(x$detail, "Not found")) {
     stop(
