@@ -64,9 +64,10 @@ In the following examples, the data retrieval will only work if your login crede
 ## Example
 
 The BacDive website lets you easily search for all their strains within a 
-given taxonomic unit. [BacDive.DSMZ.de/index.php?search=Bacillus](https://bacdive.dsmz.de/index.php?search=Bacillus) for example, returns a
-paginated list of strains that you can then access, download and analyse 
-further. All manual, though. BacDiveR automates this workflow:
+given taxonomic unit. For example, [searching for "Bacillus"][Bac-search] 
+returns a paginated list of strains that you can then access, download and analyse further. All manual, though. BacDiveR automates this workflow:
+
+[Bac-search]: https://bacdive.dsmz.de/index.php?search=Bacillus
 
 ```{r taxon_Bac}
 library(BacDiveR)

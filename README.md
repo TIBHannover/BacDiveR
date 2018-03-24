@@ -68,11 +68,11 @@ are incorrect. Please repeat steps 2 to 4.
 ## Example
 
 The BacDive website lets you easily search for all their strains within
-a given taxonomic unit.
-[BacDive.DSMZ.de/index.php?search=Bacillus](https://bacdive.dsmz.de/index.php?search=Bacillus)
-for example, returns a paginated list of strains that you can then
-access, download and analyse further. All manual, though. BacDiveR
-automates this workflow:
+a given taxonomic unit. For example, [searching for
+“Bacillus”](https://bacdive.dsmz.de/index.php?search=Bacillus)
+returns a paginated list of strains that you can then access, download
+and analyse further. All manual, though. BacDiveR automates this
+workflow:
 
 ``` r
 library(BacDiveR)
