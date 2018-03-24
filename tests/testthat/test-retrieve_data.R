@@ -21,24 +21,25 @@ test_that("taxon search returns paged results list", {
   expect_equal(names(B_subtilis_IDs),
                c("count", "next", "previous", "results"))
   expect_null(B_subtilis_IDs$previous)
-  expect_true(is.numeric(B_subtilis_IDs$count))
+  expect_type(object = B_subtilis_IDs$count, type = "integer")
 
-  expect_true(is.character(B_subtilis_IDs$`next`))
+  expect_type(object = B_subtilis_IDs$`next`, type = "character")
   # can be NULL for taxonomic units < 100 BacDive entries
 
-  expect_true(is.list(B_subtilis_IDs$results))
+  expect_type(object = B_subtilis_IDs$results, type = "list")
 })
 
 test_that("aggregating a set of BacDive ID works", {
   expect_equal(B_subtilis_IDs$count,
                length(aggregate_result_IDs(B_subtilis_IDs)))
-  expect_true(is.numeric(aggregate_result_IDs(B_subtilis_IDs)))
+  expect_type(object = aggregate_result_IDs(B_subtilis_IDs), type = "double")
+  # mode "numeric" consists of types "integer" and "double"
 })
 
 test_that("aggregating a set of BacDive URLs works", {
   expect_equal(B_subtilis_IDs$count,
                length(aggregate_result_URLs(B_subtilis_IDs)))
-  expect_true(is.character(aggregate_result_URLs(B_subtilis_IDs)))
+  expect_type(object = aggregate_result_URLs(B_subtilis_IDs), type = "character")
 })
 
 
@@ -81,13 +82,19 @@ test_that("extracting a single field from a taxon-wide search works", {
 })
 
 test_that("normalising invalid JSON newlines works", {
-  is.list(retrieve_data(searchTerm = "Bacillus cytotoxicus",
-                        force_taxon_download = TRUE))
+  expect_type(
+    object = retrieve_data(searchTerm = "Bacillus cytotoxicus",
+                           force_taxon_download = TRUE),
+    type = "list"
+  )
   # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1323/?format=json
   # contains "sample_type": "Vegetable puree,severe food poisoning\noutbreak in France"
 
-  is.list(retrieve_data(searchTerm = "Bacillus halotolerans",
-                        force_taxon_download = TRUE))
+  expect_type(
+    object = retrieve_data(searchTerm = "Bacillus halotolerans",
+                           force_taxon_download = TRUE),
+    type = "list"
+  )
   # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1847/?format=json
   # contains "medium_composition": "Name: ISP 2 / Yeast Malt Agar (5265); 5265\r\nComposition
 })
