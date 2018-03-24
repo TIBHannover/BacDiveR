@@ -70,9 +70,9 @@ are incorrect. Please repeat steps 2 to 4.
 The BacDive website lets you easily search for all their strains within
 a given taxonomic unit.
 [BacDive.DSMZ.de/index.php?search=Bacillus](https://bacdive.dsmz.de/index.php?search=Bacillus)
-for example a paginated list of strains that you can then access,
-download and analyse further. All manual, though. BacDiveR automates
-this workflow:
+for example, returns a paginated list of strains that you can then
+access, download and analyse further. All manual, though. BacDiveR
+automates this workflow:
 
 ``` r
 library(BacDiveR)
