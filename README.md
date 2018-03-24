@@ -166,8 +166,9 @@ library("ggplot2")
 rbind(temperature_Bac, temperature_At) %>% 
   ggplot(aes(x = taxon, y = temp_C)) +
   geom_boxplot(notch = TRUE, varwidth = TRUE) +
-  geom_jitter(height = 0.05, alpha = 0.5) +
-  theme(legend.position = "none")
+  geom_jitter(height = 0.25, alpha = 0.5) +
+  scale_x_discrete(position = "top", label_value("")) +  # or: xlab(label = NULL)
+  ggtitle("Optimal growth temperatures of DSMZ-stored strains within the taxons:")
 ```
 
 ![](README_files/figure-gfm/ggplot-1.png)<!-- -->

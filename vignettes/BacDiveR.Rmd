@@ -144,8 +144,9 @@ library("ggplot2")
 rbind(temperature_Bac, temperature_At) %>% 
   ggplot(aes(x = taxon, y = temp_C)) +
   geom_boxplot(notch = TRUE, varwidth = TRUE) +
-  geom_jitter(height = 0.05, alpha = 0.5) +
-  theme(legend.position = "none")
+  geom_jitter(height = 0.25, alpha = 0.5) +
+  scale_x_discrete(position = "top", label_value("")) +  # or: xlab(label = NULL)
+  ggtitle("Optimal growth temperatures of DSMZ-stored strains within the taxons:")
 ```
 
 And thus we find, that *`r taxon_2`* contains strains with different growth optima (note the groups of data _points_), even up to the 50-something-°C-range as the `thermo`-part in its name suggest). On the other hand, all *`r taxon_1`* strains known to BacDive were found to grow best at the lower temperature of `r mean(temperature_Bac)`°C. Thanks to the notch in *`r taxon_2`*'s box, we can also say that there is a significant difference between the temperature ranges of these two taxons, even before digging into the numbers:
