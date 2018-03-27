@@ -46,31 +46,30 @@
 retrieve_data <- function(searchTerm,
                           searchType = "taxon",
                           force_taxon_download = FALSE) {
-
   payload <-
     jsonlite::fromJSON(download(construct_url(searchTerm, searchType)))
 
 
-    return(aggregate_result_IDs(payload))
-  if (is_paged(payload) && !force_taxon_download) {
 
   if (identical(payload$detail, "Not found"))
   {
     stop(
       "Your search returned no result, sorry. Please make sure that you provided a searchTerm, and specified the correct searchType. Please type '?retrieve_data' and read through the 'searchType' section to learn more."
     )
-  } else {
+  }
+  else if (is_paged(payload) && !force_taxon_download)
+    aggregate_result_IDs(payload)
   else if (is_paged(payload) && force_taxon_download)
   {
     if (payload$count > 100) warn_slow_download(payload$count)
     aggregate_datasets(payload)
-    return(payload)
   }
   else if (length(payload$results) == 1)
   {
     # repeat download, if API returned a single ID, instead of a full dataset
     jsonlite::fromJSON(download(paste0(payload[1]$url, "?format=json")))
   }
+  else payload
 }
 
 
