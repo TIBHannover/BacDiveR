@@ -8,14 +8,6 @@
 #'   search will be performed (technically, which API endpoint). Can be `taxon`
 #'   (default), `bacdive_id`, `sequence`, or `culturecollectionno`.
 #'
-#' @param force_search Logical; default: `FALSE`. Whether or not the searchType
-#'   should be enforced strictly, even if it appears to mismatch the searchTerm.
-#'   Please note: forcing an apparently mismatched searchType will most likely
-#'   result in an error: `retrieve_data(searchTerm = "DSM 319", searchType =
-#'   "bacdive_id", force_search = TRUE)` without specifying `searchType =
-#'   "sequence"` should lead to an internal re-specification, and execution of
-#'   the intended search.
-#'
 #' @param force_taxon_download Logical; default: `FALSE`. In case of a taxon
 #'   search, BacDive will return not the actual data of the search results, but
 #'   only a paged list of URLs pointing to the actual datasets. Setting
