@@ -50,9 +50,6 @@ retrieve_data <- function(searchTerm,
   payload <-
     jsonlite::fromJSON(download(construct_url(searchTerm, searchType)))
 
-  if (force_taxon_download &&
-      !is.null(payload$count) && payload$count > 100)
-    warn_slow_download(payload$count)
 
     return(aggregate_result_IDs(payload))
   if (is_paged(payload) && !force_taxon_download) {
@@ -68,6 +65,8 @@ retrieve_data <- function(searchTerm,
     )
   } else {
   else if (is_paged(payload) && force_taxon_download)
+  {
+    if (payload$count > 100) warn_slow_download(payload$count)
     aggregate_datasets(payload)
     return(payload)
 }
