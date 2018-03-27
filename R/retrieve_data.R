@@ -47,21 +47,21 @@ retrieve_data <- function(searchTerm,
                           searchType = "taxon",
                           force_taxon_download = FALSE) {
 
-  x <-
+  payload <-
     jsonlite::fromJSON(download(construct_url(searchTerm, searchType)))
 
   if (force_taxon_download &&
-      !is.null(x$count) && x$count > 100)
-    warn_slow_download(x$count)
+      !is.null(payload$count) && payload$count > 100)
+    warn_slow_download(payload$count)
 
-  if (identical(names(x), c("count", "next", "previous", "results")) &&
+  if (identical(names(payload), c("count", "next", "previous", "results")) &&
       !force_taxon_download) {
-    return(aggregate_result_IDs(x))
+    return(aggregate_result_IDs(payload))
 
-  } else if (identical(names(x), c("count", "next", "previous", "results")) &&
+  } else if (identical(names(payload), c("count", "next", "previous", "results")) &&
              force_taxon_download) {
     taxon_data <- list()
-    URLs <- aggregate_result_URLs(x)
+    URLs <- aggregate_result_URLs(payload)
     IDs <- URLs_to_IDs(URLs)
     message("Data download in progress for BacDive-IDs: ", appendLF = FALSE)
     for (i in seq(length(URLs))) {
@@ -72,16 +72,17 @@ retrieve_data <- function(searchTerm,
     names(taxon_data) <- IDs
     return(taxon_data)
 
-  } else if (is.list(x) && length(x) == 1) {
+  } else if (is.list(payload) && length(payload) == 1) {
     # repeat download, if API returned a single ID, instead of a full dataset
-    x <- jsonlite::fromJSON(download(paste0(x[1]$url, "?format=json")))
-    return(x)
-  } else if (identical(x$detail, "Not found")) {
+    payload <-
+      jsonlite::fromJSON(download(paste0(payload[1]$url, "?format=json")))
+    return(payload)
+  } else if (identical(payload$detail, "Not found")) {
     stop(
       "Your search returned no result, sorry. Please make sure that you provided a searchTerm, and specified the correct searchType. Please type '?retrieve_data' and read through the 'searchType' section to learn more."
     )
   } else {
-    return(x)
+    return(payload)
   }
 }
 
