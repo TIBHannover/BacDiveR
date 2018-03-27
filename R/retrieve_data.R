@@ -54,11 +54,6 @@ retrieve_data <- function(searchTerm,
     return(aggregate_result_IDs(payload))
   if (is_paged(payload) && !force_taxon_download) {
 
-  } else if (is.list(payload) && length(payload) == 1) {
-    # repeat download, if API returned a single ID, instead of a full dataset
-    payload <-
-      jsonlite::fromJSON(download(paste0(payload[1]$url, "?format=json")))
-    return(payload)
   if (identical(payload$detail, "Not found"))
   {
     stop(
@@ -70,6 +65,12 @@ retrieve_data <- function(searchTerm,
     if (payload$count > 100) warn_slow_download(payload$count)
     aggregate_datasets(payload)
     return(payload)
+  }
+  else if (length(payload$results) == 1)
+  {
+    # repeat download, if API returned a single ID, instead of a full dataset
+    jsonlite::fromJSON(download(paste0(payload[1]$url, "?format=json")))
+  }
 }
 
 
