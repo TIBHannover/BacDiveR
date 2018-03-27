@@ -69,6 +69,7 @@ retrieve_data <- function(searchTerm,
       taxon_data[i] <- download(paste0(URLs[i], "?format=json"))
     }
     taxon_data <- lapply(taxon_data, jsonlite::fromJSON)
+    names(taxon_data) <- IDs
     return(taxon_data)
 
   } else if (is.list(x) && length(x) == 1) {
