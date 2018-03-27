@@ -62,9 +62,10 @@ retrieve_data <- function(searchTerm,
              force_taxon_download) {
     taxon_data <- list()
     URLs <- aggregate_result_URLs(x)
+    IDs <- URLs_to_IDs(URLs)
     message("Data download in progress for BacDive-IDs: ", appendLF = FALSE)
     for (i in seq(length(URLs))) {
-      message(strsplit(URLs[i], "/")[[1]][7], " ", appendLF = FALSE)
+      message(IDs[i], " ", appendLF = FALSE)
       taxon_data[i] <- download(paste0(URLs[i], "?format=json"))
     }
     taxon_data <- lapply(taxon_data, jsonlite::fromJSON)
@@ -145,4 +146,9 @@ aggregate_result_URLs <- function(results) {
     else break
   }
   return(URLs)
+}
+
+
+URLs_to_IDs <- function(URLs) {
+  gsub(pattern = "\\D", "", URLs)
 }
