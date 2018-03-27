@@ -57,19 +57,6 @@ retrieve_data <- function(searchTerm,
     return(aggregate_result_IDs(payload))
   if (is_paged(payload) && !force_taxon_download) {
 
-  } else if (is_paged(payload) && force_taxon_download) {
-    taxon_data <- list()
-    URLs <- aggregate_result_URLs(payload)
-    IDs <- URLs_to_IDs(URLs)
-    message("Data download in progress for BacDive-IDs: ", appendLF = FALSE)
-    for (i in seq(length(URLs))) {
-      message(IDs[i], " ", appendLF = FALSE)
-      taxon_data[i] <- download(paste0(URLs[i], "?format=json"))
-    }
-    taxon_data <- lapply(taxon_data, jsonlite::fromJSON)
-    names(taxon_data) <- IDs
-    return(taxon_data)
-
   } else if (is.list(payload) && length(payload) == 1) {
     # repeat download, if API returned a single ID, instead of a full dataset
     payload <-
@@ -80,8 +67,26 @@ retrieve_data <- function(searchTerm,
       "Your search returned no result, sorry. Please make sure that you provided a searchTerm, and specified the correct searchType. Please type '?retrieve_data' and read through the 'searchType' section to learn more."
     )
   } else {
+  else if (is_paged(payload) && force_taxon_download)
+    aggregate_datasets(payload)
     return(payload)
+}
+
+
+aggregate_datasets <- function(payload)
+{
+  URLs <- aggregate_result_URLs(payload)
+  IDs <- URLs_to_IDs(URLs)
+  message("Data download in progress for BacDive-IDs: ", appendLF = FALSE)
+
+  taxon_data <- list()
+  for (i in seq(length(URLs))) {
+    message(IDs[i], " ", appendLF = FALSE)
+    taxon_data[i] <- download(paste0(URLs[i], "?format=json"))
   }
+  taxon_data <- lapply(taxon_data, jsonlite::fromJSON)
+  names(taxon_data) <- IDs
+  return(taxon_data)
 }
 
 
