@@ -81,7 +81,20 @@ test_that("extracting a single field from a taxon-wide search works", {
                )))
 })
 
+
+# test set with 2 strains
+Bac_hal <- "Bacillus halotolerans"
+Bac_hal_data <- retrieve_data(searchTerm = Bac_hal,
+                              force_taxon_download = TRUE)
+
 test_that("normalising invalid JSON newlines works", {
+
+  expect_type(
+    object = Bac_hal_data,
+    type = "list"
+  )
+  # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1847/?format=json
+  # contains "medium_composition": "Name: ISP 2 / Yeast Malt Agar (5265); 5265\r\nComposition
   expect_type(
     object = retrieve_data(searchTerm = "Bacillus cytotoxicus",
                            force_taxon_download = TRUE),
@@ -89,12 +102,4 @@ test_that("normalising invalid JSON newlines works", {
   )
   # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1323/?format=json
   # contains "sample_type": "Vegetable puree,severe food poisoning\noutbreak in France"
-
-  expect_type(
-    object = retrieve_data(searchTerm = "Bacillus halotolerans",
-                           force_taxon_download = TRUE),
-    type = "list"
-  )
-  # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1847/?format=json
-  # contains "medium_composition": "Name: ISP 2 / Yeast Malt Agar (5265); 5265\r\nComposition
 })
