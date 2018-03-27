@@ -3,5 +3,7 @@
 ^LICENSE\.md$
 ^.*\.pdf$
 ^bacdive\.R$
+^README_files/
 ^README\.Rmd$
 ^docs$
+^figure/
