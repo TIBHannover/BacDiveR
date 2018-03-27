@@ -87,6 +87,11 @@ Bac_hal <- "Bacillus halotolerans"
 Bac_hal_data <- retrieve_data(searchTerm = Bac_hal,
                               force_taxon_download = TRUE)
 
+test_that("any dataset returned by BacDiveR is named with its ID", {
+  expect_equal(retrieve_data(searchTerm = Bac_hal),
+               as.numeric(names(Bac_hal_data)))
+})
+
 test_that("normalising invalid JSON newlines works", {
 
   expect_type(
