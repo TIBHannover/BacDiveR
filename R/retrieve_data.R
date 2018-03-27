@@ -54,12 +54,10 @@ retrieve_data <- function(searchTerm,
       !is.null(payload$count) && payload$count > 100)
     warn_slow_download(payload$count)
 
-  if (identical(names(payload), c("count", "next", "previous", "results")) &&
-      !force_taxon_download) {
     return(aggregate_result_IDs(payload))
+  if (is_paged(payload) && !force_taxon_download) {
 
-  } else if (identical(names(payload), c("count", "next", "previous", "results")) &&
-             force_taxon_download) {
+  } else if (is_paged(payload) && force_taxon_download) {
     taxon_data <- list()
     URLs <- aggregate_result_URLs(payload)
     IDs <- URLs_to_IDs(URLs)
@@ -153,4 +151,8 @@ aggregate_result_URLs <- function(results) {
 
 URLs_to_IDs <- function(URLs) {
   gsub(pattern = "\\D", "", URLs)
+}
+
+is_paged <- function(payload) {
+  identical(names(payload), c("count", "next", "previous", "results"))
 }
