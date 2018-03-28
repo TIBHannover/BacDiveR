@@ -9,6 +9,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
   chunk_output_type: inline
+bibliography: BacDive.bib
 ---
 
 ```{r setup, include = FALSE}
@@ -21,18 +22,10 @@ knitr::opts_chunk$set(
 # BacDiveR
 
 This R package provides a programmatic interface for the [Bacterial Diversity
-Metadatabase](https://bacdive.dsmz.de/) of the [DSMZ (German Collection of 
+Metadatabase](https://bacdive.dsmz.de/) [@BD14; @BD16] of the [DSMZ (German Collection of 
 Microorganisms and Cell Cultures)](https://www.dsmz.de/about-us.html). It helps 
 you download full datasets or just their IDs based on reproducible searches 
 against the BacDive Web Service.
-
-## Reference
-
-> Carola Söhngen, Adam Podstawka, Boyke Bunk, Dorothea Gleim, Anna Vetcininova,
-> Lorenz Christian Reimer, Christian Ebeling, Cezar Pendarovski, Jörg Overmann;
-> BacDive – The Bacterial Diversity Metadatabase in 2016, 
-> [Nucleic Acids Research, Volume 44, Issue D1, 4 January 2016, Pages D581–D585](https://academic.oup.com/nar/article/44/D1/D581/2503137), 
-> [doi:10.1093/nar/gkv983](https://doi.org/10.1093/nar/gkv983)
 
 
 ## Installation
@@ -158,3 +151,12 @@ summary(temperature_At$temp_C)
 ## Summary
 
 BacDiveR helps you download BacDive data for investigating it offline. Use `?retrieve_data` to learn more about its options.
+
+
+[BD]: https://bacdive.dsmz.de/
+[DMSZ]: https://www.dsmz.de/about-us.html
+[magrittr]: https://cran.r-project.org/package=magrittr
+[reg]: https://bacdive.dsmz.de/api/bacdive/registration/register/
+
+
+# References

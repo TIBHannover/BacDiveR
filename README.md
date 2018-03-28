@@ -8,21 +8,11 @@ public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus
 # BacDiveR
 
 This R package provides a programmatic interface for the [Bacterial
-Diversity Metadatabase](https://bacdive.dsmz.de/) of the [DSMZ (German
-Collection of Microorganisms and Cell
-Cultures)](https://www.dsmz.de/about-us.html). It helps you download
-full datasets or just their IDs based on reproducible searches against
-the BacDive Web Service.
-
-## Reference
-
-> Carola Söhngen, Adam Podstawka, Boyke Bunk, Dorothea Gleim, Anna
-> Vetcininova, Lorenz Christian Reimer, Christian Ebeling, Cezar
-> Pendarovski, Jörg Overmann; BacDive – The Bacterial Diversity
-> Metadatabase in 2016, [Nucleic Acids Research, Volume 44, Issue D1, 4
-> January 2016, Pages
-> D581–D585](https://academic.oup.com/nar/article/44/D1/D581/2503137),
-> [doi:10.1093/nar/gkv983](https://doi.org/10.1093/nar/gkv983)
+Diversity Metadatabase](https://bacdive.dsmz.de/) (Söhngen et al. 2014;
+Söhngen et al. 2016) of the [DSMZ (German Collection of Microorganisms
+and Cell Cultures)](https://www.dsmz.de/about-us.html). It helps you
+download full datasets or just their IDs based on reproducible searches
+against the BacDive Web Service.
 
 ## Installation
 
@@ -192,3 +182,28 @@ summary(temperature_At$temp_C)
 
 BacDiveR helps you download BacDive data for investigating it offline.
 Use `?retrieve_data` to learn more about its options.
+
+# References
+
+<div id="refs" class="references">
+
+<div id="ref-BD14">
+
+Söhngen, Carola, Boyke Bunk, Adam Podstawka, Dorothea Gleim, and Jörg
+Overmann. 2014. “BacDive—the Bacterial Diversity Metadatabase.” *Nucleic
+Acids Research* 42 (D1): D592–D599.
+doi:[10.1093/nar/gkt1058](https://doi.org/10.1093/nar/gkt1058).
+
+</div>
+
+<div id="ref-BD16">
+
+Söhngen, Carola, Adam Podstawka, Boyke Bunk, Dorothea Gleim, Anna
+Vetcininova, Lorenz Christian Reimer, Christian Ebeling, Cezar
+Pendarovski, and Jörg Overmann. 2016. “BacDive – the Bacterial Diversity
+Metadatabase in 2016.” *Nucleic Acids Research* 44 (D1): D581–D585.
+doi:[10.1093/nar/gkv983](https://doi.org/10.1093/nar/gkv983).
+
+</div>
+
+</div>

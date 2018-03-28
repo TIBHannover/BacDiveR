@@ -1,6 +1,7 @@
 ---
 Title: "BacDiveR: Programmatic Interface For The DSMZ's Bacterial Diversity Metadatabase."
 output: github_document
+bibliography: vignettes/BacDive.bib
 ---
 
 <!-- Please edit this file -- README.Rmd -- and then `knit()` the README.md. -->
