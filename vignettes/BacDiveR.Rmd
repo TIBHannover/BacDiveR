@@ -22,15 +22,15 @@ knitr::opts_chunk$set(
 # BacDiveR
 
 This R package provides a programmatic interface for the [Bacterial Diversity
-Metadatabase](https://bacdive.dsmz.de/) [@BD14; @BD16] of the [DSMZ (German Collection of 
-Microorganisms and Cell Cultures)](https://www.dsmz.de/about-us.html). It helps 
+Metadatabase][BD] [@BD14; @BD16] of the [DSMZ (German Collection of 
+Microorganisms and Cell Cultures)][DMSZ]. It helps 
 you download full datasets or just their IDs based on reproducible searches 
 against the BacDive Web Service.
 
 
 ## Installation
 
-1. Because the [BacDive API requires registration](https://bacdive.dsmz.de/api/bacdive/registration/register/) please do that first and wait for your access to be granted.
+1. Because the [BacDive API requires registration][reg] please do that first and wait for your access to be granted.
 
 2. Once you have your login credentials, install BacDiveR from GitHub with:
 
@@ -105,7 +105,7 @@ a) your web browser's JSON viewer on the dataset's URL: [BacDive.DSMZ.de/api/bac
 
 to find the `$`-marked path to the field of your interest. In our example, it's `$culture_growth_condition$culture_temp$temp`, which we'll now use to extract that field from all entries in our downloaded datasets.
 
-Multiple steps are necessary here, which could easily result in hardly readable code if we used the regular assignment operator `<-`, intermediate variables and nested function calls. We will [avoid this with the pipe operator `%>%`](https://cran.r-project.org/package=magrittr). It indicates that 
+Multiple steps are necessary here, which could easily result in hardly readable code if we used the regular assignment operator `<-`, intermediate variables and nested function calls. We will [avoid this with the pipe operator `%>%`][magrittr]. It indicates that 
 
 a) an object is passed into a function as its first argument, and that
 a) the function's output is "piped" into the next function.
@@ -130,7 +130,6 @@ temperature_At <- extract_temps(At_data, taxon_2)
 
 Before visualising the data, we need to create a dataframe of the two datasets.
 
-
 ```{r ggplot}
 library("ggplot2")
 
@@ -147,6 +146,7 @@ And thus we find, that *`r taxon_2`* contains strains with different growth opti
 ```{r}
 summary(temperature_At$temp_C)
 ```
+
 
 ## Summary
 
