@@ -42,7 +42,7 @@ retrieve_data <- function(searchTerm,
     if (payload$count > 100) warn_slow_download(payload$count)
     aggregate_datasets(payload)
   }
-  else if (length(payload$results) == 1)
+  else if (length(payload) == 1)
   {
     # repeat download, if API returned a single ID, instead of a full dataset
     jsonlite::fromJSON(download(paste0(payload[1]$url, "?format=json")))
@@ -121,6 +121,10 @@ aggregate_result_IDs <- function(results) {
 #'
 #' @return An integer vector of all BacDive IDs within the results.
 aggregate_result_URLs <- function(results) {
+
+  if (length(results$url) == 1)
+    return(results$url)
+
   URLs <- c()
   while (TRUE) {
     URLs <- c(URLs, unlist(results$results, use.names = FALSE))
