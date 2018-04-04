@@ -62,8 +62,7 @@ test_that("downloading a single dataset via culturecollectionno works (#45)",
             expect_type(
               object = retrieve_data(
                 searchTerm = "DSM 319",
-                searchType = "culturecollectionno",
-                force_taxon_download = TRUE
+                searchType = "culturecollectionno"
               ),
               type = "list"
             )
@@ -74,8 +73,7 @@ test_that("extracting a single field from a taxon-wide search works", {
   expect_equal(30,
                unique(unlist(
                  purrr::map(
-                   .x = retrieve_data("Aminobacter aminovorans",
-                                      force_taxon_download = TRUE),
+                   .x = retrieve_data("Aminobacter aminovorans"),
                    .f = ~ as.numeric(.x$culture_growth_condition$culture_temp$temp)
                  )
                )))
@@ -84,11 +82,10 @@ test_that("extracting a single field from a taxon-wide search works", {
 
 # test set with 2 strains
 Bac_hal <- "Bacillus halotolerans"
-Bac_hal_data <- retrieve_data(searchTerm = Bac_hal,
-                              force_taxon_download = TRUE)
+Bac_hal_data <- retrieve_data(searchTerm = Bac_hal)
 
 test_that("any dataset returned by BacDiveR is named with its ID", {
-  expect_equal(retrieve_data(searchTerm = Bac_hal),
+  expect_equal(retrieve_IDs(searchTerm = Bac_hal),
                as.numeric(names(Bac_hal_data)))
 })
 
@@ -101,8 +98,7 @@ test_that("normalising invalid JSON newlines works", {
   # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1847/?format=json
   # contains "medium_composition": "Name: ISP 2 / Yeast Malt Agar (5265); 5265\r\nComposition
   expect_type(
-    object = retrieve_data(searchTerm = "Bacillus cytotoxicus",
-                           force_taxon_download = TRUE),
+    object = retrieve_data(searchTerm = "Bacillus cytotoxicus"),
     type = "list"
   )
   # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1323/?format=json
