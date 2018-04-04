@@ -14,6 +14,8 @@ the GitHub web interface, so long as the changes are made in the _source_ file.
 *  YES: you edit a roxygen comment in an `.R` file below `R/` or any `.Rmd` file.
 *  NO: you edit an `.Rd` file below `man/`.
 
+When in doubt, please proceed with:
+
 
 ### Filing issues (also see the [`ISSUE_TEMPLATE.md`
 ]((https://github.com/katrinleinweber/BacDiveR/blob/master/.github/ISSUE_TEMPLATE.md))
