@@ -68,6 +68,10 @@ test_that("downloading a single dataset via culturecollectionno works (#45)",
                 searchTerm = "AJ000733",
                 searchType = "sequence"
               )$`717`$taxonomy_name$strains_tax_PNU$ID_reference,
+              retrieve_data(
+                searchTerm = 717,
+                searchType = "bacdive_id"
+              )$`717`$taxonomy_name$strains_tax_PNU$ID_reference,
               20215
             )
           })

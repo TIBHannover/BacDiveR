@@ -39,15 +39,13 @@ retrieve_data <- function(searchTerm,
   }
   else if (is_paged(payload))
   {
-    if (payload$count > 100) warn_slow_download(payload$count)
+    if (!is.null(payload$count) && payload$count > 100) warn_slow_download(payload$count)
     aggregate_datasets(payload)
   }
-  else if (length(payload) == 1)
+  else if (is_dataset(payload))
   {
-    # repeat download, if API returned a single ID, instead of a full dataset
-    jsonlite::fromJSON(download(paste0(payload[1]$url, "?format=json")))
+    return(payload)
   }
-  else payload
 }
 
 
@@ -142,4 +140,18 @@ URLs_to_IDs <- function(URLs) {
 
 is_paged <- function(payload) {
   identical(names(payload), c("count", "next", "previous", "results"))
+}
+
+is_dataset <- function(payload) {
+  identical(
+    names(payload),
+    c("taxonomy_name",
+      "morphology_physiology",
+      "culture_growth_condition",
+      "environment_sampling_isolation_source",
+      "application_interaction",
+      "molecular_biology",
+      "strain_availability",
+      "references")
+    )
 }
