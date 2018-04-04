@@ -39,6 +39,8 @@ retrieve_data <- function(searchTerm,
   }
   else if (is_dataset(payload))
   {
+    payload <- list(payload)
+    names(payload) <- searchTerm
     return(payload)
   }
   else
