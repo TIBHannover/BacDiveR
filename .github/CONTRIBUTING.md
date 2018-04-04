@@ -1,8 +1,9 @@
 # Contributing to BacDiveR
 
-This outlines how to propose a change to BacDiveR. For more detailed info about
-contributing to this, and other tidyverse packages, please see the
-[**development contributing guide**](https://rstd.io/tidy-contrib).
+This outlines how to propose a change to BacDiveR. Because this project should 
+be to developed according to the needs of BacDive users, please in particular 
+feel free to up- or down-vote existing issues, pull requests or comments. 
+Thumbs-up and -down reactions will inform which issues to prioritise.
 
 
 ### Fixing typos
