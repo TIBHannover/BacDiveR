@@ -29,8 +29,6 @@ retrieve_data <- function(searchTerm,
   payload <-
     jsonlite::fromJSON(download(construct_url(searchTerm, searchType)))
 
-
-
   if (identical(payload$detail, "Not found"))
   {
     stop(
@@ -45,7 +43,9 @@ retrieve_data <- function(searchTerm,
   }
   else
   {
-    if (!is.null(payload$count) && payload$count > 100) warn_slow_download(payload$count)
+    if (!is.null(payload$count) &&
+        payload$count > 100)
+      warn_slow_download(payload$count)
     aggregate_datasets(payload)
   }
 }
@@ -77,20 +77,20 @@ aggregate_datasets <- function(payload)
 #'   but also used with something else by the tests.
 #'
 #' @return A serialised JSON string.
-download <- function(URL, userpwd = paste(get_credentials(), collapse = ":")) {
-  gsub(
-    pattern = "[[:space:]]+",
-    replacement = " ",
-    perl = TRUE,
-    # Prevent "lexical error: invalid character inside string."
-    # https://github.com/jeroen/jsonlite/issues/47
-  RCurl::getURL(
-    URL,
-    userpwd = userpwd,
-    httpauth = 1L
+download <-
+  function(URL,
+           userpwd = paste(get_credentials(), collapse = ":")) {
+    gsub(
+      pattern = "[[:space:]]+",
+      replacement = " ",
+      perl = TRUE,
+      # Prevent "lexical error: invalid character inside string."
+      # https://github.com/jeroen/jsonlite/issues/47
+      RCurl::getURL(URL,
+                    userpwd = userpwd,
+                    httpauth = 1L)
     )
-  )
-}
+  }
 
 
 #' Aggregate BacDive-IDs from a Paged List of Retrieved URLs
@@ -130,7 +130,8 @@ aggregate_result_URLs <- function(results) {
     URLs <- c(URLs, unlist(results$results, use.names = FALSE))
     if (!is.null(results$`next`))
       results <- jsonlite::fromJSON(download(results$`next`))
-    else break
+    else
+      break
   }
   return(URLs)
 }
@@ -143,13 +144,15 @@ URLs_to_IDs <- function(URLs) {
 is_dataset <- function(payload) {
   identical(
     names(payload),
-    c("taxonomy_name",
+    c(
+      "taxonomy_name",
       "morphology_physiology",
       "culture_growth_condition",
       "environment_sampling_isolation_source",
       "application_interaction",
       "molecular_biology",
       "strain_availability",
-      "references")
+      "references"
     )
+  )
 }
