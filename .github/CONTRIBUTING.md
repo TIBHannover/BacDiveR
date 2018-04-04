@@ -6,7 +6,7 @@ feel free to up- or down-vote existing issues, pull requests or comments.
 Thumbs-up and -down reactions will inform which issues to prioritise.
 
 
-### Fixing typos
+### Improving texts
 
 Small typos or grammatical errors in documentation may be edited directly using
 the GitHub web interface, so long as the changes are made in the _source_ file.
