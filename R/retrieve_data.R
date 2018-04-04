@@ -37,14 +37,14 @@ retrieve_data <- function(searchTerm,
       "Your search returned no result, sorry. Please make sure that you provided a searchTerm, and specified the correct searchType. Please type '?retrieve_data' and read through the 'searchType' section to learn more."
     )
   }
-  else if (is_paged(payload))
-  {
-    if (!is.null(payload$count) && payload$count > 100) warn_slow_download(payload$count)
-    aggregate_datasets(payload)
-  }
   else if (is_dataset(payload))
   {
     return(payload)
+  }
+  else
+  {
+    if (!is.null(payload$count) && payload$count > 100) warn_slow_download(payload$count)
+    aggregate_datasets(payload)
   }
 }
 
@@ -136,10 +136,6 @@ aggregate_result_URLs <- function(results) {
 
 URLs_to_IDs <- function(URLs) {
   gsub(pattern = "\\D", "", URLs)
-}
-
-is_paged <- function(payload) {
-  identical(names(payload), c("count", "next", "previous", "results"))
 }
 
 is_dataset <- function(payload) {

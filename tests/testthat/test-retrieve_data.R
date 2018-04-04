@@ -59,8 +59,8 @@ test_that("using the taxon search for a single dataset works", {
 
 test_that("downloading a single dataset via culturecollectionno works (#45)",
           {
-            expect_equal(
-              object = retrieve_data(
+            expect_true(
+              identical(retrieve_data(
                 searchTerm = "DSM 319",
                 searchType = "culturecollectionno"
               )$`717`$taxonomy_name$strains_tax_PNU$ID_reference,
@@ -73,6 +73,7 @@ test_that("downloading a single dataset via culturecollectionno works (#45)",
                 searchType = "bacdive_id"
               )$`717`$taxonomy_name$strains_tax_PNU$ID_reference,
               20215
+              )
             )
           })
 
