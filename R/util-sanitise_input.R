@@ -9,10 +9,8 @@ sanitise_input <- function(searchTerm, searchType) {
       "Illegal character detected! My apologies, but your search can only contain letters, numbers and white-space. Abbreviating genus names (e.g. 'B. subtilis') is not supported. Please spell out your searchTerm ('Bacillus subtilis'), don't use any 'special' characters and try again."
     )
 
-  if (searchType == "taxon" & grepl(pattern = " ", x = searchTerm))
-    searchTerm <- gsub(pattern = " ",
-                       replacement = "/",
-                       x = searchTerm)
-
-  return(searchTerm)
+  if (identical(searchType, "taxon"))
+    gsub(pattern = " ", replacement = "/", searchTerm)
+  else
+    searchTerm
 }
