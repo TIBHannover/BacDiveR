@@ -1,7 +1,15 @@
-aggregate_datasets <- function(payload)
+aggregate_datasets <- function(payload, from_IDs = FALSE)
 {
+  if (from_IDs)
+  {
+    IDs <- payload
+    URLs <- purrr::map_chr(.x = IDs, .f = construct_url)
+  }
+  else
+  {
   URLs <- aggregate_result_URLs(payload)
   IDs <- URLs_to_IDs(URLs)
+  }
   message("Data download in progress for BacDive-IDs: ", appendLF = FALSE)
 
   taxon_data <- list()
