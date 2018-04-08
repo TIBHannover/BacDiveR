@@ -4,7 +4,7 @@ test_that("downloading a dataset from an 'advanced search' URL works", {
 
   # Searching for just some random name that results in very few strains
   Millers_strains <- purrr::map_chr(
-    .x = retrieve_search_results(search_URL = "https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams%5B78%5D%5Bcontenttype%5D=text&searchparams%5B78%5D%5Btypecontent%5D=contains&searchparams%5B78%5D%5Bsearchterm%5D=Miller&advsearch=search"),
+    .x = retrieve_search_results(queryURL = "https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams%5B78%5D%5Bcontenttype%5D=text&searchparams%5B78%5D%5Btypecontent%5D=contains&searchparams%5B78%5D%5Bsearchterm%5D=Miller&advsearch=search"),
     .f = ~ .x$taxonomy_name$strains_tax_PNU$species
   )
 
