@@ -20,7 +20,7 @@
 #'   `force_taxon_download = TRUE`) a list of lists containing the single
 #'   BacDive dataset for that `searchTerm`,
 #'
-#'   OR (from a _am_biguous search; eg.g `serchType = "taxon"`) a numeric vector
+#'   OR (from a _am_biguous search; e.g. `serchType = "taxon"`) a numeric vector
 #'   of BacDive-IDs, on which you can call your own loop containing
 #'   `retrieve_data()` to retrieve the individual data sets.
 #'
