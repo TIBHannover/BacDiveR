@@ -9,12 +9,10 @@ reprex)](http://reprex.tidyverse.org/). If you've never heard of that, please
 read: [tidyverse.org/help/#reprex](https://www.tidyverse.org/help/#reprex).
 -->
 
-I think I have found a bug, that
-
-##### Please try this reprex:
+I noticed the following problem....
 
 ```r
-
+# Please insert a repr(oducible )ex(ample) here
 ```
 
 <!-- When requesting a new feature, please explain why it would be useful, and 
@@ -25,7 +23,7 @@ I suggest to add a feature. As a ...your role..., I would like to see
 ...functionality..., in order to....
 
 <!-- In any case, please mark the relevant boxes below (with an x). Striking out
-irrelevant lines with ~~...~~ is fine :-) -->
+irrelevant lines with ~~ ... ~~ is fine :-) -->
 
 ##### I have...
 
@@ -35,4 +33,4 @@ to it, not to an old version.
 - [ ] ... spent a few minutes [searching the existing issues
 ](https://github.com/katrinleinweber/BacDiveR/issues?utf8=%E2%9C%93&q=all).
 
-<!-- Thank you! -->
+<!-- Thank you :-)   I'll try to reply to this within one week. -->
