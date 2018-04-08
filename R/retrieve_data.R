@@ -51,23 +51,6 @@ retrieve_data <- function(searchTerm,
 }
 
 
-aggregate_datasets <- function(payload)
-{
-  URLs <- aggregate_result_URLs(payload)
-  IDs <- URLs_to_IDs(URLs)
-  message("Data download in progress for BacDive-IDs: ", appendLF = FALSE)
-
-  datasets <- list()
-  for (i in seq(length(URLs))) {
-    message(IDs[i], " ", appendLF = FALSE)
-    datasets[i] <- download(paste0(URLs[i], "?format=json"))
-  }
-  datasets <- lapply(datasets, jsonlite::fromJSON)
-  names(datasets) <- IDs
-  return(datasets)
-}
-
-
 #' Download Something from BacDive
 #'
 #' @param URL represented by a correctly encoded character string with spaces,
@@ -133,7 +116,7 @@ aggregate_result_URLs <- function(results) {
     else
       break
   }
-  return(URLs)
+  return(paste0(URLs, "?format=json"))
 }
 
 

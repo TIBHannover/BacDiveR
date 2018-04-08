@@ -2,3 +2,4 @@
 
 export(prepare_Renviron)
 export(retrieve_data)
+export(retrieve_search_results)
