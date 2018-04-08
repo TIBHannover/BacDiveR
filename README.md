@@ -1,11 +1,11 @@
-BacDiveR: Programmatic Interface For The DSMZ’s Bacterial Diversity
-Metadatabase
-================
-Katrin Leinweber
+
+<!-- Please edit this file -- README.Rmd -- and then `knit()` the README.md. -->
 
 [![Project Status: WIP – Initial development is in progress, but there
 has not yet been a stable, usable release suitable for the
 public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
+
+# BacDiveR
 
 This R package provides a programmatic interface for the [Bacterial
 Diversity Metadatabase](https://bacdive.dsmz.de/) (Söhngen et al. 2014;
@@ -55,7 +55,7 @@ username/password\"}"`, or `Error: $ operator is invalid for atomic
 vectors` mean that either the login credentials or the `.Renviron` file
 are incorrect. Please repeat steps 2 to 4.
 
-## BacDive-ing in(to an example)
+## Example
 
 The BacDive website lets you easily search for all their strains within
 a given taxonomic unit. For example, [searching for
@@ -167,7 +167,7 @@ And thus we find, that *Aneurinibacillus thermoaerophilus* contains
 strains with different growth optima (note the groups of data *points*),
 even up to the 50-something-°C-range as the `thermo`-part in its name
 suggest). On the other hand, all *Bacillus halodurans* strains known to
-BacDive were found to grow best at the lower temperature of 30°C. Thanks
+BacDive were found to grow best at the lower temperature of NA°C. Thanks
 to the notch in *Aneurinibacillus thermoaerophilus*’s box, we can also
 say that there is a significant difference between the temperature
 ranges of these two taxons, even before digging into the numbers:
