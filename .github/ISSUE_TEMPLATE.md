@@ -1,6 +1,6 @@
 <!-- Please start with a brief description what this issue is about. Are you 
-reporting a problem, asking a question, starting a discussion, etc.? Anything 
-is welcome :-) -->
+reporting a problem, asking a question, requesting a new feature, starting a 
+discussion, etc.? Anything is welcome :-) -->
 
 I have a question: 
 
@@ -16,6 +16,13 @@ I think I have found a bug, that
 ```r
 
 ```
+
+<!-- When requesting a new feature, please explain why it would be useful, and 
+how you would like to use it. A user story is a helpful way of phrasing such a
+request, see https://en.wikipedia.org/wiki/User_story#Examples -->
+
+I suggest to add a feature. As a ...your role..., I would like to see 
+...functionality..., in order to....
 
 <!-- In any case, please mark the relevant boxes below (with an x). Striking out
 irrelevant lines with ~~...~~ is fine :-) -->

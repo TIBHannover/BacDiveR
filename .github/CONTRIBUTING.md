@@ -22,7 +22,9 @@ When in doubt, please proceed with:
 
 Please don't hesitate to [file an issue][issues] if you:
 
-a) have a suggestion, want to ask a question, etc.  
+a) want to ask a question,
+
+a) suggest a new feature, 
 
 a) found a bug. Illustrating it with a [minimal, reproducible example][reprex] 
 is extremely helpful for fixing it ;-) 
