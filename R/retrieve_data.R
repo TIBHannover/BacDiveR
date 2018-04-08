@@ -125,7 +125,7 @@ aggregate_result_URLs <- function(results) {
       results <- jsonlite::fromJSON(download(results$`next`))
     else break
   }
-  return(URLs)
+  return(paste0(URLs, "?format=json"))
 }
 
 

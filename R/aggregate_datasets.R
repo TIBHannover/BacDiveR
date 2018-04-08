@@ -15,7 +15,7 @@ aggregate_datasets <- function(payload, from_IDs = FALSE)
   taxon_data <- list()
   for (i in seq(length(URLs))) {
     message(IDs[i], " ", appendLF = FALSE)
-    taxon_data[i] <- download(paste0(URLs[i], "?format=json"))
+    taxon_data[i] <- download(URLs[i])
   }
   taxon_data <- lapply(taxon_data, jsonlite::fromJSON)
   names(taxon_data) <- IDs
