@@ -143,15 +143,21 @@ summary(temperature_At$temp_C)
 ```
 
 
-## Summary
+## Known issues
 
-BacDiveR helps you download BacDive data for investigating it offline. Use `?retrieve_data` to learn more about its options.
+- [bugs](https://github.com/katrinleinweber/BacDiveR/issues?q=is%3Aissue+is%3Aopen+label%3Abug); any help is appreciated :-)
+- [questions](https://github.com/katrinleinweber/BacDiveR/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3Aquestion); expert advice is welcome :-)
+
+
+# Summary
+
+BacDiveR helps you download BacDive data for investigating it offline. Use
+`?retrieve_data` and `?retrieve_search_results` to learn more about your options.
 
 
 [BD]: https://bacdive.dsmz.de/
 [DMSZ]: https://www.dsmz.de/about-us.html
 [magrittr]: https://cran.r-project.org/package=magrittr
 [reg]: https://bacdive.dsmz.de/api/bacdive/registration/register/
-
 
 # References
