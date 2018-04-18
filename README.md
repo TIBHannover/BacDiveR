@@ -147,6 +147,10 @@ temperature_Bac <- extract_temps(Bac_data, taxon_1)
 temperature_At <- extract_temps(At_data, taxon_2) 
 ```
 
+Keep in mind, that in case of growth temperatures, a range may also be
+given (e.g. “28-32”). The above code turns a range into `NA`, but you
+could compute the mid-point / mean of such ranges.
+
 Before visualising the data, we need to create a dataframe of the two
 datasets.
 
@@ -178,10 +182,22 @@ summary(temperature_At$temp_C)
 #>   37.00   37.00   45.00   45.62   55.00   55.00
 ```
 
-## Summary
+## Known issues
+
+  - [bugs](https://github.com/katrinleinweber/BacDiveR/issues?q=is%3Aissue+is%3Aopen+label%3Abug);
+    any help is appreciated
+    :-)
+  - [questions](https://github.com/katrinleinweber/BacDiveR/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3Aquestion);
+    expert advice is welcome :-)
+
+## Architecture decisions, see \#53
+
+# Summary
 
 BacDiveR helps you download BacDive data for investigating it offline.
-Use `?retrieve_data` to learn more about its options.
+Use `?retrieve_data` and `?retrieve_search_results` to learn more about
+your options, or read about all functions on our [GitHub
+page](https://katrinleinweber.github.io/BacDiveR/reference/index.html).
 
 # References
 

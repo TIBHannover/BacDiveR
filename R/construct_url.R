@@ -1,6 +1,7 @@
 #' Construct URLs of API searches
 #'
 #' @inheritParams retrieve_data
+#'
 #' @examples
 #'   construct_url(searchTerm = 717)
 #'   construct_url("AJ000733", searchType = "sequence")
