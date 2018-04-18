@@ -106,8 +106,9 @@ aggregate_result_IDs <- function(results) {
 aggregate_result_URLs <- function(results) {
 
   if (length(results$url) == 1)
-    return(results$url)
-
+    URLs <- results$url
+  else
+  {
   URLs <- c()
   while (TRUE) {
     URLs <- c(URLs, unlist(results$results, use.names = FALSE))
@@ -115,6 +116,7 @@ aggregate_result_URLs <- function(results) {
       results <- jsonlite::fromJSON(download(results$`next`))
     else
       break
+  }
   }
   return(paste0(URLs, "?format=json"))
 }
