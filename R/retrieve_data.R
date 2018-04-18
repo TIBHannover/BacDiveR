@@ -1,6 +1,6 @@
 #' Retrieve data from BacDive
 #'
-#' @param searchTerm Mandatory character string (in case of the `searchType`
+#' @param searchTerm Mandatory character string (in case of `searchType = `
 #'   `sequence`, `culturecollectionno` or `taxon`) or integer (in case of
 #'   `bacdive_id`), specifying what shall be searched for.
 #'
@@ -8,27 +8,16 @@
 #'   search will be performed (technically, which API endpoint). Can be `taxon`
 #'   (default), `bacdive_id`, `sequence`, or `culturecollectionno`.
 #'
-#' @param force_taxon_download Logical; default: `FALSE`. In case of a taxon
-#'   search, BacDive will return not the actual data of the search results, but
-#'   only a paged list of URLs pointing to the actual datasets. Setting
-#'   `force_taxon_download = TRUE` (default: `FALSE`) triggers many downloads of
-#'   the individual result datasets. Please note: This may take much longer than
-#'   an unambiguous search, and may cause R(Studio) to become temporarily
-#'   unresponsive. Maybe go for a walk for a few minutes ;-)
-#'
-#' @return EITHER (from an unambiguous searchTerm, or in case of
-#'   `force_taxon_download = TRUE`) a list of lists containing the single
-#'   BacDive dataset for that `searchTerm`,
-#'
-#'   OR (from a _am_biguous search; eg.g `serchType = "taxon"`) a numeric vector
-#'   of BacDive-IDs, on which you can call your own loop containing
-#'   `retrieve_data()` to retrieve the individual data sets.
+#' @return A list of lists containing either a single BacDive dataset in case
+#'   the `searchTerm` was unambiguous (`bacdive_id`, `sequence`,
+#'   `culturecollectionno`), or a large list containing all datasets that match
+#'   an ambiguous `searchTerm` (most `taxon`s).
 #'
 #' @export
 #' @examples retrieve_data(searchTerm = "Bacillus subtilis subtilis")
 #'   # This returns a numeric vector of IDs. To download all the corresponding
 #'   # data, use:
-#'   retrieve_data("Bacillus subtilis subtilis", force_taxon_download = TRUE)
+#'   retrieve_data("Bacillus subtilis subtilis")
 #'
 #'   # In case the `searchTerm` is unambiguous already, the data download will
 #'   # procede automatically:
@@ -36,12 +25,9 @@
 #'   retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
 #'   retrieve_data(searchTerm = 717, searchType = "bacdive_id")
 retrieve_data <- function(searchTerm,
-                          searchType = "taxon",
-                          force_taxon_download = FALSE) {
+                          searchType = "taxon") {
   payload <-
     jsonlite::fromJSON(download(construct_url(searchTerm, searchType)))
-
-
 
   if (identical(payload$detail, "Not found"))
   {
@@ -49,19 +35,19 @@ retrieve_data <- function(searchTerm,
       "Your search returned no result, sorry. Please make sure that you provided a searchTerm, and specified the correct searchType. Please type '?retrieve_data' and read through the 'searchType' section to learn more."
     )
   }
-  else if (is_paged(payload) && !force_taxon_download)
-    aggregate_result_IDs(payload)
-  else if (is_paged(payload) && force_taxon_download)
+  else if (is_dataset(payload))
   {
-    if (payload$count > 100) warn_slow_download(payload$count)
+    payload <- list(payload)
+    names(payload) <- searchTerm
+    return(payload)
+  }
+  else
+  {
+    if (!is.null(payload$count) &&
+        payload$count > 100)
+      warn_slow_download(payload$count)
     aggregate_datasets(payload)
   }
-  else if (length(payload$results) == 1)
-  {
-    # repeat download, if API returned a single ID, instead of a full dataset
-    jsonlite::fromJSON(download(paste0(payload[1]$url, "?format=json")))
-  }
-  else payload
 }
 
 
@@ -74,20 +60,20 @@ retrieve_data <- function(searchTerm,
 #'   but also used with something else by the tests.
 #'
 #' @return A serialised JSON string.
-download <- function(URL, userpwd = paste(get_credentials(), collapse = ":")) {
-  gsub(
-    pattern = "[[:space:]]+",
-    replacement = " ",
-    perl = TRUE,
-    # Prevent "lexical error: invalid character inside string."
-    # https://github.com/jeroen/jsonlite/issues/47
-  RCurl::getURL(
-    URL,
-    userpwd = userpwd,
-    httpauth = 1L
+download <-
+  function(URL,
+           userpwd = paste(get_credentials(), collapse = ":")) {
+    gsub(
+      pattern = "[[:space:]]+",
+      replacement = " ",
+      perl = TRUE,
+      # Prevent "lexical error: invalid character inside string."
+      # https://github.com/jeroen/jsonlite/issues/47
+      RCurl::getURL(URL,
+                    userpwd = userpwd,
+                    httpauth = 1L)
     )
-  )
-}
+  }
 
 
 #' Aggregate BacDive-IDs from a Paged List of Retrieved URLs
@@ -118,12 +104,19 @@ aggregate_result_IDs <- function(results) {
 #'
 #' @return An integer vector of all BacDive IDs within the results.
 aggregate_result_URLs <- function(results) {
+
+  if (length(results$url) == 1)
+    URLs <- results$url
+  else
+  {
   URLs <- c()
   while (TRUE) {
     URLs <- c(URLs, unlist(results$results, use.names = FALSE))
     if (!is.null(results$`next`))
       results <- jsonlite::fromJSON(download(results$`next`))
-    else break
+    else
+      break
+  }
   }
   return(paste0(URLs, "?format=json"))
 }
@@ -133,6 +126,18 @@ URLs_to_IDs <- function(URLs) {
   gsub(pattern = "\\D", "", URLs)
 }
 
-is_paged <- function(payload) {
-  identical(names(payload), c("count", "next", "previous", "results"))
+is_dataset <- function(payload) {
+  identical(
+    names(payload),
+    c(
+      "taxonomy_name",
+      "morphology_physiology",
+      "culture_growth_condition",
+      "environment_sampling_isolation_source",
+      "application_interaction",
+      "molecular_biology",
+      "strain_availability",
+      "references"
+    )
+  )
 }

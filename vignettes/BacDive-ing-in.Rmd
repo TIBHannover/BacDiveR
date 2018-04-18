@@ -29,11 +29,11 @@ returns a paginated list of strains that you can then access, download and analy
 ```{r taxon_Bac}
 library(BacDiveR)
 taxon_1 <- "Bacillus halodurans"
-Bac_IDs <- retrieve_data(searchTerm = taxon_1) 
+Bac_IDs <- retrieve_IDs(searchTerm = taxon_1) 
 head(Bac_IDs) 
 ```
 
-Calling `retrieve_data()` with just a `searchTerm` results in a vector of 
+Calling `retrieve_IDs()` with just a `searchTerm` results in a vector of the
 numeric BacDive IDs. You can use such ID downloads for meta-analyses of different 
 bacterial taxons such as comparisons of taxon sizes, as they are represented in 
 the DSMZ's collection.
@@ -45,15 +45,15 @@ we want to compare the optimal growth temperatures of strains from the taxon
 *`r taxon_1`* with another one. You can obtain that data of course by feeding 
 the ID vector obtained above into self-made loops that calls `retrieve_data(…, searchType = "bacdive_id")`.
 
-However, you can save yourself some time and effort by activating the parameter
-`force_taxon_download`. This will get you all taxon data in a single (albeit
+However, you can save yourself some time and effort by using `retrieve_data()` 
+with it's default `searchType = taxon`. This will get you all taxon data in a single (albeit
 large) list of dataframes. Feel free to take a break while the computers
 do some work for you:
 
 ```{r taxon_At}
 taxon_2 <- "Aneurinibacillus thermoaerophilus"
-Bac_data <- retrieve_data(taxon_1, force_taxon_download = TRUE)
-At_data <- retrieve_data(taxon_2, force_taxon_download = TRUE)
+Bac_data <- retrieve_data(taxon_1)
+At_data <- retrieve_data(taxon_2)
 ```
 
 
