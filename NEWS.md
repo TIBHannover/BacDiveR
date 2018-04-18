@@ -14,9 +14,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- `retrieve_data()` now download the dataset(s) by default, not only the ID(s), see #59 
+- `retrieve_data()` now downloads the dataset(s) by default, not only the ID(s), see #54 & #59 
 
-## [0.4.0] - 2018-03-27
+## [0.4.0] - 2018-04-27
 
 ### Added
 
