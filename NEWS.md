@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - `retrieve_search_results()`, see #61
+- Architecture Decision records, see #53 & `/docs/arch/adr-*.md`
 
 ### Changed
 
