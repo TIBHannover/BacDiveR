@@ -155,11 +155,14 @@ summary(temperature_At$temp_C)
 # Summary
 
 BacDiveR helps you download BacDive data for investigating it offline. Use
-`?retrieve_data` and `?retrieve_search_results` to learn more about your options.
+`?retrieve_data` and `?retrieve_search_results` to learn more about your options,
+or read about all functions on our [GitHub page][GHP].
+
 
 # References
 
 [BD]: https://bacdive.dsmz.de/
 [DMSZ]: https://www.dsmz.de/about-us.html
 [magrittr]: https://cran.r-project.org/package=magrittr
+[GHP]: https://katrinleinweber.github.io/BacDiveR/reference/index.html
 [reg]: https://bacdive.dsmz.de/api/bacdive/registration/register/
