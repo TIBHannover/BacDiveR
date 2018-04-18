@@ -17,7 +17,7 @@ construct_url <- function(searchTerm,
       searchType,
       "/",
       searchTerm,
-      "/?format=json"
+      "/", "?format=json"
     )
   )
 }
