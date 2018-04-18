@@ -29,30 +29,18 @@ returns a paginated list of strains that you can then access, download and analy
 ```{r taxon_Bac}
 library(BacDiveR)
 taxon_1 <- "Bacillus halodurans"
-Bac_IDs <- retrieve_data(searchTerm = taxon_1) 
-head(Bac_IDs) 
+Bac_data <- retrieve_data(searchTerm = taxon_1) 
 ```
 
-Calling `retrieve_data()` with just a `searchTerm` results in a vector of 
-numeric BacDive IDs. You can use such ID downloads for meta-analyses of different 
-bacterial taxons such as comparisons of taxon sizes, as they are represented in 
-the DSMZ's collection.
-
-### Downloading datasets
-
-In order to analyse the actual datasets, we now need to download them. Suppose  
+Suppose  
 we want to compare the optimal growth temperatures of strains from the taxon
-*`r taxon_1`* with another one. You can obtain that data of course by feeding 
-the ID vector obtained above into self-made loops that calls `retrieve_data(…, searchType = "bacdive_id")`.
-
-However, you can save yourself some time and effort by using `retrieve_data()` 
-with it's default `searchType = taxon`. This will get you all taxon data in a single (albeit
+*`r taxon_1`* with another one. `retrieve_data()` 
+with it's default `searchType = taxon` will get you all taxon data in a single (albeit
 large) list of dataframes. Feel free to take a break while the computers
 do some work for you:
 
 ```{r taxon_At}
 taxon_2 <- "Aneurinibacillus thermoaerophilus"
-Bac_data <- retrieve_data(taxon_1)
 At_data <- retrieve_data(taxon_2)
 ```
 
@@ -69,7 +57,7 @@ a) your web browser's JSON viewer on the dataset's URL: [BacDive.DSMZ.de/api/bac
 
 to find the `$`-marked path to the field of your interest. In our example, it's `$culture_growth_condition$culture_temp$temp`, which we'll now use to extract that field from all entries in our downloaded datasets.
 
-Multiple steps are necessary here, which could easily result in hardly readable code if we used the regular assignment operator `<-`, intermediate variables and nested function calls. We will [avoid this with the pipe operator `%>%`][magrittr]. It indicates that 
+Multiple steps are necessary here, which could easily result in hardly readable code if we used the regular assignment operator `<-`, intermediate variables and/or nested function calls. We will [avoid this with the pipe operator `%>%`][magrittr]. It indicates that 
 
 a) an object is passed into a function as its first argument, and that
 a) the function's output is "piped" into the next function.
