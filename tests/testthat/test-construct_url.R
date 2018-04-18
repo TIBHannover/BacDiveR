@@ -23,7 +23,7 @@ test_that("URL constructions work", {
   )
 
   expect_equal(
-    construct_url("Bacillus subtilis subtilis", searchType = "taxon"),
-    "https://bacdive.dsmz.de/api/bacdive/taxon/Bacillus/subtilis/subtilis/?format=json"
+    construct_url("Bacillus subtilis spizizenii", searchType = "taxon"),
+    "https://bacdive.dsmz.de/api/bacdive/taxon/Bacillus/subtilis/spizizenii/?format=json"
   )
 })
