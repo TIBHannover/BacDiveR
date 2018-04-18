@@ -37,6 +37,24 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/advanced-search.html">The Semi-Automatic Approach</a>
+    </li>
+    <li>
+      <a href="articles/BacDive-ing-in.html">BacDive-ing in</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="news/index.html">News</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
 </div>
@@ -50,114 +68,52 @@
       </header><div class="row">
   <div class="contents col-md-9">
     
-<p>BacDiveR: Programmatic Interface For The DSMZ’s Bacterial Diversity Metadatabase ================ Katrin Leinweber</p>
-<p><a href="http://www.repostatus.org/#wip"><img src="http://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."></a></p>
-<p>This R package provides a programmatic interface for the <a href="https://bacdive.dsmz.de/">Bacterial Diversity Metadatabase</a> (Söhngen et al. 2014; Söhngen et al. 2016) of the <a href="https://www.dsmz.de/about-us.html">DSMZ (German Collection of Microorganisms and Cell Cultures)</a>. It helps you download full datasets or just their IDs based on reproducible searches against the BacDive Web Service.</p>
-<div class="section level2">
-<h2>Installation</h2>
+
+<div id="bacdiver" class="section level1">
+<div class="page-header"><h1 class="hasAnchor">
+<a href="#bacdiver" class="anchor"></a>BacDiveR</h1></div>
+<p>This R package provides a programmatic interface for the <a href="https://bacdive.dsmz.de/">Bacterial Diversity Metadatabase</a> (<a href="#references">Söhngen et al. 2014 &amp; 2016</a>) of the <a href="https://www.dsmz.de/about-us.html">DSMZ (German Collection of Microorganisms and Cell Cultures)</a>. BacDiveR helps you to conduct your research better and faster, by:</p>
+<ul>
+<li><p>downloading the BacDive datasets you want to investigate off-line, and by</p></li>
+<li><p>providing you with a way to document and report your searches and downloads, in a reproducible manner (<code>.R</code> scripts and/or <code>.Rmd</code> files).</p></li>
+</ul>
+<div id="installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h2>
 <ol>
 <li><p>Because the <a href="https://bacdive.dsmz.de/api/bacdive/registration/register/">BacDive API requires registration</a> please do that first and wait for your access to be granted.</p></li>
 <li><p>Once you have your login credentials, install BacDiveR from GitHub with:</p></li>
 </ol>
-<!-- end list --><div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"katrinleinweber/BacDiveR"</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"katrinleinweber/BacDiveR"</span>)</code></pre></div>
 <ol>
 <li>After installing, run the following commands to save your login credentials locally:</li>
 </ol>
-<!-- end list --><div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">file.edit</span>(BacDiveR<span class="op">:::</span><span class="kw"><a href="reference/get_Renviron_path.html">get_Renviron_path</a></span>())</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">file.edit</span>(BacDiveR<span class="op">:::</span><span class="kw"><a href="reference/get_Renviron_path.html">get_Renviron_path</a></span>())</code></pre></div>
 <ol>
 <li>In that file, add your email and password directly after the <code>=</code> signs, save it, then restart R(Studio) or run:</li>
 </ol>
-<!-- end list --><div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">readRenviron</span>(BacDiveR<span class="op">:::</span><span class="kw"><a href="reference/get_Renviron_path.html">get_Renviron_path</a></span>())</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readRenviron</span>(BacDiveR<span class="op">:::</span><span class="kw"><a href="reference/get_Renviron_path.html">get_Renviron_path</a></span>())</code></pre></div>
 <p>In the following examples, the data retrieval will only work if your login credentials are correct in themselves (no typos) and were correctly saved. Console output like <code>"{\"detail\": \"Invalid username/password\"}"</code>, or <code>Error: $ operator is invalid for atomic vectors</code> mean that either the login credentials or the <code>.Renviron</code> file are incorrect. Please repeat steps 2 to 4.</p>
 </div>
-<div class="section level2">
-<h2>BacDive-ing in(to an example)</h2>
-<p>The BacDive website lets you easily search for all their strains within a given taxonomic unit. For example, <a href="https://bacdive.dsmz.de/index.php?search=Bacillus">searching for “Bacillus”</a> returns a paginated list of strains that you can then access, download and analyse further. All manual, though. BacDiveR automates this workflow:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(BacDiveR)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">taxon_<span class="dv">1</span> &lt;-<span class="st"> "Bacillus halodurans"</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">Bac_IDs &lt;-<span class="st"> </span><span class="kw"><a href="reference/retrieve_data.html">retrieve_data</a></span>(<span class="dt">searchTerm =</span> taxon_<span class="dv">1</span>) </a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw">head</span>(Bac_IDs) </a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; [1] 1112 1113 1114 1115 1116 1117</span></a></code></pre></div>
-<p>Calling <code><a href="reference/retrieve_data.html">retrieve_data()</a></code> with just a <code>searchTerm</code> results in a vector of numeric BacDive IDs. You can use such ID downloads for meta-analyses of different bacterial taxons such as comparisons of taxon sizes, as they are represented in the DSMZ’s collection.</p>
-<div class="section level3">
-<h3>Downloading datasets</h3>
-<p>In order to analyse the actual datasets, we now need to download them. Suppose<br>
-we want to compare the optimal growth temperatures of strains from the taxon <em>Bacillus halodurans</em> with another one. You can obtain that data of course by feeding the ID vector obtained above into self-made loops that calls <code>retrieve_data(…, searchType = "bacdive_id")</code>.</p>
-<p>However, you can save yourself some time and effort by activating the parameter <code>force_taxon_download</code>. This will get you all taxon data in a single (albeit large) list of dataframes. Feel free to take a break while the computers do some work for you:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">taxon_<span class="dv">2</span> &lt;-<span class="st"> "Aneurinibacillus thermoaerophilus"</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">Bac_data &lt;-<span class="st"> </span><span class="kw"><a href="reference/retrieve_data.html">retrieve_data</a></span>(taxon_<span class="dv">1</span>, <span class="dt">force_taxon_download =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; Data download in progress for BacDive-IDs: 1112 1113 1114 1115 1116 1117</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; 1118 1119 23692 23693 23694 23695 23696 23697 23698 23699 23700 23701</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">At_data &lt;-<span class="st"> </span><span class="kw"><a href="reference/retrieve_data.html">retrieve_data</a></span>(taxon_<span class="dv">2</span>, <span class="dt">force_taxon_download =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; Data download in progress for BacDive-IDs: 11385 11386 11387 11388 11389</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 11390 11391 11392 11393 11394 11395 11396 11397 11398 11399</span></a></code></pre></div>
+<div id="how-to-use" class="section level2">
+<h2 class="hasAnchor">
+<a href="#how-to-use" class="anchor"></a>How to use</h2>
+<p>There are two main functions. Please click on their names to read their docu: <a href="reference/retrieve_data.html"><code><a href="reference/retrieve_data.html">retrieve_data()</a></code></a> and <a href="reference/retrieve_search_results.html"><code><a href="reference/retrieve_search_results.html">retrieve_search_results()</a></code></a>.</p>
+<p>For more details, please see the vignettes:</p>
+<ol>
+<li><a href="articles/BacDive-ing-in.html">“BacDive-ing in”</a></li>
+<li><a href="articles/advanced-search.html">“Semi-automatic approach”</a></li>
+</ol>
 </div>
 </div>
-<div class="section level2">
-<h2>Extracting data fields</h2>
-<p>We wanted the growth temperatures, right? As with any other database field, you now need to determine its path within the list data structure that BacDiveR returned to you. Use either</p>
-<p>1) RStudio’s <code>Environment &gt; Data</code> viever, or 2) <code>str(Bac_data)</code>, or 3) your web browser’s JSON viewer on the dataset’s URL: <a href="https://bacdive.dsmz.de/api/bacdive/taxon/Bacillus/halodurans">BacDive.DSMZ.de/api/bacdive/taxon/Bacillus/halodurans</a>,</p>
-<p>to find the <code>$</code>-marked path to the field of your interest. In our example, it’s <code>$culture_growth_condition$culture_temp$temp</code>, which we’ll now use to extract that field from all entries in our downloaded datasets.</p>
-<p>Multiple steps are necessary here, which could easily result in hardly readable code if we used the regular assignment operator <code>&lt;-</code>, intermediate variables and nested function calls. We will <a href="https://cran.r-project.org/package=magrittr">avoid this with the pipe operator <code>%&gt;%</code></a>. It indicates that</p>
-<p>1) an object is passed into a function as its first argument, and that 2) the function’s output is “piped” into the next function.</p>
-<p>Note the <code>~ .x</code> prepended to the path <code>$culture_growth_condition$culture_temp$temp</code>! This is <code>map()</code>’s way of indicating that each element in the piped-in <code>dataset</code> will be accessed at that path.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(magrittr) </a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"> </a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">extract_temps &lt;-<span class="st"> </span><span class="cf">function</span>(dataset, taxon_name) {</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">  dataset <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">  </span>purrr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map">map</a></span>(<span class="op">~</span>.x<span class="op">$</span>culture_growth_condition<span class="op">$</span>culture_temp<span class="op">$</span>temp) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">  </span><span class="kw">unlist</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="st">  </span><span class="kw">as.numeric</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="st">  </span><span class="kw">data.frame</span>(<span class="dt">temp_C =</span> ., <span class="dt">taxon =</span> <span class="kw">rep</span>(taxon_name, <span class="kw">length</span>(.))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="st">  </span><span class="kw">return</span>()</a>
-<a class="sourceLine" id="cb6-10" data-line-number="10">}</a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12">temperature_Bac &lt;-<span class="st"> </span><span class="kw">extract_temps</span>(Bac_data, taxon_<span class="dv">1</span>) </a>
-<a class="sourceLine" id="cb6-13" data-line-number="13">temperature_At &lt;-<span class="st"> </span><span class="kw">extract_temps</span>(At_data, taxon_<span class="dv">2</span>) </a></code></pre></div>
-<p>Before visualising the data, we need to create a dataframe of the two datasets.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">library</span>(<span class="st">"ggplot2"</span>)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">rbind</span>(temperature_Bac, temperature_At) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> taxon, <span class="dt">y =</span> temp_C)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_boxplot">geom_boxplot</a></span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>, <span class="dt">varwidth =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_jitter">geom_jitter</a></span>(<span class="dt">height =</span> <span class="fl">0.25</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_discrete">scale_x_discrete</a></span>(<span class="dt">position =</span> <span class="st">"top"</span>, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labellers">label_value</a></span>(<span class="st">""</span>)) <span class="op">+</span><span class="st">  </span><span class="co"># or: xlab(label = NULL)</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">ggtitle</a></span>(<span class="st">"Optimal growth temperatures of DSMZ-stored strains within the taxons:"</span>)</a></code></pre></div>
-<p><img src="README_files/figure-gfm/ggplot-1.png"><!-- --></p>
-<p>And thus we find, that <em>Aneurinibacillus thermoaerophilus</em> contains strains with different growth optima (note the groups of data <em>points</em>), even up to the 50-something-°C-range as the <code>thermo</code>-part in its name suggest). On the other hand, all <em>Bacillus halodurans</em> strains known to BacDive were found to grow best at the lower temperature of 30°C. Thanks to the notch in <em>Aneurinibacillus thermoaerophilus</em>’s box, we can also say that there is a significant difference between the temperature ranges of these two taxons, even before digging into the numbers:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">summary</span>(temperature_At<span class="op">$</span>temp_C)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt;   37.00   37.00   45.00   45.62   55.00   55.00</span></a></code></pre></div>
-</div>
-<div class="section level2">
-<h2>Summary</h2>
-<p>BacDiveR helps you download BacDive data for investigating it offline. Use <code><a href="reference/retrieve_data.html">?retrieve_data</a></code> to learn more about its options.</p>
-</div>
-<div class="section level1">
-<div class="page-header"><h1>References</h1></div>
-<div id="refs" class="references">
-
-<div id="ref-BD14">
-
-Söhngen, Carola, Boyke Bunk, Adam Podstawka, Dorothea Gleim, and Jörg
-Overmann. 2014. “BacDive—the Bacterial Diversity Metadatabase.” *Nucleic
-Acids Research* 42 (D1): D592–D599.
-doi:[10.1093/nar/gkt1058](https://doi.org/10.1093/nar/gkt1058).
-
-</div>
-
-<div id="ref-BD16">
-
-Söhngen, Carola, Adam Podstawka, Boyke Bunk, Dorothea Gleim, Anna
-Vetcininova, Lorenz Christian Reimer, Christian Ebeling, Cezar
-Pendarovski, and Jörg Overmann. 2016. “BacDive – the Bacterial Diversity
-Metadatabase in 2016.” *Nucleic Acids Research* 44 (D1): D581–D585.
-doi:[10.1093/nar/gkv983](https://doi.org/10.1093/nar/gkv983).
-
-</div>
-
-</div>
+<div id="references" class="section level1">
+<h1 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h1>
+<ul>
+<li><p>Söhngen, Carola, Boyke Bunk, Adam Podstawka, Dorothea Gleim, and Jörg Overmann. 2014. “BacDive—the Bacterial Diversity Metadatabase.” <em>Nucleic Acids Research</em> 42 (D1): D592–D599. <a href="doi:%5B10.1093/nar/gkt1058%5D(https://doi.org/10.1093/nar/gkt1058)" class="uri">doi:[10.1093/nar/gkt1058](https://doi.org/10.1093/nar/gkt1058)</a>.</p></li>
+<li><p>Söhngen, Carola, Adam Podstawka, Boyke Bunk, Dorothea Gleim, Anna Vetcininova, Lorenz Christian Reimer, Christian Ebeling, Cezar Pendarovski, and Jörg Overmann. 2016. “BacDive – the Bacterial Diversity Metadatabase in 2016.” <em>Nucleic Acids Research</em> 44 (D1): D581–D585. <a href="doi:%5B10.1093/nar/gkv983%5D(https://doi.org/10.1093/nar/gkv983)" class="uri">doi:[10.1093/nar/gkv983](https://doi.org/10.1093/nar/gkv983)</a>.</p></li>
+</ul>
 </div>
 
   </div>
@@ -168,6 +124,10 @@ doi:[10.1093/nar/gkv983](https://doi.org/10.1093/nar/gkv983).
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Katrin Leinweber <br><small class="roles"> Author, maintainer </small> </li>
+</ul>
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="http://www.repostatus.org/#wip"><img src="http://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."></a></li>
 </ul>
 </div>
 </div>

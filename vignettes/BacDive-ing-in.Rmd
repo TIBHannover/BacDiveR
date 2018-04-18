@@ -1,7 +1,13 @@
 ---
-title: "BacDiveR: Programmatic Interface For The DSMZ's Bacterial Diversity Metadatabase"
-output: github_document
+title: "BacDive-ing in"
+subtitle: "Retrieving data(sets) from BacDive"
 author: "Katrin Leinweber"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
   chunk_output_type: inline
 bibliography: BacDive.bib
@@ -13,43 +19,6 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
-
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
-
-This R package provides a programmatic interface for the [Bacterial Diversity
-Metadatabase][BD] [@BD14; @BD16] of the [DSMZ (German Collection of 
-Microorganisms and Cell Cultures)][DMSZ]. It helps 
-you download full datasets or just their IDs based on reproducible searches 
-against the BacDive Web Service.
-
-
-## Installation
-
-1. Because the [BacDive API requires registration][reg] please do that first and wait for your access to be granted.
-
-2. Once you have your login credentials, install BacDiveR from GitHub with:
-
-```{r gh-installation, eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("katrinleinweber/BacDiveR")
-```
-
-3. After installing, run the following commands to save your login credentials locally:
-
-```{r edit, eval = FALSE}
-file.edit(BacDiveR:::get_Renviron_path())
-```
-
-4. In that file, add your email and password directly after the `=` signs, save it, then restart R(Studio) or run:
-
-```{r read}
-readRenviron(BacDiveR:::get_Renviron_path())
-```
-
-In the following examples, the data retrieval will only work if your login credentials are correct in themselves (no typos) and were correctly saved. Console output like `"{\"detail\": \"Invalid username/password\"}"`, or `Error: $ operator is invalid for atomic vectors` mean that either the login credentials or the `.Renviron` file are incorrect. Please repeat steps 2 to 4.
-
-
-## BacDive-ing in(to an example)
 
 The BacDive website lets you easily search for all their strains within a 
 given taxonomic unit. For example, [searching for "Bacillus"][Bac-search] 
@@ -76,15 +45,15 @@ we want to compare the optimal growth temperatures of strains from the taxon
 *`r taxon_1`* with another one. You can obtain that data of course by feeding 
 the ID vector obtained above into self-made loops that calls `retrieve_data(…, searchType = "bacdive_id")`.
 
-However, you can save yourself some time and effort by activating the parameter
-`force_taxon_download`. This will get you all taxon data in a single (albeit
+However, you can save yourself some time and effort by using `retrieve_data()` 
+with it's default `searchType = taxon`. This will get you all taxon data in a single (albeit
 large) list of dataframes. Feel free to take a break while the computers
 do some work for you:
 
 ```{r taxon_At}
 taxon_2 <- "Aneurinibacillus thermoaerophilus"
-Bac_data <- retrieve_data(taxon_1, force_taxon_download = TRUE)
-At_data <- retrieve_data(taxon_2, force_taxon_download = TRUE)
+Bac_data <- retrieve_data(taxon_1)
+At_data <- retrieve_data(taxon_2)
 ```
 
 
@@ -146,27 +115,4 @@ And thus we find, that *`r taxon_2`* contains strains with different growth opti
 summary(temperature_At$temp_C)
 ```
 
-
-## Known issues
-
-- [bugs](https://github.com/katrinleinweber/BacDiveR/issues?q=is%3Aissue+is%3Aopen+label%3Abug); any help is appreciated :-)
-- [questions](https://github.com/katrinleinweber/BacDiveR/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3Aquestion); expert advice is welcome :-)
-
-
-## Architecture decisions, see #53
-
-
-# Summary
-
-BacDiveR helps you download BacDive data for investigating it offline. Use
-`?retrieve_data` and `?retrieve_search_results` to learn more about your options,
-or read about all functions on our [GitHub page][GHP].
-
-
-# References
-
-[BD]: https://bacdive.dsmz.de/
-[DMSZ]: https://www.dsmz.de/about-us.html
 [magrittr]: https://cran.r-project.org/package=magrittr
-[GHP]: https://katrinleinweber.github.io/BacDiveR/reference/index.html
-[reg]: https://bacdive.dsmz.de/api/bacdive/registration/register/
