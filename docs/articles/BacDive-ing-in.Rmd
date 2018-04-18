@@ -63,7 +63,7 @@ We wanted the growth temperatures, right? As with any other database field, you
 now need to determine its path within the list data structure that BacDiveR 
 returned to you. Use either
 
-a) RStudio's `Environment > Data` viever, or
+a) RStudio's `Environment > Data` viewer, or
 a) `str(Bac_data)`, or
 a) your web browser's JSON viewer on the dataset's URL: [BacDive.DSMZ.de/api/bacdive/taxon/`r gsub(" ", "/", taxon_1)`](https://bacdive.dsmz.de/api/bacdive/taxon/`r gsub(" ", "/", taxon_1)`),
 
