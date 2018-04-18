@@ -94,8 +94,9 @@ Bac_hal <- "Bacillus halotolerans"
 Bac_hal_data <- retrieve_data(searchTerm = Bac_hal)
 
 test_that("any dataset returned by BacDiveR is named with its ID", {
-  expect_equal(retrieve_IDs(searchTerm = Bac_hal),
-               as.numeric(names(Bac_hal_data)))
+  expect_equal(names(Bac_hal_data),
+               c("1095", "1847"))
+  # https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B73%5D%5Bcontenttype%5D=text&searchparams%5B73%5D%5Btypecontent%5D=exact&searchparams%5B73%5D%5Bsearchterm%5D=Bacillus+halotolerans&csv_bacdive_ids_advsearch=download
 })
 
 test_that("normalising invalid JSON newlines works", {
