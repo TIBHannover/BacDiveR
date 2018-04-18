@@ -123,6 +123,10 @@ temperature_Bac <- extract_temps(Bac_data, taxon_1)
 temperature_At <- extract_temps(At_data, taxon_2) 
 ``` 
 
+Keep in mind, that in case of growth temperatures, a range may also be given 
+(e.g. "28-32"). The above code turns a range into `NA`, but you could compute 
+the mid-point / mean of such ranges. 
+
 Before visualising the data, we need to create a dataframe of the two datasets.
 
 ```{r ggplot}
