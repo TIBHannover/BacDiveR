@@ -61,10 +61,10 @@ For more details, please see the vignettes:
 1. ["BacDive-ing in"][dive-in]
 1. ["Semi-automatic approach"][adv-search]
 
-[r_d]: reference/retrieve_data.html
-[r_s_r]: reference/retrieve_search_results.html
-[dive-in]: articles/BacDive-ing-in.html
-[adv-search]: articles/advanced-search.html
+[r_d]: https://tibhannover.github.io/BacDiveR/reference/retrieve_data.html
+[r_s_r]: https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html
+[dive-in]: https://tibhannover.github.io/BacDiveR/articles/BacDive-ing-in.html
+[adv-search]: https://tibhannover.github.io/BacDiveR/articles/advanced-search.html
 
 
 # References
