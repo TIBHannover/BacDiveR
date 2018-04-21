@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `retrieve_data()` now downloads the dataset(s) by default, not only the ID(s), see #54 & #59 
 - Datasets in the aggregated (large) list are now named according to their 
-`bacdive_ID`s (see #47). Before, the list were only numbered with `1`, `2`, `3`,
+`bacdive_ID`s (see #47). Before, the lists were only numbered with `1`, `2`, `3`,
 etc.
 
 ## [0.3.1] - 2018-03-24
