@@ -18,13 +18,19 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Retrieve data from BacDive — retrieve_data" />
+
+<meta property="og:description" content="Retrieve data from BacDive" />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -32,6 +38,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -47,8 +55,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">BacDiveR</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">BacDiveR</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -68,18 +80,22 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/advanced-search.html">The Semi-Automatic Approach</a>
-    </li>
-    <li>
       <a href="../articles/BacDive-ing-in.html">BacDive-ing in</a>
     </li>
+    <li>
+      <a href="../articles/advanced-search.html">The Semi-Automatic Approach</a>
+    </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -87,25 +103,26 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Retrieve data from BacDive</h1>
+    
+    <div class="hidden name"><code>retrieve_data.Rd</code></div>
     </div>
 
     
     <p>Retrieve data from BacDive</p>
     
 
-    <pre class="usage"><span class='fu'>retrieve_data</span>(<span class='no'>searchTerm</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"taxon"</span>,
-  <span class='kw'>force_taxon_download</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>retrieve_data</span>(<span class='no'>searchTerm</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"taxon"</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>searchTerm</th>
-      <td><p>Mandatory character string (in case of the <code>searchType</code>
+      <td><p>Mandatory character string (in case of <code>searchType =</code>
 <code>sequence</code>, <code>culturecollectionno</code> or <code>taxon</code>) or integer (in case of
 <code>bacdive_id</code>), specifying what shall be searched for.</p></td>
     </tr>
@@ -115,45 +132,18 @@
 search will be performed (technically, which API endpoint). Can be <code>taxon</code>
 (default), <code>bacdive_id</code>, <code>sequence</code>, or <code>culturecollectionno</code>.</p></td>
     </tr>
-    <tr>
-      <th>force_taxon_download</th>
-      <td><p>Logical; default: <code>FALSE</code>. In case of a taxon
-search, BacDive will return not the actual data of the search results, but
-only a paged list of URLs pointing to the actual datasets. Setting
-<code>force_taxon_download = TRUE</code> (default: <code>FALSE</code>) triggers many downloads of
-the individual result datasets. Please note: This may take much longer than
-an unambiguous search, and may cause R(Studio) to become temporarily
-unresponsive. Maybe go for a walk for a few minutes ;-)</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>EITHER (from an unambiguous searchTerm, or in case of
-<code>force_taxon_download = TRUE</code>) a list of lists containing the single
-BacDive dataset for that <code>searchTerm</code>,</p>
-<p>OR (from a _am_biguous search; eg.g <code>serchType = "taxon"</code>) a numeric vector
-of BacDive-IDs, on which you can call your own loop containing
-<code>retrieve_data()</code> to retrieve the individual data sets.</p>
+    <p>A list of lists containing either a single BacDive dataset in case
+the <code>searchTerm</code> was unambiguous (<code>bacdive_id</code>, <code>sequence</code>,
+<code>culturecollectionno</code>), or a large list containing all datasets that match
+an ambiguous <code>searchTerm</code> (most <code>taxon</code>s).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='st'>"Bacillus subtilis subtilis"</span>)</div><div class='output co'>#&gt;   [1]   1156   1157   1158   1159   1160   1161   1162   1163   1164   1165
-#&gt;  [11]   1166   1167   1168   1169   1170   1171   1172   1173   1174   1175
-#&gt;  [21]   1176   1177   1178   1179   1180   1181   1182   1183   1184   1185
-#&gt;  [31]   1186 134612 134701 134853 134854 134856 134857 134858 135155 135173
-#&gt;  [41] 135255 135269 135270 135280 135297 135365 135545 135547 135577 135581
-#&gt;  [51] 135590 135620 135643 135676 135695 135696 135697 135698 135699 135700
-#&gt;  [61] 135701 135783 135784 135909 136058 136375 136391 136392 136394 136395
-#&gt;  [71] 136501 136948 136959 136969 136972 136975 136991 136992 137087 137100
-#&gt;  [81] 137129 137348 137349 137416 137419 137433 137923 138480 138711 138730
-#&gt;  [91] 138763 138773 138777 138779 138875 138915 138956 138957 138958 138964
-#&gt; [101] 138965 138967 138968 138970 138971 138972 138973 138974 138975 138976
-#&gt; [111] 138979 138980 138981 138982 138983 138984 138985 138986 138987 138988
-#&gt; [121] 138989 138990 138992 138993 138994 138995 139209 139407 139411 139520
-#&gt; [131] 139538</div><div class='input'>  <span class='co'># This returns a numeric vector of IDs. To download all the corresponding</span>
-  <span class='co'># data, use:</span>
-  <span class='fu'>retrieve_data</span>(<span class='st'>"Bacillus subtilis subtilis"</span>, <span class='kw'>force_taxon_download</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 131 BacDive datasets are being downloaded... Please note: Depending on your internet connection speed, and the BacDive server load right now, this might take some time and may cause R(Studio) to become temporarily unresponsive. Maybe go for a walk for a few (I'm guessing: 0.5 to 0.7) minutes ;-)</span>
+    <pre class="examples"><div class='input'><span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='st'>"Bacillus subtilis subtilis"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 131 BacDive datasets are being downloaded... Please note: Depending on your internet connection speed, and the BacDive server load right now, this might take some time and may cause R(Studio) to become temporarily unresponsive. Maybe go for a walk for a few (I'm guessing: 0.5 to 0.7) minutes ;-)</span>
 #&gt; <span class='warning'></span></div><div class='output co'>#&gt; <span class='message'>Data download in progress for BacDive-IDs: </span></div><div class='output co'>#&gt; <span class='message'>1156 </span></div><div class='output co'>#&gt; <span class='message'>1157 </span></div><div class='output co'>#&gt; <span class='message'>1158 </span></div><div class='output co'>#&gt; <span class='message'>1159 </span></div><div class='output co'>#&gt; <span class='message'>1160 </span></div><div class='output co'>#&gt; <span class='message'>1161 </span></div><div class='output co'>#&gt; <span class='message'>1162 </span></div><div class='output co'>#&gt; <span class='message'>1163 </span></div><div class='output co'>#&gt; <span class='message'>1164 </span></div><div class='output co'>#&gt; <span class='message'>1165 </span></div><div class='output co'>#&gt; <span class='message'>1166 </span></div><div class='output co'>#&gt; <span class='message'>1167 </span></div><div class='output co'>#&gt; <span class='message'>1168 </span></div><div class='output co'>#&gt; <span class='message'>1169 </span></div><div class='output co'>#&gt; <span class='message'>1170 </span></div><div class='output co'>#&gt; <span class='message'>1171 </span></div><div class='output co'>#&gt; <span class='message'>1172 </span></div><div class='output co'>#&gt; <span class='message'>1173 </span></div><div class='output co'>#&gt; <span class='message'>1174 </span></div><div class='output co'>#&gt; <span class='message'>1175 </span></div><div class='output co'>#&gt; <span class='message'>1176 </span></div><div class='output co'>#&gt; <span class='message'>1177 </span></div><div class='output co'>#&gt; <span class='message'>1178 </span></div><div class='output co'>#&gt; <span class='message'>1179 </span></div><div class='output co'>#&gt; <span class='message'>1180 </span></div><div class='output co'>#&gt; <span class='message'>1181 </span></div><div class='output co'>#&gt; <span class='message'>1182 </span></div><div class='output co'>#&gt; <span class='message'>1183 </span></div><div class='output co'>#&gt; <span class='message'>1184 </span></div><div class='output co'>#&gt; <span class='message'>1185 </span></div><div class='output co'>#&gt; <span class='message'>1186 </span></div><div class='output co'>#&gt; <span class='message'>134612 </span></div><div class='output co'>#&gt; <span class='message'>134701 </span></div><div class='output co'>#&gt; <span class='message'>134853 </span></div><div class='output co'>#&gt; <span class='message'>134854 </span></div><div class='output co'>#&gt; <span class='message'>134856 </span></div><div class='output co'>#&gt; <span class='message'>134857 </span></div><div class='output co'>#&gt; <span class='message'>134858 </span></div><div class='output co'>#&gt; <span class='message'>135155 </span></div><div class='output co'>#&gt; <span class='message'>135173 </span></div><div class='output co'>#&gt; <span class='message'>135255 </span></div><div class='output co'>#&gt; <span class='message'>135269 </span></div><div class='output co'>#&gt; <span class='message'>135270 </span></div><div class='output co'>#&gt; <span class='message'>135280 </span></div><div class='output co'>#&gt; <span class='message'>135297 </span></div><div class='output co'>#&gt; <span class='message'>135365 </span></div><div class='output co'>#&gt; <span class='message'>135545 </span></div><div class='output co'>#&gt; <span class='message'>135547 </span></div><div class='output co'>#&gt; <span class='message'>135577 </span></div><div class='output co'>#&gt; <span class='message'>135581 </span></div><div class='output co'>#&gt; <span class='message'>135590 </span></div><div class='output co'>#&gt; <span class='message'>135620 </span></div><div class='output co'>#&gt; <span class='message'>135643 </span></div><div class='output co'>#&gt; <span class='message'>135676 </span></div><div class='output co'>#&gt; <span class='message'>135695 </span></div><div class='output co'>#&gt; <span class='message'>135696 </span></div><div class='output co'>#&gt; <span class='message'>135697 </span></div><div class='output co'>#&gt; <span class='message'>135698 </span></div><div class='output co'>#&gt; <span class='message'>135699 </span></div><div class='output co'>#&gt; <span class='message'>135700 </span></div><div class='output co'>#&gt; <span class='message'>135701 </span></div><div class='output co'>#&gt; <span class='message'>135783 </span></div><div class='output co'>#&gt; <span class='message'>135784 </span></div><div class='output co'>#&gt; <span class='message'>135909 </span></div><div class='output co'>#&gt; <span class='message'>136058 </span></div><div class='output co'>#&gt; <span class='message'>136375 </span></div><div class='output co'>#&gt; <span class='message'>136391 </span></div><div class='output co'>#&gt; <span class='message'>136392 </span></div><div class='output co'>#&gt; <span class='message'>136394 </span></div><div class='output co'>#&gt; <span class='message'>136395 </span></div><div class='output co'>#&gt; <span class='message'>136501 </span></div><div class='output co'>#&gt; <span class='message'>136948 </span></div><div class='output co'>#&gt; <span class='message'>136959 </span></div><div class='output co'>#&gt; <span class='message'>136969 </span></div><div class='output co'>#&gt; <span class='message'>136972 </span></div><div class='output co'>#&gt; <span class='message'>136975 </span></div><div class='output co'>#&gt; <span class='message'>136991 </span></div><div class='output co'>#&gt; <span class='message'>136992 </span></div><div class='output co'>#&gt; <span class='message'>137087 </span></div><div class='output co'>#&gt; <span class='message'>137100 </span></div><div class='output co'>#&gt; <span class='message'>137129 </span></div><div class='output co'>#&gt; <span class='message'>137348 </span></div><div class='output co'>#&gt; <span class='message'>137349 </span></div><div class='output co'>#&gt; <span class='message'>137416 </span></div><div class='output co'>#&gt; <span class='message'>137419 </span></div><div class='output co'>#&gt; <span class='message'>137433 </span></div><div class='output co'>#&gt; <span class='message'>137923 </span></div><div class='output co'>#&gt; <span class='message'>138480 </span></div><div class='output co'>#&gt; <span class='message'>138711 </span></div><div class='output co'>#&gt; <span class='message'>138730 </span></div><div class='output co'>#&gt; <span class='message'>138763 </span></div><div class='output co'>#&gt; <span class='message'>138773 </span></div><div class='output co'>#&gt; <span class='message'>138777 </span></div><div class='output co'>#&gt; <span class='message'>138779 </span></div><div class='output co'>#&gt; <span class='message'>138875 </span></div><div class='output co'>#&gt; <span class='message'>138915 </span></div><div class='output co'>#&gt; <span class='message'>138956 </span></div><div class='output co'>#&gt; <span class='message'>138957 </span></div><div class='output co'>#&gt; <span class='message'>138958 </span></div><div class='output co'>#&gt; <span class='message'>138964 </span></div><div class='output co'>#&gt; <span class='message'>138965 </span></div><div class='output co'>#&gt; <span class='message'>138967 </span></div><div class='output co'>#&gt; <span class='message'>138968 </span></div><div class='output co'>#&gt; <span class='message'>138970 </span></div><div class='output co'>#&gt; <span class='message'>138971 </span></div><div class='output co'>#&gt; <span class='message'>138972 </span></div><div class='output co'>#&gt; <span class='message'>138973 </span></div><div class='output co'>#&gt; <span class='message'>138974 </span></div><div class='output co'>#&gt; <span class='message'>138975 </span></div><div class='output co'>#&gt; <span class='message'>138976 </span></div><div class='output co'>#&gt; <span class='message'>138979 </span></div><div class='output co'>#&gt; <span class='message'>138980 </span></div><div class='output co'>#&gt; <span class='message'>138981 </span></div><div class='output co'>#&gt; <span class='message'>138982 </span></div><div class='output co'>#&gt; <span class='message'>138983 </span></div><div class='output co'>#&gt; <span class='message'>138984 </span></div><div class='output co'>#&gt; <span class='message'>138985 </span></div><div class='output co'>#&gt; <span class='message'>138986 </span></div><div class='output co'>#&gt; <span class='message'>138987 </span></div><div class='output co'>#&gt; <span class='message'>138988 </span></div><div class='output co'>#&gt; <span class='message'>138989 </span></div><div class='output co'>#&gt; <span class='message'>138990 </span></div><div class='output co'>#&gt; <span class='message'>138992 </span></div><div class='output co'>#&gt; <span class='message'>138993 </span></div><div class='output co'>#&gt; <span class='message'>138994 </span></div><div class='output co'>#&gt; <span class='message'>138995 </span></div><div class='output co'>#&gt; <span class='message'>139209 </span></div><div class='output co'>#&gt; <span class='message'>139407 </span></div><div class='output co'>#&gt; <span class='message'>139411 </span></div><div class='output co'>#&gt; <span class='message'>139520 </span></div><div class='output co'>#&gt; <span class='message'>139538 </span></div><div class='output co'>#&gt; $`1156`
 #&gt; $`1156`$taxonomy_name
 #&gt; $`1156`$taxonomy_name$strains_tax_PNU
@@ -1717,6 +1707,36 @@ of BacDive-IDs, on which you can call your own loop containing
 #&gt; 123 Whole Genome Shotgun (WGS) Sequence INSDC
 #&gt; 124 Whole Genome Shotgun (WGS) Sequence INSDC
 #&gt; 125 Whole Genome Shotgun (WGS) Sequence INSDC
+#&gt; 126 Whole Genome Shotgun (WGS) Sequence INSDC
+#&gt; 127 Whole Genome Shotgun (WGS) Sequence INSDC
+#&gt; 128 Whole Genome Shotgun (WGS) Sequence INSDC
+#&gt; 129 Whole Genome Shotgun (WGS) Sequence INSDC
+#&gt; 130 Whole Genome Shotgun (WGS) Sequence INSDC
+#&gt; 131 Whole Genome Shotgun (WGS) Sequence INSDC
+#&gt; 132 Whole Genome Shotgun (WGS) Sequence INSDC
+#&gt; 133 Whole Genome Shotgun (WGS) Sequence INSDC
+#&gt; 134 Whole Genome Shotgun (WGS) Sequence INSDC
+#&gt; 135   Marker Gene (GenBank Direct submission)
+#&gt; 136      Marker Gene (EMBL Direct submission)
+#&gt; 137      Marker Gene (EMBL Direct submission)
+#&gt; 138   Marker Gene (GenBank Direct submission)
+#&gt; 139   Marker Gene (GenBank Direct submission)
+#&gt; 140   Marker Gene (GenBank Direct submission)
+#&gt; 141   Marker Gene (GenBank Direct submission)
+#&gt; 142   Marker Gene (GenBank Direct submission)
+#&gt; 143   Marker Gene (GenBank Direct submission)
+#&gt; 144   Marker Gene (GenBank Direct submission)
+#&gt; 145   Marker Gene (GenBank Direct submission)
+#&gt; 146   Marker Gene (GenBank Direct submission)
+#&gt; 147   Marker Gene (GenBank Direct submission)
+#&gt; 148   Marker Gene (GenBank Direct submission)
+#&gt; 149   Marker Gene (GenBank Direct submission)
+#&gt; 150   Marker Gene (GenBank Direct submission)
+#&gt; 151   Marker Gene (GenBank Direct submission)
+#&gt; 152   Marker Gene (GenBank Direct submission)
+#&gt; 153   Marker Gene (GenBank Direct submission)
+#&gt; 154   Marker Gene (GenBank Direct submission)
+#&gt; 155                                     INSDC
 #&gt;                                                                                                                                                                                   Sequence_accession_title
 #&gt; 1                                                                                            CCACM40TO C.neoformans strain JEC21 Cryptococcus neoformans var. neoformans cDNA clone CCACM40, mRNA sequence
 #&gt; 2                                                                                            CCACM40TR C.neoformans strain JEC21 Cryptococcus neoformans var. neoformans cDNA clone CCACM40, mRNA sequence
@@ -1843,6 +1863,36 @@ of BacDive-IDs, on which you can call your own loop containing
 #&gt; 123                                                                                              Bacillus subtilis subsp. subtilis str. NCIB 3610 plasmid pAS32 contig_4162, whole genome shotgun sequence
 #&gt; 124                                                                                              Bacillus subtilis subsp. subtilis str. NCIB 3610 plasmid pAS32 contig_1176, whole genome shotgun sequence
 #&gt; 125                                                                                              Bacillus subtilis subsp. subtilis str. NCIB 3610 plasmid pAS32 contig_3832, whole genome shotgun sequence
+#&gt; 126                                                                                              Bacillus subtilis subsp. subtilis str. NCIB 3610 plasmid pAS32 contig_4526, whole genome shotgun sequence
+#&gt; 127                                                                                              Bacillus subtilis subsp. subtilis str. NCIB 3610 plasmid pAS32 contig_5535, whole genome shotgun sequence
+#&gt; 128                                                                                              Bacillus subtilis subsp. subtilis str. NCIB 3610 plasmid pAS32 contig_2466, whole genome shotgun sequence
+#&gt; 129                                                                                              Bacillus subtilis subsp. subtilis str. NCIB 3610 plasmid pAS32 contig_1773, whole genome shotgun sequence
+#&gt; 130                                                                                              Bacillus subtilis subsp. subtilis str. NCIB 3610 plasmid pAS32 contig_1379, whole genome shotgun sequence
+#&gt; 131                                                                                              Bacillus subtilis subsp. subtilis str. NCIB 3610 plasmid pAS32 contig_4488, whole genome shotgun sequence
+#&gt; 132                                                                                               Bacillus subtilis subsp. subtilis str. NCIB 3610 plasmid pAS32 contig_611, whole genome shotgun sequence
+#&gt; 133                                                                                               Bacillus subtilis subsp. subtilis str. NCIB 3610 plasmid pAS32 contig_530, whole genome shotgun sequence
+#&gt; 134                                                                                               Bacillus subtilis subsp. subtilis str. NCIB 3610 plasmid pAS32 contig_219, whole genome shotgun sequence
+#&gt; 135                                                                                                        Bacillus subtilis subsp. subtilis strain NCIB3610 DNA gyrase subunit A (gyrA) gene, partial cds
+#&gt; 136                                                                          TPA: Bacillus subtilis subsp. subtilis str. NCIB 3610 transfer-messenger mRNA Bacil_subti_168, single chain mature transcript
+#&gt; 137                                                                          TPA: Bacillus subtilis subsp. subtilis str. NCIB 3610 transfer-messenger mRNA Bacil_subti_168, single chain mature transcript
+#&gt; 138                                                                                                                 Bacillus subtilis subsp. subtilis str. NCIB 3610 plasmid pBS32 RapP gene, complete cds
+#&gt; 139                                                                                                                 Bacillus subtilis subsp. subtilis str. NCIB 3610 plasmid pBS32 PhrP gene, complete cds
+#&gt; 140                                                                                                                      Bacillus subtilis subsp. subtilis str. NCIB 3610 plasmid pBS32, complete sequence
+#&gt; 141                                                                                         Bacillus subtilis subsp. subtilis str. NCIB 3610 GntR-type transcriptional regulator (lutR) gene, complete cds
+#&gt; 142                                                                                                                                    Bacillus subtilis major cold-shock protein (cspA) gene, partial cds
+#&gt; 143                                                                                                                          Bacillus subtilis strain NRRL B-4219 16S ribosomal RNA gene, partial sequence
+#&gt; 144                                                                                                                     Bacillus subtilis strain NRRL B-4219 gyrase subunit alpha (gyrA) gene, partial cds
+#&gt; 145                                                                                                                             Bacillus subtilis strain NRRL B-4219 polymerase C (polC) gene, partial cds
+#&gt; 146                                                                                Bacillus subtilis strain NRRL B-4219 phosphoribosylaminoimidazolecarboxamide formyltransferase (purH) gene, partial cds
+#&gt; 147                                                                                                              Bacillus subtilis strain NRRL B-4219 RNA polymerase subunit beta (rpoB) gene, partial cds
+#&gt; 148                                                                                                                         Bacillus subtilis strain NRRL NRS-744 16S ribosomal RNA gene, partial sequence
+#&gt; 149                                                                                                                    Bacillus subtilis strain NRRL NRS-744 gyrase subunit alpha (gyrA) gene, partial cds
+#&gt; 150                                                                                                                            Bacillus subtilis strain NRRL NRS-744 polymerase C (polC) gene, partial cds
+#&gt; 151                                                                               Bacillus subtilis strain NRRL NRS-744 phosphoribosylaminoimidazolecarboxamide formyltransferase (purH) gene, partial cds
+#&gt; 152                                                                                                             Bacillus subtilis strain NRRL NRS-744 RNA polymerase subunit beta (rpoB) gene, partial cds
+#&gt; 153                                                                                                                                       Bacillus subtilis strain NRS-744 GroEL (groEL) gene, partial cds
+#&gt; 154                                                                                                                   Bacillus subtilis subsp. subtilis strain NRS-744 DNA gyrase (gyrA) gene, partial cds
+#&gt; 155                                                                                                                                           Bacillus subtilis partial 16S rRNA gene, type strain DSM 10T
 #&gt;      seq_acc_num sequence_length NCBI_tax_ID   NCBI_Gi ID_reference text_mined
 #&gt; 1       CF699797             975       40410  41553956        20218       TRUE
 #&gt; 2       CF699801             943       40410  41553960        20218       TRUE
@@ -1969,7 +2019,36 @@ of BacDive-IDs, on which you can call your own loop containing
 #&gt; 123 ABQL01000073             980      535026 194372841        20218       TRUE
 #&gt; 124 ABQL01000074            1180      535026 194372840        20218       TRUE
 #&gt; 125 ABQL01000075             896      535026 194372839        20218       TRUE
-#&gt;  [ reached getOption("max.print") -- omitted 30 rows ]
+#&gt; 126 ABQL01000076             219      535026 194372838        20218       TRUE
+#&gt; 127 ABQL01000077             326      535026 194372837        20218       TRUE
+#&gt; 128 ABQL01000078            1106      535026 194372836        20218       TRUE
+#&gt; 129 ABQL01000079            1589      535026 194372835        20218       TRUE
+#&gt; 130 ABQL01000080             444      535026 194372834        20218       TRUE
+#&gt; 131 ABQL01000081             144      535026 194372833        20218       TRUE
+#&gt; 132 ABQL01000082            1061      535026 194372832        20218       TRUE
+#&gt; 133 ABQL01000083            1487      535026 194372831        20218       TRUE
+#&gt; 134 ABQL01000084            1083      535026 194372830        20218       TRUE
+#&gt; 135     EF134425             753      535026 119444336        20218       TRUE
+#&gt; 136     HG781783             363      535026 559132413        20218       TRUE
+#&gt; 137     HG781784             363      535026 559132415        20218       TRUE
+#&gt; 138     KF110988            1164      535026 507835458        20218       TRUE
+#&gt; 139     KF110989             123      535026 507835462        20218       TRUE
+#&gt; 140     KF365913           84215      535026 523370996        20218       TRUE
+#&gt; 141     KJ580506             739      535026 640911662        20218       TRUE
+#&gt; 142       U60029             136        1423   1402738        20218       TRUE
+#&gt; 143     EU138454            1168        1423 160689118        20218       TRUE
+#&gt; 144     EU138592             928        1423 160905547        20218       TRUE
+#&gt; 145     EU138661             777        1423 160689327        20218       TRUE
+#&gt; 146     EU138730             875        1423 160689465        20218       TRUE
+#&gt; 147     EU138799             964        1423 160689603        20218       TRUE
+#&gt; 148     EU138520            1168        1423 160689184        20218       TRUE
+#&gt; 149     EU138658             928        1423 160905679        20218       TRUE
+#&gt; 150     EU138727             777        1423 160689459        20218       TRUE
+#&gt; 151     EU138796             875        1423 160689597        20218       TRUE
+#&gt; 152     EU138865             964        1423 160689735        20218       TRUE
+#&gt; 153     EU138589             835        1423 160689321        20218       TRUE
+#&gt; 154     GQ488746             568      135461 284154635        20218       TRUE
+#&gt; 155     LN681568            1502        1423 732170060         2017         NA
 #&gt; 
 #&gt; $`1172`$molecular_biology$GC_content
 #&gt;   GC_content                                  GC_method ID_reference
@@ -10887,13 +10966,9 @@ of BacDive-IDs, on which you can call your own loop containing
 #&gt; 2                                                Verslyppe, B., De Smet, W., De Baets, B., De Vos, P., Dawyndt P. StrainInfo introduces electronic passports for microorganisms.. Syst Appl Microbiol. 37: 42-50 2014 (10.1016/j.syapm.2013.11.002, 24321274)
 #&gt; 3                                                                                                                                                                                                                             None; Curators of the CIP; None
 #&gt; 
-#&gt; </div><div class='input'>
-  <span class='co'># In case the `searchTerm` is unambiguous already, the data download will</span>
-  <span class='co'># procede automatically:</span>
-  <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='st'>"DSM 319"</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"culturecollectionno"</span>)</div><div class='output co'>#&gt;                                                   url
-#&gt; 1 https://bacdive.dsmz.de/api/bacdive/bacdive_id/717/</div><div class='input'>  <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='st'>"AJ000733"</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"sequence"</span>)</div><div class='output co'>#&gt;                                                   url
-#&gt; 1 https://bacdive.dsmz.de/api/bacdive/bacdive_id/717/</div><div class='input'>  <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='fl'>717</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"bacdive_id"</span>)</div><div class='output co'>#&gt; $taxonomy_name
-#&gt; $taxonomy_name$strains_tax_PNU
+#&gt; </div><div class='input'>  <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='st'>"DSM 319"</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"culturecollectionno"</span>)</div><div class='output co'>#&gt; <span class='message'>Data download in progress for BacDive-IDs: </span></div><div class='output co'>#&gt; <span class='message'>717 </span></div><div class='output co'>#&gt; $`717`
+#&gt; $`717`$taxonomy_name
+#&gt; $`717`$taxonomy_name$strains_tax_PNU
 #&gt;   species_epithet subspecies_epithet is_type_strain   domain     phylum   class
 #&gt; 1      megaterium                 NA          FALSE Bacteria Firmicutes Bacilli
 #&gt;   ordo      family status_fam    genus  status_gen             species
@@ -10901,7 +10976,7 @@ of BacDive-IDs, on which you can call your own loop containing
 #&gt;    status_spec             full_scientific_name ID_reference
 #&gt; 1 species (AL) Bacillus megaterium de Bary 1884        20215
 #&gt; 
-#&gt; $taxonomy_name$strains
+#&gt; $`717`$taxonomy_name$strains
 #&gt;     domain     phylum   class       ordo      family    genus
 #&gt; 1 Bacteria Firmicutes Bacilli Bacillales Bacillaceae Bacillus
 #&gt;               species species_epithet subspecies_epithet
@@ -10910,11 +10985,11 @@ of BacDive-IDs, on which you can call your own loop containing
 #&gt; 1 Bacillus megaterium de Bary 1884          NA          FALSE          105
 #&gt; 
 #&gt; 
-#&gt; $morphology_physiology
+#&gt; $`717`$morphology_physiology
 #&gt; named list()
 #&gt; 
-#&gt; $culture_growth_condition
-#&gt; $culture_growth_condition$culture_medium
+#&gt; $`717`$culture_growth_condition
+#&gt; $`717`$culture_growth_condition$culture_medium
 #&gt;                           medium_name medium_growth
 #&gt; 1 NUTRIENT AGAR (DSMZ Medium 1), 30°C          TRUE
 #&gt;                                                       media_link
@@ -10924,24 +10999,24 @@ of BacDive-IDs, on which you can call your own loop containing
 #&gt;   ID_reference
 #&gt; 1          105
 #&gt; 
-#&gt; $culture_growth_condition$culture_temp
+#&gt; $`717`$culture_growth_condition$culture_temp
 #&gt;    ability test_type temp temperature_range ID_reference
 #&gt; 1 positive   optimum   30        mesophilic          105
 #&gt; 
 #&gt; 
-#&gt; $environment_sampling_isolation_source
+#&gt; $`717`$environment_sampling_isolation_source
 #&gt; named list()
 #&gt; 
-#&gt; $application_interaction
-#&gt; $application_interaction$risk_assessment
+#&gt; $`717`$application_interaction
+#&gt; $`717`$application_interaction$risk_assessment
 #&gt;   pathogenicity_human pathogenicity_animal pathogenicity_plant biosafety_level
 #&gt; 1                TRUE                   NA                  NA               1
 #&gt;              biosafety_level_comment ID_reference
 #&gt; 1 Risk group (German classification)          105
 #&gt; 
 #&gt; 
-#&gt; $molecular_biology
-#&gt; $molecular_biology$sequence
+#&gt; $`717`$molecular_biology
+#&gt; $`717`$molecular_biology$sequence
 #&gt;                                DB_sequence
 #&gt; 1     Marker Gene (EMBL Direct submission)
 #&gt; 2     Marker Gene (EMBL Direct submission)
@@ -11015,26 +11090,26 @@ of BacDive-IDs, on which you can call your own loop containing
 #&gt; 22      Z71474            6752      592022   1924924        20218       TRUE
 #&gt; 23   NC_014103         5097447      592022 295702242          105         NA
 #&gt; 
-#&gt; $molecular_biology$GC_content
+#&gt; $`717`$molecular_biology$GC_content
 #&gt;   GC_content GC_method ID_reference
 #&gt; 1       38.1        NA          105
 #&gt; 
 #&gt; 
-#&gt; $strain_availability
-#&gt; $strain_availability$strain_history
+#&gt; $`717`$strain_availability
+#&gt; $`717`$strain_availability$strain_history
 #&gt;       history ID_reference
 #&gt; 1 &lt;- IMG 1521          105
 #&gt; 
-#&gt; $strain_availability$strains
+#&gt; $`717`$strain_availability$strains
 #&gt;   strain_number ID_reference
 #&gt; 1       DSM 319          105
 #&gt; 
-#&gt; $strain_availability$straininfo_link
+#&gt; $`717`$strain_availability$straininfo_link
 #&gt;   straininfo_strainnumber                                      URL ID_reference
 #&gt; 1                  156585 http://www.straininfo.net/strains/156585        20218
 #&gt; 
 #&gt; 
-#&gt; $references
+#&gt; $`717`$references
 #&gt;   ID_reference
 #&gt; 1          105
 #&gt; 2        20215
@@ -11043,6 +11118,313 @@ of BacDive-IDs, on which you can call your own loop containing
 #&gt; 1                                                                                                                                            Leibniz Institut DSMZ-Deutsche Sammlung von Mikroorganismen und Zellkulturen GmbH; Curators of the DSMZ; DSM 319
 #&gt; 2 D.Gleim, M.Kracht, N.Weiss et. al.: Prokaryotic Nomenclature Up-to-date - compilation of all names of Bacteria and Archaea, validly published according to the Bacteriological Code since 1. Jan. 1980, and validly published nomenclatural changes since. 
 #&gt; 3                                                Verslyppe, B., De Smet, W., De Baets, B., De Vos, P., Dawyndt P. StrainInfo introduces electronic passports for microorganisms.. Syst Appl Microbiol. 37: 42-50 2014 (10.1016/j.syapm.2013.11.002, 24321274)
+#&gt; 
+#&gt; </div><div class='input'>  <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='st'>"AJ000733"</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"sequence"</span>)</div><div class='output co'>#&gt; <span class='message'>Data download in progress for BacDive-IDs: </span></div><div class='output co'>#&gt; <span class='message'>717 </span></div><div class='output co'>#&gt; $`717`
+#&gt; $`717`$taxonomy_name
+#&gt; $`717`$taxonomy_name$strains_tax_PNU
+#&gt;   species_epithet subspecies_epithet is_type_strain   domain     phylum   class
+#&gt; 1      megaterium                 NA          FALSE Bacteria Firmicutes Bacilli
+#&gt;   ordo      family status_fam    genus  status_gen             species
+#&gt; 1   NA Bacillaceae         NA Bacillus genus (AL)  Bacillus megaterium
+#&gt;    status_spec             full_scientific_name ID_reference
+#&gt; 1 species (AL) Bacillus megaterium de Bary 1884        20215
+#&gt; 
+#&gt; $`717`$taxonomy_name$strains
+#&gt;     domain     phylum   class       ordo      family    genus
+#&gt; 1 Bacteria Firmicutes Bacilli Bacillales Bacillaceae Bacillus
+#&gt;               species species_epithet subspecies_epithet
+#&gt; 1 Bacillus megaterium      megaterium                 NA
+#&gt;               full_scientific_name designation is_type_strain ID_reference
+#&gt; 1 Bacillus megaterium de Bary 1884          NA          FALSE          105
+#&gt; 
+#&gt; 
+#&gt; $`717`$morphology_physiology
+#&gt; named list()
+#&gt; 
+#&gt; $`717`$culture_growth_condition
+#&gt; $`717`$culture_growth_condition$culture_medium
+#&gt;                           medium_name medium_growth
+#&gt; 1 NUTRIENT AGAR (DSMZ Medium 1), 30°C          TRUE
+#&gt;                                                       media_link
+#&gt; 1 https://www.dsmz.de/microorganisms/medium/pdf/DSMZ_Medium1.pdf
+#&gt;                                                                                                                                                                                                                         medium_composition
+#&gt; 1 &lt;br&gt; Peptone 5.0 g&lt;br&gt; Meat extract 3.0 g&lt;br&gt; Agar, if necessary 15.0 g&lt;br&gt; Distilled water 1000.0 ml&lt;p&gt;Adjust pH to 7.0. For Bacillus strains the addition of 10.0 mg MnSO&lt;SUB&gt;4&lt;/SUB&gt; x H&lt;SUB&gt;2&lt;/SUB&gt;O is recommended for sporulation.
+#&gt;   ID_reference
+#&gt; 1          105
+#&gt; 
+#&gt; $`717`$culture_growth_condition$culture_temp
+#&gt;    ability test_type temp temperature_range ID_reference
+#&gt; 1 positive   optimum   30        mesophilic          105
+#&gt; 
+#&gt; 
+#&gt; $`717`$environment_sampling_isolation_source
+#&gt; named list()
+#&gt; 
+#&gt; $`717`$application_interaction
+#&gt; $`717`$application_interaction$risk_assessment
+#&gt;   pathogenicity_human pathogenicity_animal pathogenicity_plant biosafety_level
+#&gt; 1                TRUE                   NA                  NA               1
+#&gt;              biosafety_level_comment ID_reference
+#&gt; 1 Risk group (German classification)          105
+#&gt; 
+#&gt; 
+#&gt; $`717`$molecular_biology
+#&gt; $`717`$molecular_biology$sequence
+#&gt;                                DB_sequence
+#&gt; 1     Marker Gene (EMBL Direct submission)
+#&gt; 2     Marker Gene (EMBL Direct submission)
+#&gt; 3     Marker Gene (EMBL Direct submission)
+#&gt; 4     Marker Gene (EMBL Direct submission)
+#&gt; 5     Marker Gene (EMBL Direct submission)
+#&gt; 6     Marker Gene (EMBL Direct submission)
+#&gt; 7     Marker Gene (EMBL Direct submission)
+#&gt; 8     Marker Gene (EMBL Direct submission)
+#&gt; 9     Marker Gene (EMBL Direct submission)
+#&gt; 10    Marker Gene (EMBL Direct submission)
+#&gt; 11    Marker Gene (EMBL Direct submission)
+#&gt; 12 Marker Gene (GenBank Direct submission)
+#&gt; 13    Marker Gene (EMBL Direct submission)
+#&gt; 14                          INSDC Sequence
+#&gt; 15                          INSDC Sequence
+#&gt; 16    Marker Gene (EMBL Direct submission)
+#&gt; 17    Marker Gene (EMBL Direct submission)
+#&gt; 18    Marker Gene (EMBL Direct submission)
+#&gt; 19    Marker Gene (EMBL Direct submission)
+#&gt; 20    Marker Gene (EMBL Direct submission)
+#&gt; 21    Marker Gene (EMBL Direct submission)
+#&gt; 22    Marker Gene (EMBL Direct submission)
+#&gt; 23                 NCBI Reference Sequence
+#&gt;                                                                                                                                       Sequence_accession_title
+#&gt; 1                                                                                                                                Bacillus megaterium bgaM gene
+#&gt; 2                                                                              Bacillus megaterium DSM319 spoIV operon, 5' flanking region, 3' flanking region
+#&gt; 3                                                                                                Bacillus megaterium bamM gene for beta-amylase, strain DSM319
+#&gt; 4                                                                       Bacillus megaterium ydfA gene (partial), arsC gene, recA1 gene and ywoF gene (partial)
+#&gt; 5                                                                                  Bacillus megaterium cinA gene (partial), recA2 gene and ymdA gene (partial)
+#&gt; 6                                                            Bacillus megaterium yqeL gene (partial), yqeM, comER, comEA, comEB and comEC genes, strain DSM319
+#&gt; 7                                                                                                  Bacillus megaterium rplS gene (partial), sipM gene and ORF1
+#&gt; 8                                                                                  Bacillus megaterium ORF1 (partial), uvrB gene, uvrA gene and ORF2 (partial)
+#&gt; 9                                                                                                 Bacillus megaterium partial yneAB-ynzC operon, strain DSM319
+#&gt; 10                                                                    Bacillus megaterium barM gene for extracellular ribonuclease (putative) and partial ORF1
+#&gt; 11                                                                                              Bacillus megaterium degS/U operon (degSU genes), strain DSM319
+#&gt; 12                                                                                                Bacillus megaterium InhA precursor (inhA) gene, complete cds
+#&gt; 13                                                    TPA: Bacillus megaterium DSM 319 transfer-messenger mRNA Bacil_megat_319, single chain mature transcript
+#&gt; 14 Bacillus megaterium glyceraldehyde-3-phosphate dehydrogenase (gap), phosphoglycerate kinase (pgk), and triose phosphate isomerase (tpi) genes, complete cds
+#&gt; 15                                     Bacillus megaterium triose phosphate isomerase (tpi) gene, complete cds, and phosphoglycerate kinase (pgk) gene, 3' end
+#&gt; 16                                                                                                  Bacillus PGK gene for phosphoglycerate kinase (EC 2.7.2.3)
+#&gt; 17                                                                              Bacillus GAPDH gene for glyceraldehyde-3-phosphate dehydrogenase (EC 1.2.1.12)
+#&gt; 18                                                                                         B.megaterium xylA and xylR genes for xylose isomerase and repressor
+#&gt; 19                                                                                            Bacillus megaterium leuC gene for 3-isopropylmalat dehydrogenase
+#&gt; 20                                                                                                                              Bacillus megaterium spoIV gene
+#&gt; 21                                                                                                          Bacillus megaterium nprM gene for neutral protease
+#&gt; 22                                                                                                                                      B.megaterium xylR gene
+#&gt; 23                                                                                                                 Bacillus megaterium DSM319, complete genome
+#&gt;    seq_acc_num sequence_length NCBI_tax_ID   NCBI_Gi ID_reference text_mined
+#&gt; 1     AJ000733            6783      592022   3970646        20218       TRUE
+#&gt; 2     AJ224829            4348      592022   3947506        20218       TRUE
+#&gt; 3     AJ250858            2465      592022   6456805        20218       TRUE
+#&gt; 4     AJ515540            3347      592022  40217466        20218       TRUE
+#&gt; 5     AJ515541            2403      592022  50284428        20218       TRUE
+#&gt; 6     AJ548835            6061      592022  37650590        20218       TRUE
+#&gt; 7     AJ549327            2200      592022  28971411        20218       TRUE
+#&gt; 8     AJ549328            6700      592022  28971415        20218       TRUE
+#&gt; 9     AJ634464            4142      592022  82465332        20218       TRUE
+#&gt; 10    AJ810976            1766      592022  51490737        20218       TRUE
+#&gt; 11    AM398566            9450      592022 126540394        20218       TRUE
+#&gt; 12    DQ372704            3640      592022  87042176        20218       TRUE
+#&gt; 13    HG781834             362      592022 559132913        20218       TRUE
+#&gt; 14      M87647            5725        1404    143315        20218       TRUE
+#&gt; 15      M87648            1754        1404    143759        20218       TRUE
+#&gt; 16      X54519            1450      592022     39642        20218       TRUE
+#&gt; 17      X54520            1528      592022     39632        20218       TRUE
+#&gt; 18      X57598            3933      592022   2398721        20218       TRUE
+#&gt; 19      X65184            1436      592022    414096        20218       TRUE
+#&gt; 20      X75069            1101      592022    414098        20218       TRUE
+#&gt; 21      X75070            2047      592022    474101        20218       TRUE
+#&gt; 22      Z71474            6752      592022   1924924        20218       TRUE
+#&gt; 23   NC_014103         5097447      592022 295702242          105         NA
+#&gt; 
+#&gt; $`717`$molecular_biology$GC_content
+#&gt;   GC_content GC_method ID_reference
+#&gt; 1       38.1        NA          105
+#&gt; 
+#&gt; 
+#&gt; $`717`$strain_availability
+#&gt; $`717`$strain_availability$strain_history
+#&gt;       history ID_reference
+#&gt; 1 &lt;- IMG 1521          105
+#&gt; 
+#&gt; $`717`$strain_availability$strains
+#&gt;   strain_number ID_reference
+#&gt; 1       DSM 319          105
+#&gt; 
+#&gt; $`717`$strain_availability$straininfo_link
+#&gt;   straininfo_strainnumber                                      URL ID_reference
+#&gt; 1                  156585 http://www.straininfo.net/strains/156585        20218
+#&gt; 
+#&gt; 
+#&gt; $`717`$references
+#&gt;   ID_reference
+#&gt; 1          105
+#&gt; 2        20215
+#&gt; 3        20218
+#&gt;                                                                                                                                                                                                                                                     reference
+#&gt; 1                                                                                                                                            Leibniz Institut DSMZ-Deutsche Sammlung von Mikroorganismen und Zellkulturen GmbH; Curators of the DSMZ; DSM 319
+#&gt; 2 D.Gleim, M.Kracht, N.Weiss et. al.: Prokaryotic Nomenclature Up-to-date - compilation of all names of Bacteria and Archaea, validly published according to the Bacteriological Code since 1. Jan. 1980, and validly published nomenclatural changes since. 
+#&gt; 3                                                Verslyppe, B., De Smet, W., De Baets, B., De Vos, P., Dawyndt P. StrainInfo introduces electronic passports for microorganisms.. Syst Appl Microbiol. 37: 42-50 2014 (10.1016/j.syapm.2013.11.002, 24321274)
+#&gt; 
+#&gt; </div><div class='input'>  <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='fl'>717</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"bacdive_id"</span>)</div><div class='output co'>#&gt; $`717`
+#&gt; $`717`$taxonomy_name
+#&gt; $`717`$taxonomy_name$strains_tax_PNU
+#&gt;   species_epithet subspecies_epithet is_type_strain   domain     phylum   class
+#&gt; 1      megaterium                 NA          FALSE Bacteria Firmicutes Bacilli
+#&gt;   ordo      family status_fam    genus  status_gen             species
+#&gt; 1   NA Bacillaceae         NA Bacillus genus (AL)  Bacillus megaterium
+#&gt;    status_spec             full_scientific_name ID_reference
+#&gt; 1 species (AL) Bacillus megaterium de Bary 1884        20215
+#&gt; 
+#&gt; $`717`$taxonomy_name$strains
+#&gt;     domain     phylum   class       ordo      family    genus
+#&gt; 1 Bacteria Firmicutes Bacilli Bacillales Bacillaceae Bacillus
+#&gt;               species species_epithet subspecies_epithet
+#&gt; 1 Bacillus megaterium      megaterium                 NA
+#&gt;               full_scientific_name designation is_type_strain ID_reference
+#&gt; 1 Bacillus megaterium de Bary 1884          NA          FALSE          105
+#&gt; 
+#&gt; 
+#&gt; $`717`$morphology_physiology
+#&gt; named list()
+#&gt; 
+#&gt; $`717`$culture_growth_condition
+#&gt; $`717`$culture_growth_condition$culture_medium
+#&gt;                           medium_name medium_growth
+#&gt; 1 NUTRIENT AGAR (DSMZ Medium 1), 30°C          TRUE
+#&gt;                                                       media_link
+#&gt; 1 https://www.dsmz.de/microorganisms/medium/pdf/DSMZ_Medium1.pdf
+#&gt;                                                                                                                                                                                                                         medium_composition
+#&gt; 1 &lt;br&gt; Peptone 5.0 g&lt;br&gt; Meat extract 3.0 g&lt;br&gt; Agar, if necessary 15.0 g&lt;br&gt; Distilled water 1000.0 ml&lt;p&gt;Adjust pH to 7.0. For Bacillus strains the addition of 10.0 mg MnSO&lt;SUB&gt;4&lt;/SUB&gt; x H&lt;SUB&gt;2&lt;/SUB&gt;O is recommended for sporulation.
+#&gt;   ID_reference
+#&gt; 1          105
+#&gt; 
+#&gt; $`717`$culture_growth_condition$culture_temp
+#&gt;    ability test_type temp temperature_range ID_reference
+#&gt; 1 positive   optimum   30        mesophilic          105
+#&gt; 
+#&gt; 
+#&gt; $`717`$environment_sampling_isolation_source
+#&gt; named list()
+#&gt; 
+#&gt; $`717`$application_interaction
+#&gt; $`717`$application_interaction$risk_assessment
+#&gt;   pathogenicity_human pathogenicity_animal pathogenicity_plant biosafety_level
+#&gt; 1                TRUE                   NA                  NA               1
+#&gt;              biosafety_level_comment ID_reference
+#&gt; 1 Risk group (German classification)          105
+#&gt; 
+#&gt; 
+#&gt; $`717`$molecular_biology
+#&gt; $`717`$molecular_biology$sequence
+#&gt;                                DB_sequence
+#&gt; 1     Marker Gene (EMBL Direct submission)
+#&gt; 2     Marker Gene (EMBL Direct submission)
+#&gt; 3     Marker Gene (EMBL Direct submission)
+#&gt; 4     Marker Gene (EMBL Direct submission)
+#&gt; 5     Marker Gene (EMBL Direct submission)
+#&gt; 6     Marker Gene (EMBL Direct submission)
+#&gt; 7     Marker Gene (EMBL Direct submission)
+#&gt; 8     Marker Gene (EMBL Direct submission)
+#&gt; 9     Marker Gene (EMBL Direct submission)
+#&gt; 10    Marker Gene (EMBL Direct submission)
+#&gt; 11    Marker Gene (EMBL Direct submission)
+#&gt; 12 Marker Gene (GenBank Direct submission)
+#&gt; 13    Marker Gene (EMBL Direct submission)
+#&gt; 14                          INSDC Sequence
+#&gt; 15                          INSDC Sequence
+#&gt; 16    Marker Gene (EMBL Direct submission)
+#&gt; 17    Marker Gene (EMBL Direct submission)
+#&gt; 18    Marker Gene (EMBL Direct submission)
+#&gt; 19    Marker Gene (EMBL Direct submission)
+#&gt; 20    Marker Gene (EMBL Direct submission)
+#&gt; 21    Marker Gene (EMBL Direct submission)
+#&gt; 22    Marker Gene (EMBL Direct submission)
+#&gt; 23                 NCBI Reference Sequence
+#&gt;                                                                                                                                       Sequence_accession_title
+#&gt; 1                                                                                                                                Bacillus megaterium bgaM gene
+#&gt; 2                                                                              Bacillus megaterium DSM319 spoIV operon, 5' flanking region, 3' flanking region
+#&gt; 3                                                                                                Bacillus megaterium bamM gene for beta-amylase, strain DSM319
+#&gt; 4                                                                       Bacillus megaterium ydfA gene (partial), arsC gene, recA1 gene and ywoF gene (partial)
+#&gt; 5                                                                                  Bacillus megaterium cinA gene (partial), recA2 gene and ymdA gene (partial)
+#&gt; 6                                                            Bacillus megaterium yqeL gene (partial), yqeM, comER, comEA, comEB and comEC genes, strain DSM319
+#&gt; 7                                                                                                  Bacillus megaterium rplS gene (partial), sipM gene and ORF1
+#&gt; 8                                                                                  Bacillus megaterium ORF1 (partial), uvrB gene, uvrA gene and ORF2 (partial)
+#&gt; 9                                                                                                 Bacillus megaterium partial yneAB-ynzC operon, strain DSM319
+#&gt; 10                                                                    Bacillus megaterium barM gene for extracellular ribonuclease (putative) and partial ORF1
+#&gt; 11                                                                                              Bacillus megaterium degS/U operon (degSU genes), strain DSM319
+#&gt; 12                                                                                                Bacillus megaterium InhA precursor (inhA) gene, complete cds
+#&gt; 13                                                    TPA: Bacillus megaterium DSM 319 transfer-messenger mRNA Bacil_megat_319, single chain mature transcript
+#&gt; 14 Bacillus megaterium glyceraldehyde-3-phosphate dehydrogenase (gap), phosphoglycerate kinase (pgk), and triose phosphate isomerase (tpi) genes, complete cds
+#&gt; 15                                     Bacillus megaterium triose phosphate isomerase (tpi) gene, complete cds, and phosphoglycerate kinase (pgk) gene, 3' end
+#&gt; 16                                                                                                  Bacillus PGK gene for phosphoglycerate kinase (EC 2.7.2.3)
+#&gt; 17                                                                              Bacillus GAPDH gene for glyceraldehyde-3-phosphate dehydrogenase (EC 1.2.1.12)
+#&gt; 18                                                                                         B.megaterium xylA and xylR genes for xylose isomerase and repressor
+#&gt; 19                                                                                            Bacillus megaterium leuC gene for 3-isopropylmalat dehydrogenase
+#&gt; 20                                                                                                                              Bacillus megaterium spoIV gene
+#&gt; 21                                                                                                          Bacillus megaterium nprM gene for neutral protease
+#&gt; 22                                                                                                                                      B.megaterium xylR gene
+#&gt; 23                                                                                                                 Bacillus megaterium DSM319, complete genome
+#&gt;    seq_acc_num sequence_length NCBI_tax_ID   NCBI_Gi ID_reference text_mined
+#&gt; 1     AJ000733            6783      592022   3970646        20218       TRUE
+#&gt; 2     AJ224829            4348      592022   3947506        20218       TRUE
+#&gt; 3     AJ250858            2465      592022   6456805        20218       TRUE
+#&gt; 4     AJ515540            3347      592022  40217466        20218       TRUE
+#&gt; 5     AJ515541            2403      592022  50284428        20218       TRUE
+#&gt; 6     AJ548835            6061      592022  37650590        20218       TRUE
+#&gt; 7     AJ549327            2200      592022  28971411        20218       TRUE
+#&gt; 8     AJ549328            6700      592022  28971415        20218       TRUE
+#&gt; 9     AJ634464            4142      592022  82465332        20218       TRUE
+#&gt; 10    AJ810976            1766      592022  51490737        20218       TRUE
+#&gt; 11    AM398566            9450      592022 126540394        20218       TRUE
+#&gt; 12    DQ372704            3640      592022  87042176        20218       TRUE
+#&gt; 13    HG781834             362      592022 559132913        20218       TRUE
+#&gt; 14      M87647            5725        1404    143315        20218       TRUE
+#&gt; 15      M87648            1754        1404    143759        20218       TRUE
+#&gt; 16      X54519            1450      592022     39642        20218       TRUE
+#&gt; 17      X54520            1528      592022     39632        20218       TRUE
+#&gt; 18      X57598            3933      592022   2398721        20218       TRUE
+#&gt; 19      X65184            1436      592022    414096        20218       TRUE
+#&gt; 20      X75069            1101      592022    414098        20218       TRUE
+#&gt; 21      X75070            2047      592022    474101        20218       TRUE
+#&gt; 22      Z71474            6752      592022   1924924        20218       TRUE
+#&gt; 23   NC_014103         5097447      592022 295702242          105         NA
+#&gt; 
+#&gt; $`717`$molecular_biology$GC_content
+#&gt;   GC_content GC_method ID_reference
+#&gt; 1       38.1        NA          105
+#&gt; 
+#&gt; 
+#&gt; $`717`$strain_availability
+#&gt; $`717`$strain_availability$strain_history
+#&gt;       history ID_reference
+#&gt; 1 &lt;- IMG 1521          105
+#&gt; 
+#&gt; $`717`$strain_availability$strains
+#&gt;   strain_number ID_reference
+#&gt; 1       DSM 319          105
+#&gt; 
+#&gt; $`717`$strain_availability$straininfo_link
+#&gt;   straininfo_strainnumber                                      URL ID_reference
+#&gt; 1                  156585 http://www.straininfo.net/strains/156585        20218
+#&gt; 
+#&gt; 
+#&gt; $`717`$references
+#&gt;   ID_reference
+#&gt; 1          105
+#&gt; 2        20215
+#&gt; 3        20218
+#&gt;                                                                                                                                                                                                                                                     reference
+#&gt; 1                                                                                                                                            Leibniz Institut DSMZ-Deutsche Sammlung von Mikroorganismen und Zellkulturen GmbH; Curators of the DSMZ; DSM 319
+#&gt; 2 D.Gleim, M.Kracht, N.Weiss et. al.: Prokaryotic Nomenclature Up-to-date - compilation of all names of Bacteria and Archaea, validly published according to the Bacteriological Code since 1. Jan. 1980, and validly published nomenclatural changes since. 
+#&gt; 3                                                Verslyppe, B., De Smet, W., De Baets, B., De Vos, P., Dawyndt P. StrainInfo introduces electronic passports for microorganisms.. Syst Appl Microbiol. 37: 42-50 2014 (10.1016/j.syapm.2013.11.002, 24321274)
+#&gt; 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -11070,5 +11452,8 @@ of BacDive-IDs, on which you can call your own loop containing
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

@@ -7,3 +7,4 @@
 ^README\.Rmd$
 ^docs$
 ^figure/
+^\.github$

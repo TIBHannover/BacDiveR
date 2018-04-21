@@ -15,12 +15,6 @@
 #'
 #' @export
 #' @examples retrieve_data(searchTerm = "Bacillus subtilis subtilis")
-#'   # This returns a numeric vector of IDs. To download all the corresponding
-#'   # data, use:
-#'   retrieve_data("Bacillus subtilis subtilis")
-#'
-#'   # In case the `searchTerm` is unambiguous already, the data download will
-#'   # procede automatically:
 #'   retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")
 #'   retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
 #'   retrieve_data(searchTerm = 717, searchType = "bacdive_id")
@@ -63,17 +57,17 @@ retrieve_data <- function(searchTerm,
 download <-
   function(URL,
            userpwd = paste(get_credentials(), collapse = ":")) {
-    gsub(
-      pattern = "[[:space:]]+",
-      replacement = " ",
-      perl = TRUE,
-      # Prevent "lexical error: invalid character inside string."
-      # https://github.com/jeroen/jsonlite/issues/47
+  gsub(
+    pattern = "[[:space:]]+",
+    replacement = " ",
+    perl = TRUE,
+    # Prevent "lexical error: invalid character inside string."
+    # https://github.com/jeroen/jsonlite/issues/47
       RCurl::getURL(URL,
-                    userpwd = userpwd,
+    userpwd = userpwd,
                     httpauth = 1L)
-    )
-  }
+  )
+}
 
 
 #' Aggregate BacDive-IDs from a Paged List of Retrieved URLs

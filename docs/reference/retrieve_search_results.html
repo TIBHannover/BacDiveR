@@ -18,13 +18,19 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Retrieve Results of an Advanced Search/Query — retrieve_search_results" />
+
+<meta property="og:description" content="Retrieve Results of an Advanced Search/Query" />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -32,6 +38,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -47,8 +55,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">BacDiveR</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">BacDiveR</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -68,18 +80,22 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/advanced-search.html">The Semi-Automatic Approach</a>
-    </li>
-    <li>
       <a href="../articles/BacDive-ing-in.html">BacDive-ing in</a>
     </li>
+    <li>
+      <a href="../articles/advanced-search.html">The Semi-Automatic Approach</a>
+    </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -87,10 +103,12 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Retrieve Results of an Advanced Search/Query</h1>
+    
+    <div class="hidden name"><code>retrieve_search_results.Rd</code></div>
     </div>
 
     
@@ -99,7 +117,7 @@
 
     <pre class="usage"><span class='fu'>retrieve_search_results</span>(<span class='no'>queryURL</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -112,12 +130,10 @@ search".</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>EITHER (from an unambiguous searchTerm, or in case of
-<code>force_taxon_download = TRUE</code>) a list of lists containing the single
-BacDive dataset for that <code>searchTerm</code>,</p>
-<p>OR (from a _am_biguous search; eg.g <code>serchType = "taxon"</code>) a numeric vector
-of BacDive-IDs, on which you can call your own loop containing
-<code><a href='retrieve_data.html'>retrieve_data()</a></code> to retrieve the individual data sets.</p>
+    <p>A list of lists containing either a single BacDive dataset in case
+the <code>searchTerm</code> was unambiguous (<code>bacdive_id</code>, <code>sequence</code>,
+<code>culturecollectionno</code>), or a large list containing all datasets that match
+an ambiguous <code>searchTerm</code> (most <code>taxon</code>s).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -528,5 +544,8 @@ of BacDive-IDs, on which you can call your own loop containing
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+
