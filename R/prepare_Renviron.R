@@ -15,7 +15,7 @@ prepare_Renviron <- function() {
     Sys.chmod(r_env_file, mode = "0600")
   }
 
-  message <- "add your BacDive login credentials.\n# See https://github.com/katrinleinweber/BacDiveR/\n# for more installation instructions."
+  message <- "add your BacDive login credentials.\n# See https://github.com/tibhannover/BacDiveR/\n# for more installation instructions."
 
   # add credential keys if none exist
   for (type in c("email", "password")) {

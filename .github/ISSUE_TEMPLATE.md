@@ -28,9 +28,9 @@ irrelevant lines with ~~ ... ~~ is fine :-) -->
 ##### I have...
 
 - [ ] ... ensured that I have installed the [latest release version
-](https://github.com/katrinleinweber/BacDiveR/releases) and this issue pertains
+](https://github.com/tibhannover/BacDiveR/releases) and this issue pertains
 to it, not to an old version.
 - [ ] ... spent a few minutes [searching the existing issues
-](https://github.com/katrinleinweber/BacDiveR/issues?utf8=%E2%9C%93&q=all).
+](https://github.com/tibhannover/BacDiveR/issues?utf8=%E2%9C%93&q=all).
 
 <!-- Thank you :-)   I'll try to reply to this within one week. -->

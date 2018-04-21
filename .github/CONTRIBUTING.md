@@ -18,7 +18,7 @@ When in doubt, please proceed with:
 
 
 ### Filing issues (also see the [`ISSUE_TEMPLATE.md`
-]((https://github.com/katrinleinweber/BacDiveR/blob/master/.github/ISSUE_TEMPLATE.md))
+]((https://github.com/tibhannover/BacDiveR/blob/master/.github/ISSUE_TEMPLATE.md))
 
 Please don't hesitate to open an [issue][issues] if you:
 
@@ -34,12 +34,12 @@ a) in other cases, such as wanting to discuss sending a substantial pull request
 Please spend a few minutes searching the [existing issues (also the closed ones)
 ][issues], though. What you want to write might have been already ;-)
 
-[issues]: https://github.com/katrinleinweber/BacDiveR/issues/
+[issues]: https://github.com/tibhannover/BacDiveR/issues/
 [reprex]: https://www.tidyverse.org/help/#reprex
 
 
 ### Sending pull requests (also see the [`PULL_REQUEST_TEMPLATE.md
-`]((https://github.com/katrinleinweber/BacDiveR/blob/master/.github/PULL_REQUEST_TEMPLATE.md))
+`]((https://github.com/tibhannover/BacDiveR/blob/master/.github/PULL_REQUEST_TEMPLATE.md))
 
 Contributions through pull requests are welcome, and will be replied to within 1 
 or 2 (non-holi)days.
@@ -52,4 +52,4 @@ for documentation.
 *  We use [testthat](https://cran.r-project.org/package=testthat). Contributions
 with test cases included are easier to accept.  
 
-[bn]: https://github.com/katrinleinweber/BacDiveR/branches
+[bn]: https://github.com/tibhannover/BacDiveR/branches

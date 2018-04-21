@@ -32,7 +32,7 @@ research better and faster, by:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("katrinleinweber/BacDiveR")
+devtools::install_github("tibhannover/BacDiveR")
 ```
 
 3.  After installing, run the following commands to save your login
