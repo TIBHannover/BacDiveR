@@ -9,21 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `retrieve_search_results()`, see #61
-- Architecture Decision records, see #53 & `/docs/arch/adr-*.md`
 
 ### Changed
 
-- `retrieve_data()` now downloads the dataset(s) by default, not only the ID(s), see #54 & #59 
 
 ## [0.4.0] - 2018-04-27
 
 ### Added
 
 - This changelog (see #41)
+- `retrieve_search_results()`, see #61
+- Architecture Decision records, see #53 & `/docs/arch/adr-*.md`
 
 ### Changed
 
+- `retrieve_data()` now downloads the dataset(s) by default, not only the ID(s), see #54 & #59 
 - Datasets in the aggregated (large) list are now named according to their 
 `bacdive_ID`s (see #47). Before, the list were only numbered with `1`, `2`, `3`,
 etc.
