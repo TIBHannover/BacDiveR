@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Authors • BacDiveR</title>
+<title>Contributing to BacDiveR • BacDiveR</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@
 <link href="pkgdown.css" rel="stylesheet">
 <script src="jquery.sticky-kit.min.js"></script>
 <script src="pkgdown.js"></script>
-<meta property="og:title" content="Authors" />
+<meta property="og:title" content="Contributing to BacDiveR" />
 
 
 <!-- mathjax -->
@@ -42,7 +42,7 @@
   </head>
 
   <body>
-    <div class="container template-authors">
+    <div class="container template-title-body">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -103,15 +103,47 @@
 <div class="row">
   <div class="contents col-md-9">
     <div class="page-header">
-      <h1>Authors</h1>
+      <h1>Contributing to BacDiveR</h1>
     </div>
 
-    <ul class="list-unstyled">
-      <li>
-        <p><strong>Katrin Leinweber</strong>. Author, maintainer. 
-        </p>
-      </li>
-    </ul>
+<div id="contributing-to-bacdiver" class="section level1">
+
+<p>This outlines how to propose a change to BacDiveR. Because this project should be to developed according to the needs of BacDive users, please in particular feel free to up- or down-vote existing issues, pull requests or comments. Thumbs-up and -down reactions will inform which issues to prioritise.</p>
+<div id="improving-texts" class="section level3">
+<h3 class="hasAnchor">
+<a href="#improving-texts" class="anchor"></a>Improving texts</h3>
+<p>Small typos or grammatical errors in documentation may be edited directly using the GitHub web interface, so long as the changes are made in the <em>source</em> file.</p>
+<ul>
+<li>YES: you edit a roxygen comment in an <code>.R</code> file below <code>R/</code> or any <code>.Rmd</code> file.</li>
+<li>NO: you edit an <code>.Rd</code> file below <code>man/</code>.</li>
+</ul>
+<p>When in doubt, please proceed with:</p>
+</div>
+<div id="filing-issues-also-see-the-issue_template-md" class="section level3">
+<h3 class="hasAnchor">
+<a href="#filing-issues-also-see-the-issue_template-md" class="anchor"></a>Filing issues (also see the <a href="(https://github.com/katrinleinweber/BacDiveR/blob/master/.github/ISSUE_TEMPLATE.md)"><code>ISSUE_TEMPLATE.md</code></a>
+</h3>
+<p>Please don’t hesitate to open an <a href="https://github.com/katrinleinweber/BacDiveR/issues/">issue</a> if you:</p>
+<p>a) want to ask a question,</p>
+<p>a) suggest a new feature,</p>
+<p>a) found a bug. Illustrating it with a <a href="https://www.tidyverse.org/help/#reprex">minimal, reproducible example</a> is extremely helpful for fixing it ;-)</p>
+<p>a) in other cases, such as wanting to discuss sending a substantial pull request.</p>
+<p>Please spend a few minutes searching the <a href="https://github.com/katrinleinweber/BacDiveR/issues/">existing issues (also the closed ones)</a>, though. What you want to write might have been already ;-)</p>
+</div>
+<div id="sending-pull-requests-also-see-the-pull_request_template-md" class="section level3">
+<h3 class="hasAnchor">
+<a href="#sending-pull-requests-also-see-the-pull_request_template-md" class="anchor"></a>Sending pull requests (also see the <a href="(https://github.com/katrinleinweber/BacDiveR/blob/master/.github/PULL_REQUEST_TEMPLATE.md)"><code>PULL_REQUEST_TEMPLATE.md</code></a>
+</h3>
+<p>Contributions through pull requests are welcome, and will be replied to within 1 or 2 (non-holi)days.</p>
+<ul>
+<li>We recommend that you create a Git branch for each PR, preferably with an issue number prepended to the <a href="https://github.com/katrinleinweber/BacDiveR/branches">branch name</a>.</li>
+<li>New code should follow RStudio’s style guide. Select code &amp; press <code>Shift</code>+<code>CTRL</code>/<code>CMD</code>+<code>A</code> (or go to the “Code Tools” menu &gt; “Reformat Code”).</li>
+<li>We use <a href="https://cran.r-project.org/package=roxygen2">roxygen2</a>, with <a href="https://cran.r-project.org/web/packages/roxygen2/vignettes/markdown.html">Markdown syntax</a>, for documentation.<br>
+</li>
+<li>We use <a href="https://cran.r-project.org/package=testthat">testthat</a>. Contributions with test cases included are easier to accept.</li>
+</ul>
+</div>
+</div>
 
   </div>
 
