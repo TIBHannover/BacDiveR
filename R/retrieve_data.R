@@ -14,10 +14,10 @@
 #'   an ambiguous `searchTerm` (most `taxon`s).
 #'
 #' @export
-#' @examples retrieve_data(searchTerm = "Bacillus subtilis subtilis")
-#'   retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")
-#'   retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
-#'   retrieve_data(searchTerm = 717, searchType = "bacdive_id")
+#' @examples dataset <- retrieve_data(searchTerm = 717, searchType = "bacdive_id")
+#' # dataset <- retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")
+#' # dataset <- retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
+#' # Bss_data <- retrieve_data(searchTerm = "Bacillus subtilis subtilis")
 retrieve_data <- function(searchTerm,
                           searchType = "taxon") {
   payload <-
