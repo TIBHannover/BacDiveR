@@ -15,7 +15,8 @@ prepare_Renviron <- function() {
     Sys.chmod(r_env_file, mode = "0600")
   }
 
-  message <- "add your BacDive login credentials.\n# See https://github.com/tibhannover/BacDiveR/\n# for more installation instructions."
+  message <-
+    "add your BacDive login credentials.\n# See https://github.com/tibhannover/BacDiveR/\n# for more installation instructions."
 
   # add credential keys if none exist
   for (type in c("email", "password")) {
@@ -25,14 +26,22 @@ prepare_Renviron <- function() {
       readLines(r_env_file, warn = FALSE)
     ))) {
       if (type == "email")
-        write(paste("\n# Please", message), file = r_env_file, append = TRUE)
+        write(paste("\n# Please", message),
+              file = r_env_file,
+              append = TRUE)
       write(start_of_line, file = r_env_file, append = TRUE)
     }
   }
 
   # detect empty credential values/variables & prompt user to fill them
   if (any(grepl(paste0("^", start_of_line, "$"), readLines(r_env_file)))) {
-    message(paste(r_env_file, "prepared. If you don't see it open now, please run `file.edit(r_env_file)` and", message))
+    message(
+      paste(
+        r_env_file,
+        "prepared. If you don't see it open now, please run `file.edit(r_env_file)` and",
+        message
+      )
+    )
     utils::file.edit(r_env_file)
   }
 }

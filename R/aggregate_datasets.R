@@ -7,8 +7,8 @@ aggregate_datasets <- function(payload, from_IDs = FALSE)
   }
   else
   {
-  URLs <- aggregate_result_URLs(payload)
-  IDs <- URLs_to_IDs(URLs)
+    URLs <- aggregate_result_URLs(payload)
+    IDs <- URLs_to_IDs(URLs)
   }
   message("Data download in progress for BacDive-IDs: ", appendLF = FALSE)
 

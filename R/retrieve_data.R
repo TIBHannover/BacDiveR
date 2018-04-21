@@ -57,17 +57,17 @@ retrieve_data <- function(searchTerm,
 download <-
   function(URL,
            userpwd = paste(get_credentials(), collapse = ":")) {
-  gsub(
-    pattern = "[[:space:]]+",
-    replacement = " ",
-    perl = TRUE,
-    # Prevent "lexical error: invalid character inside string."
-    # https://github.com/jeroen/jsonlite/issues/47
+    gsub(
+      pattern = "[[:space:]]+",
+      replacement = " ",
+      perl = TRUE,
+      # Prevent "lexical error: invalid character inside string."
+      # https://github.com/jeroen/jsonlite/issues/47
       RCurl::getURL(URL,
-    userpwd = userpwd,
+                    userpwd = userpwd,
                     httpauth = 1L)
-  )
-}
+    )
+  }
 
 
 #' Aggregate BacDive-IDs from a Paged List of Retrieved URLs
@@ -103,14 +103,14 @@ aggregate_result_URLs <- function(results) {
     URLs <- results$url
   else
   {
-  URLs <- c()
-  while (TRUE) {
-    URLs <- c(URLs, unlist(results$results, use.names = FALSE))
-    if (!is.null(results$`next`))
-      results <- jsonlite::fromJSON(download(results$`next`))
-    else
-      break
-  }
+    URLs <- c()
+    while (TRUE) {
+      URLs <- c(URLs, unlist(results$results, use.names = FALSE))
+      if (!is.null(results$`next`))
+        results <- jsonlite::fromJSON(download(results$`next`))
+      else
+        break
+    }
   }
   return(paste0(URLs, "?format=json"))
 }
