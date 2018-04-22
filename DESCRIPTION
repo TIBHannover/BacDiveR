@@ -2,7 +2,7 @@ Package: BacDiveR
 Title: A Programmatic Interface For BacDive, The DSMZ's Bacterial Diversity Metadatabase
 Version: 0.4.1
 Authors@R: person("Katrin", "Leinweber", email = "katrin.leinweber@tib.eu", role = c("aut", "cre"))
-Description: BacDive focuses on providing organism-linked information covering the multifarious aspects of bacterial biodiversity: taxonomic classification, morphology, physiology, cultivation, origin natural habitat and more, both for bacterial and archeal strains. BacDiveR helps you investigate this data offline, and semi-automatically in R.
+Description: BacDive focuses on providing organism-linked information covering the multifarious aspects of bacterial biodiversity: taxonomic classification, morphology, physiology, cultivation, origin natural habitat and more, both for bacterial and archaeal strains. BacDiveR helps you investigate this data offline, and semi-automatically in R.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

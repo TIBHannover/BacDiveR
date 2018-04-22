@@ -1,6 +1,6 @@
 #' Retrieve Results of an Advanced Search/Query
 #'
-#' @param queryURL URL of a query prepated on [BacDive.DSMZ.de/AdvSearch
+#' @param queryURL URL of a query prepared on [BacDive.DSMZ.de/AdvSearch
 #'   ](https://bacdive.dsmz.de/advsearch), as explained in the vignette "The
 #'   semi-automatic approach: retrieving data through a pre-configured advanced
 #'   search".
