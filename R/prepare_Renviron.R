@@ -7,7 +7,7 @@
 #'
 #' @examples prepare_Renviron()
 prepare_Renviron <- function() {
-  r_env_file <- get_Renviron_path()
+  r_env_file <- construct_Renviron_path()
 
   if (!file.exists(r_env_file))
   {

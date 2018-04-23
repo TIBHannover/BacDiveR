@@ -2,7 +2,7 @@
 #'
 #' @return A vector or the two character strings `BacDive_email` and `BacDive_password` representing those two environment variables.
 get_credentials <- function() {
-  readRenviron(get_Renviron_path())
+  readRenviron(construct_Renviron_path())
 
   id <- Sys.getenv("BacDive_email")
   pw <- Sys.getenv("BacDive_password")
