@@ -42,6 +42,6 @@ prepare_Renviron <- function() {
         message
       )
     )
-    utils::file.edit(r_env_file)
+    file.edit(r_env_file)
   }
 }
