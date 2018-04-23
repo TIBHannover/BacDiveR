@@ -15,7 +15,7 @@ get_credentials <- function(test = FALSE) {
   }
 
   if (!nzchar(id) | !nzchar(pw))
-    stop("BacDive login credentials not set completely. Please run prepare_Renviron().")
+    warning("BacDive login credentials not set completely. Please run prepare_Renviron().")
 
   return(c(id, pw))
 }
