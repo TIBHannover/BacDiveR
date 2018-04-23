@@ -7,8 +7,8 @@ public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus
 
 This R package provides a programmatic interface for the [Bacterial
 Diversity Metadatabase][BD] ([Söhngen et al. 2014 & 2016
-](#references)) of the [DSMZ (German Collection of Microorganisms and Cell Cultures)
-][DMSZ]. BacDiveR helps you to conduct your 
+](#references)) of the [DSMZ (German Collection of Microorganisms and Cell Cultures)][DMSZ].
+BacDiveR helps you to conduct your 
 research better and faster, by:
 
 - downloading the BacDive datasets you want to investigate off-line, and by
