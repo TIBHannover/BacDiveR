@@ -6,7 +6,7 @@
 This R package provides a programmatic interface for the [Bacterial
 Diversity Metadatabase][BD] ([Söhngen et al. 2014 & 2016
 ](#references)) of the [DSMZ (German Collection of Microorganisms and Cell Cultures)][DMSZ].
-BacDiveR helps you to conduct your 
+BacDiveR helps you to conduct your microbial
 research better and faster, by:
 
 - downloading the BacDive datasets you want to investigate off-line, and by
@@ -52,11 +52,8 @@ and make sure it contains the following:
 
 There are two main functions. Please click on their names to read their docu: 
 [`retrieve_data()`][r_d] and [`retrieve_search_results()`][r_s_r].
-
-For more details, please see the vignettes:
-
-1. ["BacDive-ing in"][dive-in]
-1. ["Semi-automatic approach"][adv-search]
+For real-life examples, please read the vignettes ["BacDive-ing in"][dive-in] 
+and about the ["Semi-automatic approach"][adv-search].
 
 [r_d]: https://tibhannover.github.io/BacDiveR/reference/retrieve_data.html
 [r_s_r]: https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html
