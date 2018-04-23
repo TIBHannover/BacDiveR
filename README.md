@@ -61,6 +61,12 @@ and about the ["Semi-automatic approach"][adv-search].
 [adv-search]: https://tibhannover.github.io/BacDiveR/articles/advanced-search.html
 
 
+## Known issues: see [bugs] and [ADR]s
+
+[ADR]: https://github.com/TIBHannover/BacDiveR/tree/master/docs/arch
+[bugs]: https://github.com/tibhannover/BacDiveR/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Aupdated-desc
+
+
 # References
 
 - Söhngen, Carola, Boyke Bunk, Adam Podstawka, Dorothea Gleim, and Jörg
