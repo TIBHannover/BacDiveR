@@ -1,4 +1,4 @@
-<!-- Please start with a brief summary. If it's trivial, "See diff" and deletingthe rest of the template text is fine :-) -->
+<!-- Please start with a brief summary. If it's trivial, "See diff" and deleting the rest of the template text is fine :-) -->
 
 See diff ;-)
 
