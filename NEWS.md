@@ -5,8 +5,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Added
+### Changed
+### Deprecated
+### Removed
+### Fixed
+### Security
 
--
+
+## BacDiveR 0.4.2
+
+### Fixed
+
+- Install errors are now warnings and better advise about fixing them (#62)
+
+
+## BacDiveR 0.4.1
 
 ### Changed
 
@@ -15,10 +28,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   [pages](https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html)
   (see #52)
 
-### Deprecated
-### Removed
-### Fixed
-### Security
 
 ## BacDiveR 0.4.0
 
@@ -34,6 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Datasets in the aggregated (large) list are now named according to their 
 `bacdive_ID`s (see #47). Before, the lists were only numbered with `1`, `2`, `3`,
 etc.
+
 
 ## BacDiveR 0.3.1
 
