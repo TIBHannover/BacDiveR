@@ -7,7 +7,7 @@
 #'
 #' @examples prepare_Renviron()
 prepare_Renviron <- function() {
-  r_env_file <- get_Renviron_path()
+  r_env_file <- construct_Renviron_path()
 
   if (!file.exists(r_env_file))
   {
@@ -38,10 +38,11 @@ prepare_Renviron <- function() {
     message(
       paste(
         r_env_file,
-        "prepared. If you don't see it open now, please run `file.edit(r_env_file)` and",
-        message
+        "prepared. If you don't see it open now, please run:\n
+        `file.edit(file.path(Sys.getenv('HOME'), '.Renviron'))`\n
+        and", message
       )
     )
-    utils::file.edit(r_env_file)
+    file.edit(r_env_file)
   }
 }

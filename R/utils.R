@@ -2,7 +2,7 @@
 #'
 #' @return A character vector representing the path to the user's `.Renviron`
 #'   file.
-get_Renviron_path <- function() {
+construct_Renviron_path <- function() {
   path <- Sys.getenv("HOME")
   if (nzchar(path))
     path <- normalizePath("~/")
