@@ -33,20 +33,19 @@ research better and faster, by:
 devtools::install_github("tibhannover/BacDiveR")
 ```
 
-3.  After installing, run the following commands to save your login
-    credentials locally:
+3.  After installing, follow the instructions on the console to save your login
+    credentials locally and restart R(Studio) or run:
+
+In the examples and vignettes, the data retrieval will only work if your login credentials are correct in themselves (no typos) and were correctly saved. Console output like `"{\"detail\": \"Invalid username/password\"}"`, or `Error: $ operator is invalid for atomic vectors` mean that either the login credentials or the `.Renviron` file are incorrect. In that case, please run:
 
 ``` r
-file.edit(BacDiveR:::get_Renviron_path())
+file.edit(file.path(Sys.getenv('HOME'), '.Renviron'))
 ```
 
-4.  In that file, add your email and password directly after the `=`
-    signs, save it, then restart R(Studio) or run:
+and make sure it contains the following:
 
-``` r
-readRenviron(BacDiveR:::get_Renviron_path())
-```
-In the following examples, the data retrieval will only work if your login credentials are correct in themselves (no typos) and were correctly saved. Console output like `"{\"detail\": \"Invalid username/password\"}"`, or `Error: $ operator is invalid for atomic vectors` mean that either the login credentials or the `.Renviron` file are incorrect. Please repeat steps 2 to 4.
+> BacDive_email=your.email@provider.org
+> BacDive_password=YOUR_20_char_password
 
 
 ## How to use
