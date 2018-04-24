@@ -1,10 +1,10 @@
 all: check site
 
-	Rscript -e "devtools::check(document = FALSE)"
 check:
+	Rscript -e "devtools::check()"
 
 docu:
-	Rscript -e "devtools::document(); roxygen2::roxygenise()"
+	Rscript -e "devtools::document()"
 
 site: vignettes
 	Rscript -e "pkgdown::build_site()"
