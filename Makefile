@@ -1,13 +1,13 @@
-all: docu vignettes site
+all: check site
 
-check: docu
 	Rscript -e "devtools::check(document = FALSE)"
+check:
 
-docu: vignettes
+docu:
 	Rscript -e "devtools::document(); roxygen2::roxygenise()"
 
-site: docu
+site: vignettes
 	Rscript -e "pkgdown::build_site()"
 
-vignettes:
+vignettes: docu
 	Rscript -e "knitr::knit(list.files(path = "vignettes", pattern = "*.Rmd$", full.names = TRUE))"
