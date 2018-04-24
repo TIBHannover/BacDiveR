@@ -67,6 +67,12 @@ and about the ["Semi-automatic approach"][adv-search].
 [bugs]: https://github.com/tibhannover/BacDiveR/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Aupdated-desc
 
 
+## Similar tools
+
+- [@cjm007's `BacDive_` (Python)](https://github.com/cjm007/BacDive_)
+- [@zorino's `microbe-dbs` (Python & Shell)](https://github.com/zorino/microbe-dbs)
+
+
 # References
 
 - Söhngen, Carola, Boyke Bunk, Adam Podstawka, Dorothea Gleim, and Jörg
