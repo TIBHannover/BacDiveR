@@ -106,9 +106,8 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <p>In the examples and vignettes, the data retrieval will only work if your login credentials are correct in themselves (no typos) and were correctly saved. Console output like <code>"{\"detail\": \"Invalid username/password\"}"</code>, or <code>Error: $ operator is invalid for atomic vectors</code> mean that either the login credentials or the <code>.Renviron</code> file are incorrect. In that case, please run:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">file.edit</span>(<span class="kw">file.path</span>(<span class="kw">Sys.getenv</span>(<span class="st">'HOME'</span>), <span class="st">'.Renviron'</span>))</code></pre></div>
 <p>and make sure it contains the following:</p>
-<blockquote>
-<p><a href="mailto:BacDive_email=your.email@provider.org">BacDive_email=your.email@provider.org</a> BacDive_password=YOUR_20_char_password</p>
-</blockquote>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">BacDive_email=your.email<span class="op">@</span>provider.org</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">BacDive_password=YOUR_<span class="dv">20</span>_char_password</a></code></pre></div>
 </div>
 <div id="how-to-use" class="section level2">
 <h2 class="hasAnchor">

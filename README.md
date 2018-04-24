@@ -44,8 +44,8 @@ file.edit(file.path(Sys.getenv('HOME'), '.Renviron'))
 
 and make sure it contains the following:
 
-> BacDive_email=your.email@provider.org
-> BacDive_password=YOUR_20_char_password
+    BacDive_email=your.email@provider.org
+    BacDive_password=YOUR_20_char_password
 
 
 ## How to use
