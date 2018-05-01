@@ -42,7 +42,7 @@ prepare_Renviron <- function() {
         `file.edit(file.path(Sys.getenv('HOME'), '.Renviron'))`\n
         and", message
       )
-    )
+      )
     file.edit(r_env_file)
   }
 }
