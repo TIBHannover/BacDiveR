@@ -42,3 +42,6 @@ right of the "hits" list.
 
 1. Enjoy the list of downloaded datasets, just as you would after using
 `retrieve_data(searchTerm = ..., searchType = ...)`.
+
+[dive-in]: https://tibhannover.github.io/BacDiveR/articles/BacDive-ing-in.html
+
