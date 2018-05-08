@@ -50,9 +50,9 @@ and make sure it contains the following:
 
 ## How to use
 
-There are two main functions. Please click on their names to read their docu: 
+There are two main functions. Please click on their names to read their docu:
 [`retrieve_data()`][r_d] and [`retrieve_search_results()`][r_s_r].
-For real-life examples, please read the vignettes ["BacDive-ing in"][dive-in] 
+For real-life examples, please read the vignettes ["BacDive-ing in"][dive-in]
 and about the ["Semi-automatic approach"][adv-search].
 
 [r_d]: https://tibhannover.github.io/BacDiveR/reference/retrieve_data.html
