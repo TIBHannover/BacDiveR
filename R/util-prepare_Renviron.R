@@ -6,7 +6,8 @@
 #' @export
 #'
 #' @examples prepare_Renviron()
-prepare_Renviron <- function() {
+prepare_Renviron <- function()
+  {
   r_env_file <- construct_Renviron_path()
 
   if (!file.exists(r_env_file))

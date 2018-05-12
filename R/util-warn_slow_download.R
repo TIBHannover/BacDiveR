@@ -1,4 +1,5 @@
-warn_slow_download <- function(N_datasets) {
+warn_slow_download <- function(N_datasets)
+  {
   warning(
     paste0(
       N_datasets,

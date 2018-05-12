@@ -3,7 +3,8 @@
 #' @inheritParams retrieve_data
 #'
 #' @return A character string with possibly sanitised searchType, see example.
-sanitise_input <- function(searchTerm, searchType) {
+sanitise_input <- function(searchTerm, searchType)
+  {
   if (grepl(pattern = "[^[:alnum:] ]",
             x = searchTerm,
             ignore.case = TRUE))
