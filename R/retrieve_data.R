@@ -57,6 +57,7 @@ retrieve_data <- function(searchTerm,
 download <-
   function(URL,
            userpwd = paste(get_credentials(), collapse = ":")) {
+    message(URLs_to_IDs(URL), " ", appendLF = FALSE)
     gsub(
       pattern = "[[:space:]]+",
       replacement = " ",
