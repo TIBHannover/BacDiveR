@@ -17,8 +17,7 @@ the GitHub web interface, so long as the changes are made in the _source_ file.
 When in doubt, please proceed with:
 
 
-### Filing issues (also see the [`ISSUE_TEMPLATE.md`
-]((https://github.com/tibhannover/BacDiveR/blob/master/.github/ISSUE_TEMPLATE.md))
+### Filing issues (also see the [`ISSUE_TEMPLATE.md`](https://github.com/tibhannover/BacDiveR/blob/master/.github/ISSUE_TEMPLATE.md))
 
 Please don't hesitate to open an [issue][issues] if you:
 
@@ -38,8 +37,7 @@ Please spend a few minutes searching the [existing issues (also the closed ones)
 [reprex]: https://www.tidyverse.org/help/#reprex
 
 
-### Sending pull requests (also see the [`PULL_REQUEST_TEMPLATE.md
-`]((https://github.com/tibhannover/BacDiveR/blob/master/.github/PULL_REQUEST_TEMPLATE.md))
+### Sending pull requests (also see the [`PULL_REQUEST_TEMPLATE.md`](https://github.com/tibhannover/BacDiveR/blob/master/.github/PULL_REQUEST_TEMPLATE.md))
 
 Contributions through pull requests are welcome, and will be replied to within 1 
 or 2 (non-holi)days.
