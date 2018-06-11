@@ -8,3 +8,4 @@
 ^docs$
 ^figure/
 ^\.github$
+^codemeta\.json$

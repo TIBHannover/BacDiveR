@@ -4,7 +4,7 @@ check:
 	Rscript -e "devtools::check()"
 
 docu:
-	Rscript -e "devtools::document()"
+	Rscript -e "devtools::document(); codemetar::write_codemeta()"
 
 site: vignettes
 	Rscript -e "pkgdown::build_site()"
