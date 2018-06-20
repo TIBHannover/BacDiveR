@@ -8,8 +8,8 @@
 <title>A Programmatic Interface For BacDive, The DSMZ's Bacterial Diversity Metadatabase • BacDiveR</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="A Programmatic Interface For BacDive, The DSMZ's Bacterial Diversity Metadatabase">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script><meta property="og:title" content="A Programmatic Interface For BacDive, The DSMZ's Bacterial Diversity Metadatabase">
 <meta property="og:description" content="BacDive focuses on providing organism-linked information covering the multifarious aspects of bacterial biodiversity: taxonomic classification, morphology, physiology, cultivation, origin natural habitat and more, both for bacterial and archaeal strains. BacDiveR helps you investigate this data offline, and semi-automatically in R.">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -52,10 +52,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/BacDive-ing-in.html">BacDive-ing in</a>
+      <a href="articles/advanced-search.html">The Semi-Automatic Approach</a>
     </li>
     <li>
-      <a href="articles/advanced-search.html">The Semi-Automatic Approach</a>
+      <a href="articles/BacDive-ing-in.html">BacDive-ing in</a>
     </li>
   </ul>
 </li>
@@ -98,21 +98,22 @@
 <li><p>Because the <a href="https://bacdive.dsmz.de/api/bacdive/registration/register/">BacDive API requires registration</a> please do that first and wait for your access to be granted.</p></li>
 <li><p>Once you have your login credentials, install BacDiveR from GitHub with:</p></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"tibhannover/BacDiveR"</span>)</a></code></pre></div>
+<pre class="sourceCode r" id="cb1"><code class="sourceCode r"><div class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></div>
+<div class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"tibhannover/BacDiveR"</span>)</div></code></pre>
 <ol>
 <li>After installing, follow the instructions on the console to save your login credentials locally and restart R(Studio) or run:</li>
 </ol>
-<p>In the examples and vignettes, the data retrieval will only work if your login credentials are correct in themselves (no typos) and were correctly saved. Console output like <code>"{\"detail\": \"Invalid username/password\"}"</code>, or <code>Error: $ operator is invalid for atomic vectors</code> mean that either the login credentials or the <code>.Renviron</code> file are incorrect. In that case, please run:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">file.edit</span>(<span class="kw">file.path</span>(<span class="kw">Sys.getenv</span>(<span class="st">'HOME'</span>), <span class="st">'.Renviron'</span>))</a></code></pre></div>
+<p>In the examples and vignettes, the data retrieval will only work if your login credentials are correct in themselves (no typos) <em>and</em> were correctly saved. Console output like <code>"{\"detail\": \"Invalid username/password\"}"</code>, or <code>Error: $ operator is invalid for atomic vectors</code> indicate that either the login credentials are incorrect, or the <code>.Renviron</code> file. In that case, please run:</p>
+<pre class="sourceCode r" id="cb2"><code class="sourceCode r"><div class="sourceLine" id="cb2-1" data-line-number="1">
+<span class="kw">file.edit</span>(<span class="kw">file.path</span>(<span class="kw">Sys.getenv</span>(<span class="st">'HOME'</span>), <span class="st">'.Renviron'</span>))</div></code></pre>
 <p>and make sure it contains the following:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">BacDive_email=your.email<span class="op">@</span>provider.org</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">BacDive_password=YOUR_<span class="dv">20</span>_char_password</a></code></pre></div>
+<pre class="sourceCode R" id="cb3"><code class="sourceCode r"><div class="sourceLine" id="cb3-1" data-line-number="1">BacDive_email=your.email<span class="op">@</span>provider.org</div>
+<div class="sourceLine" id="cb3-2" data-line-number="2">BacDive_password=YOUR_<span class="dv">20</span>_char_password</div></code></pre>
 </div>
 <div id="how-to-use" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-use" class="anchor"></a>How to use</h2>
-<p>There are two main functions. Please click on their names to read their docu: <a href="https://tibhannover.github.io/BacDiveR/reference/retrieve_data.html"><code><a href="reference/retrieve_data.html">retrieve_data()</a></code></a> and <a href="https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html"><code><a href="reference/retrieve_search_results.html">retrieve_search_results()</a></code></a>. For real-life examples, please read the vignettes <a href="https://tibhannover.github.io/BacDiveR/articles/BacDive-ing-in.html">“BacDive-ing in”</a> and about the <a href="https://tibhannover.github.io/BacDiveR/articles/advanced-search.html">“Semi-automatic approach”</a>.</p>
+<p>There are two main functions. Please click on their names to read their docu: <a href="https://tibhannover.github.io/BacDiveR/reference/retrieve_data.html"><code>retrieve_data()</code></a> and <a href="https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html"><code>retrieve_search_results()</code></a>. For real-life examples, please read the vignettes <a href="https://tibhannover.github.io/BacDiveR/articles/BacDive-ing-in.html">“BacDive-ing in”</a> and about the <a href="https://tibhannover.github.io/BacDiveR/articles/advanced-search.html">“Semi-automatic approach”</a>.</p>
 </div>
 <div id="known-issues-see-bugs-and-adrs" class="section level2">
 <h2 class="hasAnchor">

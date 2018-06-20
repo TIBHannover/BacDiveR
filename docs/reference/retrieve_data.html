@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -32,6 +34,7 @@
 
 <meta property="og:description" content="Retrieve data from BacDive" />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -81,10 +84,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/BacDive-ing-in.html">BacDive-ing in</a>
+      <a href="../articles/advanced-search.html">The Semi-Automatic Approach</a>
     </li>
     <li>
-      <a href="../articles/advanced-search.html">The Semi-Automatic Approach</a>
+      <a href="../articles/BacDive-ing-in.html">BacDive-ing in</a>
     </li>
   </ul>
 </li>
@@ -151,10 +154,10 @@ an ambiguous <code>searchTerm</code> (most <code>taxon</code>s).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>dataset</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='fl'>717</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"bacdive_id"</span>)
-<span class='co'># dataset &lt;- retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")</span>
-<span class='co'># dataset &lt;- retrieve_data(searchTerm = "AJ000733", searchType = "sequence")</span>
-<span class='co'># Bss_data &lt;- retrieve_data(searchTerm = "Bacillus subtilis subtilis")</span></div></pre>
+    <pre class="examples"><div class='input'><span class='no'>dataset</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='fl'>717</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"bacdive_id"</span>)</div><div class='output co'>#&gt; <span class='message'>717 </span></div><div class='input'># dataset <- retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")
+# dataset <- retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
+# Bss_data <- retrieve_data(searchTerm = "Bacillus subtilis subtilis")
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

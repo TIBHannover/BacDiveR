@@ -1,7 +1,5 @@
-pandoc: 2.1.3
-pkgdown: 1.0.0
+pandoc: 2.0.3
+pkgdown: 1.1.0
 pkgdown_sha: ~
-articles:
-  BacDive-ing-in: BacDive-ing-in.html
-  advanced-search: advanced-search.html
+articles: []
 
