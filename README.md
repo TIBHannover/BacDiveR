@@ -82,6 +82,6 @@ and about the ["Semi-automatic approach"][adv-search].
 
 - Söhngen, Carola, Adam Podstawka, Boyke Bunk, Dorothea Gleim, Anna
   Vetcininova, Lorenz Christian Reimer, Christian Ebeling, Cezar
-  Pendarovski, and Jörg Overmann. 2016. “BacDive – the Bacterial Diversity
+  Pendarovski, and Jörg Overmann. 2016. “BacDive – the Bacterial Diversity
   Metadatabase in 2016.” *Nucleic Acids Research* 44 (D1): D581–D585.
   [doi:10.1093/nar/gkv983](https://doi.org/10.1093/nar/gkv983).
