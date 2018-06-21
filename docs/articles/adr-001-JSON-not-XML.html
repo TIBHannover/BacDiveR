@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Semi-Automatic Approach • BacDiveR</title>
+<title>ADR 1: Using JSON internally, instead of XML • BacDiveR</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="The Semi-Automatic Approach">
+<script src="../pkgdown.js"></script><meta property="og:title" content="ADR 1: Using JSON internally, instead of XML">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -38,7 +38,7 @@
 <li>
   <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
-     
+
   </a>
 </li>
 <li>
@@ -47,7 +47,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -73,7 +73,7 @@
 <li>
   <a href="https://github.com/TIBHannover/BacDiveR">
     <span class="fa fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -84,44 +84,55 @@
 </div>
 <!--/.navbar -->
 
-      
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>The Semi-Automatic Approach</h1>
-            <h3 class="subtitle">Pre-Configuring an Advanced Search and Retrieving the Results</h3>
+      <h1>ADR 1: Using JSON internally, instead of XML</h1>
                         <h4 class="author">Katrin Leinweber</h4>
-            
-            <h4 class="date">2018-06-20</h4>
-      
-      <small class="dont-index">Source: <a href="https://github.com/TIBHannover/BacDiveR/blob/master/vignettes/advanced-search.Rmd"><code>vignettes/advanced-search.Rmd</code></a></small>
-      <div class="hidden name"><code>advanced-search.Rmd</code></div>
+
+            <h4 class="date">2018-06-21</h4>
+
+      <small class="dont-index">Source: <a href="https://github.com/TIBHannover/BacDiveR/blob/master/vignettes/adr-001-JSON-not-XML.Rmd"><code>vignettes/adr-001-JSON-not-XML.Rmd</code></a></small>
+      <div class="hidden name"><code>adr-001-JSON-not-XML.Rmd</code></div>
 
     </div>
 
-    
-    
-<p>Unfortunately, the BacDive Web Service does not allow SQL-like queries for the content of specific fields within the strain’s datasets. If you find the functionality explained in <a href="https://tibhannover.github.io/BacDiveR/articles/BacDive-ing-in.html">BacDive-ing in</a> too limited, please try the following, semi-automatic approach to using BacDiveR.</p>
-<ol style="list-style-type: decimal">
-<li>Visit <a href="https://bacdive.dsmz.de/advsearch">BacDive.DSMZ.de/AdvSearch</a> and prepare the query you are interested in.</li>
-</ol>
-<div class="figure">
-<img src="advanced-search.png" alt="Overview of the possible fields to query and their parameters (contains, exact, begins/ends with)"><p class="caption">Overview of the possible fields to query and their parameters (contains, exact, begins/ends with)</p>
+
+
+<div id="context" class="section level2">
+<h2 class="hasAnchor">
+<a href="#context" class="anchor"></a>Context</h2>
+<p>The <a href="https://bacdive.dsmz.de/api/bacdive/">BacDive Web Service</a> can be configured to reply either in JSON or XML. The former is used in the <a href="https://bacdive.dsmz.de/api/bacdive/example/">examples</a>.</p>
+<p><a href="https://cran.r-project.org/package=jsonlite">R’s jsonlite</a> seems to have replaced the older <a href="https://cran.r-project.org/package=rjson">rjson</a>.</p>
 </div>
-<ol style="list-style-type: decimal">
-<li>Run your advanced search (query). In the below example, I simply searched for all strains whose publication includes someone named “Miller”. <strong>Note the</strong> two “hits” on the right, and the now much longer <strong>URL</strong>. It contains/encodes all the terms and parameters of your advanced search.</li>
-</ol>
-<div class="figure">
-<img src="advanced-search-Miller.png" alt="Advanced search results"><p class="caption">Advanced search results</p>
+<div id="decision" class="section level2">
+<h2 class="hasAnchor">
+<a href="#decision" class="anchor"></a>Decision</h2>
+<p>We will request JSON from the BacDive Web service.</p>
 </div>
-<ol style="list-style-type: decimal">
-<li><p>Copy the URL of the results page from your browser’s adress bar. Alternatively, copy it from the “Download list of BacDive Ids” link to the top right of the “hits” list.</p></li>
-<li><p>Paste the copied URL into a call to the <code>retrieve_search_results()</code> function.</p></li>
-<li><p>Enjoy the list of downloaded datasets, just as you would after using <code>retrieve_data(searchTerm = ..., searchType = ...)</code>.</p></li>
-</ol>
+<div id="status-accepted" class="section level2">
+<h2 class="hasAnchor">
+<a href="#status-accepted" class="anchor"></a>Status: accepted</h2>
 </div>
+<div id="consequences" class="section level2">
+<h2 class="hasAnchor">
+<a href="#consequences" class="anchor"></a>Consequences</h2>
+<p><a href="https://tibhannover.github.io/BacDiveR/reference/construct_url.html"><code><a href="../reference/construct_url.html">construct_url()</a></code> needs to append <code>?format=json</code></a> and <code><a href="http://www.rdocumentation.org/packages/jsonlite/topics/fromJSON">jsonlite::fromJSON()</a></code> needs to be used for parsing replies.</p>
+</div>
+  </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#context">Context</a></li>
+      <li><a href="#decision">Decision</a></li>
+      <li><a href="#status-accepted">Status: accepted</a></li>
+      <li><a href="#consequences">Consequences</a></li>
+      </ul>
+</div>
       </div>
 
 </div>
@@ -138,7 +149,7 @@
       </footer>
 </div>
 
-  
+
 
   </body>
 </html>

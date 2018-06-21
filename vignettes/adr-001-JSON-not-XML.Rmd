@@ -1,0 +1,38 @@
+---
+title: "ADR 1: Using JSON internally, instead of XML"
+author: "Katrin Leinweber"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Context 
+
+The [BacDive Web Service](https://bacdive.dsmz.de/api/bacdive/) can be configured to reply either in JSON or XML. The former is used in the [examples](https://bacdive.dsmz.de/api/bacdive/example/).
+
+[R's jsonlite](https://cran.r-project.org/package=jsonlite) seems to have replaced
+the older [rjson](https://cran.r-project.org/package=rjson).
+
+
+## Decision 
+
+We will request JSON from the BacDive Web service.
+
+
+## Status: accepted
+
+
+## Consequences
+
+[`construct_url()` needs to append `?format=json`](https://tibhannover.github.io/BacDiveR/reference/construct_url.html) 
+and `jsonlite::fromJSON()` needs to be used for parsing replies.
