@@ -29,7 +29,7 @@ research better and faster, by:
     with:
 
 ``` r
-# install.packages("devtools")
+if(!require('devtools')) install.packages('devtools')
 devtools::install_github("tibhannover/BacDiveR")
 ```
 
