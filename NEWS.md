@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 ### Changed
+
+- `.Renviron` file is no longer prepared automatically after installing the package.
+
 ### Deprecated
 ### Removed
 ### Fixed
