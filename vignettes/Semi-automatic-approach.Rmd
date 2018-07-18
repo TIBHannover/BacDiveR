@@ -27,14 +27,14 @@ prepare the query you are interested in.
 
 ![Overview of the possible fields to query and their parameters (contains, exact, begins/ends with)](advanced-search.png)
 
-1. Run your advanced search (query). In the below example, I simply searched for
+2. Run your advanced search (query). In the below example, I simply searched for
 all strains whose publication includes someone named "Miller". **Note the** two 
 "hits" on the right, and the now much longer **URL**. It contains/encodes all 
 the terms and parameters of your advanced search.
 
 ![Advanced search results](advanced-search-Miller.png)
 
-1. Copy the URL of the results page from your browser's adress bar. 
+3. Copy the URL of the results page from your browser's adress bar. 
 Alternatively, copy it from the "Download list of BacDive Ids" link to the top
 right of the "hits" list.
 
@@ -42,3 +42,6 @@ right of the "hits" list.
 
 1. Enjoy the list of downloaded datasets, just as you would after using
 `retrieve_data(searchTerm = ..., searchType = ...)`.
+
+[dive-in]: https://tibhannover.github.io/BacDiveR/articles/BacDive-ing-in.html
+

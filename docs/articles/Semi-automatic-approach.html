@@ -55,13 +55,13 @@
       <a href="../articles/BacDive-ing-in.html">BacDive-ing in</a>
     </li>
     <li>
+      <a href="../articles/Semi-automatic-approach.html">The Semi-Automatic Approach</a>
+    </li>
+    <li>
       <a href="../articles/adr-001-JSON-not-XML.html">ADR 1: Using JSON internally, instead of XML</a>
     </li>
     <li>
       <a href="../articles/adr-002-two-download-functions-returning-datasets.html">ADR 2: Two download functions that return full datasets by default</a>
-    </li>
-    <li>
-      <a href="../articles/advanced-search.html">The Semi-Automatic Approach</a>
     </li>
   </ul>
 </li>
@@ -92,10 +92,10 @@
             <h3 class="subtitle">Pre-Configuring an Advanced Search and Retrieving the Results</h3>
                         <h4 class="author">Katrin Leinweber</h4>
             
-            <h4 class="date">2018-06-20</h4>
+            <h4 class="date">2018-07-18</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/TIBHannover/BacDiveR/blob/master/vignettes/advanced-search.Rmd"><code>vignettes/advanced-search.Rmd</code></a></small>
-      <div class="hidden name"><code>advanced-search.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/TIBHannover/BacDiveR/blob/master/vignettes/Semi-automatic-approach.Rmd"><code>vignettes/Semi-automatic-approach.Rmd</code></a></small>
+      <div class="hidden name"><code>Semi-automatic-approach.Rmd</code></div>
 
     </div>
 
@@ -108,16 +108,16 @@
 <div class="figure">
 <img src="advanced-search.png" alt="Overview of the possible fields to query and their parameters (contains, exact, begins/ends with)"><p class="caption">Overview of the possible fields to query and their parameters (contains, exact, begins/ends with)</p>
 </div>
-<ol style="list-style-type: decimal">
+<ol start="2" style="list-style-type: decimal">
 <li>Run your advanced search (query). In the below example, I simply searched for all strains whose publication includes someone named “Miller”. <strong>Note the</strong> two “hits” on the right, and the now much longer <strong>URL</strong>. It contains/encodes all the terms and parameters of your advanced search.</li>
 </ol>
 <div class="figure">
 <img src="advanced-search-Miller.png" alt="Advanced search results"><p class="caption">Advanced search results</p>
 </div>
-<ol style="list-style-type: decimal">
+<ol start="3" style="list-style-type: decimal">
 <li><p>Copy the URL of the results page from your browser’s adress bar. Alternatively, copy it from the “Download list of BacDive Ids” link to the top right of the “hits” list.</p></li>
-<li><p>Paste the copied URL into a call to the <code>retrieve_search_results()</code> function.</p></li>
-<li><p>Enjoy the list of downloaded datasets, just as you would after using <code>retrieve_data(searchTerm = ..., searchType = ...)</code>.</p></li>
+<li><p>Paste the copied URL into a call to the <code><a href="../reference/retrieve_search_results.html">retrieve_search_results()</a></code> function.</p></li>
+<li><p>Enjoy the list of downloaded datasets, just as you would after using <code><a href="../reference/retrieve_data.html">retrieve_data(searchTerm = ..., searchType = ...)</a></code>.</p></li>
 </ol>
 </div>
 

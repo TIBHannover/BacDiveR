@@ -1,5 +1,9 @@
-pandoc: 2.0.3
+pandoc: 1.19.2.1
 pkgdown: 1.1.0
 pkgdown_sha: ~
-articles: []
+articles:
+  BacDive-ing-in: BacDive-ing-in.html
+  Semi-automatic-approach: Semi-automatic-approach.html
+  adr-001-JSON-not-XML: adr-001-JSON-not-XML.html
+  adr-002-two-download-functions-returning-datasets: adr-002-two-download-functions-returning-datasets.html
 
