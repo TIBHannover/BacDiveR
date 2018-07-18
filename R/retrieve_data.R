@@ -15,10 +15,10 @@
 #'
 #' @export
 #' @examples
-#'   dataset_717 <- retrieve_data(searchTerm = 717, searchType = "bacdive_id")
-#'   dataset_DSM_319 <- retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")
-#'   dataset_AJ000733 <- retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
-#'   # dataset_Bss <- retrieve_data(searchTerm = "Bacillus subtilis subtilis")
+#'   \donttest{dataset_717 <- retrieve_data(searchTerm = 717, searchType = "bacdive_id")}
+#'   \donttest{dataset_DSM_319 <- retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")}
+#'   \donttest{dataset_AJ000733 <- retrieve_data(searchTerm = "AJ000733", searchType = "sequence")}
+#'   \donttest{dataset_Bss <- retrieve_data(searchTerm = "Bacillus subtilis subtilis")}
 retrieve_data <- function(searchTerm,
                           searchType = "taxon")
   {
