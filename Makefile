@@ -6,7 +6,7 @@ check:
 docu:
 	Rscript -e "devtools::document()"
 
-site:
+site: docu
 	Rscript -e "pkgdown::build_site()"
 
 # vignettes: docu
