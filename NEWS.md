@@ -4,6 +4,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+- generate `codemeta.json` during build process in order to test whether next Zenodo release will populate more metadata fields automatically. If not, consider reverting this.
+
 ### Added
 ### Changed
 ### Deprecated

@@ -14,10 +14,10 @@
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.4.2",
+    "version": "3.5.0",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.4.2 (2017-09-28)",
+  "runtimePlatform": "R version 3.5.0 (2018-04-23)",
   "author": [
     {
       "@type": "Person",
@@ -37,6 +37,18 @@
   "softwareSuggestions": [
     {
       "@type": "SoftwareApplication",
+      "identifier": "ggplot2",
+      "name": "ggplot2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=ggplot2"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "knitr",
       "name": "knitr",
       "provider": {
@@ -46,6 +58,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "magrittr",
+      "name": "magrittr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=magrittr"
     },
     {
       "@type": "SoftwareApplication",
@@ -87,18 +111,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "ggplot2",
-      "name": "ggplot2",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=ggplot2"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
       "provider": {
@@ -108,18 +120,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "magrittr",
-      "name": "magrittr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=magrittr"
     },
     {
       "@type": "SoftwareApplication",
@@ -151,9 +151,9 @@
       "name": "utils"
     }
   ],
-  "releaseNotes": "https://katrinleinweber@github.com/TIBHannover/BacDiveR/blob/master/NEWS.md",
+  "releaseNotes": "https://github.com/TIBHannover/BacDiveR/blob/master/NEWS.md",
   "readme": "https://github.com/TIBHannover/BacDiveR/blob/master/README.md",
-  "fileSize": "313.374KB",
+  "fileSize": "313.842KB",
   "contIntegration": [],
   "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
   "keywords": [
