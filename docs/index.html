@@ -8,8 +8,8 @@
 <title>A Programmatic Interface For BacDive, The DSMZ's Bacterial Diversity Metadatabase • BacDiveR</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="A Programmatic Interface For BacDive, The DSMZ's Bacterial Diversity Metadatabase">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script><meta property="og:title" content="A Programmatic Interface For BacDive, The DSMZ's Bacterial Diversity Metadatabase">
 <meta property="og:description" content="BacDive focuses on providing organism-linked information covering the multifarious aspects of bacterial biodiversity: taxonomic classification, morphology, physiology, cultivation, origin natural habitat and more, both for bacterial and archaeal strains. BacDiveR helps you investigate this data offline, and semi-automatically in R.">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -55,7 +55,13 @@
       <a href="articles/BacDive-ing-in.html">BacDive-ing in</a>
     </li>
     <li>
-      <a href="articles/advanced-search.html">The Semi-Automatic Approach</a>
+      <a href="articles/Semi-automatic-approach.html">The Semi-Automatic Approach</a>
+    </li>
+    <li>
+      <a href="articles/adr-001-JSON-not-XML.html">ADR 1: Using JSON internally, instead of XML</a>
+    </li>
+    <li>
+      <a href="articles/adr-002-two-download-functions-returning-datasets.html">ADR 2: Two download functions that return full datasets by default</a>
     </li>
   </ul>
 </li>
@@ -98,16 +104,16 @@
 <li><p>Because the <a href="https://bacdive.dsmz.de/api/bacdive/registration/register/">BacDive API requires registration</a> please do that first and wait for your access to be granted.</p></li>
 <li><p>Once you have your login credentials, install BacDiveR from GitHub with:</p></li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(<span class="st">'devtools'</span>)) <span class="kw">install.packages</span>(<span class="st">'devtools'</span>)
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"tibhannover/BacDiveR"</span>)</code></pre></div>
 <ol>
 <li>After installing, follow the instructions on the console to save your login credentials locally and restart R(Studio) or run:</li>
 </ol>
-<p>In the examples and vignettes, the data retrieval will only work if your login credentials are correct in themselves (no typos) and were correctly saved. Console output like <code>"{\"detail\": \"Invalid username/password\"}"</code>, or <code>Error: $ operator is invalid for atomic vectors</code> mean that either the login credentials or the <code>.Renviron</code> file are incorrect. In that case, please run:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">file.edit</span>(<span class="kw">file.path</span>(<span class="kw">Sys.getenv</span>(<span class="st">'HOME'</span>), <span class="st">'.Renviron'</span>))</code></pre></div>
 <p>and make sure it contains the following:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">BacDive_email=your.email<span class="op">@</span>provider.org</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">BacDive_password=YOUR_<span class="dv">20</span>_char_password</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r">BacDive_email=your.email<span class="op">@</span>provider.org
+BacDive_password=YOUR_20_char_password</code></pre></div>
+<p>In the examples and vignettes, the data retrieval will only work if your login credentials are correct in themselves (no typos) <em>and</em> were correctly saved. Console output like <code>"{\"detail\": \"Invalid username/password\"}"</code>, or <code>Error: $ operator is invalid for atomic vectors</code> indicate that either the login credentials are incorrect, or the <code>.Renviron</code> file.</p>
 </div>
 <div id="how-to-use" class="section level2">
 <h2 class="hasAnchor">
@@ -116,7 +122,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 </div>
 <div id="known-issues-see-bugs-and-adrs" class="section level2">
 <h2 class="hasAnchor">
-<a href="#known-issues-see-bugs-and-adrs" class="anchor"></a>Known issues: see <a href="https://github.com/tibhannover/BacDiveR/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Aupdated-desc">bugs</a> and <a href="https://github.com/TIBHannover/BacDiveR/tree/master/docs/arch">ADR</a>s</h2>
+<a href="#known-issues-see-bugs-and-adrs" class="anchor"></a>Known issues: see <a href="https://github.com/tibhannover/BacDiveR/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Aupdated-desc">bugs</a> and <a href="https://github.com/TIBHannover/BacDiveR/tree/master/vignettes">ADR</a>s</h2>
 </div>
 <div id="similar-tools" class="section level2">
 <h2 class="hasAnchor">
@@ -132,7 +138,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <a href="#references" class="anchor"></a>References</h1>
 <ul>
 <li><p>Söhngen, Carola, Boyke Bunk, Adam Podstawka, Dorothea Gleim, and Jörg Overmann. 2014. “BacDive—the Bacterial Diversity Metadatabase.” <em>Nucleic Acids Research</em> 42 (D1): D592–D599. <a href="https://doi.org/10.1093/nar/gkt1058">doi:10.1093/nar/gkt1058</a>.</p></li>
-<li><p>Söhngen, Carola, Adam Podstawka, Boyke Bunk, Dorothea Gleim, Anna Vetcininova, Lorenz Christian Reimer, Christian Ebeling, Cezar Pendarovski, and Jörg Overmann. 2016. “BacDive – the Bacterial Diversity Metadatabase in 2016.” <em>Nucleic Acids Research</em> 44 (D1): D581–D585. <a href="https://doi.org/10.1093/nar/gkv983">doi:10.1093/nar/gkv983</a>.</p></li>
+<li><p>Söhngen, Carola, Adam Podstawka, Boyke Bunk, Dorothea Gleim, Anna Vetcininova, Lorenz Christian Reimer, Christian Ebeling, Cezar Pendarovski, and Jörg Overmann. 2016. “BacDive – the Bacterial Diversity Metadatabase in 2016.” <em>Nucleic Acids Research</em> 44 (D1): D581–D585. <a href="https://doi.org/10.1093/nar/gkv983">doi:10.1093/nar/gkv983</a>.</p></li>
 </ul>
 </div>
 
@@ -167,6 +173,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></li>
+<li><a href="https://doi.org/10.5281/zenodo.1308061"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1308061.svg" alt="DOI"></a></li>
 </ul>
 </div>
 </div>

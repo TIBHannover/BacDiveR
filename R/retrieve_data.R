@@ -14,12 +14,14 @@
 #'   an ambiguous `searchTerm` (most `taxon`s).
 #'
 #' @export
-#' @examples dataset <- retrieve_data(searchTerm = 717, searchType = "bacdive_id")
-#' # dataset <- retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")
-#' # dataset <- retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
-#' # Bss_data <- retrieve_data(searchTerm = "Bacillus subtilis subtilis")
+#' @examples
+#'   dataset_717 <- retrieve_data(searchTerm = 717, searchType = "bacdive_id")
+#'   dataset_DSM_319 <- retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")
+#'   dataset_AJ000733 <- retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
+#'   # dataset_Bss <- retrieve_data(searchTerm = "Bacillus subtilis subtilis")
 retrieve_data <- function(searchTerm,
-                          searchType = "taxon") {
+                          searchType = "taxon")
+  {
   payload <-
     jsonlite::fromJSON(download(construct_url(searchTerm, searchType)))
 
@@ -56,7 +58,10 @@ retrieve_data <- function(searchTerm,
 #' @return A serialised JSON string.
 download <-
   function(URL,
-           userpwd = paste(get_credentials(), collapse = ":")) {
+           userpwd = paste(get_credentials(), collapse = ":"))
+  {
+    message(URLs_to_IDs(URL), " ", appendLF = FALSE)
+
     gsub(
       pattern = "[[:space:]]+",
       replacement = " ",
@@ -76,8 +81,8 @@ download <-
 #'   `searchTerm` in `retrieve_data()`
 #'
 #' @return An integer vector of all BacDive IDs within the results.
-aggregate_result_IDs <- function(results) {
-
+aggregate_result_IDs <- function(results)
+  {
   IDs <- as.numeric(sapply(strsplit(
     x = aggregate_result_URLs(results), split = "/"
   ), function(x)
@@ -97,8 +102,8 @@ aggregate_result_IDs <- function(results) {
 #'   `searchTerm` in `retrieve_data()`.
 #'
 #' @return An integer vector of all BacDive IDs within the results.
-aggregate_result_URLs <- function(results) {
-
+aggregate_result_URLs <- function(results)
+{
   if (length(results$url) == 1)
     URLs <- results$url
   else
@@ -116,11 +121,12 @@ aggregate_result_URLs <- function(results) {
 }
 
 
-URLs_to_IDs <- function(URLs) {
+URLs_to_IDs <- function(URLs)
   gsub(pattern = "\\D", "", URLs)
-}
 
-is_dataset <- function(payload) {
+
+is_dataset <- function(payload)
+{
   identical(
     names(payload),
     c(

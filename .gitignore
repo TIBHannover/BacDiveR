@@ -39,5 +39,4 @@ vignettes/*.pdf
 ### custom ignores
 bacdive.R
 *.pdf
-/man/
 inst/doc

@@ -8,8 +8,8 @@
 <title>The Semi-Automatic Approach • BacDiveR</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><meta property="og:title" content="The Semi-Automatic Approach">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><meta property="og:title" content="The Semi-Automatic Approach">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -55,7 +55,13 @@
       <a href="../articles/BacDive-ing-in.html">BacDive-ing in</a>
     </li>
     <li>
-      <a href="../articles/advanced-search.html">The Semi-Automatic Approach</a>
+      <a href="../articles/Semi-automatic-approach.html">The Semi-Automatic Approach</a>
+    </li>
+    <li>
+      <a href="../articles/adr-001-JSON-not-XML.html">ADR 1: Using JSON internally, instead of XML</a>
+    </li>
+    <li>
+      <a href="../articles/adr-002-two-download-functions-returning-datasets.html">ADR 2: Two download functions that return full datasets by default</a>
     </li>
   </ul>
 </li>
@@ -86,29 +92,29 @@
             <h3 class="subtitle">Pre-Configuring an Advanced Search and Retrieving the Results</h3>
                         <h4 class="author">Katrin Leinweber</h4>
             
-            <h4 class="date">2018-04-24</h4>
+            <h4 class="date">2018-07-18</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/TIBHannover/BacDiveR/blob/master/vignettes/advanced-search.Rmd"><code>vignettes/advanced-search.Rmd</code></a></small>
-      <div class="hidden name"><code>advanced-search.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/TIBHannover/BacDiveR/blob/master/vignettes/Semi-automatic-approach.Rmd"><code>vignettes/Semi-automatic-approach.Rmd</code></a></small>
+      <div class="hidden name"><code>Semi-automatic-approach.Rmd</code></div>
 
     </div>
 
     
     
-<p>Unfortunately, the BacDive Web Service does not allow SQL-like queries for the content of specific fields within the strain’s datasets. If you find the functionality explained in [BacDive-ing in][dive-in] too limited, please try the following, semi-automatic approach to using BacDiveR.</p>
+<p>Unfortunately, the BacDive Web Service does not allow SQL-like queries for the content of specific fields within the strain’s datasets. If you find the functionality explained in <a href="https://tibhannover.github.io/BacDiveR/articles/BacDive-ing-in.html">BacDive-ing in</a> too limited, please try the following, semi-automatic approach to using BacDiveR.</p>
 <ol style="list-style-type: decimal">
 <li>Visit <a href="https://bacdive.dsmz.de/advsearch">BacDive.DSMZ.de/AdvSearch</a> and prepare the query you are interested in.</li>
 </ol>
 <div class="figure">
 <img src="advanced-search.png" alt="Overview of the possible fields to query and their parameters (contains, exact, begins/ends with)"><p class="caption">Overview of the possible fields to query and their parameters (contains, exact, begins/ends with)</p>
 </div>
-<ol style="list-style-type: decimal">
+<ol start="2" style="list-style-type: decimal">
 <li>Run your advanced search (query). In the below example, I simply searched for all strains whose publication includes someone named “Miller”. <strong>Note the</strong> two “hits” on the right, and the now much longer <strong>URL</strong>. It contains/encodes all the terms and parameters of your advanced search.</li>
 </ol>
 <div class="figure">
 <img src="advanced-search-Miller.png" alt="Advanced search results"><p class="caption">Advanced search results</p>
 </div>
-<ol style="list-style-type: decimal">
+<ol start="3" style="list-style-type: decimal">
 <li><p>Copy the URL of the results page from your browser’s adress bar. Alternatively, copy it from the “Download list of BacDive Ids” link to the top right of the “hits” list.</p></li>
 <li><p>Paste the copied URL into a call to the <code><a href="../reference/retrieve_search_results.html">retrieve_search_results()</a></code> function.</p></li>
 <li><p>Enjoy the list of downloaded datasets, just as you would after using <code><a href="../reference/retrieve_data.html">retrieve_data(searchTerm = ..., searchType = ...)</a></code>.</p></li>

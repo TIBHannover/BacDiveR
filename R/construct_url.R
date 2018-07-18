@@ -2,8 +2,8 @@
 #'
 #' @inheritParams retrieve_data
 construct_url <- function(searchTerm,
-                          searchType = "bacdive_id") {
-
+                          searchType = "bacdive_id")
+{
   searchTerm <- sanitise_input(searchTerm, searchType)
 
   utils::URLencode(

@@ -6,8 +6,8 @@ check:
 docu:
 	Rscript -e "devtools::document(); codemetar::write_codemeta()"
 
-site: vignettes
+site:
 	Rscript -e "pkgdown::build_site()"
 
-vignettes: docu
-	Rscript -e "knitr::knit(list.files(path = "vignettes", pattern = "*.Rmd$", full.names = TRUE))"
+# vignettes: docu
+#	Rscript -e "lapply(list.files(path = 'vignettes', pattern = '*.Rmd', full.names = TRUE), knitr::knit"

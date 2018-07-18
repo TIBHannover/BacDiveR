@@ -1,7 +1,8 @@
 #' Read BacDive Login Credentials from .Renviron
 #'
 #' @return A vector or the two character strings `BacDive_email` and `BacDive_password` representing those two environment variables.
-get_credentials <- function() {
+get_credentials <- function()
+  {
   readRenviron(construct_Renviron_path())
 
   id <- Sys.getenv("BacDive_email")

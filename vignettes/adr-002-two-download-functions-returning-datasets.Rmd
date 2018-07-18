@@ -1,5 +1,20 @@
-# ADR 2: Two download functions that return full datasets by default
+---
+title: "ADR 2: Two download functions that return full datasets by default"
+author: "Katrin Leinweber"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
 ## Context 
 

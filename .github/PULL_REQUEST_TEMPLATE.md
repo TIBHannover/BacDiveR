@@ -7,9 +7,9 @@ See diff ;-)
 #### I have...
 
 - [ ] ... run `testthat::auto_test_package()` and saw now errors.
-- [ ] ... added/updated tests to `/tests/testthat/` for new features or bug-fixes.
-- [ ] ... updated the [changelog / `NEWS.md`](https://github.com/tibhannover/BacDiveR/blob/master/NEWS.md) in the `Unreleased` section, if my PR introduces user-facing changes.
-- [ ] ... incremented the minor or patch version number in [`DESCRIPTION`](https://github.com/tibhannover/BacDiveR/blob/master/DESCRIPTION), if my PR is a new feature or a bug-fix.
-- [ ] ...read (at least) the [`LICENCSE` (short version)](https://github.com/tibhannover/BacDiveR/tree/master/LICENSE) and agreed that it will apply to my contribution as well. 
+- [ ] ... added/updated tests to [`/tests/testthat/`](/tests/testthat) for new features or bug-fixes.
+- [ ] ... updated the [changelog / `NEWS.md` in the `Unreleased` section](/NEWS.md#unreleased), if my PR introduces user-facing changes.
+- [ ] ... incremented the minor or patch [version number in `DESCRIPTION`](/DESCRIPTION#L3), if my PR is a new feature or a bug-fix.
+- [ ] ...read (at least) the [`LICENCSE` (short version)](/LICENSE) and agreed that it will apply to my contribution as well. 
 
 <!-- Thank you! -->
