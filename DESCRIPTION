@@ -3,7 +3,7 @@ Title: A Programmatic Interface For BacDive, The DSMZ's Bacterial Diversity Meta
 Version: 0.4.2
 Authors@R: person("Katrin", "Leinweber", email = "katrin.leinweber@tib.eu",
                   role = c("aut", "cre"),
-                  comment = (ORCID = "0000-0001-5135-5758"))
+                  comment = c(ORCID = "0000-0001-5135-5758"))
 Description: BacDive focuses on providing organism-linked information covering the multifarious aspects of bacterial biodiversity: taxonomic classification, morphology, physiology, cultivation, origin natural habitat and more, both for bacterial and archaeal strains. BacDiveR helps you investigate this data offline, and semi-automatically in R.
 License: MIT + file LICENSE
 URL: https://github.com/TIBHannover/BacDiveR
