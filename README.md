@@ -15,9 +15,11 @@ research better and faster, by:
 - providing you with a way to document and report your searches and downloads, 
   in a reproducible manner (`.R` scripts and/or `.Rmd` files).
 
+It was also built to serve as a demonstration object during [TIB's "FAIR Data & Software" workshop][FDS].
 
 [BD]: https://bacdive.dsmz.de/
 [DMSZ]: https://www.dsmz.de/about-us.html
+[FDS]: https://tibhannover.github.io/2018-07-09-FAIR-Data-and-Software/#schedule
 [reg]: https://bacdive.dsmz.de/api/bacdive/registration/register/
 
 
