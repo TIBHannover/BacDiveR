@@ -64,10 +64,20 @@ and about the ["Semi-automatic approach"][adv-search].
 [adv-search]: https://tibhannover.github.io/BacDiveR/articles/advanced-search.html
 
 
+## How to cite
+
+Best use the `Cite as` or `Export` options presented on [Zenodo.org/record/1308061][zenodo].
+If you want to import [this GitHub repo's metadata][GH] into a reference manager
+directly, try [Zotero]. They have a [GitHub translator][zotGH].
+
 ## Known issues: see [bugs] and [ADR]s
 
 [ADR]: https://github.com/TIBHannover/BacDiveR/tree/master/vignettes
 [bugs]: https://github.com/tibhannover/BacDiveR/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Aupdated-desc
+[GH]: https://github.com/TIBHannover/BacDiveR/
+[zenodo]: https://zenodo.org/record/1308061#invenio-csl
+[zotero]: https://www.zotero.org/
+[zotGH]: https://github.com/zotero/translators/blob/master/Github.js
 
 
 ## Similar tools
