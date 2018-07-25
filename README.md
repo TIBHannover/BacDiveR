@@ -68,7 +68,7 @@ and about the ["Semi-automatic approach"][adv-search].
 
 Best use the `Cite as` or `Export` options presented on [Zenodo.org/record/1308061][zenodo].
 If you want to import [this GitHub repo's metadata][GH] into a reference manager
-directly, try [Zotero]. They have a [GitHub translator][zotGH].
+directly, try [Zotero] and its [GitHub translator][zotGH].
 
 ## Known issues: see [bugs] and [ADR]s
 
