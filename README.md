@@ -48,7 +48,7 @@ and make sure it contains the following:
     BacDive_email=your.email@provider.org
     BacDive_password=YOUR_20_char_password
 
-In the examples and vignettes, the data retrieval will only work if your login credentials are correct in themselves (no typos) _and_ were correctly saved. Console output like `"{\"detail\": \"Invalid username/password\"}"`, or `Error: $ operator is invalid for atomic vectors` indicate that either the login credentials are incorrect, or the `.Renviron` file.
+In the examples and vignettes, the data retrieval will only work if your login credentials are correct in themselves (no typos) _and_ were correctly saved. Console output like `"{\"detail\": \"Invalid username/password\"}"`, or `Error: $ operator is invalid for atomic vectors` indicates that either the login credentials are incorrect, or the `.Renviron` file.
 
 
 ## How to use
