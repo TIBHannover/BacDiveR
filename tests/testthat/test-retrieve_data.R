@@ -99,10 +99,4 @@ test_that("normalising invalid JSON newlines works", {
   )
   # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1847/?format=json
   # contains "medium_composition": "Name: ISP 2 / Yeast Malt Agar (5265); 5265\r\nComposition
-  expect_type(
-    object = retrieve_data(searchTerm = "Bacillus cytotoxicus"),
-    type = "list"
-  )
-  # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1323/?format=json
-  # contains "sample_type": "Vegetable puree,severe food poisoning\noutbreak in France"
 })
