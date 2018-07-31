@@ -7,7 +7,8 @@
 retrieve_search_results(queryURL)
 }
 \arguments{
-\item{queryURL}{URL of a query prepared on \href{https://bacdive.dsmz.de/advsearch}{BacDive.DSMZ.de/AdvSearch}, as explained in the vignette "The
+\item{queryURL}{URL of a query prepared on \href{https://bacdive.dsmz.de/advsearch}{BacDive.DSMZ.de/AdvSearch},
+as explained in the vignette "The
 semi-automatic approach: retrieving data through a pre-configured advanced
 search".}
 }

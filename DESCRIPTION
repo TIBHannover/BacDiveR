@@ -18,7 +18,7 @@ Suggests:
     rmarkdown (>= 1.10),
     testthat (>= 2.0.0)
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.1.0
 Imports: 
     dplyr (>= 0.7.6),
     jsonlite (>= 1.5),
