@@ -37,11 +37,11 @@ retrieve_data <- function(searchTerm,
     names(payload) <- searchTerm
     return(payload)
   }
-  else
+  else if (!is.null(payload$count))
   {
-    if (!is.null(payload$count) &&
-        payload$count > 100)
+    if (payload$count > 100)
       warn_slow_download(payload$count)
+
     aggregate_datasets(payload)
   }
 }
