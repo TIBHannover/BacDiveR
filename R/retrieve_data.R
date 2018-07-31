@@ -75,27 +75,6 @@ download <-
   }
 
 
-#' Aggregate BacDive-IDs from a Paged List of Retrieved URLs
-#'
-#' @param results A list of paginated URLs returned by an ambiguous
-#'   `searchTerm` in `retrieve_data()`
-#'
-#' @return An integer vector of all BacDive IDs within the results.
-aggregate_result_IDs <- function(results)
-  {
-  IDs <- as.numeric(sapply(strsplit(
-    x = aggregate_result_URLs(results), split = "/"
-  ), function(x)
-    x[7]))
-  # IDs are the 7th part in the URls returned by an ambiguous `searchTerm`
-  # e.g. https://bacdive.dsmz.de/api/bacdive/bacdive_id/138982/
-  # => [1] "https:"          ""                "bacdive.dsmz.de" "api"
-  # => [5] "bacdive"         "bacdive_id"      "138982
-
-  return(IDs)
-}
-
-
 #' Aggregate BacDive-URLs from a Paged List of Retrieved URLs
 #'
 #' @param results A list of paginated URLs returned by an ambiguous
