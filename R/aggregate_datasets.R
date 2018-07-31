@@ -18,3 +18,32 @@ aggregate_datasets <- function(payload, from_IDs = FALSE)
 
   return(taxon_data)
 }
+
+
+#' Aggregate BacDive-URLs from a Paged List of Retrieved URLs
+#'
+#' @param results A list of paginated URLs returned by an ambiguous
+#'   `searchTerm` in `retrieve_data()`.
+#'
+#' @return An integer vector of all BacDive URLs within the results.
+aggregate_result_URLs <- function(results)
+{
+  if (length(results$url) == 1)
+    URLs <- results$url
+  else
+  {
+    URLs <- c()
+    while (TRUE) {
+      URLs <- c(URLs, unlist(results$results, use.names = FALSE))
+      if (!is.null(results$`next`))
+        results <- jsonlite::fromJSON(download(results$`next`))
+      else
+        break
+    }
+  }
+  return(paste0(URLs, "?format=json"))
+}
+
+
+URLs_to_IDs <- function(URLs)
+  gsub(pattern = "\\D", "", URLs)
