@@ -62,16 +62,9 @@ download <-
   {
     message(URLs_to_IDs(URL), " ", appendLF = FALSE)
 
-    gsub(
-      pattern = "[[:space:]]+",
-      replacement = " ",
-      perl = TRUE,
-      # Prevent "lexical error: invalid character inside string."
-      # https://github.com/jeroen/jsonlite/issues/47
-      RCurl::getURL(URL,
-                    userpwd = userpwd,
-                    httpauth = 1L)
-    )
+    RCurl::getURL(URL,
+                  userpwd = userpwd,
+                  httpauth = 1L)
   }
 
 

@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - add DOI: [10.5281/zenodo.1308061](https://zenodo.org/record/1308061)
 
+- the JSON download is no longer purged of all space characters, but only the
+  `\r`, `\n` and `\t` are repaired to the stricter jsonlite demands (#43)
+
 ### Added
 ### Changed
 ### Deprecated

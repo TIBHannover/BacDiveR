@@ -13,6 +13,9 @@ aggregate_datasets <- function(payload, from_IDs = FALSE)
 
   message("Data download in progress for BacDive-IDs: ", appendLF = FALSE)
   taxon_data <- purrr::map(URLs, download)
+  taxon_data <- purrr::map(taxon_data, repair_escaping, char = "r")
+  taxon_data <- purrr::map(taxon_data, repair_escaping, "n")
+  taxon_data <- purrr::map(taxon_data, repair_escaping, "t")
   taxon_data <- purrr::map(taxon_data, jsonlite::fromJSON)
   names(taxon_data) <- IDs
 
