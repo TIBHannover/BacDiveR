@@ -12,17 +12,17 @@ Encoding: UTF-8
 LazyData: true
 ByteCompile: true
 Suggests: 
-    ggplot2,
-    knitr,
-    magrittr,
-    rmarkdown,
-    testthat
+    ggplot2 (>= 3.0.0),
+    knitr (>= 1.20),
+    magrittr (>= 1.5),
+    rmarkdown (>= 1.10),
+    testthat (>= 2.0.0)
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1.9000
 Imports: 
-    dplyr,
-    jsonlite,
-    purrr,
-    RCurl,
-    utils
+    dplyr (>= 0.7.6),
+    jsonlite (>= 1.5),
+    purrr (>= 0.2.5),
+    RCurl (>= 1.95.4.11),
+    utils (>= 3.5.0)
 VignetteBuilder: knitr
