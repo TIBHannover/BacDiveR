@@ -1,6 +1,6 @@
 Package: BacDiveR
 Title: A Programmatic Interface For BacDive, The DSMZ's Bacterial Diversity Metadatabase
-Version: 0.4.2
+Version: 0.5.0
 Authors@R: person("Katrin", "Leinweber", email = "katrin.leinweber@tib.eu",
                   role = c("aut", "cre"),
                   comment = c(ORCID = "0000-0001-5135-5758"))

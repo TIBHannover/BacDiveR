@@ -6,9 +6,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - add DOI: [10.5281/zenodo.1308061](https://zenodo.org/record/1308061)
 
-- the JSON download is no longer purged of all space characters, but only the
-  `\r`, `\n` and `\t` are repaired to the stricter jsonlite demands (#43)
-
 ### Added
 ### Changed
 ### Deprecated
@@ -16,6 +13,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
+## BacDiveR 0.5.0
+
+### Changed
+
+- The JSON downloads are no longer purged of all space characters pre-emptively
+  to prevent jsonlite from complaining about invalid encoding (#43). Instead, 
+  only `\r`, `\n` and `\t` are repaired to `\\r`, `\\n` and `\\t`, which jsonlite
+  expects. This leads to different output (newline & tabs, where previously only
+  spaces occured)! Thus, if you are parsing BacDiveR output in any way, you may
+  need to adjust that. Because I consider this unlikely given the "maturing" status,
+  and because no API surface was changed, I don't consider this a major change
+  in the [SemVer.org](https://semver.org/) sense.
+  
 
 ## BacDiveR 0.4.2
 
