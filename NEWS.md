@@ -4,8 +4,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-- add DOI: [10.5281/zenodo.1308061](https://zenodo.org/record/1308061)
-
 ### Added
 ### Changed
 ### Deprecated
@@ -14,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 
 ## BacDiveR 0.5.0
+
+### Added
+
+- Syncing of release versions to Zenodo, starting with [10.5281/zenodo.1308061](https://zenodo.org/record/1308061)
 
 ### Changed
 

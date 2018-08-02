@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve Results of an Advanced Search/Query — retrieve_search_results • BacDiveR</title>
+<title>Repair Singly Escaped Space Characters — repair_escaping • BacDiveR</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="Retrieve Results of an Advanced Search/Query — retrieve_search_results" />
+<meta property="og:title" content="Repair Singly Escaped Space Characters — repair_escaping" />
 
-<meta property="og:description" content="Retrieve Results of an Advanced Search/Query" />
+<meta property="og:description" content="Prevent &quot;lexical error: invalid character inside string.&quot;, see
+https://github.com/jeroen/jsonlite/issues/47 and
+https://github.com/TIBHannover/BacDiveR/issues/43" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -121,42 +123,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve Results of an Advanced Search/Query</h1>
-    <small class="dont-index">Source: <a href='https://github.com/TIBHannover/BacDiveR/blob/master/R/retrieve_search_results.R'><code>R/retrieve_search_results.R</code></a></small>
-    <div class="hidden name"><code>retrieve_search_results.Rd</code></div>
+    <h1>Repair Singly Escaped Space Characters</h1>
+    <small class="dont-index">Source: <a href='https://github.com/TIBHannover/BacDiveR/blob/master/R/util-repair_escaping.R'><code>R/util-repair_escaping.R</code></a></small>
+    <div class="hidden name"><code>repair_escaping.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Retrieve Results of an Advanced Search/Query</p>
+    <p>Prevent "lexical error: invalid character inside string.", see
+https://github.com/jeroen/jsonlite/issues/47 and
+https://github.com/TIBHannover/BacDiveR/issues/43</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>retrieve_search_results</span>(<span class='no'>queryURL</span>)</pre>
+    <pre class="usage"><span class='fu'>repair_escaping</span>(<span class='no'>JSON</span>, <span class='no'>char</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>queryURL</th>
-      <td><p>URL of a query prepared on <a href='https://bacdive.dsmz.de/advsearch'>BacDive.DSMZ.de/AdvSearch</a>,
-as explained in the vignette "The
-semi-automatic approach: retrieving data through a pre-configured advanced
-search".</p></td>
+      <th>JSON</th>
+      <td><p>A character string containing JSON with invalidly, singly
+escaped space characters</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list of lists containing either a single BacDive dataset in case
-the <code>searchTerm</code> was unambiguous (<code>bacdive_id</code>, <code>sequence</code>,
-<code>culturecollectionno</code>), or a large list containing all datasets that match
-an ambiguous <code>searchTerm</code> (most <code>taxon</code>s).</p>
+    <p>A character string with JSON and correctly, doubly escaped
+space characters</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  </div><div class='input'><span class='no'>data_miller</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_search_results</span>(<span class='kw'>queryURL</span> <span class='kw'>=</span> <span class='st'>"https://bacdive.dsmz.de/advsearch?site=advsearch&amp;searchparams[78][contenttype]=text&amp;searchparams[78][typecontent]=contains&amp;searchparams[78][searchterm]=Miller&amp;advsearch=search"</span>)</div><div class='output co'>#&gt; <span class='message'>Data download in progress for BacDive-IDs: </span></div><div class='output co'>#&gt; <span class='message'>132598 </span></div><div class='output co'>#&gt; <span class='message'>133012 </span></div><div class='output co'>#&gt; <span class='message'>140488 </span></div><div class='output co'>#&gt; <span class='error'>Error in taxon_data %&gt;% purrr::map(repair_escaping, char = "r") %&gt;% purrr::map(repair_escaping,     "n") %&gt;% purrr::map(repair_escaping, "t"): could not find function "%&gt;%"</span></div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -164,9 +161,7 @@ an ambiguous <code>searchTerm</code> (most <code>taxon</code>s).</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
   </div>
 </div>
