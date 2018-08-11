@@ -29,13 +29,6 @@ test_that("taxon search returns paged results list", {
   expect_type(object = B_subtilis_IDs$results, type = "list")
 })
 
-test_that("aggregating a set of BacDive ID works", {
-  expect_equal(B_subtilis_IDs$count,
-               length(aggregate_result_IDs(B_subtilis_IDs)))
-  expect_type(object = aggregate_result_IDs(B_subtilis_IDs), type = "double")
-  # mode "numeric" consists of types "integer" and "double"
-})
-
 test_that("aggregating a set of BacDive URLs works", {
   expect_equal(B_subtilis_IDs$count,
                length(aggregate_result_URLs(B_subtilis_IDs)))
@@ -52,7 +45,6 @@ test_that("using the taxon search for a single dataset works", {
     )
 
   expect_equal(P_lini$count,
-               length(aggregate_result_IDs(P_lini)),
                length(aggregate_result_URLs(P_lini)))
 })
 
@@ -107,10 +99,4 @@ test_that("normalising invalid JSON newlines works", {
   )
   # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1847/?format=json
   # contains "medium_composition": "Name: ISP 2 / Yeast Malt Agar (5265); 5265\r\nComposition
-  expect_type(
-    object = retrieve_data(searchTerm = "Bacillus cytotoxicus"),
-    type = "list"
-  )
-  # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1323/?format=json
-  # contains "sample_type": "Vegetable puree,severe food poisoning\noutbreak in France"
 })

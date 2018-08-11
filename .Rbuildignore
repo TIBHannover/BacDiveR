@@ -8,4 +8,6 @@
 ^docs$
 ^figure/
 ^\.github$
+Makefile
+^_pkgdown\.yml$
 ^codemeta\.json$

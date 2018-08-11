@@ -1,7 +1,9 @@
 Package: BacDiveR
 Title: A Programmatic Interface For BacDive, The DSMZ's Bacterial Diversity Metadatabase
-Version: 0.4.2
-Authors@R: person("Katrin", "Leinweber", email = "katrin.leinweber@tib.eu", role = c("aut", "cre"))
+Version: 0.5.0
+Authors@R: person("Katrin", "Leinweber", email = "katrin.leinweber@tib.eu",
+                  role = c("aut", "cre"),
+                  comment = c(ORCID = "0000-0001-5135-5758"))
 Description: BacDive focuses on providing organism-linked information covering the multifarious aspects of bacterial biodiversity: taxonomic classification, morphology, physiology, cultivation, origin natural habitat and more, both for bacterial and archaeal strains. BacDiveR helps you investigate this data offline, and semi-automatically in R.
 License: MIT + file LICENSE
 URL: https://github.com/TIBHannover/BacDiveR
@@ -10,17 +12,17 @@ Encoding: UTF-8
 LazyData: true
 ByteCompile: true
 Suggests: 
-    ggplot2,
-    knitr,
-    magrittr,
-    rmarkdown,
-    testthat
+    ggplot2 (>= 3.0.0),
+    knitr (>= 1.20),
+    magrittr (>= 1.5),
+    rmarkdown (>= 1.10),
+    testthat (>= 2.0.0)
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.1.0
 Imports: 
-    dplyr,
-    jsonlite,
-    purrr,
-    RCurl,
-    utils
+    dplyr (>= 0.7.6),
+    jsonlite (>= 1.5),
+    purrr (>= 0.2.5),
+    RCurl (>= 1.95.4.11),
+    utils (>= 3.5.0)
 VignetteBuilder: knitr

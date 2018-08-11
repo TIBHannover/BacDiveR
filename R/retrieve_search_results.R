@@ -1,7 +1,7 @@
 #' Retrieve Results of an Advanced Search/Query
 #'
-#' @param queryURL URL of a query prepared on [BacDive.DSMZ.de/AdvSearch
-#'   ](https://bacdive.dsmz.de/advsearch), as explained in the vignette "The
+#' @param queryURL URL of a query prepared on [BacDive.DSMZ.de/AdvSearch](https://bacdive.dsmz.de/advsearch),
+#'   as explained in the vignette "The
 #'   semi-automatic approach: retrieving data through a pre-configured advanced
 #'   search".
 #'
@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#'   data_miller <- retrieve_search_results(queryURL = "https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams[78][contenttype]=text&searchparams[78][typecontent]=contains&searchparams[78][searchterm]=Miller&advsearch=search")
+#'   \donttest{data_miller <- retrieve_search_results(queryURL = "https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams[78][contenttype]=text&searchparams[78][typecontent]=contains&searchparams[78][searchterm]=Miller&advsearch=search")}
 #'
 retrieve_search_results <- function(queryURL)
   {

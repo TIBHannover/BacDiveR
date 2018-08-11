@@ -15,10 +15,10 @@
 #'
 #' @export
 #' @examples
-#'   dataset_717 <- retrieve_data(searchTerm = 717, searchType = "bacdive_id")
-#'   dataset_DSM_319 <- retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")
-#'   dataset_AJ000733 <- retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
-#'   # dataset_Bss <- retrieve_data(searchTerm = "Bacillus subtilis subtilis")
+#'   \donttest{dataset_717 <- retrieve_data(searchTerm = 717, searchType = "bacdive_id")}
+#'   \donttest{dataset_DSM_319 <- retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")}
+#'   \donttest{dataset_AJ000733 <- retrieve_data(searchTerm = "AJ000733", searchType = "sequence")}
+#'   \donttest{dataset_Bss <- retrieve_data(searchTerm = "Bacillus subtilis subtilis")}
 retrieve_data <- function(searchTerm,
                           searchType = "taxon")
   {
@@ -37,11 +37,11 @@ retrieve_data <- function(searchTerm,
     names(payload) <- searchTerm
     return(payload)
   }
-  else
+  else if (!is.null(payload$count))
   {
-    if (!is.null(payload$count) &&
-        payload$count > 100)
+    if (payload$count > 100)
       warn_slow_download(payload$count)
+
     aggregate_datasets(payload)
   }
 }
@@ -62,67 +62,10 @@ download <-
   {
     message(URLs_to_IDs(URL), " ", appendLF = FALSE)
 
-    gsub(
-      pattern = "[[:space:]]+",
-      replacement = " ",
-      perl = TRUE,
-      # Prevent "lexical error: invalid character inside string."
-      # https://github.com/jeroen/jsonlite/issues/47
-      RCurl::getURL(URL,
-                    userpwd = userpwd,
-                    httpauth = 1L)
-    )
+    RCurl::getURL(URL,
+                  userpwd = userpwd,
+                  httpauth = 1L)
   }
-
-
-#' Aggregate BacDive-IDs from a Paged List of Retrieved URLs
-#'
-#' @param results A list of paginated URLs returned by an ambiguous
-#'   `searchTerm` in `retrieve_data()`
-#'
-#' @return An integer vector of all BacDive IDs within the results.
-aggregate_result_IDs <- function(results)
-  {
-  IDs <- as.numeric(sapply(strsplit(
-    x = aggregate_result_URLs(results), split = "/"
-  ), function(x)
-    x[7]))
-  # IDs are the 7th part in the URls returned by an ambiguous `searchTerm`
-  # e.g. https://bacdive.dsmz.de/api/bacdive/bacdive_id/138982/
-  # => [1] "https:"          ""                "bacdive.dsmz.de" "api"
-  # => [5] "bacdive"         "bacdive_id"      "138982
-
-  return(IDs)
-}
-
-
-#' Aggregate BacDive-URLs from a Paged List of Retrieved URLs
-#'
-#' @param results A list of paginated URLs returned by an ambiguous
-#'   `searchTerm` in `retrieve_data()`.
-#'
-#' @return An integer vector of all BacDive IDs within the results.
-aggregate_result_URLs <- function(results)
-{
-  if (length(results$url) == 1)
-    URLs <- results$url
-  else
-  {
-    URLs <- c()
-    while (TRUE) {
-      URLs <- c(URLs, unlist(results$results, use.names = FALSE))
-      if (!is.null(results$`next`))
-        results <- jsonlite::fromJSON(download(results$`next`))
-      else
-        break
-    }
-  }
-  return(paste0(URLs, "?format=json"))
-}
-
-
-URLs_to_IDs <- function(URLs)
-  gsub(pattern = "\\D", "", URLs)
 
 
 is_dataset <- function(payload)

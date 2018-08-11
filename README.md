@@ -1,5 +1,5 @@
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1308061.svg)](https://doi.org/10.5281/zenodo.1308061)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1326672.svg)](https://doi.org/10.5281/zenodo.1326672)
 
 
 # BacDiveR
@@ -15,9 +15,11 @@ research better and faster, by:
 - providing you with a way to document and report your searches and downloads, 
   in a reproducible manner (`.R` scripts and/or `.Rmd` files).
 
+It was also built to serve as a demonstration object during [TIB's "FAIR Data & Software" workshop][FDS].
 
 [BD]: https://bacdive.dsmz.de/
 [DMSZ]: https://www.dsmz.de/about-us.html
+[FDS]: https://tibhannover.github.io/2018-07-09-FAIR-Data-and-Software/#schedule
 [reg]: https://bacdive.dsmz.de/api/bacdive/registration/register/
 
 
@@ -46,7 +48,7 @@ and make sure it contains the following:
     BacDive_email=your.email@provider.org
     BacDive_password=YOUR_20_char_password
 
-In the examples and vignettes, the data retrieval will only work if your login credentials are correct in themselves (no typos) _and_ were correctly saved. Console output like `"{\"detail\": \"Invalid username/password\"}"`, or `Error: $ operator is invalid for atomic vectors` indicate that either the login credentials are incorrect, or the `.Renviron` file.
+In the examples and vignettes, the data retrieval will only work if your login credentials are correct in themselves (no typos) _and_ were correctly saved. Console output like `"{\"detail\": \"Invalid username/password\"}"`, or `Error: $ operator is invalid for atomic vectors` indicates that either the login credentials are incorrect, or the `.Renviron` file.
 
 
 ## How to use
@@ -62,10 +64,20 @@ and about the ["Semi-automatic approach"][adv-search].
 [adv-search]: https://tibhannover.github.io/BacDiveR/articles/advanced-search.html
 
 
+## How to cite
+
+Best use the `Cite as` or `Export` options presented on [Zenodo.org/record/1308061][zenodo].
+If you want to import [this GitHub repo's metadata][GH] into a reference manager
+directly, try [Zotero] and its [GitHub translator][zotGH].
+
 ## Known issues: see [bugs] and [ADR]s
 
 [ADR]: https://github.com/TIBHannover/BacDiveR/tree/master/vignettes
 [bugs]: https://github.com/tibhannover/BacDiveR/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Aupdated-desc
+[GH]: https://github.com/TIBHannover/BacDiveR/
+[zenodo]: https://zenodo.org/record/1308061#invenio-csl
+[zotero]: https://www.zotero.org/
+[zotGH]: https://github.com/zotero/translators/blob/master/Github.js
 
 
 ## Similar tools

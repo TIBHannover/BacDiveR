@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Aggregate BacDive-IDs from a Paged List of Retrieved URLs — aggregate_result_IDs • BacDiveR</title>
+<title>Repair Singly Escaped Space Characters — repair_escaping • BacDiveR</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="Aggregate BacDive-IDs from a Paged List of Retrieved URLs — aggregate_result_IDs" />
+<meta property="og:title" content="Repair Singly Escaped Space Characters — repair_escaping" />
 
-<meta property="og:description" content="Aggregate BacDive-IDs from a Paged List of Retrieved URLs" />
+<meta property="og:description" content="Prevent &quot;lexical error: invalid character inside string.&quot;, see
+https://github.com/jeroen/jsonlite/issues/47 and
+https://github.com/TIBHannover/BacDiveR/issues/43" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -61,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">BacDiveR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
       </span>
     </div>
 
@@ -121,32 +123,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Aggregate BacDive-IDs from a Paged List of Retrieved URLs</h1>
-    <small class="dont-index">Source: <a href='https://github.com/TIBHannover/BacDiveR/blob/master/R/retrieve_data.R'><code>R/retrieve_data.R</code></a></small>
-    <div class="hidden name"><code>aggregate_result_IDs.Rd</code></div>
+    <h1>Repair Singly Escaped Space Characters</h1>
+    <small class="dont-index">Source: <a href='https://github.com/TIBHannover/BacDiveR/blob/master/R/util-repair_escaping.R'><code>R/util-repair_escaping.R</code></a></small>
+    <div class="hidden name"><code>repair_escaping.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Aggregate BacDive-IDs from a Paged List of Retrieved URLs</p>
+    <p>Prevent "lexical error: invalid character inside string.", see
+https://github.com/jeroen/jsonlite/issues/47 and
+https://github.com/TIBHannover/BacDiveR/issues/43</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>aggregate_result_IDs</span>(<span class='no'>results</span>)</pre>
+    <pre class="usage"><span class='fu'>repair_escaping</span>(<span class='no'>JSON</span>, <span class='no'>char</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>results</th>
-      <td><p>A list of paginated URLs returned by an ambiguous
-<code>searchTerm</code> in <code><a href='retrieve_data.html'>retrieve_data()</a></code></p></td>
+      <th>JSON</th>
+      <td><p>A character string containing JSON with invalidly, singly
+escaped space characters</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An integer vector of all BacDive IDs within the results.</p>
+    <p>A character string with JSON and correctly, doubly escaped
+space characters</p>
     
 
   </div>

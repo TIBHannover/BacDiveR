@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">BacDiveR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
       </span>
     </div>
 
@@ -92,11 +92,12 @@
 <div id="bacdiver" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#bacdiver" class="anchor"></a>BacDiveR</h1></div>
-<p>This R package provides a programmatic interface for the <a href="https://bacdive.dsmz.de/">Bacterial Diversity Metadatabase</a> (<a href="#references">Söhngen et al. 2014 &amp; 2016</a>) of the <a href="https://www.dsmz.de/about-us.html">DSMZ (German Collection of Microorganisms and Cell Cultures)</a>. BacDiveR helps you to conduct your microbial research better and faster, by:</p>
+<p>This R package provides a programmatic interface for the <a href="https://bacdive.dsmz.de/">Bacterial Diversity Metadatabase</a> (<a href="#references">Söhngen et al. 2014 &amp; 2016</a>) of the <a href="https://www.dsmz.de/about-us.html">DSMZ (German Collection of Microorganisms and Cell Cultures)</a>. BacDiveR helps you to conduct your microbial research better and faster, by:</p>
 <ul>
 <li><p>downloading the BacDive datasets you want to investigate off-line, and by</p></li>
 <li><p>providing you with a way to document and report your searches and downloads, in a reproducible manner (<code>.R</code> scripts and/or <code>.Rmd</code> files).</p></li>
 </ul>
+<p>It was also built to serve as a demonstration object during <a href="https://tibhannover.github.io/2018-07-09-FAIR-Data-and-Software/#schedule">TIB’s “FAIR Data &amp; Software” workshop</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -104,21 +105,26 @@
 <li><p>Because the <a href="https://bacdive.dsmz.de/api/bacdive/registration/register/">BacDive API requires registration</a> please do that first and wait for your access to be granted.</p></li>
 <li><p>Once you have your login credentials, install BacDiveR from GitHub with:</p></li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(<span class="st">'devtools'</span>)) <span class="kw">install.packages</span>(<span class="st">'devtools'</span>)
-devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"tibhannover/BacDiveR"</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(<span class="st">'devtools'</span>)) <span class="kw">install.packages</span>(<span class="st">'devtools'</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"tibhannover/BacDiveR"</span>)</a></code></pre></div>
 <ol>
 <li>After installing, follow the instructions on the console to save your login credentials locally and restart R(Studio) or run:</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">file.edit</span>(<span class="kw">file.path</span>(<span class="kw">Sys.getenv</span>(<span class="st">'HOME'</span>), <span class="st">'.Renviron'</span>))</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">file.edit</span>(<span class="kw">file.path</span>(<span class="kw">Sys.getenv</span>(<span class="st">'HOME'</span>), <span class="st">'.Renviron'</span>))</a></code></pre></div>
 <p>and make sure it contains the following:</p>
-<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r">BacDive_email=your.email<span class="op">@</span>provider.org
-BacDive_password=YOUR_20_char_password</code></pre></div>
-<p>In the examples and vignettes, the data retrieval will only work if your login credentials are correct in themselves (no typos) <em>and</em> were correctly saved. Console output like <code>"{\"detail\": \"Invalid username/password\"}"</code>, or <code>Error: $ operator is invalid for atomic vectors</code> indicate that either the login credentials are incorrect, or the <code>.Renviron</code> file.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">BacDive_email=your.email<span class="op">@</span>provider.org</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">BacDive_password=YOUR_<span class="dv">20</span>_char_password</a></code></pre></div>
+<p>In the examples and vignettes, the data retrieval will only work if your login credentials are correct in themselves (no typos) <em>and</em> were correctly saved. Console output like <code>"{\"detail\": \"Invalid username/password\"}"</code>, or <code>Error: $ operator is invalid for atomic vectors</code> indicates that either the login credentials are incorrect, or the <code>.Renviron</code> file.</p>
 </div>
 <div id="how-to-use" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-use" class="anchor"></a>How to use</h2>
 <p>There are two main functions. Please click on their names to read their docu: <a href="https://tibhannover.github.io/BacDiveR/reference/retrieve_data.html"><code><a href="reference/retrieve_data.html">retrieve_data()</a></code></a> and <a href="https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html"><code><a href="reference/retrieve_search_results.html">retrieve_search_results()</a></code></a>. For real-life examples, please read the vignettes <a href="https://tibhannover.github.io/BacDiveR/articles/BacDive-ing-in.html">“BacDive-ing in”</a> and about the <a href="https://tibhannover.github.io/BacDiveR/articles/advanced-search.html">“Semi-automatic approach”</a>.</p>
+</div>
+<div id="how-to-cite" class="section level2">
+<h2 class="hasAnchor">
+<a href="#how-to-cite" class="anchor"></a>How to cite</h2>
+<p>Best use the <code>Cite as</code> or <code>Export</code> options presented on <a href="https://zenodo.org/record/1308061#invenio-csl">Zenodo.org/record/1308061</a>. If you want to import <a href="https://github.com/TIBHannover/BacDiveR/">this GitHub repo’s metadata</a> into a reference manager directly, try <a href="https://www.zotero.org/">Zotero</a> and its <a href="https://github.com/zotero/translators/blob/master/Github.js">GitHub translator</a>.</p>
 </div>
 <div id="known-issues-see-bugs-and-adrs" class="section level2">
 <h2 class="hasAnchor">
@@ -165,7 +171,7 @@ BacDive_password=YOUR_20_char_password</code></pre></div>
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Katrin Leinweber <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Katrin Leinweber <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-5135-5758" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" height="16"></a> </li>
 </ul>
 </div>
 
