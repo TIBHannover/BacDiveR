@@ -33,7 +33,7 @@ It was also built to serve as a demonstration object during [TIB's "FAIR Data & 
 
 ``` r
 if(!require('devtools')) install.packages('devtools')
-devtools::install_github("tibhannover/BacDiveR")
+devtools::install_github("TIBHannover/BacDiveR")
 ```
 
 3.  After installing, follow the instructions on the console to save your login

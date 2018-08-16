@@ -66,7 +66,7 @@ etc.
 
 ### Fixed
 
-- An error in the download of a single dataset found through it's culture collection number (see #45)
+- An error in the download of a single dataset found through its culture collection number (see #45)
 
 ### Added
 

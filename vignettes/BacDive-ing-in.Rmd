@@ -34,7 +34,7 @@ Bac_data <- retrieve_data(searchTerm = taxon_1)
 
 Suppose we want to compare the optimal growth temperatures of strains from the taxon
 *`r taxon_1`* with another one. `retrieve_data()` 
-with it's default `searchType = taxon` will get you all taxon data in a single (albeit
+with its default `searchType = taxon` will get you all taxon data in a single (albeit
 large) list of dataframes. Feel free to take a break while the computers
 do some work for you:
 
