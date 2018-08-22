@@ -92,7 +92,7 @@
             <h3 class="subtitle">Retrieving data(sets) from BacDive</h3>
                         <h4 class="author">Katrin Leinweber</h4>
             
-            <h4 class="date">2018-08-16</h4>
+            <h4 class="date">2018-08-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/TIBHannover/BacDiveR/blob/master/vignettes/BacDive-ing-in.Rmd"><code>vignettes/BacDive-ing-in.Rmd</code></a></small>
       <div class="hidden name"><code>BacDive-ing-in.Rmd</code></div>
@@ -129,34 +129,54 @@
 <li>the function’s output is “piped” into the next function.</li>
 </ol>
 <p>Note the <code>~ .x</code> prepended to the path <code>$culture_growth_condition$culture_temp$temp</code>! This is <code>map()</code>’s way of indicating that each element in the piped-in <code>dataset</code> will be accessed at that path.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(magrittr) </a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"> </a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">extract_temps &lt;-<span class="st"> </span><span class="cf">function</span>(dataset, taxon_name) {</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">  dataset <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="st">  </span>purrr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map">map</a></span>(<span class="op">~</span>.x<span class="op">$</span>culture_growth_condition<span class="op">$</span>culture_temp<span class="op">$</span>temp) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="st">  </span><span class="kw">unlist</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="st">  </span><span class="kw">as.numeric</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="st">  </span><span class="kw">data.frame</span>(<span class="dt">temp_C =</span> ., <span class="dt">taxon =</span> <span class="kw">rep</span>(taxon_name, <span class="kw">length</span>(.))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="st">  </span><span class="kw">return</span>()</a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">}</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">temperature_Bac &lt;-<span class="st"> </span><span class="kw">extract_temps</span>(Bac_data, taxon_<span class="dv">1</span>) </a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">temperature_At &lt;-<span class="st"> </span><span class="kw">extract_temps</span>(At_data, taxon_<span class="dv">2</span>) </a></code></pre></div>
+<pre class="sourceCode r" id="cb3"><code class="sourceCode r"><div class="sourceLine" id="cb3-1" data-line-number="1">
+<span class="kw">library</span>(magrittr) </div>
+<div class="sourceLine" id="cb3-2" data-line-number="2"> </div>
+<div class="sourceLine" id="cb3-3" data-line-number="3">extract_temps &lt;-<span class="st"> </span><span class="cf">function</span>(dataset, taxon_name) {</div>
+<div class="sourceLine" id="cb3-4" data-line-number="4">  purrr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map">map</a></span>(<span class="dt">.x =</span> dataset, <span class="dt">.f =</span> <span class="op">~</span>.x<span class="op">$</span>culture_growth_condition<span class="op">$</span>culture_temp<span class="op">$</span>temp) <span class="op">%&gt;%</span><span class="st"> </span>
+</div>
+<div class="sourceLine" id="cb3-5" data-line-number="5">
+<span class="st">  </span><span class="kw">unlist</span>() <span class="op">%&gt;%</span>
+</div>
+<div class="sourceLine" id="cb3-6" data-line-number="6">
+<span class="st">  </span><span class="kw">as.numeric</span>() <span class="op">%&gt;%</span>
+</div>
+<div class="sourceLine" id="cb3-7" data-line-number="7">
+<span class="st">  </span><span class="kw">data.frame</span>(<span class="dt">temp_C =</span> ., <span class="dt">taxon =</span> <span class="kw">rep</span>(taxon_name, <span class="kw">length</span>(.))) <span class="op">%&gt;%</span>
+</div>
+<div class="sourceLine" id="cb3-8" data-line-number="8">
+<span class="st">  </span><span class="kw">return</span>()</div>
+<div class="sourceLine" id="cb3-9" data-line-number="9">}</div>
+<div class="sourceLine" id="cb3-10" data-line-number="10"></div>
+<div class="sourceLine" id="cb3-11" data-line-number="11">temperature_Bac &lt;-<span class="st"> </span><span class="kw">extract_temps</span>(Bac_data, taxon_<span class="dv">1</span>) </div>
+<div class="sourceLine" id="cb3-12" data-line-number="12">temperature_At &lt;-<span class="st"> </span><span class="kw">extract_temps</span>(At_data, taxon_<span class="dv">2</span>) </div></code></pre>
 <p>Keep in mind, that in case of growth temperatures, a range may also be given (e.g. “28-32”). The above code turns a range into <code>NA</code>, but you could compute the mid-point / mean of such ranges.</p>
 <p>Before visualising the data, we need to create a dataframe of the two datasets.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(<span class="st">"ggplot2"</span>)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">rbind</span>(temperature_Bac, temperature_At) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> taxon, <span class="dt">y =</span> temp_C)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_boxplot">geom_boxplot</a></span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>, <span class="dt">varwidth =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_jitter">geom_jitter</a></span>(<span class="dt">height =</span> <span class="fl">0.25</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_discrete">scale_x_discrete</a></span>(<span class="dt">position =</span> <span class="st">"top"</span>, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labellers">label_value</a></span>(<span class="st">""</span>)) <span class="op">+</span><span class="st">  </span><span class="co"># or: xlab(label = NULL)</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">ggtitle</a></span>(<span class="st">"Optimal growth temperatures of DSMZ-stored strains within the taxons:"</span>)</a></code></pre></div>
+<pre class="sourceCode r" id="cb4"><code class="sourceCode r"><div class="sourceLine" id="cb4-1" data-line-number="1">
+<span class="kw">library</span>(<span class="st">"ggplot2"</span>)</div>
+<div class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; Warning: Paket 'ggplot2' wurde unter R Version 3.5.1 erstellt</span></div>
+<div class="sourceLine" id="cb4-3" data-line-number="3"></div>
+<div class="sourceLine" id="cb4-4" data-line-number="4">
+<span class="kw">rbind</span>(temperature_Bac, temperature_At) <span class="op">%&gt;%</span><span class="st"> </span>
+</div>
+<div class="sourceLine" id="cb4-5" data-line-number="5">
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> taxon, <span class="dt">y =</span> temp_C)) <span class="op">+</span>
+</div>
+<div class="sourceLine" id="cb4-6" data-line-number="6">
+<span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span>
+</div>
+<div class="sourceLine" id="cb4-7" data-line-number="7">
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">height =</span> <span class="dv">0</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>)</div></code></pre>
 <p><img src="BacDive-ing-in_files/figure-html/ggplot-1.png" width="700"></p>
 <p>And thus we find, that <em>Aneurinibacillus thermoaerophilus</em> contains strains with different growth optima (note the groups of data <em>points</em>), even up to the 50-something-°C-range as the <code>thermo</code>-part in its name suggest). On the other hand, all <em>Bacillus halodurans</em> strains known to BacDive were found to grow best at the lower temperature of 30°C. Thanks to the notch in <em>Aneurinibacillus thermoaerophilus</em>’s box, we can also say that there is a significant difference between the temperature ranges of these two taxons, even before digging into the numbers:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">summary</span>(temperature_At<span class="op">$</span>temp_C)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;   37.00   37.00   45.00   45.62   55.00   55.00</span></a></code></pre></div>
+<pre class="sourceCode r" id="cb5"><code class="sourceCode r"><div class="sourceLine" id="cb5-1" data-line-number="1">
+<span class="kw">summary</span>(temperature_Bac<span class="op">$</span>temp_C)</div>
+<div class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></div>
+<div class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;      30      30      30      30      30      30</span></div>
+<div class="sourceLine" id="cb5-4" data-line-number="4">
+<span class="kw">summary</span>(temperature_At<span class="op">$</span>temp_C)</div>
+<div class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></div>
+<div class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   37.00   37.00   45.00   45.62   55.00   55.00</span></div></code></pre>
 </div>
   </div>
 
