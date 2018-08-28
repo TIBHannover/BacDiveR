@@ -1,3 +1,5 @@
+library(magrittr)
+
 aggregate_datasets <- function(payload, from_IDs = FALSE)
 {
   if (from_IDs)
