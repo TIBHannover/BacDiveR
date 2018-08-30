@@ -21,12 +21,8 @@
 #'   \donttest{dataset_Bss <- retrieve_data(searchTerm = "Bacillus subtilis subtilis")}
 retrieve_data <- function(searchTerm,
                           searchType = "taxon")
-  {
-  construct_url(searchTerm, searchType) %>%
-    download() %>%
-    repair_escaping %>%
-    jsonlite::fromJSON() ->
-    payload
+{
+  payload <- jsonlite::fromJSON(download(construct_url(searchTerm, searchType)))
 
   if (identical(payload$detail, "Not found"))
   {
@@ -65,9 +61,14 @@ download <-
   {
     message(URLs_to_IDs(URL), " ", appendLF = FALSE)
 
-    RCurl::getURL(URL,
-                  userpwd = userpwd,
-                  httpauth = 1L)
+    payload <- RCurl::getURL(URL,
+                             userpwd = userpwd,
+                             httpauth = 1L)
+
+    repair_escaping(payload)
+    # Needs to remain here, not between jsonlite::fromJSON & download above,
+    # because retrieve_search_results() doesn't call it directly, but only
+    # through aggregate_datasets().
   }
 
 
