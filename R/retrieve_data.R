@@ -22,8 +22,11 @@
 retrieve_data <- function(searchTerm,
                           searchType = "taxon")
   {
-  payload <-
-    jsonlite::fromJSON(download(construct_url(searchTerm, searchType)))
+  construct_url(searchTerm, searchType) %>%
+    download() %>%
+    repair_escaping %>%
+    jsonlite::fromJSON() ->
+    payload
 
   if (identical(payload$detail, "Not found"))
   {

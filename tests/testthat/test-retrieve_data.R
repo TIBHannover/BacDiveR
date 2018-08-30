@@ -93,10 +93,8 @@ test_that("any dataset returned by BacDiveR is named with its ID", {
 
 test_that("normalising invalid JSON whitespace works", {
 
-  expect_type(
-    object = Bac_hal_data,
-    type = "list"
-  )
+  expect_type(object = Bac_hal_data,
+              type = "list")
   # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1847/?format=json
   # contains "medium_composition": "Name: ISP 2 / Yeast Malt Agar (5265); 5265\r\nComposition
 
