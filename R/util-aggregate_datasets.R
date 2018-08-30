@@ -15,16 +15,6 @@ aggregate_datasets <- function(payload, from_IDs = FALSE)
 
   message("Data download in progress for BacDive-IDs: ", appendLF = FALSE)
   taxon_data <- purrr::map(URLs, download)
-
-  # Test JSON for contains singly \ escaped characters
-  if (any(grepl("\\n|\\r|\\t", x = taxon_data))) {
-    taxon_data %>%
-    purrr::map(repair_escaping, char = "r") %>%
-    purrr::map(repair_escaping, "n") %>%
-    purrr::map(repair_escaping, "t") ->
-    taxon_data
-  }
-
   taxon_data <- purrr::map(taxon_data, jsonlite::fromJSON)
   names(taxon_data) <- IDs
 

@@ -91,7 +91,7 @@ test_that("any dataset returned by BacDiveR is named with its ID", {
   # https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B73%5D%5Bcontenttype%5D=text&searchparams%5B73%5D%5Btypecontent%5D=exact&searchparams%5B73%5D%5Bsearchterm%5D=Bacillus+halotolerans&csv_bacdive_ids_advsearch=download
 })
 
-test_that("normalising invalid JSON newlines works", {
+test_that("normalising invalid JSON whitespace works", {
 
   expect_type(
     object = Bac_hal_data,
@@ -99,4 +99,12 @@ test_that("normalising invalid JSON newlines works", {
   )
   # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1847/?format=json
   # contains "medium_composition": "Name: ISP 2 / Yeast Malt Agar (5265); 5265\r\nComposition
+
+  expect_type(retrieve_data(76, "bacdive_id"),
+              type = "list")
+  # https://bacdive.dsmz.de/api/bacdive/bacdive_id/76/?format=json
+  # contains enrichment_cult_name": "R2A agar with 200 mg cycloheximide ml\n21"
+  # Error: lexical error: invalid character inside string.
+  # Called from: parse_string(txt, bigint_as_char)
+
 })

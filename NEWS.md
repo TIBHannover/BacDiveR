@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
+## BacDiveR 0.5.1
+
+### Fixed
+
+- Another JSON whitespace escaping bug (#91; Thanks to @jotech!)
+
 ## BacDiveR 0.5.0
 
 ### Added
