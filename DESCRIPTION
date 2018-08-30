@@ -11,7 +11,8 @@ BugReports: https://github.com/TIBHannover/BacDiveR/issues
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
-Suggests: 
+Suggests:
+    spelling (>= 1.2),
     ggplot2 (>= 3.0.0),
     knitr (>= 1.20),
     magrittr (>= 1.5),
@@ -26,3 +27,4 @@ Imports:
     RCurl (>= 1.95.4.11),
     utils (>= 3.5.0)
 VignetteBuilder: knitr
+Language: en-GB

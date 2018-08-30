@@ -34,7 +34,7 @@ the terms and parameters of your advanced search.
 
 ![Advanced search results](advanced-search-Miller.png)
 
-3. Copy the URL of the results page from your browser's adress bar. 
+3. Copy the URL of the results page from your browser's address bar. 
 Alternatively, copy it from the "Download list of BacDive Ids" link to the top
 right of the "hits" list.
 

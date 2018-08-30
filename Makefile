@@ -1,9 +1,12 @@
 all: check site
 
-check:
+spell:
+	Rscript -e "spelling::spell_check_package()
+
+check: spell
 	Rscript -e "devtools::check()"
 
-docu:
+docu: spell
 	Rscript -e "devtools::document()"
 
 site: docu
