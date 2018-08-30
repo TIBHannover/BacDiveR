@@ -1,4 +1,4 @@
-#' Retrieve data from BacDive
+#' Retrieve (a) Dataset(s) from BacDive
 #'
 #' @param searchTerm Mandatory character string (in case of `searchType = `
 #'   `sequence`, `culturecollectionno` or `taxon`) or integer (in case of

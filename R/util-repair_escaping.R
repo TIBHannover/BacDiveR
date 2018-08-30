@@ -9,6 +9,7 @@
 #'
 #' @return A character string containing JSON and _correctly, doubly_ \-escaped
 #'   whitespace characters
+#' @keywords internal
 repair_escaping <- function(JSON) {
 
   if (grepl("\\r", x = JSON))

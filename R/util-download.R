@@ -7,6 +7,7 @@
 #'   but also used with something else by the tests.
 #'
 #' @return A serialised JSON string.
+#' @keywords internal
 download <-
   function(URL,
            userpwd = paste(get_credentials(), collapse = ":"))

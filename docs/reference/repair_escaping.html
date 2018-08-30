@@ -34,7 +34,7 @@
 
 <meta property="og:description" content="Prevent &quot;lexical error: invalid character inside string.&quot;, see
 https://github.com/jeroen/jsonlite/issues/47 and
-https://github.com/TIBHannover/BacDiveR/issues/43" />
+https://github.com/TIBHannover/BacDiveR/issues/43." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +63,7 @@ https://github.com/TIBHannover/BacDiveR/issues/43" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">BacDiveR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
       </span>
     </div>
 
@@ -132,11 +132,11 @@ https://github.com/TIBHannover/BacDiveR/issues/43" />
     
     <p>Prevent "lexical error: invalid character inside string.", see
 https://github.com/jeroen/jsonlite/issues/47 and
-https://github.com/TIBHannover/BacDiveR/issues/43</p>
+https://github.com/TIBHannover/BacDiveR/issues/43.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>repair_escaping</span>(<span class='no'>JSON</span>, <span class='no'>char</span>)</pre>
+    <pre class="usage"><span class='fu'>repair_escaping</span>(<span class='no'>JSON</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -144,14 +144,14 @@ https://github.com/TIBHannover/BacDiveR/issues/43</p>
     <tr>
       <th>JSON</th>
       <td><p>A character string containing JSON with invalidly, singly
-escaped space characters</p></td>
+-escaped whitespace characters</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A character string with JSON and correctly, doubly escaped
-space characters</p>
+    <p>A character string containing JSON and <em>correctly, doubly</em> -escaped
+whitespace characters</p>
     
 
   </div>

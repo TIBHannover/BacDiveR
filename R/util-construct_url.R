@@ -1,6 +1,7 @@
 #' Construct URLs of API searches
 #'
 #' @inheritParams retrieve_data
+#' @keywords internal
 construct_url <- function(searchTerm,
                           searchType = "bacdive_id")
 {

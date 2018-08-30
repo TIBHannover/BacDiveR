@@ -18,3 +18,4 @@ search will be performed (technically, which API endpoint). Can be \code{taxon}
 \description{
 Construct URLs of API searches
 }
+\keyword{internal}

@@ -13,3 +13,4 @@ file.
 \description{
 Construct Path of User's .Renviron File
 }
+\keyword{internal}

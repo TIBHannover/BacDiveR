@@ -2,7 +2,7 @@
 % Please edit documentation in R/retrieve_data.R
 \name{retrieve_data}
 \alias{retrieve_data}
-\title{Retrieve data from BacDive}
+\title{Retrieve (a) Dataset(s) from BacDive}
 \usage{
 retrieve_data(searchTerm, searchType = "taxon")
 }
@@ -22,7 +22,7 @@ the \code{searchTerm} was unambiguous (\code{bacdive_id}, \code{sequence},
 an ambiguous \code{searchTerm} (most \code{taxon}s).
 }
 \description{
-Retrieve data from BacDive
+Retrieve (a) Dataset(s) from BacDive
 }
 \examples{
   \donttest{dataset_717 <- retrieve_data(searchTerm = 717, searchType = "bacdive_id")}

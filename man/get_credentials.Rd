@@ -12,3 +12,4 @@ A vector or the two character strings \code{BacDive_email} and \code{BacDive_pas
 \description{
 Read BacDive Login Credentials from .Renviron
 }
+\keyword{internal}

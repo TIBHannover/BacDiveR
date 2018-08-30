@@ -30,6 +30,7 @@ aggregate_datasets <- function(payload, from_IDs = FALSE)
 #'   `searchTerm` in `retrieve_data()`.
 #'
 #' @return An integer vector of all BacDive URLs within the results.
+#' @keywords internal
 aggregate_result_URLs <- function(results)
 {
   if (length(results$url) == 1)

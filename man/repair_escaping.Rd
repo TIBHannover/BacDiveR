@@ -19,3 +19,4 @@ Prevent "lexical error: invalid character inside string.", see
 https://github.com/jeroen/jsonlite/issues/47 and
 https://github.com/TIBHannover/BacDiveR/issues/43.
 }
+\keyword{internal}
