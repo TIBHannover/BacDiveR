@@ -62,19 +62,9 @@ download <-
   {
     message(URLs_to_IDs(URL), " ", appendLF = FALSE)
 
-    payload <- RCurl::getURL(URL,
+    RCurl::getURL(URL,
                   userpwd = userpwd,
                   httpauth = 1L)
-
-    # Test JSON for contains singly \ escaped characters
-    if (any(grepl("\\n|\\r|\\t", x = payload))) {
-      payload %>%
-        purrr::map(repair_escaping, char = "r") %>%
-        purrr::map(repair_escaping, "n") %>%
-        purrr::map_chr(repair_escaping, "t") ->
-        payload
-    }
-    return(payload)
   }
 
 

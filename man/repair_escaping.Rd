@@ -4,18 +4,18 @@
 \alias{repair_escaping}
 \title{Repair Singly Escaped Space Characters}
 \usage{
-repair_escaping(JSON, char)
+repair_escaping(JSON)
 }
 \arguments{
 \item{JSON}{A character string containing JSON with invalidly, singly
-escaped space characters}
+-escaped whitespace characters}
 }
 \value{
-A character string with JSON and correctly, doubly escaped
-space characters
+A character string containing JSON and \emph{correctly, doubly} -escaped
+whitespace characters
 }
 \description{
 Prevent "lexical error: invalid character inside string.", see
 https://github.com/jeroen/jsonlite/issues/47 and
-https://github.com/TIBHannover/BacDiveR/issues/43
+https://github.com/TIBHannover/BacDiveR/issues/43.
 }
