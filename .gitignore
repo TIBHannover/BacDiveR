@@ -37,6 +37,7 @@ vignettes/*.pdf
 .Rproj.user
 
 ### custom ignores
+inst/doc
 bacdive.R
 *.pdf
-inst/doc
+*.Rprofvis
