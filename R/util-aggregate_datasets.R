@@ -1,5 +1,3 @@
-library(magrittr)
-
 aggregate_datasets <- function(payload, from_IDs = FALSE)
 {
   if (from_IDs)
@@ -13,11 +11,9 @@ aggregate_datasets <- function(payload, from_IDs = FALSE)
     IDs <- URLs_to_IDs(URLs)
   }
 
-
-  purrr::map(.x = URLs, .f = download) %>%
-    purrr::map(jsonlite::fromJSON) ->
-    taxon_data
   message("Downloading BacDive IDs: ", appendLF = FALSE)
+  taxon_data <-
+    purrr::map(.x = purrr::map(.x = URLs, .f = download), jsonlite::fromJSON)
   names(taxon_data) <- IDs
 
   return(taxon_data)
