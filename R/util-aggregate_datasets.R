@@ -13,11 +13,11 @@ aggregate_datasets <- function(payload, from_IDs = FALSE)
     IDs <- URLs_to_IDs(URLs)
   }
 
-  message("Data download in progress for BacDive-IDs: ", appendLF = FALSE)
 
   purrr::map(.x = URLs, .f = download) %>%
     purrr::map(jsonlite::fromJSON) ->
     taxon_data
+  message("Downloading BacDive IDs: ", appendLF = FALSE)
   names(taxon_data) <- IDs
 
   return(taxon_data)
@@ -37,6 +37,7 @@ aggregate_result_URLs <- function(results)
     URLs <- results$url
   else
   {
+    message("Aggregating search results: ", appendLF = FALSE)
     URLs <- c()
     while (TRUE) {
       URLs <- c(URLs, unlist(results$results, use.names = FALSE))
