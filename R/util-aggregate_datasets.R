@@ -34,9 +34,9 @@ aggregate_result_URLs <- function(results)
   else
   {
     message("Aggregating search results: ", appendLF = FALSE)
-    URLs <- c()
+    URLs <- list()
     while (TRUE) {
-      URLs <- c(URLs, unlist(results$results, use.names = FALSE))
+      URLs <- append(URLs, unlist(results$results, use.names = FALSE))
       if (!is.null(results$`next`))
         results <- jsonlite::fromJSON(download(results$`next`))
       else
