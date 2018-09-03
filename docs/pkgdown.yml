@@ -6,4 +6,5 @@ articles:
   Semi-automatic-approach: Semi-automatic-approach.html
   adr-001-JSON-not-XML: adr-001-JSON-not-XML.html
   adr-002-two-download-functions-returning-datasets: adr-002-two-download-functions-returning-datasets.html
+  logic-checking-bacdive-datasets: logic-checking-bacdive-datasets.html
 
