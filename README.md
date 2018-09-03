@@ -4,11 +4,7 @@
 
 # BacDiveR
 
-This R package provides a programmatic interface for the [Bacterial
-Diversity Metadatabase][BD] ([Söhngen et al. 2014 & 2016
-](#references)) of the [DSMZ (German Collection of Microorganisms and Cell Cultures)][DMSZ].
-BacDiveR helps you to conduct your microbial
-research better and faster, by:
+This R package provides a programmatic interface for the [Bacterial Diversity Metadatabase][BD] ([Söhngen et al. 2014 & 2016 ](#references)) of the [DSMZ (German Collection of Microorganisms and Cell Cultures)][DMSZ]. BacDiveR helps you to conduct your microbial research better and faster, by:
 
 - downloading the BacDive datasets you want to investigate off-line, and by
 
@@ -17,11 +13,20 @@ research better and faster, by:
 
 It was also built to serve as a demonstration object during [TIB's "FAIR Data & Software" workshop][FDS].
 
+See [TIBHannover.GitHub.io/BacDiveR][page] for more details, [/news] there for the changelog, and [GitHub.com/TIBHannover/BacDiveR][source] for the latest source code.
+
 [BD]: https://bacdive.dsmz.de/
 [DMSZ]: https://www.dsmz.de/about-us.html
 [FDS]: https://tibhannover.github.io/2018-07-09-FAIR-Data-and-Software/#schedule
+[/news]: https://tibhannover.github.io/BacDiveR/news/index.html
+[page]: https://tibhannover.github.io/BacDiveR/
 [reg]: https://bacdive.dsmz.de/api/bacdive/registration/register/
+[source]: https://github.com/TIBHannover/BacDiveR/
 
+<!-- Paste the above section into the release description on
+https://github.com/TIBHannover/BacDiveR/releases/new
+together with the latest section of `NEWS.md` in order to usefull populate Zenodo.
+Afterwards, remove the above from GitHub. -->
 
 ## Installation
 
