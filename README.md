@@ -1,5 +1,5 @@
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1326672.svg)](https://doi.org/10.5281/zenodo.1326672)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1308060.svg)](https://zenodo.org/record/1308060)
 
 
 # BacDiveR
