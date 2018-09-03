@@ -1,0 +1,76 @@
+---
+title: "Logic-Checking BacDive Datasets"
+author: "Katrin Leinweber"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: inline
+bibliography: BacDive.bib
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### Example of a data inconsistency
+
+Just as the correctness of data analysis code should be tested automatically, the
+consistency of data should be evaluated and monitored as well. Using [BacDive's advanced search](https://bacdive.dsmz.de/AdvSearch)
+and [BacDiveR's `retrieve_search_results()`](https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html)
+several examples of geographic inconsistencies have been found. Presumably due to
+an overly strict location-to-country-to-continent mapping, several samples collected
+from seas neighbouring Russia (like the [Sea of Japan)](https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams%5B20%5D%5Bcontenttype%5D=text&searchparams%5B20%5D%5Btypecontent%5D=contains&searchparams%5B20%5D%5Bsearchterm%5D=Sea+of+Japan&searchparams%5B100%5D%5Bcontenttype%5D=text&searchparams%5B100%5D%5Btypecontent%5D=contains&searchparams%5B100%5D%5Bsearchterm%5D=&searchparams%5B17%5D%5Bsearchterm%5D=Europe&advsearch=search),
+were assigned to Europe.
+
+![Two datasets with a geo-logic fault (pun intended)](BacDive-geo-logic-fault.png)
+
+While one may debate where exactly border between Asia and Europe runs through Russia,
+it is clear that its Eastern shoreline is located well within Asia. These and
+other datasets with East Russian locations have been reported to the BacDive team
+and a portion of those was corrected in [BacDive's 04.07.2018 release](https://bacdive.dsmz.de/news).
+
+```{r data}
+library(BacDiveR)
+  
+inconsistent_data <- retrieve_search_results(
+  "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams[20][contenttype]=text&searchparams[20][typecontent]=contains&searchparams[20][searchterm]=Sea+of+Japan&searchparams[17][searchterm]=Europe"
+  )
+```
+
+As long as this specific inconsistency is not fixed, the above should display:
+`Data download in progress for BacDive-IDs: 131115 139987`.
+
+
+### How to test datasets
+
+If a BacDive user finds an inconsistency within the datasets they use, BacDiveR's
+`retrieve_search_results()` can be used to construct a test-case for such a problem.
+In the following example, the test fails as long as BacDive contains datasets with
+the above-described discrepancy between the `geo_loc_name` and `continent` fields.
+
+```{r test, error=TRUE}
+library(testthat)
+
+test_that("No inconsistent datasets exist", {
+  expect_null(inconsistent_data)
+})
+```
+
+Once the inconsistency is corrected in BacDive, the advanced search returns no
+results any more, and the above test passes. It can thus be used to monitor the
+resolution of such a problem after [reporting](https://bacdive.dsmz.de/?site=contact)
+it. Furthermore, the users is alerted (by the test failing again) in case new 
+datasets appear in BacDive with the same inconsistency.
+
+### References
+
+See [testthat.R-lib.org](https://testthat.r-lib.org/) and the
+[related "R Packages" chapter](http://r-pkgs.had.co.nz/tests.html) to learn
+more about testing in R [@TT; @T].

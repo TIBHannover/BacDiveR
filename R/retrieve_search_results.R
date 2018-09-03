@@ -19,8 +19,10 @@ retrieve_search_results <- function(queryURL)
   if (!grepl(pattern = paste0("$", download_param), x = queryURL))
     queryURL <- paste0(queryURL, download_param)
 
-  result_IDs <-
-    strsplit(x = RCurl::getURL(queryURL), split = "\\n")[[1]]
+  payload <- RCurl::getURL(queryURL)
 
-  aggregate_datasets(result_IDs, from_IDs = TRUE)
+  if (grepl("^[[:digit:]]", payload))
+    aggregate_datasets(strsplit(x = payload, split = "\\n")[[1]], from_IDs = TRUE)
+  else if (grepl("^<!DOCTYPE", payload))
+    NULL # needed for logic-checking datasets, see vignette
 }

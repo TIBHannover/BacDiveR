@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
+# BacDiveR 0.6.0
+
+### Added
+
+- The vignette [Logic-Checking BacDive Datasets](https://tibhannover.github.io/BacDiveR/articles/logic-checking-bacdive-datasets.html)
+
+### Changed
+
+- `retrieve_search_results()` now returns `NULL` when no results are found, in 
+  order to ease integration of datasets into `testthat` tests.
+
 ## BacDiveR 0.5.1
 
 ### Fixed

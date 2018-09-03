@@ -12,3 +12,11 @@ test_that("downloading a dataset from an 'advanced search' URL works", {
   expect_equal(Millers_strains[[1]], "Borrelia mayonii")
   expect_equal(Millers_strains[[2]], "Bacillus wiedmannii")
 })
+
+
+test_that("Inconsistent datasets get corrected", {
+  inconsistent_data <- retrieve_search_results(
+    "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams[20][contenttype]=text&searchparams[20][typecontent]=contains&searchparams[20][searchterm]=Sea+of+Japan&searchparams[17][searchterm]=Europe")
+
+  expect_false(is.null(inconsistent_data))
+})
