@@ -83,7 +83,8 @@ directly, try [Zotero] and its [GitHub translator][zotGH].
 
 ## Similar tools
 
-- [@cjm007's `BacDive_` (Python)](https://github.com/cjm007/BacDive_)
+- @cjm007's [`BacDive_`](https://github.com/cjm007/BacDive_) &
+  [`BacDivePy`](https://github.com/cameronmartino/BacDivePy) (Python)
 - [@zorino's `microbe-dbs` (Python & Shell)](https://github.com/zorino/microbe-dbs)
 
 
