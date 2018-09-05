@@ -106,3 +106,7 @@ test_that("normalising invalid JSON whitespace works", {
   # Called from: parse_string(txt, bigint_as_char)
 
 })
+
+test_that("Trying to download a non-existent dataset fails", {
+  expect_error(retrieve_data(searchTerm = 999999999, searchType = "bacdive_id"))
+})

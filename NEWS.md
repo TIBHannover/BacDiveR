@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
+## BacDiveR 0.6.1
+
+### Fixed
+
+- Errors caused by comparing against a `NULL` (#91; Thanks to @jotech!)
+
 ## BacDiveR 0.6.0
 
 ### Added

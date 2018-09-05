@@ -24,7 +24,7 @@ retrieve_data <- function(searchTerm,
 {
   payload <- jsonlite::fromJSON(download(construct_url(searchTerm, searchType)))
 
-  if (payload$detail == "Not found")
+  if (identical(payload$detail, "Not found"))
   {
     stop(
       "Your search returned no result, sorry. Please make sure that you provided a searchTerm, and specified the correct searchType. Please type '?retrieve_data' and read through the 'searchType' section to learn more."

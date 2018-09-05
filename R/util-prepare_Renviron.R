@@ -27,7 +27,7 @@ prepare_Renviron <- function()
       paste0("^", start_of_line),
       readLines(r_env_file, warn = FALSE)
     ))) {
-      if (type == "email")
+      if (identical(type, "email"))
         write(paste("\n# Please", message),
               file = r_env_file,
               append = TRUE)
