@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- A vignette section about mass-downloading datasets
+- A [vignette section about mass-downloading datasets](https://tibhannover.github.io/BacDiveR/articles/Semi-automatic-approach.html#mass-downloading-datasets).
 
 ### Changed
 
