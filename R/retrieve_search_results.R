@@ -12,8 +12,7 @@
 #'   \donttest{data_miller <- retrieve_search_results(queryURL = "https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams[78][contenttype]=text&searchparams[78][typecontent]=contains&searchparams[78][searchterm]=Miller&advsearch=search")}
 #'
 retrieve_search_results <- function(queryURL)
-  {
-
+{
   download_param <- "&csv_bacdive_ids_advsearch=download"
 
   if (!grepl(pattern = paste0(download_param, "$"), x = queryURL))
