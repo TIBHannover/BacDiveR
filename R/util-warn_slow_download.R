@@ -5,7 +5,7 @@ warn_slow_download <- function(N_datasets)
   min <- floor(N_datasets / 4)
   max <- ceiling(N_datasets / 3)
 
-  message(,
+  message(
     paste0(
       "Downloading ",
       N_datasets,
