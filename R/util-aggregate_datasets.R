@@ -31,8 +31,8 @@ aggregate_datasets <- function(payload, from_IDs = FALSE)
 #' @keywords internal
 aggregate_result_URLs <- function(results)
 {
-  if (identical(length(results$url), 1))
-    URLs <- results$url
+  if (length(results$results$url) == 1)
+    URLs <- results$results$url
   else
   {
     URLs <- list()
