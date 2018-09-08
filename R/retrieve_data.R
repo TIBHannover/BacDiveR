@@ -26,9 +26,14 @@ retrieve_data <- function(searchTerm,
 
   if (identical(payload$detail, "Not found"))
   {
-    stop(
-      "Your search returned no result, sorry. Please make sure that you provided a searchTerm, and specified the correct searchType. Please type '?retrieve_data' and read through the 'searchType' section to learn more."
-    )
+    if (identical(searchType, "bacdive_id"))
+        warning(paste0("BacDive has no dataset with bacdive_id ", searchTerm, "."))
+    else
+      warning(paste0(
+        "BacDive has no result for ", searchType, " = ", searchTerm, ". Please check that both terms are correct, type '?retrieve_data' and read through the 'searchType' section to learn more."
+      ))
+
+    list()
   }
   else if (is_dataset(payload))
   {

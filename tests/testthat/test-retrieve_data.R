@@ -108,5 +108,5 @@ test_that("normalising invalid JSON whitespace works", {
 })
 
 test_that("Trying to download a non-existent dataset fails", {
-  expect_error(retrieve_data(searchTerm = 999999999, searchType = "bacdive_id"))
+  expect_warning(retrieve_data(searchTerm = 999999999, searchType = "bacdive_id"))
 })
