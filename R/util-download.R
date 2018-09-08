@@ -18,7 +18,7 @@ download <-
                              userpwd = userpwd,
                              httpauth = 1L)
 
-    repair_escaping(payload)
+    return(repair_escaping(payload))
     # Needs to remain here, not between jsonlite::fromJSON & download above,
     # because retrieve_search_results() doesn't call it directly, but only
     # through aggregate_datasets().

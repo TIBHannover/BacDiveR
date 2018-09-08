@@ -33,7 +33,7 @@ retrieve_data <- function(searchTerm,
         "BacDive has no result for ", searchType, " = ", searchTerm, ". Please check that both terms are correct, type '?retrieve_data' and read through the 'searchType' section to learn more."
       ))
 
-    list()
+    return(list())
   }
   else if (is_dataset(payload))
   {

@@ -8,7 +8,7 @@ sanitise_input <- function(searchTerm, searchType)
     )
 
   if (identical(searchType, "taxon"))
-    gsub(pattern = " ", replacement = "/", searchTerm)
+    return(gsub(pattern = " ", replacement = "/", searchTerm))
   else
-    searchTerm
+    return(searchTerm)
 }

@@ -7,7 +7,7 @@ construct_url <- function(searchTerm,
 {
   searchTerm <- sanitise_input(searchTerm, searchType)
 
-  utils::URLencode(
+  return(utils::URLencode(
     paste0(
       "https://bacdive.dsmz.de/api/bacdive/",
       searchType,
@@ -16,5 +16,5 @@ construct_url <- function(searchTerm,
       "/",
       "?format=json"
     )
-  )
+  ))
 }

@@ -8,5 +8,5 @@ construct_Renviron_path <- function()
   path <- Sys.getenv("HOME")
   if (nzchar(path))
     path <- normalizePath("~/")
-  file.path(path, ".Renviron")
+  return(file.path(path, ".Renviron"))
 }
