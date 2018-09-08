@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">BacDiveR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.0</span>
       </span>
     </div>
 
@@ -125,6 +125,25 @@
       <small>Source: <a href='https://github.com/TIBHannover/BacDiveR/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="bacdiver-0-7-0" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bacdiver-0-7-0" class="anchor"></a>BacDiveR 0.7.0</h2>
+<div id="added-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#added-1" class="anchor"></a>Added</h3>
+<ul>
+<li>A vignette section about mass-downloading datasets</li>
+</ul>
+</div>
+<div id="changed-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#changed-1" class="anchor"></a>Changed</h3>
+<ul>
+<li>Instead of stopping with an error if a search returns no results, BacDiveR now only warns about this case and returns an empty list (<a href='https://github.com/TIBHannover/BacDiveR/issues/93'>#93</a>).</li>
+<li>Estimated download times are now reported before all downloads longer than ca. 30 seconds (<a href='https://github.com/TIBHannover/BacDiveR/issues/84'>#84</a>).</li>
+</ul>
+</div>
+</div>
     <div id="bacdiver-0-6-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bacdiver-0-6-1" class="anchor"></a>BacDiveR 0.6.1</h2>
@@ -139,17 +158,17 @@
     <div id="bacdiver-0-6-0" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bacdiver-0-6-0" class="anchor"></a>BacDiveR 0.6.0</h2>
-<div id="added-1" class="section level3">
+<div id="added-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#added-1" class="anchor"></a>Added</h3>
+<a href="#added-2" class="anchor"></a>Added</h3>
 <ul>
 <li>The vignette <a href="https://tibhannover.github.io/BacDiveR/articles/logic-checking-bacdive-datasets.html">Logic-Checking BacDive Datasets</a>
 </li>
 </ul>
 </div>
-<div id="changed-1" class="section level3">
+<div id="changed-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#changed-1" class="anchor"></a>Changed</h3>
+<a href="#changed-2" class="anchor"></a>Changed</h3>
 <ul>
 <li>
 <code><a href="../reference/retrieve_search_results.html">retrieve_search_results()</a></code> now returns <code>NULL</code> when no results are found, in order to ease integration of datasets into <code>testthat</code> tests.</li>
@@ -170,17 +189,17 @@
     <div id="bacdiver-0-5-0" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bacdiver-0-5-0" class="anchor"></a>BacDiveR 0.5.0</h2>
-<div id="added-2" class="section level3">
+<div id="added-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#added-2" class="anchor"></a>Added</h3>
+<a href="#added-3" class="anchor"></a>Added</h3>
 <ul>
 <li>Syncing of release versions to Zenodo, starting with <a href="https://zenodo.org/record/1308061">10.5281/zenodo.1308061</a>
 </li>
 </ul>
 </div>
-<div id="changed-2" class="section level3">
+<div id="changed-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#changed-2" class="anchor"></a>Changed</h3>
+<a href="#changed-3" class="anchor"></a>Changed</h3>
 <ul>
 <li>The JSON downloads are no longer purged of all space characters pre-emptively to prevent jsonlite from complaining about invalid encoding (<a href='https://github.com/TIBHannover/BacDiveR/issues/43'>#43</a>). Instead, only <code>\r</code>, <code>\n</code> and <code>\t</code> are repaired to <code>\\r</code>, <code>\\n</code> and <code>\\t</code>, which jsonlite expects. This leads to different output (newline &amp; tabs, where previously only spaces occured)! Thus, if you are parsing BacDiveR output in any way, you may need to adjust that. Because I consider this unlikely given the “maturing” status, and because no API surface was changed, I don’t consider this a major change in the <a href="https://semver.org/">SemVer.org</a> sense.</li>
 </ul>
@@ -200,9 +219,9 @@
     <div id="bacdiver-0-4-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bacdiver-0-4-1" class="anchor"></a>BacDiveR 0.4.1</h2>
-<div id="changed-3" class="section level3">
+<div id="changed-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#changed-3" class="anchor"></a>Changed</h3>
+<a href="#changed-4" class="anchor"></a>Changed</h3>
 <ul>
 <li>Don’t run all function docu examples, and limit their output on the <a href="https://tibhannover.github.io/BacDiveR/reference/retrieve_data.html">reference</a> <a href="https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html">pages</a> (see <a href='https://github.com/TIBHannover/BacDiveR/issues/52'>#52</a>)</li>
 </ul>
@@ -211,9 +230,9 @@
     <div id="bacdiver-0-4-0" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bacdiver-0-4-0" class="anchor"></a>BacDiveR 0.4.0</h2>
-<div id="added-3" class="section level3">
+<div id="added-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#added-3" class="anchor"></a>Added</h3>
+<a href="#added-4" class="anchor"></a>Added</h3>
 <ul>
 <li>This changelog (see <a href='https://github.com/TIBHannover/BacDiveR/issues/41'>#41</a>)</li>
 <li>
@@ -222,9 +241,9 @@
 </li>
 </ul>
 </div>
-<div id="changed-4" class="section level3">
+<div id="changed-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#changed-4" class="anchor"></a>Changed</h3>
+<a href="#changed-5" class="anchor"></a>Changed</h3>
 <ul>
 <li>
 <code><a href="../reference/retrieve_data.html">retrieve_data()</a></code> now downloads the dataset(s) by default, not only the ID(s), see <a href='https://github.com/TIBHannover/BacDiveR/issues/54'>#54</a> &amp; <a href='https://github.com/TIBHannover/BacDiveR/issues/59'>#59</a></li>
@@ -242,9 +261,9 @@
 <li>An error in the download of a single dataset found through its culture collection number (see <a href='https://github.com/TIBHannover/BacDiveR/issues/45'>#45</a>)</li>
 </ul>
 </div>
-<div id="added-4" class="section level3">
+<div id="added-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#added-4" class="anchor"></a>Added</h3>
+<a href="#added-5" class="anchor"></a>Added</h3>
 <ul>
 <li>Usable example / vignette in the README.md file (see <a href='https://github.com/TIBHannover/BacDiveR/issues/16'>#16</a>)</li>
 </ul>
@@ -256,6 +275,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#bacdiver-0-7-0">0.7.0</a></li>
         <li><a href="#bacdiver-0-6-1">0.6.1</a></li>
         <li><a href="#bacdiver-0-6-0">0.6.0</a></li>
         <li><a href="#bacdiver-0-5-1">0.5.1</a></li>
