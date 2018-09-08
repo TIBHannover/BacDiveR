@@ -45,7 +45,7 @@ inconsistent_data <- retrieve_search_results(
 ```
 
 As long as this specific inconsistency is not fixed, the above should display:
-`Data download in progress for BacDive-IDs: 131115 139987`.
+`Downloading BacDive IDs: 131115 139987`.
 
 
 ## How to test datasets

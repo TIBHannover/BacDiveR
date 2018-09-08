@@ -38,9 +38,6 @@ retrieve_data <- function(searchTerm,
   }
   else if (!is.null(payload$count))
   {
-    if (payload$count > 100)
-      warn_slow_download(payload$count)
-
     aggregate_datasets(payload)
   }
 }
