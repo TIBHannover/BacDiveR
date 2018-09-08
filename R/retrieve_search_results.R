@@ -16,7 +16,7 @@ retrieve_search_results <- function(queryURL)
 
   download_param <- "&csv_bacdive_ids_advsearch=download"
 
-  if (!grepl(pattern = paste0("$", download_param), x = queryURL))
+  if (!grepl(pattern = paste0(download_param, "$"), x = queryURL))
     queryURL <- paste0(queryURL, download_param)
 
   payload <- RCurl::getURL(queryURL)
