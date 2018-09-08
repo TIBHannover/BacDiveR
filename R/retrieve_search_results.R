@@ -23,5 +23,5 @@ retrieve_search_results <- function(queryURL)
   if (grepl("^[[:digit:]]", payload))
     aggregate_datasets(strsplit(x = payload, split = "\\n")[[1]], from_IDs = TRUE)
   else if (grepl("^<!DOCTYPE", payload))
-    list() # needed for logic-checking datasets, see vignette
+    return(list()) # needed for logic-checking datasets, see vignette
 }
