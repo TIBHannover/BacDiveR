@@ -95,7 +95,7 @@
             <h3 class="subtitle">Retrieving data(sets) from BacDive</h3>
                         <h4 class="author">Katrin Leinweber</h4>
             
-            <h4 class="date">2018-09-05</h4>
+            <h4 class="date">2018-09-08</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/TIBHannover/BacDiveR/blob/master/vignettes/BacDive-ing-in.Rmd"><code>vignettes/BacDive-ing-in.Rmd</code></a></small>
       <div class="hidden name"><code>BacDive-ing-in.Rmd</code></div>
@@ -104,6 +104,9 @@
 
     
     
+<div id="downloading-datasets" class="section level2">
+<h2 class="hasAnchor">
+<a href="#downloading-datasets" class="anchor"></a>Downloading datasets</h2>
 <p>The BacDive website lets you easily search for all their strains within a given taxonomic unit. For example, <a href="https://bacdive.dsmz.de/index.php?search=Bacillus">searching for “Bacillus”</a> returns a paginated list of strains that you can then access, download and analyse further. All manual, though. BacDiveR automates this workflow:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(BacDiveR)
 taxon_<span class="dv">1</span> &lt;-<span class="st"> "Bacillus halodurans"</span>
@@ -115,6 +118,7 @@ Bac_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/re
 At_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/retrieve_data.html">retrieve_data</a></span>(taxon_<span class="dv">2</span>)
 <span class="co">#&gt; Data download in progress for BacDive-IDs: 11385 11386 11387 11388 11389</span>
 <span class="co">#&gt; 11390 11391 11392 11393 11394 11395 11396 11397 11398 11399</span></code></pre></div>
+</div>
 <div id="extracting-data-fields" class="section level2">
 <h2 class="hasAnchor">
 <a href="#extracting-data-fields" class="anchor"></a>Extracting data fields</h2>
@@ -145,6 +149,10 @@ extract_temps &lt;-<span class="st"> </span><span class="cf">function</span>(dat
 temperature_Bac &lt;-<span class="st"> </span><span class="kw">extract_temps</span>(Bac_data, taxon_<span class="dv">1</span>) 
 temperature_At &lt;-<span class="st"> </span><span class="kw">extract_temps</span>(At_data, taxon_<span class="dv">2</span>) </code></pre></div>
 <p>Keep in mind, that in case of growth temperatures, a range may also be given (e.g. “28-32”). The above code turns a range into <code>NA</code>, but you could compute the mid-point / mean of such ranges.</p>
+</div>
+<div id="plotting-the-extracted-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#plotting-the-extracted-data" class="anchor"></a>Plotting the extracted data</h2>
 <p>Before visualising the data, we need to create a dataframe of the two datasets.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"ggplot2"</span>)
 
@@ -168,7 +176,9 @@ temperature_At &lt;-<span class="st"> </span><span class="kw">extract_temps</spa
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#extracting-data-fields">Extracting data fields</a></li>
+<li><a href="#downloading-datasets">Downloading datasets</a></li>
+      <li><a href="#extracting-data-fields">Extracting data fields</a></li>
+      <li><a href="#plotting-the-extracted-data">Plotting the extracted data</a></li>
       </ul>
 </div>
       </div>

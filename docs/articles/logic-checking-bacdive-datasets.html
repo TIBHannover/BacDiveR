@@ -94,7 +94,7 @@
       <h1>Logic-Checking BacDive Datasets</h1>
                         <h4 class="author">Katrin Leinweber</h4>
             
-            <h4 class="date">2018-09-05</h4>
+            <h4 class="date">2018-09-08</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/TIBHannover/BacDiveR/blob/master/vignettes/logic-checking-bacdive-datasets.Rmd"><code>vignettes/logic-checking-bacdive-datasets.Rmd</code></a></small>
       <div class="hidden name"><code>logic-checking-bacdive-datasets.Rmd</code></div>
@@ -103,9 +103,9 @@
 
     
     
-<div id="example-of-a-data-inconsistency" class="section level3">
-<h3 class="hasAnchor">
-<a href="#example-of-a-data-inconsistency" class="anchor"></a>Example of a data inconsistency</h3>
+<div id="example-of-a-data-inconsistency" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example-of-a-data-inconsistency" class="anchor"></a>Example of a data inconsistency</h2>
 <p>Just as the correctness of data analysis code should be tested automatically, the consistency of data should be evaluated and monitored as well. Using <a href="https://bacdive.dsmz.de/AdvSearch">BacDive’s advanced search</a> and <a href="https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html">BacDiveR’s <code><a href="../reference/retrieve_search_results.html">retrieve_search_results()</a></code></a> several examples of geographic inconsistencies have been found. Presumably due to an overly strict location-to-country-to-continent mapping, several samples collected from seas neighbouring Russia (like the <a href="https://bacdive.dsmz.de/advsearch?site=advsearch&amp;searchparams%5B20%5D%5Bcontenttype%5D=text&amp;searchparams%5B20%5D%5Btypecontent%5D=contains&amp;searchparams%5B20%5D%5Bsearchterm%5D=Sea+of+Japan&amp;searchparams%5B100%5D%5Bcontenttype%5D=text&amp;searchparams%5B100%5D%5Btypecontent%5D=contains&amp;searchparams%5B100%5D%5Bsearchterm%5D=&amp;searchparams%5B17%5D%5Bsearchterm%5D=Europe&amp;advsearch=search">Sea of Japan)</a>, were assigned to Europe.</p>
 <div class="figure">
 <img src="BacDive-geo-logic-fault.png" alt="Two datasets with a geo-logic fault (pun intended)"><p class="caption">Two datasets with a geo-logic fault (pun intended)</p>
@@ -119,9 +119,9 @@ inconsistent_data &lt;-<span class="st"> </span><span class="kw"><a href="../ref
 <span class="co">#&gt; Data download in progress for BacDive-IDs: 131115 139987</span></code></pre></div>
 <p>As long as this specific inconsistency is not fixed, the above should display: <code>Data download in progress for BacDive-IDs: 131115 139987</code>.</p>
 </div>
-<div id="how-to-test-datasets" class="section level3">
-<h3 class="hasAnchor">
-<a href="#how-to-test-datasets" class="anchor"></a>How to test datasets</h3>
+<div id="how-to-test-datasets" class="section level2">
+<h2 class="hasAnchor">
+<a href="#how-to-test-datasets" class="anchor"></a>How to test datasets</h2>
 <p>If a BacDive user finds an inconsistency within the datasets they use, BacDiveR’s <code><a href="../reference/retrieve_search_results.html">retrieve_search_results()</a></code> can be used to construct a test-case for such a problem. In the following example, the test fails as long as BacDive contains datasets with the above-described discrepancy between the <code>geo_loc_name</code> and <code>continent</code> fields.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(testthat)
 
@@ -132,9 +132,9 @@ inconsistent_data &lt;-<span class="st"> </span><span class="kw"><a href="../ref
 <span class="co">#&gt; * `inconsistent_data` is not null.</span></code></pre></div>
 <p>Once the inconsistency is corrected in BacDive, the advanced search returns no results any more, and the above test passes. It can thus be used to monitor the resolution of such a problem after <a href="https://bacdive.dsmz.de/?site=contact">reporting</a> it. Furthermore, the users is alerted (by the test failing again) in case new datasets appear in BacDive with the same inconsistency.</p>
 </div>
-<div id="references" class="section level3">
-<h3 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h3>
+<div id="references" class="section level1">
+<h1 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h1>
 <p>See <a href="https://testthat.r-lib.org/">testthat.R-lib.org</a> and the <a href="http://r-pkgs.had.co.nz/tests.html">related “R Packages” chapter</a> to learn more about testing in R <span class="citation">(Wickham 2011; Wickham 2015)</span>.</p>
 <div id="refs" class="references">
 <div id="ref-TT">
@@ -148,6 +148,15 @@ inconsistent_data &lt;-<span class="st"> </span><span class="kw"><a href="../ref
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#example-of-a-data-inconsistency">Example of a data inconsistency</a></li>
+      <li><a href="#how-to-test-datasets">How to test datasets</a></li>
+      <li><a href="#references">References</a></li>
+      </ul>
+</div>
       </div>
 
 </div>

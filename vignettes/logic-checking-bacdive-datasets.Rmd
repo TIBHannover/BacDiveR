@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-### Example of a data inconsistency
+## Example of a data inconsistency
 
 Just as the correctness of data analysis code should be tested automatically, the
 consistency of data should be evaluated and monitored as well. Using [BacDive's advanced search](https://bacdive.dsmz.de/AdvSearch)
@@ -48,7 +48,7 @@ As long as this specific inconsistency is not fixed, the above should display:
 `Data download in progress for BacDive-IDs: 131115 139987`.
 
 
-### How to test datasets
+## How to test datasets
 
 If a BacDive user finds an inconsistency within the datasets they use, BacDiveR's
 `retrieve_search_results()` can be used to construct a test-case for such a problem.
@@ -69,7 +69,7 @@ resolution of such a problem after [reporting](https://bacdive.dsmz.de/?site=con
 it. Furthermore, the users is alerted (by the test failing again) in case new 
 datasets appear in BacDive with the same inconsistency.
 
-### References
+# References
 
 See [testthat.R-lib.org](https://testthat.r-lib.org/) and the
 [related "R Packages" chapter](http://r-pkgs.had.co.nz/tests.html) to learn
