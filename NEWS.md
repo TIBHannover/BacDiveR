@@ -11,6 +11,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
+## BacDiveR 0.7.0
+
+### Added
+
+- A vignette section about mass-downloading datasets
+
+### Changed
+
+- Instead of stopping with an error if a search returns no results, BacDiveR now
+  only warns about this case and returns an empty list (#93).
+- Estimated download times are now reported before all downloads longer than ca.
+  30 seconds (#84).
+
+
 ## BacDiveR 0.6.1
 
 ### Fixed
