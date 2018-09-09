@@ -9,8 +9,12 @@ check: spell
 docu: spell
 	Rscript -e "devtools::document()"
 
-site: docu
-	Rscript -e "devtools::install(); pkgdown::build_site(document = FALSE)"
+install:
+	Rscript -e "devtools::install()"
+
+site: install docu
+	Rscript -e "pkgdown::build_site(document = FALSE)"
+
 cov:
 	Rscript -e "covr::package_coverage()"
 
