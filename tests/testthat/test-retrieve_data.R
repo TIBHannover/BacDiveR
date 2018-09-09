@@ -98,13 +98,11 @@ test_that("normalising invalid JSON whitespace works", {
 test_that("Trying to download a non-existent dataset yields warnings & empty list", {
   expect_warning(non_existant <-
                    retrieve_data(searchTerm = 999999999, searchType = "bacdive_id"))
-  expect_equal(non_existant, list())
-
   expect_warning(blablub <- retrieve_data(searchTerm = "bla blub"))
-  expect_equal(blablub, list())
 })
 
 test_that("Downloading a single-dataset taxon works", {
   expect_type(retrieve_data("Campylobacter pinnipediorum"),
               "list")
+  expect_equal(blablub, non_existant, list())
 })
