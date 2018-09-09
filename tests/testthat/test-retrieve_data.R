@@ -26,19 +26,6 @@ test_that("aggregating a set of BacDive URLs works", {
 })
 
 
-test_that("using the taxon search for a single dataset works", {
-  P_lini <-
-    jsonlite::fromJSON(
-      download(
-        "https://bacdive.dsmz.de/api/bacdive/taxon/Pseudomonas/lini/?format=json"
-      )
-    )
-
-  expect_equal(P_lini$count,
-               length(aggregate_result_URLs(P_lini)))
-})
-
-
 test_that("Redirecting 'culturecollectionno' & 'sequence' searches to 'bacdive_id' works (#45)",
           {
             expect_identical(
@@ -79,14 +66,15 @@ test_that("any dataset returned by BacDiveR is named with its ID", {
   # https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B73%5D%5Bcontenttype%5D=text&searchparams%5B73%5D%5Btypecontent%5D=exact&searchparams%5B73%5D%5Bsearchterm%5D=Bacillus+halotolerans&csv_bacdive_ids_advsearch=download
 })
 
-test_that("normalising invalid JSON whitespace works", {
+test_that("Normalising invalid JSON whitespace works,
+          for both multi- and single-species taxons", {
 
   expect_type(object = Bac_hal_data,
               type = "list")
   # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1847/?format=json
   # contains "medium_composition": "Name: ISP 2 / Yeast Malt Agar (5265); 5265\r\nComposition
 
-  expect_type(retrieve_data(76, "bacdive_id"),
+  expect_type(retrieve_data("Roseomonas aerilata"),
               type = "list")
   # https://bacdive.dsmz.de/api/bacdive/bacdive_id/76/?format=json
   # contains enrichment_cult_name": "R2A agar with 200 mg cycloheximide ml\n21"
@@ -99,10 +87,5 @@ test_that("Trying to download a non-existent dataset yields warnings & empty lis
   expect_warning(non_existant <-
                    retrieve_data(searchTerm = 999999999, searchType = "bacdive_id"))
   expect_warning(blablub <- retrieve_data(searchTerm = "bla blub"))
-})
-
-test_that("Downloading a single-dataset taxon works", {
-  expect_type(retrieve_data("Campylobacter pinnipediorum"),
-              "list")
   expect_equal(blablub, non_existant, list())
 })

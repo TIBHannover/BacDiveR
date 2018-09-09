@@ -31,10 +31,6 @@ aggregate_datasets <- function(payload, from_IDs = FALSE)
 #' @keywords internal
 aggregate_result_URLs <- function(results)
 {
-  if (length(results$results$url) == 1)
-    URLs <- results$results$url
-  else
-  {
     URLs <- list()
     while (TRUE) {
       URLs <- append(URLs, unlist(results$results, use.names = FALSE))
@@ -42,7 +38,6 @@ aggregate_result_URLs <- function(results)
         results <- jsonlite::fromJSON(download(results$`next`))
       else
         break
-    }
   }
   return(paste0(URLs, "?format=json"))
 }
