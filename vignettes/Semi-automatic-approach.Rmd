@@ -1,6 +1,5 @@
 ---
-title: "The Semi-Automatic Approach"
-subtitle: "Pre-Configuring an Advanced Search and Retrieving the Results"
+title: "Pre-Configuring Advanced Searches and Retrieving the Results"
 author: "Katrin Leinweber"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -27,8 +26,8 @@ prepare the query you are interested in.
 
 ![Overview of the possible fields to query and their parameters (contains, exact, begins/ends with)](advanced-search.png)
 
-2. Run your advanced search (query). In the below example, I simply searched for
-all strains whose publication includes someone named "Miller". **Note the** two 
+2. Run your advanced search (query). The below example searches for all strains
+whose literature reference includes someone named "Miller". **Note the** two 
 "hits" on the right, and the now much longer **URL**. It contains/encodes all 
 the terms and parameters of your advanced search.
 
@@ -38,7 +37,7 @@ the terms and parameters of your advanced search.
 Alternatively, copy it from the "Download list of BacDive Ids" link to the top
 right of the "hits" list.
 
-1. Paste the copied URL into a call to the `retrieve_search_results()` function.
+1. Paste the copied URL into a call to the `retrieve_search_results("…")` function.
 
 1. Enjoy the list of downloaded datasets, just as you would after using
 `retrieve_data(searchTerm = ..., searchType = ...)`.
