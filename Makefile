@@ -11,6 +11,8 @@ docu: spell
 
 site: docu
 	Rscript -e "devtools::install(); pkgdown::build_site(document = FALSE)"
+cov:
+	Rscript -e "covr::package_coverage()"
 
 # vignettes: docu
 #	Rscript -e "lapply(list.files(path = 'vignettes', pattern = '*.Rmd', full.names = TRUE), knitr::knit"

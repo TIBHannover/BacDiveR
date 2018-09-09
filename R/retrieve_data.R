@@ -41,7 +41,11 @@ retrieve_data <- function(searchTerm,
     names(payload) <- searchTerm
     return(payload)
   }
-  else if (!is.null(payload$count))
+  else if (is_ID_refererence(payload))
+  {
+    retrieve_data(searchTerm = URLs_to_IDs(payload$url), searchType = "bacdive_id")
+  }
+  else if (is_results_list(payload))
   {
     aggregate_datasets(payload)
   }
@@ -63,4 +67,16 @@ is_dataset <- function(payload)
       "references"
     )
   )
+}
+
+is_results_list <- function(payload) {
+  identical(names(payload), c("count", "next", "previous", "results"))
+}
+
+is_ID_refererence <- function(payload) {
+  all.equal(nrow(payload), ncol(payload), 1) &&
+    # class(payload) == "data.frame" &&
+    names(payload) == "url"
+    # && grepl("https://bacdive.dsmz.de/api/bacdive/bacdive_id/\\d+/",
+    #          payload$url)
 }

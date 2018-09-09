@@ -1,14 +1,5 @@
 context("test-retrieve_data.R")
 
-test_that("downloading a dataset via BacDive ID works", {
-  expect_equal(
-    download(
-      "https://bacdive.dsmz.de/api/bacdive/culturecollectionno/DSM%20319/?format=json"
-    ),
-    '[{"url": "https://bacdive.dsmz.de/api/bacdive/bacdive_id/717/"}]'
-  )
-})
-
 
 B_subtilis_IDs <-
   jsonlite::fromJSON(
@@ -18,8 +9,7 @@ B_subtilis_IDs <-
   )
 
 test_that("taxon search returns paged results list", {
-  expect_equal(names(B_subtilis_IDs),
-               c("count", "next", "previous", "results"))
+  expect_true(is_results_list(B_subtilis_IDs))
   expect_null(B_subtilis_IDs$previous)
   expect_type(object = B_subtilis_IDs$count, type = "integer")
 
@@ -49,22 +39,20 @@ test_that("using the taxon search for a single dataset works", {
 })
 
 
-test_that("downloading a single dataset via culturecollectionno works (#45)",
+test_that("Redirecting 'culturecollectionno' & 'sequence' searches to 'bacdive_id' works (#45)",
           {
-            expect_true(
-              identical(retrieve_data(
+            expect_identical(
+              retrieve_data(
                 searchTerm = "DSM 319",
                 searchType = "culturecollectionno"
-              )$`717`$taxonomy_name$strains_tax_PNU$ID_reference,
+              ),
               retrieve_data(
                 searchTerm = "AJ000733",
                 searchType = "sequence"
-              )$`717`$taxonomy_name$strains_tax_PNU$ID_reference,
+              ),
               retrieve_data(
                 searchTerm = 717,
                 searchType = "bacdive_id"
-              )$`717`$taxonomy_name$strains_tax_PNU$ID_reference,
-              20215
               )
             )
           })
