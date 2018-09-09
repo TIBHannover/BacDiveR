@@ -24,18 +24,7 @@ retrieve_data <- function(searchTerm,
 {
   payload <- jsonlite::fromJSON(download(construct_url(searchTerm, searchType)))
 
-  if (identical(payload$detail, "Not found"))
-  {
-    if (identical(searchType, "bacdive_id"))
-      warning(paste0("BacDive has no dataset with bacdive_id ", searchTerm, "."))
-    else
-      warning(paste0(
-        "BacDive has no result for ", searchType, " = ", searchTerm, ". Please check that both terms are correct, type '?retrieve_data' and read through the 'searchType' section to learn more."
-      ))
-
-    return(list())
-  }
-  else if (is_dataset(payload))
+  if (is_dataset(payload))
   {
     payload <- list(payload)
     names(payload) <- searchTerm
@@ -48,6 +37,17 @@ retrieve_data <- function(searchTerm,
   else if (is_results_list(payload))
   {
     aggregate_datasets(payload)
+  }
+  else if (identical(payload$detail, "Not found"))
+  {
+    if (identical(searchType, "bacdive_id"))
+      warning(paste0("BacDive has no dataset with bacdive_id ", searchTerm, "."))
+    else
+      warning(paste0(
+        "BacDive has no result for ", searchType, " = ", searchTerm, ". Please check that both terms are correct, type '?retrieve_data' and read through the 'searchType' section to learn more."
+      ))
+
+    return(list())
   }
 }
 
