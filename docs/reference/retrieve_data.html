@@ -87,9 +87,6 @@
       <a href="../articles/BacDive-ing-in.html">BacDive-ing in</a>
     </li>
     <li>
-      <a href="../articles/Semi-automatic-approach.html">The Semi-Automatic Approach</a>
-    </li>
-    <li>
       <a href="../articles/adr-001-JSON-not-XML.html">ADR 1: Using JSON internally, instead of XML</a>
     </li>
     <li>
@@ -97,6 +94,9 @@
     </li>
     <li>
       <a href="../articles/logic-checking-bacdive-datasets.html">Logic-Checking BacDive Datasets</a>
+    </li>
+    <li>
+      <a href="../articles/pre-configuring-advanced-searches-and-retrieving-the-results.html">Pre-Configuring Advanced Searches and Retrieving the Results</a>
     </li>
   </ul>
 </li>
@@ -163,7 +163,7 @@ an ambiguous <code>searchTerm</code> (most <code>taxon</code>s).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  </div><div class='input'><span class='no'>dataset_717</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='fl'>717</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"bacdive_id"</span>)</div><div class='output co'>#&gt; <span class='message'>717 </span></div><div class='input'>  </div><div class='input'><span class='no'>dataset_DSM_319</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='st'>"DSM 319"</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"culturecollectionno"</span>)</div><div class='output co'>#&gt; <span class='message'>20319 </span></div><div class='input'>  </div><div class='input'><span class='no'>dataset_AJ000733</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='st'>"AJ000733"</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"sequence"</span>)</div><div class='output co'>#&gt; <span class='message'>000733 </span></div><div class='input'>  </div><div class='input'><span class='no'>datasets_Bh</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='st'>"Bacillus halotolerans"</span>)</div><div class='output co'>#&gt; <span class='message'> </span></div><div class='output co'>#&gt; <span class='message'>Downloading BacDive IDs: </span></div><div class='output co'>#&gt; <span class='message'>1095 </span></div><div class='output co'>#&gt; <span class='message'>1847 </span></div></pre>
+    <pre class="examples"><div class='input'>  </div><div class='input'><span class='no'>dataset_717</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='fl'>717</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"bacdive_id"</span>)</div><div class='output co'>#&gt; <span class='message'>717 </span></div><div class='input'>  </div><div class='input'><span class='no'>dataset_DSM_319</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='st'>"DSM 319"</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"culturecollectionno"</span>)</div><div class='output co'>#&gt; <span class='message'>20319 </span></div><div class='output co'>#&gt; <span class='message'>717 </span></div><div class='input'>  </div><div class='input'><span class='no'>dataset_AJ000733</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='st'>"AJ000733"</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"sequence"</span>)</div><div class='output co'>#&gt; <span class='message'>000733 </span></div><div class='output co'>#&gt; <span class='message'>717 </span></div><div class='input'>  </div><div class='input'><span class='no'>datasets_Bh</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='st'>"Bacillus halotolerans"</span>)</div><div class='output co'>#&gt; <span class='message'> </span></div><div class='output co'>#&gt; <span class='message'>Downloading BacDive IDs: </span></div><div class='output co'>#&gt; <span class='message'>1095 </span></div><div class='output co'>#&gt; <span class='message'>1847 </span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
