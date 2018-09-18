@@ -34,7 +34,7 @@ Afterwards, remove the above from GitHub. -->
 
 ``` r
 if(!require('devtools')) install.packages('devtools')
-devtools::install_github("TIBHannover/BacDiveR", ref = 'v0.7.0')
+devtools::install_github('TIBHannover/BacDiveR', ref = 'v0.7.0')
 # Please omit the `ref` only if you want to test the latest development version!
 ```
 
