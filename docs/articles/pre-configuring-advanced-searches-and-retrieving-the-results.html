@@ -94,7 +94,7 @@
       <h1>Pre-Configuring Advanced Searches and Retrieving the Results</h1>
                         <h4 class="author">Katrin Leinweber</h4>
             
-            <h4 class="date">2018-09-09</h4>
+            <h4 class="date">2018-09-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/TIBHannover/BacDiveR/blob/master/vignettes/pre-configuring-advanced-searches-and-retrieving-the-results.Rmd"><code>vignettes/pre-configuring-advanced-searches-and-retrieving-the-results.Rmd</code></a></small>
       <div class="hidden name"><code>pre-configuring-advanced-searches-and-retrieving-the-results.Rmd</code></div>
@@ -131,7 +131,7 @@
 <div id="storing-datasets-offline" class="section level2">
 <h2 class="hasAnchor">
 <a href="#storing-datasets-offline" class="anchor"></a>Storing datasets offline</h2>
-<p>This is not a BacDiveR feature, but<code>base</code> R’s <code>saveRDS()</code> is particularly useful for offline-storage of lots of search results, because downloading them would take rather long. Continuing the Archaea example, the following code writes the dataset to a file, loads it again, and verifies the data integrity:</p>
+<p>This is not a BacDiveR feature, but <code>base</code> R’s <code>saveRDS()</code> is particularly useful for offline-storage of lots of search results, because downloading them would take rather long. Continuing the Archaea example, the following code writes the dataset to a file, loads it again, and verifies the data integrity:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">saveRDS</span>(Archaea_data, <span class="st">"Archaea.rds"</span>, <span class="dt">version =</span> <span class="dv">3</span>)
 Archaea_data_stored &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"Archaea.rds"</span>)
 <span class="kw">identical</span>(Archaea_data, Archaea_data_stored)</code></pre></div>
