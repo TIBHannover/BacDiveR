@@ -27,7 +27,7 @@ Afterwards, remove the above from GitHub. -->
 ## Installation
 
 1.  Because the [BacDive API requires registration][reg] please do that first 
-    and wait for your access to be granted.
+    and wait for DSMZ staff to grant you access.
 
 2.  Once you have your login credentials, install the [latest BacDiveR release][releases]
     from GitHub with:
