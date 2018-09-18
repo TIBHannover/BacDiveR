@@ -60,7 +60,7 @@ Please note the messages about estimated download times for such large downloads
 
 ## Storing datasets offline
 
-This is not a BacDiveR feature, but`base` R's `saveRDS()` is particularly useful
+This is not a BacDiveR feature, but `base` R's `saveRDS()` is particularly useful
 for offline-storage of lots of search results, because downloading them would
 take rather long. Continuing the Archaea example, the following code writes the
 dataset to a file, loads it again, and verifies the data integrity:
