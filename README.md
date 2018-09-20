@@ -18,23 +18,24 @@ See [TIBHannover.GitHub.io/BacDiveR][page] for more details, [/news] there for t
 [page]: https://tibhannover.github.io/BacDiveR/
 [reg]: https://bacdive.dsmz.de/api/bacdive/registration/register/
 [source]: https://github.com/TIBHannover/BacDiveR/
+[releases]: https://github.com/TIBHannover/BacDiveR/releases/latest
 
-<!-- Paste the above section into the release description on
-https://github.com/TIBHannover/BacDiveR/releases/new
+<!-- Paste the above section into the release description
 together with the latest section of `NEWS.md` in order to usefull populate Zenodo.
 Afterwards, remove the above from GitHub. -->
 
 ## Installation
 
 1.  Because the [BacDive API requires registration][reg] please do that first 
-    and wait for your access to be granted.
+    and wait for DSMZ staff to grant you access.
 
-2.  Once you have your login credentials, install BacDiveR from GitHub
-    with:
+2.  Once you have your login credentials, install the [latest BacDiveR release][releases]
+    from GitHub with:
 
 ``` r
 if(!require('devtools')) install.packages('devtools')
-devtools::install_github("TIBHannover/BacDiveR")
+devtools::install_github('TIBHannover/BacDiveR', ref = 'v0.7.0')
+# Please omit the `ref` only if you want to test the latest development version!
 ```
 
 3.  After installing, follow the instructions on the console to save your login
@@ -67,7 +68,7 @@ and about the ["Semi-automatic approach"][adv-search].
 
 ## How to cite
 
-Best use the `Cite as` or `Export` options presented on [Zenodo.org/record/1308061][zenodo].
+Best use the `Cite as` or `Export` options presented on [Zenodo.org/record/1308060][zenodo].
 If you want to import [this GitHub repo's metadata][GH] into a reference manager
 directly, try [Zotero] and its [GitHub translator][zotGH].
 
@@ -76,7 +77,7 @@ directly, try [Zotero] and its [GitHub translator][zotGH].
 [ADR]: https://github.com/TIBHannover/BacDiveR/tree/master/vignettes
 [bugs]: https://github.com/tibhannover/BacDiveR/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Aupdated-desc
 [GH]: https://github.com/TIBHannover/BacDiveR/
-[zenodo]: https://zenodo.org/record/1308061#invenio-csl
+[zenodo]: https://zenodo.org/record/1308060#invenio-csl
 [zotero]: https://www.zotero.org/
 [zotGH]: https://github.com/zotero/translators/blob/master/Github.js
 
