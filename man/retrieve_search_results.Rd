@@ -8,9 +8,7 @@ retrieve_search_results(queryURL)
 }
 \arguments{
 \item{queryURL}{URL of a query prepared on \href{https://bacdive.dsmz.de/advsearch}{BacDive.DSMZ.de/AdvSearch},
-as explained in the vignette "The
-semi-automatic approach: retrieving data through a pre-configured advanced
-search".}
+as explained in the vignette "Pre-Configuring Advanced Searches and Retrieving the Results".}
 }
 \value{
 A list of lists containing either a single BacDive dataset in case
