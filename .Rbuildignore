@@ -10,3 +10,4 @@
 ^\.github$
 Makefile
 ^_pkgdown\.yml$
+^BD_data/
