@@ -43,7 +43,9 @@ Contributions through pull requests are welcome, and will be replied to within 1
 or 2 (non-holi)days.
 
 *  We recommend that you create a Git branch for each PR, preferably with an issue number prepended to the [branch name][bn].
-*  New code should follow RStudio's style guide. Select code & press `Shift`+`CTRL`/`CMD`+`A` (or go to the "Code Tools" menu > "Reformat Code").
+*  All added or modified code should follow RStudio's style guide. To apply
+   it, you can use `styler::style_pkg()`, or select the code and press
+   `Shift`+`CTRL`/`CMD`+`A` (or go to the "Code Tools" menu > "Reformat Code").
 *  We use [roxygen2](https://cran.r-project.org/package=roxygen2), with
 [Markdown syntax](https://cran.r-project.org/web/packages/roxygen2/vignettes/markdown.html), 
 for documentation.  
