@@ -7,12 +7,10 @@
 #'
 #' @examples \donttest{prepare_Renviron()}
 #' @keywords internal
-prepare_Renviron <- function()
-  {
+prepare_Renviron <- function() {
   r_env_file <- construct_Renviron_path()
 
-  if (!file.exists(r_env_file))
-  {
+  if (!file.exists(r_env_file)) {
     file.create(r_env_file)
     Sys.chmod(r_env_file, mode = "0600")
   }
@@ -27,10 +25,12 @@ prepare_Renviron <- function()
       paste0("^", start_of_line),
       readLines(r_env_file, warn = FALSE)
     ))) {
-      if (identical(type, "email"))
+      if (identical(type, "email")) {
         write(paste("\n# Please", message),
-              file = r_env_file,
-              append = TRUE)
+          file = r_env_file,
+          append = TRUE
+        )
+      }
       write(start_of_line, file = r_env_file, append = TRUE)
     }
   }
@@ -44,7 +44,7 @@ prepare_Renviron <- function()
         `file.edit(file.path(Sys.getenv('HOME'), '.Renviron'))`\n
         and", message
       )
-      )
+    )
     file.edit(r_env_file)
   }
 }

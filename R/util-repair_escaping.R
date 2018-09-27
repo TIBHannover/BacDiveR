@@ -11,15 +11,17 @@
 #'   whitespace characters
 #' @keywords internal
 repair_escaping <- function(JSON) {
-
-  if (grepl("\\r", x = JSON))
+  if (grepl("\\r", x = JSON)) {
     JSON <- purrr::map_chr(.x = JSON, .f = repair, char = "r")
+  }
 
-  if (grepl("\\n", JSON))
+  if (grepl("\\n", JSON)) {
     JSON <- purrr::map_chr(JSON, repair, "n")
+  }
 
-  if (grepl("\\t", JSON))
+  if (grepl("\\t", JSON)) {
     JSON <- purrr::map_chr(JSON, repair, "t")
+  }
 
   return(JSON)
 }

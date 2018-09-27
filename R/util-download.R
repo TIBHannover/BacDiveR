@@ -10,13 +10,13 @@
 #' @keywords internal
 download <-
   function(URL,
-           userpwd = paste(get_credentials(), collapse = ":"))
-  {
+             userpwd = paste(get_credentials(), collapse = ":")) {
     message(URLs_to_IDs(URL), " ", appendLF = FALSE)
 
     payload <- RCurl::getURL(URL,
-                             userpwd = userpwd,
-                             httpauth = 1L)
+      userpwd = userpwd,
+      httpauth = 1L
+    )
 
     return(repair_escaping(payload))
     # Needs to remain here, not between jsonlite::fromJSON & download above,
