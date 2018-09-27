@@ -30,8 +30,8 @@ is extremely helpful for fixing it ;-)
 
 a) in other cases, such as wanting to discuss sending a substantial pull request.
 
-Please spend a few minutes searching the [existing issues (also the closed ones)
-][issues], though. What you want to write might have been already ;-)
+Please spend a few minutes searching the [existing issues (also the closed ones)][issues],
+though. What you want to write might have been already ;-)
 
 [issues]: https://github.com/tibhannover/BacDiveR/issues/
 [reprex]: https://www.tidyverse.org/help/#reprex
