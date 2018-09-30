@@ -10,7 +10,13 @@ aggregate_datasets <- function(payload, from_IDs = FALSE) {
     IDs <- URLs_to_IDs(URLs)
   }
 
-  message("Downloading BacDive IDs: ", appendLF = FALSE)
+  message(paste0(
+    "Downloading BacDive IDs (",
+    min(as.integer(IDs)),
+    " to ",
+    max(as.integer(IDs)),
+    ", but not necessarily contiguous): "
+  ))
   taxon_data <-
     purrr::map(.x = purrr::map(.x = URLs, .f = download), jsonlite::fromJSON)
   names(taxon_data) <- IDs
