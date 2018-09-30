@@ -18,7 +18,7 @@ aggregate_datasets <- function(payload, from_IDs = FALSE) {
     ", but not necessarily contiguous): "
   ))
   taxon_data <-
-    purrr::map(.x = purrr::map(.x = URLs, .f = download), jsonlite::fromJSON)
+    purrr::map(.x = purrr::map(URLs, download), .f = jsonlite::fromJSON)
   names(taxon_data) <- IDs
 
   taxon_data
