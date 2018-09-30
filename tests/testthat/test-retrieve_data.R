@@ -1,5 +1,12 @@
 context("test-retrieve_data.R")
 
+test_that("BacDive database remained unchanged", {
+  expect_equal(
+    jsonlite::fromJSON(
+      download("https://bacdive.dsmz.de/api/bacdive/bacdive_id/?format=json")
+    )$count, 63669)
+})
+
 
 B_subtilis_IDs <-
   jsonlite::fromJSON(
