@@ -23,7 +23,7 @@ repair_escaping <- function(JSON) {
     JSON <- purrr::map_chr(JSON, repair, "t")
   }
 
-  return(JSON)
+  JSON
 }
 
 repair <- function(JSON, char) {

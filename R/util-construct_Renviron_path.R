@@ -8,5 +8,5 @@ construct_Renviron_path <- function() {
   if (nzchar(path)) {
     path <- normalizePath("~/")
   }
-  return(file.path(path, ".Renviron"))
+  file.path(path, ".Renviron")
 }

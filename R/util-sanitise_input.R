@@ -10,8 +10,8 @@ sanitise_input <- function(searchTerm, searchType) {
   }
 
   if (identical(searchType, "taxon")) {
-    return(gsub(pattern = " ", replacement = "/", searchTerm))
+    gsub(pattern = " ", replacement = "/", searchTerm)
   } else {
-    return(searchTerm)
+    searchTerm
   }
 }

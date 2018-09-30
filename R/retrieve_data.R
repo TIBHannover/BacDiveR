@@ -43,7 +43,7 @@ retrieve_data <- function(searchTerm,
       ))
     }
 
-    return(list())
+    list()
   }
 }
 

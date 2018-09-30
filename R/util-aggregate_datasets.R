@@ -15,7 +15,7 @@ aggregate_datasets <- function(payload, from_IDs = FALSE) {
     purrr::map(.x = purrr::map(.x = URLs, .f = download), jsonlite::fromJSON)
   names(taxon_data) <- IDs
 
-  return(taxon_data)
+  taxon_data
 }
 
 
@@ -36,7 +36,7 @@ aggregate_result_URLs <- function(results) {
       break
     }
   }
-  return(paste0(URLs, "?format=json"))
+  paste0(URLs, "?format=json")
 }
 
 
