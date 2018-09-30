@@ -1,7 +1,7 @@
 warn_slow_download <- function(N_datasets) {
   if (N_datasets > 20) {
     min <- floor(N_datasets / 4)
-    max <- ceiling(N_datasets / 3)
+    max <- ceiling(N_datasets / 2)
 
     message(
       paste0(
@@ -35,7 +35,8 @@ warn_slow_download <- function(N_datasets) {
     #                 searchType = "taxon")
     #   retrieve_data(searchTerm = "Pseudomonas")
     #   retrieve_search_results("https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B70%5D%5Bcontenttype%5D=text&searchparams%5B70%5D%5Btypecontent%5D=contains&searchparams%5B70%5D%5Bsearchterm%5D=archaea")
-    # resulting in: 31.83312, 260.64956 and 171.851 s respectively, indicating a download
-    # rate of about 3 to 4 datasets per second.
+    #   retrieve_search_results("https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B70%5D%5Bcontenttype%5D=text&searchparams%5B70%5D%5Btypecontent%5D=contains&searchparams%5B70%5D%5Bsearchterm%5D=bacteria")
+    # resulting in: 31.83312, 260.64956, 171.851 and 25353.37 s respectively, indicating a download
+    # rate of about 2 to 4 datasets per second.
   }
 }
