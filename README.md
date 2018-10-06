@@ -90,18 +90,16 @@ directly, try [Zotero] and its [GitHub translator][zotGH].
 
 # References
 
-- Söhngen, Carola, Boyke Bunk, Adam Podstawka, Dorothea Gleim, and Jörg
-  Overmann. 2014. “BacDive—the Bacterial Diversity Metadatabase.” *Nucleic
-  Acids Research* 42 (D1): D592–D599.
-  [doi:10.1093/nar/gkt1058](https://doi.org/10.1093/nar/gkt1058).
+- Söhngen, Bunk, Podstawka, Gleim, Overmann. 2014. “BacDive — the Bacterial
+  Diversity Metadatabase.” *Nucleic Acids Research* 42 (D1): D592–D599.
+  [doi:10.1093/nar/gkt1058](https://academic.oup.com/nar/article/42/D1/D592/1046203).
 
-- Söhngen, Carola, Adam Podstawka, Boyke Bunk, Dorothea Gleim, Anna
-  Vetcininova, Lorenz Christian Reimer, Christian Ebeling, Cezar
-  Pendarovski, and Jörg Overmann. 2016. “BacDive – the Bacterial Diversity
-  Metadatabase in 2016.” *Nucleic Acids Research* 44 (D1): D581–D585.
-  [doi:10.1093/nar/gkv983](https://doi.org/10.1093/nar/gkv983).
-- Reimer, Lorenz Christian and Vetcininova, Anna and Carbasse, Joaquim Sardà and
-  Söhngen, Carola and Gleim, Dorothea and Ebeling, Christian and Overmann, Jörg.
-  2018. “BacDive in 2019: bacterial phenotypic data for High-throughput biodiversity
-  analysis” *Nucleic Acids Research* 
+- Söhngen, Podstawka, Bunk, Gleim, Vetcininova, Reimer, Ebeling, Pendarovski, 
+  Overmann. 2016. “BacDive – the Bacterial Diversity Metadatabase in 2016.”
+  *Nucleic Acids Research* 44 (D1): D581–D585.
+  [doi:10.1093/nar/gkv983](https://academic.oup.com/nar/article/44/D1/D581/2503137).
+
+- Reimer, Vetcininova, Carbasse, Söhngen, Gleim, Ebeling, Overmann. 2018.
+  “BacDive in 2019: Bacterial Phenotypic Data for High-Throughput Biodiversity
+  Analysis” *Nucleic Acids Research* 
   [doi:10.1093/nar/gky879](https://academic.oup.com/nar/advance-article/5106998).
