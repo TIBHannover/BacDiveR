@@ -71,6 +71,11 @@ Best use the `Cite as` or `Export` options presented on [Zenodo.org/record/13080
 If you want to import [this GitHub repo's metadata][GH] into a reference manager
 directly, try [Zotero] and its [GitHub translator][zotGH].
 
+You can also type `citation('BacDiveR')` into your R console and copy the resulting
+text or BibTeX snippet. Feel free to change that latter's item type from `@Manual` to
+`@Software` ;-) [Support for that is being worked on](https://github.com/FORCE11/FORCE11-sciwg).
+
+
 ## Known issues: see [bugs] and [ADR]s
 
 [ADR]: https://github.com/TIBHannover/BacDiveR/tree/master/vignettes
