@@ -1,6 +1,6 @@
 # BacDiveR [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1308060.svg)](https://zenodo.org/record/1308060)
 
-This R package provides a programmatic interface for the [Bacterial Diversity Metadatabase][BD] ([Söhngen et al. 2014 & 2016](#references)) of the [DSMZ (German Collection of Microorganisms and Cell Cultures)][DMSZ]. BacDiveR helps you conduct your microbial research better and faster, by:
+This R package provides a programmatic interface for the [Bacterial Diversity Metadatabase][BD] ([Söhngen et al. 2014, 2016 & 2018](#references)) of the [DSMZ (German Collection of Microorganisms and Cell Cultures)][DMSZ]. BacDiveR helps you conduct your microbial research better and faster, by:
 
 - downloading the BacDive datasets you want to investigate off-line, and by
 
@@ -100,3 +100,8 @@ directly, try [Zotero] and its [GitHub translator][zotGH].
   Pendarovski, and Jörg Overmann. 2016. “BacDive – the Bacterial Diversity
   Metadatabase in 2016.” *Nucleic Acids Research* 44 (D1): D581–D585.
   [doi:10.1093/nar/gkv983](https://doi.org/10.1093/nar/gkv983).
+- Reimer, Lorenz Christian and Vetcininova, Anna and Carbasse, Joaquim Sardà and
+  Söhngen, Carola and Gleim, Dorothea and Ebeling, Christian and Overmann, Jörg.
+  2018. “BacDive in 2019: bacterial phenotypic data for High-throughput biodiversity
+  analysis” *Nucleic Acids Research* 
+  [doi:10.1093/nar/gky879](https://academic.oup.com/nar/advance-article/5106998).
