@@ -86,12 +86,12 @@ text or BibTeX snippet. Feel free to change that latter's item type from `@Manua
 [zotGH]: https://github.com/zotero/translators/blob/master/Github.js
 
 
-## Similar tools
+## Similar tools (mostly for scraping all data)
 
 - @cjm007's [`BacDive_`](https://github.com/cjm007/BacDive_) &
   [`BacDivePy`](https://github.com/cameronmartino/BacDivePy) (Python)
 - [@zorino's `microbe-dbs` (Python & Shell)](https://github.com/zorino/microbe-dbs)
-
+- or generally: [GitHub.com/topics/bacdive](https://github.com/topics/bacdive)
 
 # References
 
