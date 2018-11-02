@@ -53,22 +53,21 @@ test_that("Redirecting 'culturecollectionno' & 'sequence' searches to 'bacdive_i
 })
 
 
+# test set with 2 strains
+Bac_hal <- "Bacillus halotolerans"
+Bac_hal_data <- retrieve_data(searchTerm = Bac_hal)
+
 test_that("extracting a single field from a taxon-wide search works", {
   expect_equal(
-    30,
+    c("30", "15-45", "32", "37", "28"),
     unique(unlist(
       purrr::map(
-        .x = retrieve_data("Aminobacter aminovorans"),
-        .f = ~as.numeric(.x$culture_growth_condition$culture_temp$temp)
+        .x = Bac_hal_data,
+        .f = ~.x$culture_growth_condition$culture_temp$temp
       )
     ))
   )
 })
-
-
-# test set with 2 strains
-Bac_hal <- "Bacillus halotolerans"
-Bac_hal_data <- retrieve_data(searchTerm = Bac_hal)
 
 test_that("any dataset returned by BacDiveR is named with its ID", {
   expect_equal(
