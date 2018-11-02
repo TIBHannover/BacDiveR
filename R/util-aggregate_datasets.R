@@ -17,8 +17,7 @@ aggregate_datasets <- function(payload, from_IDs = FALSE) {
     max(as.integer(IDs)),
     ", but not necessarily contiguous): "
   ))
-  taxon_data <-
-    purrr::map(.x = purrr::map(URLs, download), .f = jsonlite::fromJSON)
+  taxon_data <- purrr::map(URLs, download)
   names(taxon_data) <- IDs
 
   taxon_data
@@ -37,7 +36,7 @@ aggregate_result_URLs <- function(results) {
   while (TRUE) {
     URLs <- append(URLs, unlist(results$results, use.names = FALSE))
     if (!is.null(results$`next`)) {
-      results <- jsonlite::fromJSON(download(results$`next`))
+      results <- download(results$`next`)
     } else {
       break
     }

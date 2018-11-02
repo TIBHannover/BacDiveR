@@ -4,18 +4,14 @@
 \alias{download}
 \title{Download Something from BacDive}
 \usage{
-download(URL, userpwd = paste(get_credentials(), collapse = ":"))
+download(URL)
 }
 \arguments{
-\item{URL}{represented by a correctly encoded character string with spaces,
-thanks to utils::URLencode.}
-
-\item{userpwd}{A character string of the format
-\code{BacDive_email:BacDive_password}. Retrieved from \code{.Renviron} my default,
-but also used with something else by the tests.}
+\item{URL}{A correctly encoded character string, either from construct_url()
+or a JSON list}
 }
 \value{
-A serialised JSON string.
+The R object unserialised from the downloaded JSON
 }
 \description{
 Download Something from BacDive

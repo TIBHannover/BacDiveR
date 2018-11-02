@@ -135,27 +135,21 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>download</span>(<span class='no'>URL</span>, <span class='kw'>userpwd</span> <span class='kw'>=</span> <span class='fu'>paste</span>(<span class='fu'><a href='get_credentials.html'>get_credentials</a></span>(), <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>":"</span>))</pre>
+    <pre class="usage"><span class='fu'>download</span>(<span class='no'>URL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>URL</th>
-      <td><p>represented by a correctly encoded character string with spaces,
-thanks to utils::URLencode.</p></td>
-    </tr>
-    <tr>
-      <th>userpwd</th>
-      <td><p>A character string of the format
-<code>BacDive_email:BacDive_password</code>. Retrieved from <code>.Renviron</code> my default,
-but also used with something else by the tests.</p></td>
+      <td><p>A correctly encoded character string, either from construct_url()
+or a JSON list</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A serialised JSON string.</p>
+    <p>The R object unserialised from the downloaded JSON</p>
     
 
   </div>

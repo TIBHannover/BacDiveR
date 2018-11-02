@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
+## BacDiveR 0.7.1
+
+### Changed
+
+- The combined use of [RCurl](https://cran.r-project.org/package=RCurl) for
+  downloading JSON-encoded data from BacDive with
+  [jsonlite](https://cran.r-project.org/package=jsonlite) for converting the
+  download into an R objects was plagued with some whitespace escaping problems.
+  This spawned a custom repair solution, adding accidental complexity. That
+  swamp is now drained by use of [httr](https://cran.r-project.org/package=httr).
+
 ## BacDiveR 0.7.0
 
 ### Added

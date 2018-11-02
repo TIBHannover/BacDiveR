@@ -21,7 +21,7 @@
 #'   \donttest{datasets_Bh <- retrieve_data(searchTerm = "Bacillus halotolerans")}
 retrieve_data <- function(searchTerm,
                           searchType = "taxon") {
-  payload <- jsonlite::fromJSON(download(construct_url(searchTerm, searchType)))
+  payload <- download(construct_url(searchTerm, searchType))
 
   if (is_dataset(payload)) {
     payload <- list(payload)
