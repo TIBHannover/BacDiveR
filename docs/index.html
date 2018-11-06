@@ -95,7 +95,7 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#bacdiver-lifecycle-doi" class="anchor"></a>BacDiveR <a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a> <a href="https://zenodo.org/record/1308060"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1308060.svg" alt="DOI"></a>
 </h1></div>
-<p>This R package provides a programmatic interface for the <a href="https://bacdive.dsmz.de/">Bacterial Diversity Metadatabase</a> (<a href="#references">Söhngen et al. 2014 &amp; 2016</a>) of the <a href="https://www.dsmz.de/about-us.html">DSMZ (German Collection of Microorganisms and Cell Cultures)</a>. BacDiveR helps you conduct your microbial research better and faster, by:</p>
+<p>This R package provides a programmatic interface for the <a href="https://bacdive.dsmz.de/">Bacterial Diversity Metadatabase</a> (<a href="#references">Söhngen et al. 2014, 2016 &amp; 2018</a>) of the <a href="https://www.dsmz.de/about-us.html">DSMZ (German Collection of Microorganisms and Cell Cultures)</a>. BacDiveR helps you conduct your microbial research better and faster, by:</p>
 <ul>
 <li><p>downloading the BacDive datasets you want to investigate off-line, and by</p></li>
 <li><p>providing you with a way to document and report your searches and downloads, in a reproducible manner (<code>.R</code> scripts and/or <code>.Rmd</code> files).</p></li>
@@ -131,17 +131,20 @@ BacDive_password=YOUR_20_char_password</code></pre></div>
 <h2 class="hasAnchor">
 <a href="#how-to-cite" class="anchor"></a>How to cite</h2>
 <p>Best use the <code>Cite as</code> or <code>Export</code> options presented on <a href="https://zenodo.org/record/1308060#invenio-csl">Zenodo.org/record/1308060</a>. If you want to import <a href="https://github.com/TIBHannover/BacDiveR/">this GitHub repo’s metadata</a> into a reference manager directly, try <a href="https://www.zotero.org/">Zotero</a> and its <a href="https://github.com/zotero/translators/blob/master/Github.js">GitHub translator</a>.</p>
+<p>You can also type <code>citation('BacDiveR')</code> into your R console and copy the resulting text or BibTeX snippet. Feel free to change that latter’s item type from <code>@Manual</code> to <code>@Software</code> ;-) <a href="https://github.com/FORCE11/FORCE11-sciwg">Support for that is being worked on</a>.</p>
 </div>
 <div id="known-issues-see-bugs-and-adrs" class="section level2">
 <h2 class="hasAnchor">
 <a href="#known-issues-see-bugs-and-adrs" class="anchor"></a>Known issues: see <a href="https://github.com/tibhannover/BacDiveR/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Aupdated-desc">bugs</a> and <a href="https://github.com/TIBHannover/BacDiveR/tree/master/vignettes">ADR</a>s</h2>
 </div>
-<div id="similar-tools" class="section level2">
+<div id="similar-tools-mostly-for-scraping-all-data" class="section level2">
 <h2 class="hasAnchor">
-<a href="#similar-tools" class="anchor"></a>Similar tools</h2>
+<a href="#similar-tools-mostly-for-scraping-all-data" class="anchor"></a>Similar tools (mostly for scraping all data)</h2>
 <ul>
 <li>@cjm007’s <a href="https://github.com/cjm007/BacDive_"><code>BacDive_</code></a> &amp; <a href="https://github.com/cameronmartino/BacDivePy"><code>BacDivePy</code></a> (Python)</li>
 <li><a href="https://github.com/zorino/microbe-dbs">@zorino’s <code>microbe-dbs</code> (Python &amp; Shell)</a></li>
+<li>or generally: <a href="https://github.com/topics/bacdive">GitHub.com/topics/bacdive</a>
+</li>
 </ul>
 </div>
 </div>
@@ -149,8 +152,9 @@ BacDive_password=YOUR_20_char_password</code></pre></div>
 <h1 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h1>
 <ul>
-<li><p>Söhngen, Carola, Boyke Bunk, Adam Podstawka, Dorothea Gleim, and Jörg Overmann. 2014. “BacDive—the Bacterial Diversity Metadatabase.” <em>Nucleic Acids Research</em> 42 (D1): D592–D599. <a href="https://doi.org/10.1093/nar/gkt1058">doi:10.1093/nar/gkt1058</a>.</p></li>
-<li><p>Söhngen, Carola, Adam Podstawka, Boyke Bunk, Dorothea Gleim, Anna Vetcininova, Lorenz Christian Reimer, Christian Ebeling, Cezar Pendarovski, and Jörg Overmann. 2016. “BacDive – the Bacterial Diversity Metadatabase in 2016.” <em>Nucleic Acids Research</em> 44 (D1): D581–D585. <a href="https://doi.org/10.1093/nar/gkv983">doi:10.1093/nar/gkv983</a>.</p></li>
+<li><p>Söhngen, Bunk, Podstawka, Gleim, Overmann. 2014. “BacDive — the Bacterial Diversity Metadatabase.” <em>Nucleic Acids Research</em> 42 (D1): D592–D599. <a href="https://academic.oup.com/nar/article/42/D1/D592/1046203">doi:10.1093/nar/gkt1058</a>.</p></li>
+<li><p>Söhngen, Podstawka, Bunk, Gleim, Vetcininova, Reimer, Ebeling, Pendarovski, Overmann. 2016. “BacDive – the Bacterial Diversity Metadatabase in 2016.” <em>Nucleic Acids Research</em> 44 (D1): D581–D585. <a href="https://academic.oup.com/nar/article/44/D1/D581/2503137">doi:10.1093/nar/gkv983</a>.</p></li>
+<li><p>Reimer, Vetcininova, Carbasse, Söhngen, Gleim, Ebeling, Overmann. 2018. “BacDive in 2019: Bacterial Phenotypic Data for High-Throughput Biodiversity Analysis” <em>Nucleic Acids Research</em> <a href="https://academic.oup.com/nar/advance-article/5106998">doi:10.1093/nar/gky879</a>.</p></li>
 </ul>
 </div>
 
