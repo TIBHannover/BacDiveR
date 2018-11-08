@@ -10,7 +10,6 @@ download <- function(URL) {
 
   cred <- get_credentials()
 
-  library(magrittr)
   httr::GET(URL, httr::authenticate(cred[1], cred[2])) %>%
     httr::content(as = "text", encoding = "UTF-8") %>%
     jsonlite::fromJSON()
