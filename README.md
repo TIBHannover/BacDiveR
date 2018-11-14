@@ -20,7 +20,7 @@ It was also built to serve as a demonstration object during [TIB's "FAIR Data & 
 [releases]: https://github.com/TIBHannover/BacDiveR/releases/latest
 
 <!-- Paste the above section into the release description
-together with the latest section of `NEWS.md` in order to usefull populate Zenodo.
+together with the latest section of `NEWS.md` in order to usefully populate Zenodo.
 Afterwards, remove the above from GitHub. -->
 
 ## Installation
