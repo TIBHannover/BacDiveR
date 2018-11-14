@@ -1,15 +1,14 @@
 # BacDiveR [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1308060.svg)](https://zenodo.org/record/1308060)
 
-This R package provides a programmatic interface for the [Bacterial Diversity Metadatabase][BD] ([Söhngen et al. 2014, 2016 & 2018](#references)) of the [DSMZ (German Collection of Microorganisms and Cell Cultures)][DMSZ]. BacDiveR helps you conduct your microbial research better and faster, by:
+This R package provides a programmatic interface to the [Bacterial Diversity Metadatabase][BD] of the [DSMZ (German Collection of Microorganisms and Cell Cultures)][DMSZ]. BacDiveR helps you improve your research on bacteria and archaea by providing access to "structured information on [...] their taxonomy, morphology, physiology, cultivation, geographic origin, application, interaction" and more ([Söhngen et al. 2016](#references)). Specifically, you can:
 
-- downloading the BacDive datasets you want to investigate off-line, and by
+- download the BacDive data you need for offline investigation, and
 
-- providing you with a way to document and report your searches and downloads, 
-  in a reproducible manner (`.R` scripts and/or `.Rmd` files).
+- document your searchers and downloads in `.R` scripts, `.Rmd` files, etc.
+
+Thus, BacDiveR can be the basis for a reproducible data analysis pipeline. See [TIBHannover.GitHub.io/BacDiveR][page] for more details, [/news] there for the changelog, and [GitHub.com/TIBHannover/BacDiveR][source] for the latest source code.
 
 It was also built to serve as a demonstration object during [TIB's "FAIR Data & Software" workshop][FDS].
-
-See [TIBHannover.GitHub.io/BacDiveR][page] for more details, [/news] there for the changelog, and [GitHub.com/TIBHannover/BacDiveR][source] for the latest source code.
 
 [BD]: https://bacdive.dsmz.de/
 [DMSZ]: https://www.dsmz.de/about-us.html
