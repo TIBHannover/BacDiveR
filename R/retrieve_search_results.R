@@ -21,14 +21,14 @@ retrieve_search_results <- function(queryURL) {
     )
   }
 
-  download_param <- "&csv_bacdive_ids_advsearch=download"
+  DL_param <- "&csv_bacdive_ids_advsearch=download"
 
-  if (!grepl(pattern = paste0(download_param, "$"), x = queryURL)) {
-    queryURL <- paste0(queryURL, download_param)
+  # ensure that file with result IDs gets downloaded
+  if (!grepl(pattern = paste0(DL_param, "$"), x = queryURL)) {
+    queryURL <- paste0(queryURL, DL_param)
   }
 
   cred <- get_credentials()
-
   payload <- httr::GET(queryURL, httr::authenticate(cred[1], cred[2]))
   payload <- httr::content(payload, as = "text", encoding = "UTF-8")
 
