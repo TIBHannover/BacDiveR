@@ -26,7 +26,6 @@ Imports:
     jsonlite (>= 1.5),
     magrittr (>= 1.5),
     purrr (>= 0.2.5),
-    RCurl (>= 1.95.4.11),
     utils (>= 3.5.0)
 VignetteBuilder: knitr
 Language: en-GB

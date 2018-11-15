@@ -16,7 +16,10 @@ retrieve_search_results <- function(queryURL) {
     queryURL <- paste0(queryURL, download_param)
   }
 
-  payload <- RCurl::getURL(queryURL)
+  cred <- get_credentials()
+
+  payload <- httr::GET(queryURL, httr::authenticate(cred[1], cred[2]))
+  payload <- httr::content(payload, as = "text", encoding = "UTF-8")
 
   if (grepl("^[[:digit:]]", payload)) {
     aggregate_datasets(
