@@ -101,3 +101,7 @@ test_that("Trying to download a non-existent dataset yields warnings & empty lis
   expect_warning(blablub <- retrieve_data(searchTerm = "bla blub"))
   expect_equal(blablub, non_existant, list())
 })
+
+test_that("Fuzzing of searchTerm parameter produces error", {
+  expect_error(retrieve_data(Bac_hal, searchType = sample(letters, 1)))
+})

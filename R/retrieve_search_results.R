@@ -10,6 +10,17 @@
 #'   \donttest{data_miller <- retrieve_search_results(queryURL = "https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams[78][contenttype]=text&searchparams[78][typecontent]=contains&searchparams[78][searchterm]=Miller&advsearch=search")}
 #'
 retrieve_search_results <- function(queryURL) {
+
+  # guard against other URLs
+  if (!grepl(pattern = "^https:\\/\\/bacdive\\.dsmz\\.de\\/advsearch", queryURL) |
+    !grepl("[?&]site=advsearch", queryURL) |
+    !grepl("[?&]advsearch=search", queryURL) |
+    !grepl("\\&searchparams", queryURL)) {
+    stop(
+      "This isn't an advanced search URL from https://BacDive.DSMZ.de/advsearch! Aborting...\nPlease read https://TIBHannover.GitHub.io/BacDiveR/#how-to-use"
+    )
+  }
+
   download_param <- "&csv_bacdive_ids_advsearch=download"
 
   if (!grepl(pattern = paste0(download_param, "$"), x = queryURL)) {

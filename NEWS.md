@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
+
+## BacDiveR 0.7.2
+
+### Changed
+
+- `retrieve_data` & `retrieve_search_results()` now validate all inputs (fix #71 & #78)
+
+
 ## BacDiveR 0.7.1
 
 ### Changed

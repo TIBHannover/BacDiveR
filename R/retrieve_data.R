@@ -21,6 +21,12 @@
 #'   \donttest{datasets_Bh <- retrieve_data(searchTerm = "Bacillus halotolerans")}
 retrieve_data <- function(searchTerm,
                           searchType = "taxon") {
+
+  # guard against other searchTypes
+  if (!(searchType %in% c("bacdive_id", "culturecollectionno", "sequence", "taxon"))) {
+    stop(paste(searchType, "isn't a valid search against https://BacDive.DSMZ.de/api/bacdive/! Aborting...\nPlease read https://TIBHannover.GitHub.io/BacDiveR/#how-to-use"))
+  }
+
   payload <- download(construct_url(searchTerm, searchType))
 
   if (is_dataset(payload)) {

@@ -21,3 +21,11 @@ test_that("Inconsistent datasets get corrected", {
 
   expect_false(is.null(inconsistent_data))
 })
+
+test_that("Fuzzing of queryURL parameter produces error", {
+  fuzzy_URL <-
+    paste0(sample(strsplit(queryURL, "")[[1]], size = nchar(queryURL)), collapse = "")
+  expect_error(retrieve_search_results(fuzzy_URL),
+    regexp = "^This isn't an advanced search URL"
+  )
+})
