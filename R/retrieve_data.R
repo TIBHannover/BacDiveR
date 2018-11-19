@@ -22,9 +22,13 @@
 retrieve_data <- function(searchTerm,
                           searchType = "taxon") {
 
-  # guard against other searchTypes
-  if (!(searchType %in% c("bacdive_id", "culturecollectionno", "sequence", "taxon"))) {
-    stop(paste(searchType, "isn't a valid search against https://BacDive.DSMZ.de/api/bacdive/! Aborting...\nPlease read https://TIBHannover.GitHub.io/BacDiveR/#how-to-use"))
+  # guard against invalid input
+  searchTerm <- sanitise_term(searchTerm)
+  searchType <- sanitise_type(searchType)
+
+  # expand taxon/species
+  if (identical(searchType, "taxon") & grepl("\\s", searchTerm)) {
+    searchTerm <- gsub(pattern = "\\s", replacement = "/", searchTerm)
   }
 
   payload <- download(construct_url(searchTerm, searchType))
@@ -80,4 +84,30 @@ is_ID_refererence <- function(payload) {
     names(payload) == "url"
   # && grepl("https://bacdive.dsmz.de/api/bacdive/bacdive_id/\\d+/",
   #          payload$url)
+}
+
+
+sanitise_term <- function(searchTerm) {
+  if (grepl(
+    pattern = "[^[:alnum:] ]",
+    x = searchTerm,
+    ignore.case = TRUE
+  ) |
+    grepl("(true|false|nil)", searchTerm, ignore.case = TRUE)) {
+    stop(
+      "Illegal character detected! My apologies, but your search can only contain letters, numbers and white-space. Abbreviating genus names (e.g. 'B. subtilis') is not supported. Please spell out your searchTerm ('Bacillus subtilis'), don't use any 'special' characters and try again."
+    )
+  } else {
+    searchTerm
+  }
+}
+
+
+sanitise_type <- function(searchType) {
+  if (!(searchType %in% c("bacdive_id", "culturecollectionno", "sequence", "taxon"))) {
+    stop(paste(searchType, "isn't a valid search against https://BacDive.DSMZ.de/api/bacdive/! Aborting...\nPlease read https://TIBHannover.GitHub.io/BacDiveR/#how-to-use"))
+  }
+  else {
+    searchType
+  }
 }
