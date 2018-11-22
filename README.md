@@ -66,13 +66,13 @@ the vignettes ["BacDive-ing in"][dive-in] and ["Pre-Configuring Advanced Searche
 
 ## How to cite
 
-Best use the `Cite as` or `Export` options presented on [Zenodo.org/record/1308060][zenodo].
-If you want to import [this GitHub repo's metadata][GH] into a reference manager
-directly, try [Zotero] and its [GitHub translator][zotGH].
-
-You can also type `citation('BacDiveR')` into your R console and copy the resulting
-text or BibTeX snippet. Feel free to change that latter's item type from `@Manual` to
-`@Software` ;-) [Support for that is being worked on](https://github.com/FORCE11/FORCE11-sciwg).
+Best use the output of executing `citation('BacDiveR')` in R console, because that
+ensures you are citing exactly the installed version. You can also use the `Cite as`
+or `Export` options presented on [Zenodo.org/record/1308060][zenodo]. If you want
+to import [this GitHub repo's metadata][GH] into a reference manager directly, I
+recommend [Zotero] and its [GitHub translator][zotGH]. When using BibTeX, you might
+want to try changing the item type from to `@Software` ;-)
+[Support for that is being worked on](https://github.com/FORCE11/FORCE11-sciwg).
 
 Don't forget to also [cite BacDive itself](https://bacdive.dsmz.de/about) whenever
 you used their data, regardless of access method.
