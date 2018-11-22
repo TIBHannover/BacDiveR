@@ -74,6 +74,9 @@ You can also type `citation('BacDiveR')` into your R console and copy the result
 text or BibTeX snippet. Feel free to change that latter's item type from `@Manual` to
 `@Software` ;-) [Support for that is being worked on](https://github.com/FORCE11/FORCE11-sciwg).
 
+Don't forget to also [cite BacDive itself](https://bacdive.dsmz.de/about) whenever
+you used their data, regardless of access method.
+
 
 ## Known issues: see [bugs] and [ADR]s
 
