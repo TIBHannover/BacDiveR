@@ -88,11 +88,14 @@ you used their data, regardless of access method.
 [zotGH]: https://github.com/zotero/translators/blob/master/Github.js
 
 
-## Similar tools (mostly for scraping all data)
+## Similar tools
+
+These seem to scrape **all** data, instead of retrieving specific datasets.
 
 - @cjm007's [`BacDive_`](https://github.com/cjm007/BacDive_) &
   [`BacDivePy`](https://github.com/cameronmartino/BacDivePy) (Python)
 - [@zorino's `microbe-dbs` (Python & Shell)](https://github.com/zorino/microbe-dbs)
+- [@EngqvistLab's Python script](https://github.com/EngqvistLab/fetch_microbial_growth_temperatures/tree/master/BacDive)
 - or generally: [GitHub.com/topics/bacdive](https://github.com/topics/bacdive)
 
 # References
