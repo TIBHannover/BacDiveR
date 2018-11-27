@@ -22,7 +22,8 @@ functionality explained in [BacDive-ing in][dive-in] too limited, please try
 the following, semi-automatic approach to using BacDiveR. 
 
 1. Visit [BacDive.DSMZ.de/AdvSearch](https://bacdive.dsmz.de/advsearch) and 
-prepare the query you are interested in.
+prepare your search in that web interface. It enables SQL-like searches against
+the ca. 135 of BacDive's accessible data fields.
 
 ![Overview of the possible fields to query and their parameters (contains, exact, begins/ends with)](advanced-search.png)
 
