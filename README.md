@@ -66,7 +66,7 @@ the vignettes ["BacDive-ing in"][dive-in] and ["Pre-Configuring Advanced Searche
 
 ## How to cite
 
-Best use the output of executing `citation('BacDiveR')` in R console, because that
+Best execute `citation('BacDiveR')` in the R console and use its output because that
 ensures you are citing exactly the installed version. You can also use the `Cite as`
 or `Export` options presented on [Zenodo.org/record/1308060][zenodo]. If you want
 to import [this GitHub repo's metadata][GH] into a reference manager directly, I
