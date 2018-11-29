@@ -16,3 +16,4 @@ An integer vector of all BacDive URLs within the results.
 \description{
 Aggregate BacDive-URLs from a Paged List of Retrieved URLs
 }
+\keyword{internal}

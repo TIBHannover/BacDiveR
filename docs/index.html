@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">BacDiveR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.0</span>
       </span>
     </div>
 
@@ -55,13 +55,16 @@
       <a href="articles/BacDive-ing-in.html">BacDive-ing in</a>
     </li>
     <li>
-      <a href="articles/Semi-automatic-approach.html">The Semi-Automatic Approach</a>
-    </li>
-    <li>
       <a href="articles/adr-001-JSON-not-XML.html">ADR 1: Using JSON internally, instead of XML</a>
     </li>
     <li>
       <a href="articles/adr-002-two-download-functions-returning-datasets.html">ADR 2: Two download functions that return full datasets by default</a>
+    </li>
+    <li>
+      <a href="articles/logic-checking-bacdive-datasets.html">Logic-Checking BacDive Datasets</a>
+    </li>
+    <li>
+      <a href="articles/pre-configuring-advanced-searches-and-retrieving-the-results.html">Pre-Configuring Advanced Searches and Retrieving the Results</a>
     </li>
   </ul>
 </li>
@@ -88,54 +91,60 @@
       </header><div class="row">
   <div class="contents col-md-9">
     
-
-<div id="bacdiver" class="section level1">
+<div id="bacdiver-lifecycle-doi" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#bacdiver" class="anchor"></a>BacDiveR</h1></div>
-<p>This R package provides a programmatic interface for the <a href="https://bacdive.dsmz.de/">Bacterial Diversity Metadatabase</a> (<a href="#references">Söhngen et al. 2014 &amp; 2016</a>) of the <a href="https://www.dsmz.de/about-us.html">DSMZ (German Collection of Microorganisms and Cell Cultures)</a>. BacDiveR helps you to conduct your microbial research better and faster, by:</p>
+<a href="#bacdiver-lifecycle-doi" class="anchor"></a>BacDiveR <a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a> <a href="https://zenodo.org/record/1308060"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1308060.svg" alt="DOI"></a>
+</h1></div>
+<p>This R package provides a programmatic interface for the <a href="https://bacdive.dsmz.de/">Bacterial Diversity Metadatabase</a> (<a href="#references">Söhngen et al. 2014, 2016 &amp; 2018</a>) of the <a href="https://www.dsmz.de/about-us.html">DSMZ (German Collection of Microorganisms and Cell Cultures)</a>. BacDiveR helps you conduct your microbial research better and faster, by:</p>
 <ul>
 <li><p>downloading the BacDive datasets you want to investigate off-line, and by</p></li>
 <li><p>providing you with a way to document and report your searches and downloads, in a reproducible manner (<code>.R</code> scripts and/or <code>.Rmd</code> files).</p></li>
 </ul>
 <p>It was also built to serve as a demonstration object during <a href="https://tibhannover.github.io/2018-07-09-FAIR-Data-and-Software/#schedule">TIB’s “FAIR Data &amp; Software” workshop</a>.</p>
+<p>See <a href="https://tibhannover.github.io/BacDiveR/">TIBHannover.GitHub.io/BacDiveR</a> for more details, <a href="https://tibhannover.github.io/BacDiveR/news/index.html">/news</a> there for the changelog, and <a href="https://github.com/TIBHannover/BacDiveR/">GitHub.com/TIBHannover/BacDiveR</a> for the latest source code.</p>
+<!-- Paste the above section into the release description
+together with the latest section of `NEWS.md` in order to usefull populate Zenodo.
+Afterwards, remove the above from GitHub. -->
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <ol>
-<li><p>Because the <a href="https://bacdive.dsmz.de/api/bacdive/registration/register/">BacDive API requires registration</a> please do that first and wait for your access to be granted.</p></li>
-<li><p>Once you have your login credentials, install BacDiveR from GitHub with:</p></li>
-</ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(<span class="st">'devtools'</span>)) <span class="kw">install.packages</span>(<span class="st">'devtools'</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"tibhannover/BacDiveR"</span>)</a></code></pre></div>
-<ol>
+<li><p>Because the <a href="https://bacdive.dsmz.de/api/bacdive/registration/register/">BacDive API requires registration</a> please do that first and wait for DSMZ staff to grant you access.</p></li>
+<li><p>Once you have your login credentials, install the <a href="https://github.com/TIBHannover/BacDiveR/releases/latest">latest BacDiveR release</a> from GitHub with:</p></li>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(<span class="st">'devtools'</span>)) <span class="kw">install.packages</span>(<span class="st">'devtools'</span>)
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">'TIBHannover/BacDiveR'</span>, <span class="dt">ref =</span> <span class="st">'v0.7.0'</span>)
+<span class="co"># Please omit the `ref` only if you want to test the latest development version!</span></code></pre></div>
 <li>After installing, follow the instructions on the console to save your login credentials locally and restart R(Studio) or run:</li>
-</ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">file.edit</span>(<span class="kw">file.path</span>(<span class="kw">Sys.getenv</span>(<span class="st">'HOME'</span>), <span class="st">'.Renviron'</span>))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">file.edit</span>(<span class="kw">file.path</span>(<span class="kw">Sys.getenv</span>(<span class="st">'HOME'</span>), <span class="st">'.Renviron'</span>))</code></pre></div>
 <p>and make sure it contains the following:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">BacDive_email=your.email<span class="op">@</span>provider.org</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">BacDive_password=YOUR_<span class="dv">20</span>_char_password</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r">BacDive_email=your.email<span class="op">@</span>provider.org
+BacDive_password=YOUR_20_char_password</code></pre></div>
+</ol>
 <p>In the examples and vignettes, the data retrieval will only work if your login credentials are correct in themselves (no typos) <em>and</em> were correctly saved. Console output like <code>"{\"detail\": \"Invalid username/password\"}"</code>, or <code>Error: $ operator is invalid for atomic vectors</code> indicates that either the login credentials are incorrect, or the <code>.Renviron</code> file.</p>
 </div>
 <div id="how-to-use" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-use" class="anchor"></a>How to use</h2>
-<p>There are two main functions. Please click on their names to read their docu: <a href="https://tibhannover.github.io/BacDiveR/reference/retrieve_data.html"><code><a href="reference/retrieve_data.html">retrieve_data()</a></code></a> and <a href="https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html"><code><a href="reference/retrieve_search_results.html">retrieve_search_results()</a></code></a>. For real-life examples, please read the vignettes <a href="https://tibhannover.github.io/BacDiveR/articles/BacDive-ing-in.html">“BacDive-ing in”</a> and about the <a href="https://tibhannover.github.io/BacDiveR/articles/advanced-search.html">“Semi-automatic approach”</a>.</p>
+<p>There are two main functions: <a href="https://tibhannover.github.io/BacDiveR/reference/retrieve_data.html"><code><a href="reference/retrieve_data.html">retrieve_data()</a></code></a> and <a href="https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html"><code><a href="reference/retrieve_search_results.html">retrieve_search_results()</a></code></a>. Please click on their names to read their docu, and find real-life examples in the vignettes <a href="https://tibhannover.github.io/BacDiveR/articles/BacDive-ing-in.html">“BacDive-ing in”</a> and <a href="https://tibhannover.github.io/BacDiveR/articles/advanced-search.html">“Pre-Configuring Advanced Searches”</a>.</p>
 </div>
 <div id="how-to-cite" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-cite" class="anchor"></a>How to cite</h2>
-<p>Best use the <code>Cite as</code> or <code>Export</code> options presented on <a href="https://zenodo.org/record/1308061#invenio-csl">Zenodo.org/record/1308061</a>. If you want to import <a href="https://github.com/TIBHannover/BacDiveR/">this GitHub repo’s metadata</a> into a reference manager directly, try <a href="https://www.zotero.org/">Zotero</a> and its <a href="https://github.com/zotero/translators/blob/master/Github.js">GitHub translator</a>.</p>
+<p>Best use the <code>Cite as</code> or <code>Export</code> options presented on <a href="https://zenodo.org/record/1308060#invenio-csl">Zenodo.org/record/1308060</a>. If you want to import <a href="https://github.com/TIBHannover/BacDiveR/">this GitHub repo’s metadata</a> into a reference manager directly, try <a href="https://www.zotero.org/">Zotero</a> and its <a href="https://github.com/zotero/translators/blob/master/Github.js">GitHub translator</a>.</p>
+<p>You can also type <code>citation('BacDiveR')</code> into your R console and copy the resulting text or BibTeX snippet. Feel free to change that latter’s item type from <code>@Manual</code> to <code>@Software</code> ;-) <a href="https://github.com/FORCE11/FORCE11-sciwg">Support for that is being worked on</a>.</p>
 </div>
 <div id="known-issues-see-bugs-and-adrs" class="section level2">
 <h2 class="hasAnchor">
 <a href="#known-issues-see-bugs-and-adrs" class="anchor"></a>Known issues: see <a href="https://github.com/tibhannover/BacDiveR/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Aupdated-desc">bugs</a> and <a href="https://github.com/TIBHannover/BacDiveR/tree/master/vignettes">ADR</a>s</h2>
 </div>
-<div id="similar-tools" class="section level2">
+<div id="similar-tools-mostly-for-scraping-all-data" class="section level2">
 <h2 class="hasAnchor">
-<a href="#similar-tools" class="anchor"></a>Similar tools</h2>
+<a href="#similar-tools-mostly-for-scraping-all-data" class="anchor"></a>Similar tools (mostly for scraping all data)</h2>
 <ul>
-<li><a href="https://github.com/cjm007/BacDive_">@cjm007’s <code>BacDive_</code> (Python)</a></li>
+<li>@cjm007’s <a href="https://github.com/cjm007/BacDive_"><code>BacDive_</code></a> &amp; <a href="https://github.com/cameronmartino/BacDivePy"><code>BacDivePy</code></a> (Python)</li>
 <li><a href="https://github.com/zorino/microbe-dbs">@zorino’s <code>microbe-dbs</code> (Python &amp; Shell)</a></li>
+<li>or generally: <a href="https://github.com/topics/bacdive">GitHub.com/topics/bacdive</a>
+</li>
 </ul>
 </div>
 </div>
@@ -143,8 +152,9 @@
 <h1 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h1>
 <ul>
-<li><p>Söhngen, Carola, Boyke Bunk, Adam Podstawka, Dorothea Gleim, and Jörg Overmann. 2014. “BacDive—the Bacterial Diversity Metadatabase.” <em>Nucleic Acids Research</em> 42 (D1): D592–D599. <a href="https://doi.org/10.1093/nar/gkt1058">doi:10.1093/nar/gkt1058</a>.</p></li>
-<li><p>Söhngen, Carola, Adam Podstawka, Boyke Bunk, Dorothea Gleim, Anna Vetcininova, Lorenz Christian Reimer, Christian Ebeling, Cezar Pendarovski, and Jörg Overmann. 2016. “BacDive – the Bacterial Diversity Metadatabase in 2016.” <em>Nucleic Acids Research</em> 44 (D1): D581–D585. <a href="https://doi.org/10.1093/nar/gkv983">doi:10.1093/nar/gkv983</a>.</p></li>
+<li><p>Söhngen, Bunk, Podstawka, Gleim, Overmann. 2014. “BacDive — the Bacterial Diversity Metadatabase.” <em>Nucleic Acids Research</em> 42 (D1): D592–D599. <a href="https://academic.oup.com/nar/article/42/D1/D592/1046203">doi:10.1093/nar/gkt1058</a>.</p></li>
+<li><p>Söhngen, Podstawka, Bunk, Gleim, Vetcininova, Reimer, Ebeling, Pendarovski, Overmann. 2016. “BacDive – the Bacterial Diversity Metadatabase in 2016.” <em>Nucleic Acids Research</em> 44 (D1): D581–D585. <a href="https://academic.oup.com/nar/article/44/D1/D581/2503137">doi:10.1093/nar/gkv983</a>.</p></li>
+<li><p>Reimer, Vetcininova, Carbasse, Söhngen, Gleim, Ebeling, Overmann. 2018. “BacDive in 2019: Bacterial Phenotypic Data for High-Throughput Biodiversity Analysis” <em>Nucleic Acids Research</em> <a href="https://academic.oup.com/nar/advance-article/5106998">doi:10.1093/nar/gky879</a>.</p></li>
 </ul>
 </div>
 
@@ -175,14 +185,7 @@
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></li>
-<li><a href="https://doi.org/10.5281/zenodo.1308061"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1308061.svg" alt="DOI"></a></li>
-</ul>
-</div>
-</div>
+  </div>
 </div>
 
 

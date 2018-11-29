@@ -20,6 +20,8 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Downloading datasets
+
 The BacDive website lets you easily search for all their strains within a 
 given taxonomic unit. For example, [searching for "Bacillus"][Bac-search] 
 returns a paginated list of strains that you can then access, download and analyse further. All manual, though. BacDiveR automates this workflow:
@@ -34,7 +36,7 @@ Bac_data <- retrieve_data(searchTerm = taxon_1)
 
 Suppose we want to compare the optimal growth temperatures of strains from the taxon
 *`r taxon_1`* with another one. `retrieve_data()` 
-with it's default `searchType = taxon` will get you all taxon data in a single (albeit
+with its default `searchType = taxon` will get you all taxon data in a single (albeit
 large) list of dataframes. Feel free to take a break while the computers
 do some work for you:
 
@@ -67,8 +69,7 @@ Note the ` ~ .x` prepended to the path `$culture_growth_condition$culture_temp$t
 library(magrittr) 
  
 extract_temps <- function(dataset, taxon_name) {
-  dataset %>%
-  purrr::map(~.x$culture_growth_condition$culture_temp$temp) %>%
+  purrr::map(.x = dataset, .f = ~.x$culture_growth_condition$culture_temp$temp) %>% 
   unlist() %>%
   as.numeric() %>%
   data.frame(temp_C = ., taxon = rep(taxon_name, length(.))) %>%
@@ -83,6 +84,9 @@ Keep in mind, that in case of growth temperatures, a range may also be given
 (e.g. "28-32"). The above code turns a range into `NA`, but you could compute 
 the mid-point / mean of such ranges. 
 
+
+## Plotting the extracted data
+
 Before visualising the data, we need to create a dataframe of the two datasets.
 
 ```{r ggplot}
@@ -90,15 +94,14 @@ library("ggplot2")
 
 rbind(temperature_Bac, temperature_At) %>% 
   ggplot(aes(x = taxon, y = temp_C)) +
-  geom_boxplot(notch = TRUE, varwidth = TRUE) +
-  geom_jitter(height = 0.25, alpha = 0.5) +
-  scale_x_discrete(position = "top", label_value("")) +  # or: xlab(label = NULL)
-  ggtitle("Optimal growth temperatures of DSMZ-stored strains within the taxons:")
+  geom_boxplot(notch = TRUE) +
+  geom_jitter(height = 0, alpha = 0.5)
 ```
 
 And thus we find, that *`r taxon_2`* contains strains with different growth optima (note the groups of data _points_), even up to the 50-something-°C-range as the `thermo`-part in its name suggest). On the other hand, all *`r taxon_1`* strains known to BacDive were found to grow best at the lower temperature of `r mean(temperature_Bac$temp_C)`°C. Thanks to the notch in *`r taxon_2`*'s box, we can also say that there is a significant difference between the temperature ranges of these two taxons, even before digging into the numbers:
 
 ```{r}
+summary(temperature_Bac$temp_C)
 summary(temperature_At$temp_C)
 ```
 

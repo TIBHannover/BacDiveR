@@ -17,3 +17,4 @@ Prepare .Renviron File
 \examples{
 \donttest{prepare_Renviron()}
 }
+\keyword{internal}

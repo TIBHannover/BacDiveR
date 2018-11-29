@@ -7,7 +7,7 @@
 construct_url(searchTerm, searchType = "bacdive_id")
 }
 \arguments{
-\item{searchTerm}{Mandatory character string (in case of \code{searchType =}
+\item{searchTerm}{Mandatory character string (in case of \code{searchType = }
 \code{sequence}, \code{culturecollectionno} or \code{taxon}) or integer (in case of
 \code{bacdive_id}), specifying what shall be searched for.}
 
@@ -18,3 +18,4 @@ search will be performed (technically, which API endpoint). Can be \code{taxon}
 \description{
 Construct URLs of API searches
 }
+\keyword{internal}

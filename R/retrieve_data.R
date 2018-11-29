@@ -1,4 +1,4 @@
-#' Retrieve data from BacDive
+#' Retrieve (a) Dataset(s) from BacDive
 #'
 #' @param searchTerm Mandatory character string (in case of `searchType = `
 #'   `sequence`, `culturecollectionno` or `taxon`) or integer (in case of
@@ -18,58 +18,47 @@
 #'   \donttest{dataset_717 <- retrieve_data(searchTerm = 717, searchType = "bacdive_id")}
 #'   \donttest{dataset_DSM_319 <- retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")}
 #'   \donttest{dataset_AJ000733 <- retrieve_data(searchTerm = "AJ000733", searchType = "sequence")}
-#'   \donttest{dataset_Bss <- retrieve_data(searchTerm = "Bacillus subtilis subtilis")}
+#'   \donttest{datasets_Bh <- retrieve_data(searchTerm = "Bacillus halotolerans")}
 retrieve_data <- function(searchTerm,
-                          searchType = "taxon")
-  {
-  payload <-
-    jsonlite::fromJSON(download(construct_url(searchTerm, searchType)))
+                          searchType = "taxon") {
 
-  if (identical(payload$detail, "Not found"))
-  {
-    stop(
-      "Your search returned no result, sorry. Please make sure that you provided a searchTerm, and specified the correct searchType. Please type '?retrieve_data' and read through the 'searchType' section to learn more."
-    )
+  # guard against invalid input
+  searchTerm <- sanitise_term(searchTerm)
+  searchType <- sanitise_type(searchType)
+
+  # expand taxon/species
+  if (identical(searchType, "taxon") & grepl("\\s", searchTerm)) {
+    searchTerm <- gsub(pattern = "\\s", replacement = "/", searchTerm)
   }
-  else if (is_dataset(payload))
-  {
+
+  payload <- download(construct_url(searchTerm, searchType))
+
+  if (is_dataset(payload)) {
     payload <- list(payload)
     names(payload) <- searchTerm
     return(payload)
   }
-  else if (!is.null(payload$count))
-  {
-    if (payload$count > 100)
-      warn_slow_download(payload$count)
-
+  else if (is_ID_refererence(payload)) {
+    retrieve_data(searchTerm = URLs_to_IDs(payload$url), searchType = "bacdive_id")
+  }
+  else if (is_results_list(payload)) {
     aggregate_datasets(payload)
+  }
+  else if (identical(payload$detail, "Not found")) {
+    if (identical(searchType, "bacdive_id")) {
+      warning(paste0("BacDive has no dataset with bacdive_id ", searchTerm, "."))
+    } else {
+      warning(paste0(
+        "BacDive has no result for ", searchType, " = ", searchTerm, ". Please check that both terms are correct, type '?retrieve_data' and read through the 'searchType' section to learn more."
+      ))
+    }
+
+    list()
   }
 }
 
 
-#' Download Something from BacDive
-#'
-#' @param URL represented by a correctly encoded character string with spaces,
-#'   thanks to utils::URLencode.
-#' @param userpwd A character string of the format
-#'   `BacDive_email:BacDive_password`. Retrieved from `.Renviron` my default,
-#'   but also used with something else by the tests.
-#'
-#' @return A serialised JSON string.
-download <-
-  function(URL,
-           userpwd = paste(get_credentials(), collapse = ":"))
-  {
-    message(URLs_to_IDs(URL), " ", appendLF = FALSE)
-
-    RCurl::getURL(URL,
-                  userpwd = userpwd,
-                  httpauth = 1L)
-  }
-
-
-is_dataset <- function(payload)
-{
+is_dataset <- function(payload) {
   identical(
     names(payload),
     c(
@@ -83,4 +72,42 @@ is_dataset <- function(payload)
       "references"
     )
   )
+}
+
+is_results_list <- function(payload) {
+  identical(names(payload), c("count", "next", "previous", "results"))
+}
+
+is_ID_refererence <- function(payload) {
+  all.equal(nrow(payload), ncol(payload), 1) &&
+    # class(payload) == "data.frame" &&
+    names(payload) == "url"
+  # && grepl("https://bacdive.dsmz.de/api/bacdive/bacdive_id/\\d+/",
+  #          payload$url)
+}
+
+
+sanitise_term <- function(searchTerm) {
+  if (grepl(
+    pattern = "[^[:alnum:] ]",
+    x = searchTerm,
+    ignore.case = TRUE
+  ) |
+    grepl("(true|false|nil)", searchTerm, ignore.case = TRUE)) {
+    stop(
+      "Illegal character detected! My apologies, but your search can only contain letters, numbers and white-space. Abbreviating genus names (e.g. 'B. subtilis') is not supported. Please spell out your searchTerm ('Bacillus subtilis'), don't use any 'special' characters and try again."
+    )
+  } else {
+    searchTerm
+  }
+}
+
+
+sanitise_type <- function(searchType) {
+  if (!(searchType %in% c("bacdive_id", "culturecollectionno", "sequence", "taxon"))) {
+    stop(paste(searchType, "isn't a valid search against https://BacDive.DSMZ.de/api/bacdive/! Aborting...\nPlease read https://TIBHannover.GitHub.io/BacDiveR/#how-to-use"))
+  }
+  else {
+    searchType
+  }
 }

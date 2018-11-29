@@ -61,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">BacDiveR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.0</span>
       </span>
     </div>
 
@@ -87,13 +87,16 @@
       <a href="../articles/BacDive-ing-in.html">BacDive-ing in</a>
     </li>
     <li>
-      <a href="../articles/Semi-automatic-approach.html">The Semi-Automatic Approach</a>
-    </li>
-    <li>
       <a href="../articles/adr-001-JSON-not-XML.html">ADR 1: Using JSON internally, instead of XML</a>
     </li>
     <li>
       <a href="../articles/adr-002-two-download-functions-returning-datasets.html">ADR 2: Two download functions that return full datasets by default</a>
+    </li>
+    <li>
+      <a href="../articles/logic-checking-bacdive-datasets.html">Logic-Checking BacDive Datasets</a>
+    </li>
+    <li>
+      <a href="../articles/pre-configuring-advanced-searches-and-retrieving-the-results.html">Pre-Configuring Advanced Searches and Retrieving the Results</a>
     </li>
   </ul>
 </li>
@@ -122,7 +125,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Download Something from BacDive</h1>
-    <small class="dont-index">Source: <a href='https://github.com/TIBHannover/BacDiveR/blob/master/R/retrieve_data.R'><code>R/retrieve_data.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/TIBHannover/BacDiveR/blob/master/R/util-download.R'><code>R/util-download.R</code></a></small>
     <div class="hidden name"><code>download.Rd</code></div>
     </div>
 
@@ -132,27 +135,21 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>download</span>(<span class='no'>URL</span>, <span class='kw'>userpwd</span> <span class='kw'>=</span> <span class='fu'>paste</span>(<span class='fu'><a href='get_credentials.html'>get_credentials</a></span>(), <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>":"</span>))</pre>
+    <pre class="usage"><span class='fu'>download</span>(<span class='no'>URL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>URL</th>
-      <td><p>represented by a correctly encoded character string with spaces,
-thanks to utils::URLencode.</p></td>
-    </tr>
-    <tr>
-      <th>userpwd</th>
-      <td><p>A character string of the format
-<code>BacDive_email:BacDive_password</code>. Retrieved from <code>.Renviron</code> my default,
-but also used with something else by the tests.</p></td>
+      <td><p>A correctly encoded character string, either from construct_url()
+or a JSON list</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A serialised JSON string.</p>
+    <p>The R object unserialised from the downloaded JSON</p>
     
 
   </div>

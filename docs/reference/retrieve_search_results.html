@@ -61,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">BacDiveR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.0</span>
       </span>
     </div>
 
@@ -87,13 +87,16 @@
       <a href="../articles/BacDive-ing-in.html">BacDive-ing in</a>
     </li>
     <li>
-      <a href="../articles/Semi-automatic-approach.html">The Semi-Automatic Approach</a>
-    </li>
-    <li>
       <a href="../articles/adr-001-JSON-not-XML.html">ADR 1: Using JSON internally, instead of XML</a>
     </li>
     <li>
       <a href="../articles/adr-002-two-download-functions-returning-datasets.html">ADR 2: Two download functions that return full datasets by default</a>
+    </li>
+    <li>
+      <a href="../articles/logic-checking-bacdive-datasets.html">Logic-Checking BacDive Datasets</a>
+    </li>
+    <li>
+      <a href="../articles/pre-configuring-advanced-searches-and-retrieving-the-results.html">Pre-Configuring Advanced Searches and Retrieving the Results</a>
     </li>
   </ul>
 </li>
@@ -140,9 +143,7 @@
     <tr>
       <th>queryURL</th>
       <td><p>URL of a query prepared on <a href='https://bacdive.dsmz.de/advsearch'>BacDive.DSMZ.de/AdvSearch</a>,
-as explained in the vignette "The
-semi-automatic approach: retrieving data through a pre-configured advanced
-search".</p></td>
+as explained in the vignette "Pre-Configuring Advanced Searches and Retrieving the Results".</p></td>
     </tr>
     </table>
     
@@ -155,7 +156,7 @@ an ambiguous <code>searchTerm</code> (most <code>taxon</code>s).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  </div><div class='input'><span class='no'>data_miller</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_search_results</span>(<span class='kw'>queryURL</span> <span class='kw'>=</span> <span class='st'>"https://bacdive.dsmz.de/advsearch?site=advsearch&amp;searchparams[78][contenttype]=text&amp;searchparams[78][typecontent]=contains&amp;searchparams[78][searchterm]=Miller&amp;advsearch=search"</span>)</div><div class='output co'>#&gt; <span class='message'>Data download in progress for BacDive-IDs: </span></div><div class='output co'>#&gt; <span class='message'>132598 </span></div><div class='output co'>#&gt; <span class='message'>133012 </span></div><div class='output co'>#&gt; <span class='message'>140488 </span></div><div class='output co'>#&gt; <span class='error'>Error in taxon_data %&gt;% purrr::map(repair_escaping, char = "r") %&gt;% purrr::map(repair_escaping,     "n") %&gt;% purrr::map(repair_escaping, "t"): could not find function "%&gt;%"</span></div><div class='input'>
+    <pre class="examples"><div class='input'>  </div><div class='input'><span class='no'>data_miller</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_search_results</span>(<span class='kw'>queryURL</span> <span class='kw'>=</span> <span class='st'>"https://bacdive.dsmz.de/advsearch?site=advsearch&amp;searchparams[78][contenttype]=text&amp;searchparams[78][typecontent]=contains&amp;searchparams[78][searchterm]=Miller&amp;advsearch=search"</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading BacDive IDs (132598 to 140488, but not necessarily contiguous): </span></div><div class='output co'>#&gt; <span class='message'>132598 </span></div><div class='output co'>#&gt; <span class='message'>133012 </span></div><div class='output co'>#&gt; <span class='message'>140488 </span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

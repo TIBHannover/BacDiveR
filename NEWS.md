@@ -13,6 +13,62 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
+
+## BacDiveR 0.7.2
+
+### Changed
+
+- `retrieve_data` & `retrieve_search_results()` now validate all inputs (fix #71 & #78)
+
+
+## BacDiveR 0.7.1
+
+### Changed
+
+- The combined use of [RCurl](https://cran.r-project.org/package=RCurl) for
+  downloading JSON-encoded data from BacDive with
+  [jsonlite](https://cran.r-project.org/package=jsonlite) for converting the
+  download into an R objects was plagued with some whitespace escaping problems.
+  This spawned a custom repair solution, adding accidental complexity. That
+  swamp is now drained by use of [httr](https://cran.r-project.org/package=httr).
+
+## BacDiveR 0.7.0
+
+### Added
+
+- A [vignette section about mass-downloading datasets](https://tibhannover.github.io/BacDiveR/articles/Semi-automatic-approach.html#mass-downloading-datasets).
+
+### Changed
+
+- Instead of stopping with an error if a search returns no results, BacDiveR now
+  only warns about this case and returns an empty list (#93).
+- Estimated download times are now reported before all downloads longer than ca.
+  30 seconds (#84).
+
+
+## BacDiveR 0.6.1
+
+### Fixed
+
+- Errors caused by comparing against a `NULL` (#91; Thanks to @jotech!)
+
+## BacDiveR 0.6.0
+
+### Added
+
+- The vignette [Logic-Checking BacDive Datasets](https://tibhannover.github.io/BacDiveR/articles/logic-checking-bacdive-datasets.html)
+
+### Changed
+
+- `retrieve_search_results()` now returns `NULL` when no results are found, in 
+  order to ease integration of datasets into `testthat` tests.
+
+## BacDiveR 0.5.1
+
+### Fixed
+
+- Another JSON whitespace escaping bug (#91; Thanks to @jotech!)
+
 ## BacDiveR 0.5.0
 
 ### Added
@@ -68,7 +124,7 @@ etc.
 
 ### Fixed
 
-- An error in the download of a single dataset found through it's culture collection number (see #45)
+- An error in the download of a single dataset found through its culture collection number (see #45)
 
 ### Added
 

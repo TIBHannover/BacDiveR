@@ -2,12 +2,12 @@
 % Please edit documentation in R/retrieve_data.R
 \name{retrieve_data}
 \alias{retrieve_data}
-\title{Retrieve data from BacDive}
+\title{Retrieve (a) Dataset(s) from BacDive}
 \usage{
 retrieve_data(searchTerm, searchType = "taxon")
 }
 \arguments{
-\item{searchTerm}{Mandatory character string (in case of \code{searchType =}
+\item{searchTerm}{Mandatory character string (in case of \code{searchType = }
 \code{sequence}, \code{culturecollectionno} or \code{taxon}) or integer (in case of
 \code{bacdive_id}), specifying what shall be searched for.}
 
@@ -22,11 +22,11 @@ the \code{searchTerm} was unambiguous (\code{bacdive_id}, \code{sequence},
 an ambiguous \code{searchTerm} (most \code{taxon}s).
 }
 \description{
-Retrieve data from BacDive
+Retrieve (a) Dataset(s) from BacDive
 }
 \examples{
   \donttest{dataset_717 <- retrieve_data(searchTerm = 717, searchType = "bacdive_id")}
   \donttest{dataset_DSM_319 <- retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")}
   \donttest{dataset_AJ000733 <- retrieve_data(searchTerm = "AJ000733", searchType = "sequence")}
-  \donttest{dataset_Bss <- retrieve_data(searchTerm = "Bacillus subtilis subtilis")}
+  \donttest{datasets_Bh <- retrieve_data(searchTerm = "Bacillus halotolerans")}
 }

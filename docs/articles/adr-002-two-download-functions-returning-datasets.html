@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">BacDiveR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.0</span>
       </span>
     </div>
 
@@ -55,13 +55,16 @@
       <a href="../articles/BacDive-ing-in.html">BacDive-ing in</a>
     </li>
     <li>
-      <a href="../articles/Semi-automatic-approach.html">The Semi-Automatic Approach</a>
-    </li>
-    <li>
       <a href="../articles/adr-001-JSON-not-XML.html">ADR 1: Using JSON internally, instead of XML</a>
     </li>
     <li>
       <a href="../articles/adr-002-two-download-functions-returning-datasets.html">ADR 2: Two download functions that return full datasets by default</a>
+    </li>
+    <li>
+      <a href="../articles/logic-checking-bacdive-datasets.html">Logic-Checking BacDive Datasets</a>
+    </li>
+    <li>
+      <a href="../articles/pre-configuring-advanced-searches-and-retrieving-the-results.html">Pre-Configuring Advanced Searches and Retrieving the Results</a>
     </li>
   </ul>
 </li>
@@ -91,7 +94,7 @@
       <h1>ADR 2: Two download functions that return full datasets by default</h1>
                         <h4 class="author">Katrin Leinweber</h4>
             
-            <h4 class="date">2018-08-02</h4>
+            <h4 class="date">2018-11-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/TIBHannover/BacDiveR/blob/master/vignettes/adr-002-two-download-functions-returning-datasets.Rmd"><code>vignettes/adr-002-two-download-functions-returning-datasets.Rmd</code></a></small>
       <div class="hidden name"><code>adr-002-two-download-functions-returning-datasets.Rmd</code></div>
@@ -133,7 +136,7 @@
 </tr>
 </tbody>
 </table>
-<p>The <a href="https://bacdive.dsmz.de/AdvSearch">advanced search</a> has an option called “Download list of BacDive Ids”, which returns a textfile with one <code>bacdive_id</code> per line.</p>
+<p>The <a href="https://bacdive.dsmz.de/AdvSearch">advanced search</a> has an option called “Download list of BacDive Ids”, which returns a text file with one <code>bacdive_id</code> per line.</p>
 </div>
 <div id="decision" class="section level2">
 <h2 class="hasAnchor">
@@ -152,7 +155,7 @@
 <div id="consequences" class="section level2">
 <h2 class="hasAnchor">
 <a href="#consequences" class="anchor"></a>Consequences</h2>
-<p>A uniform data structure was needed and implemeted, see #31. In case IDs need to be retrieved, <code><a href="../reference/retrieve_data.html">retrieve_data()</a></code> and <code><a href="../reference/retrieve_search_results.html">retrieve_search_results()</a></code> either need an extra parameter for that, or a <code>retrieve_IDs()</code> function needs to be added (see #54)</p>
+<p>A uniform data structure was needed and implemented, see #31. In case IDs need to be retrieved, <code><a href="../reference/retrieve_data.html">retrieve_data()</a></code> and <code><a href="../reference/retrieve_search_results.html">retrieve_search_results()</a></code> either need an extra parameter for that, or a <code>retrieve_IDs()</code> function needs to be added (see #54)</p>
 </div>
   </div>
 

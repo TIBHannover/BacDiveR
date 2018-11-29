@@ -29,7 +29,7 @@ request type | unambiguous? | JSON-reply
 `bacdive_id` |          yes | dataset of that strain
 
 The [advanced search](https://bacdive.dsmz.de/AdvSearch) has an option called
-"Download list of BacDive Ids", which returns a textfile with one `bacdive_id`
+"Download list of BacDive Ids", which returns a text file with one `bacdive_id`
 per line.
 
 
@@ -49,4 +49,4 @@ we will ensure that all main functions return full dataset(s) by default.
 
 ## Consequences
 
-A uniform data structure was needed and implemeted, see #31. In case IDs need to be retrieved, `retrieve_data()` and `retrieve_search_results()` either need an extra parameter for that, or a `retrieve_IDs()` function needs to be added (see #54)
+A uniform data structure was needed and implemented, see #31. In case IDs need to be retrieved, `retrieve_data()` and `retrieve_search_results()` either need an extra parameter for that, or a `retrieve_IDs()` function needs to be added (see #54)

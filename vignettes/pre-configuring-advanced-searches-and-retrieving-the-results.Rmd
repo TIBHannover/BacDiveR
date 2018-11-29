@@ -1,0 +1,72 @@
+---
+title: "Pre-Configuring Advanced Searches and Retrieving the Results"
+author: "Katrin Leinweber"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Unfortunately, the BacDive Web Service does not allow SQL-like queries for the
+content of specific fields within the strain's datasets. If you find the 
+functionality explained in [BacDive-ing in][dive-in] too limited, please try 
+the following, semi-automatic approach to using BacDiveR. 
+
+1. Visit [BacDive.DSMZ.de/AdvSearch](https://bacdive.dsmz.de/advsearch) and 
+prepare the query you are interested in.
+
+![Overview of the possible fields to query and their parameters (contains, exact, begins/ends with)](advanced-search.png)
+
+2. Run your advanced search (query). The below example searches for all strains
+whose literature reference includes someone named "Miller". **Note the** two 
+"hits" on the right, and the now much longer **URL**. It contains/encodes all 
+the terms and parameters of your advanced search.
+
+![Advanced search results](advanced-search-Miller.png)
+
+3. Copy the URL of the results page from your browser's address bar. 
+Alternatively, copy it from the "Download list of BacDive Ids" link to the top
+right of the "hits" list.
+
+1. Paste the copied URL into a call to the `retrieve_search_results("…")` function.
+
+1. Enjoy the list of downloaded datasets, just as you would after using
+`retrieve_data(searchTerm = ..., searchType = ...)`.
+
+[dive-in]: https://tibhannover.github.io/BacDiveR/articles/BacDive-ing-in.html
+
+
+## Mass-downloading datasets
+
+`retrieve_data(searchTerm = …, searchType = "taxon")` can be used to download all
+datasets for the genus or a specific species given in `…`. Broader searches are
+possible through the [advanced search, for example for all Archaea][archaea]:
+
+`Archaea_data <- retrieve_search_results("https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B70%5D%5Bcontenttype%5D=text&searchparams%5B70%5D%5Btypecontent%5D=contains&searchparams%5B70%5D%5Bsearchterm%5D=archaea")`
+
+Please note the messages about estimated download times for such large downloads.
+
+[archaea]: https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B70%5D%5Bcontenttype%5D=text&searchparams%5B70%5D%5Btypecontent%5D=contains&searchparams%5B70%5D%5Bsearchterm%5D=archaea
+
+
+## Storing datasets offline
+
+This is not a BacDiveR feature, but `base` R's `saveRDS()` is particularly useful
+for offline-storage of lots of search results, because downloading them would
+take rather long. Continuing the Archaea example, the following code writes the
+dataset to a file, loads it again, and verifies the data integrity:
+
+```{r, eval=FALSE}
+saveRDS(Archaea_data, "Archaea.rds", version = 3)
+Archaea_data_stored <- readRDS("Archaea.rds")
+identical(Archaea_data, Archaea_data_stored)
+```

@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">BacDiveR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.0</span>
       </span>
     </div>
 
@@ -84,13 +84,16 @@
       <a href="articles/BacDive-ing-in.html">BacDive-ing in</a>
     </li>
     <li>
-      <a href="articles/Semi-automatic-approach.html">The Semi-Automatic Approach</a>
-    </li>
-    <li>
       <a href="articles/adr-001-JSON-not-XML.html">ADR 1: Using JSON internally, instead of XML</a>
     </li>
     <li>
       <a href="articles/adr-002-two-download-functions-returning-datasets.html">ADR 2: Two download functions that return full datasets by default</a>
+    </li>
+    <li>
+      <a href="articles/logic-checking-bacdive-datasets.html">Logic-Checking BacDive Datasets</a>
+    </li>
+    <li>
+      <a href="articles/pre-configuring-advanced-searches-and-retrieving-the-results.html">Pre-Configuring Advanced Searches and Retrieving the Results</a>
     </li>
   </ul>
 </li>
@@ -123,7 +126,7 @@
 
 <div id="contributing-to-bacdiver" class="section level1">
 
-<p>This outlines how to propose a change to BacDiveR. Because this project should be to developed according to the needs of BacDive users, please in particular feel free to up- or down-vote existing issues, pull requests or comments. Thumbs-up and -down reactions will inform which issues to prioritise.</p>
+<p>This outlines how to propose a change to BacDiveR. Because this project should be developed according to the needs of BacDive users, please in particular feel free to up- or down-vote existing issues, pull requests or comments. Thumbs-up and -down reactions will inform which issues to prioritise.</p>
 <div id="improving-texts" class="section level3">
 <h3 class="hasAnchor">
 <a href="#improving-texts" class="anchor"></a>Improving texts</h3>
@@ -150,7 +153,7 @@
 <p>Contributions through pull requests are welcome, and will be replied to within 1 or 2 (non-holi)days.</p>
 <ul>
 <li>We recommend that you create a Git branch for each PR, preferably with an issue number prepended to the <a href="https://github.com/tibhannover/BacDiveR/branches">branch name</a>.</li>
-<li>New code should follow RStudio’s style guide. Select code &amp; press <code>Shift</code>+<code>CTRL</code>/<code>CMD</code>+<code>A</code> (or go to the “Code Tools” menu &gt; “Reformat Code”).</li>
+<li>All added or modified code should follow RStudio’s style guide. To apply it, you can use <code><a href="http://www.rdocumentation.org/packages/styler/topics/style_pkg">styler::style_pkg()</a></code>, or select the code and press <code>Shift</code>+<code>CTRL</code>/<code>CMD</code>+<code>A</code> (or go to the “Code Tools” menu &gt; “Reformat Code”).</li>
 <li>We use <a href="https://cran.r-project.org/package=roxygen2">roxygen2</a>, with <a href="https://cran.r-project.org/web/packages/roxygen2/vignettes/markdown.html">Markdown syntax</a>, for documentation.<br>
 </li>
 <li>We use <a href="https://cran.r-project.org/package=testthat">testthat</a>. Contributions with test cases included are easier to accept.</li>

@@ -1,9 +1,10 @@
-pandoc: 2.2.2.1
+pandoc: 1.19.2.1
 pkgdown: 1.1.0.9000
 pkgdown_sha: 982bd327f97b623554b4cca90b86b4fb084aa634
 articles:
   BacDive-ing-in: BacDive-ing-in.html
-  Semi-automatic-approach: Semi-automatic-approach.html
   adr-001-JSON-not-XML: adr-001-JSON-not-XML.html
   adr-002-two-download-functions-returning-datasets: adr-002-two-download-functions-returning-datasets.html
+  logic-checking-bacdive-datasets: logic-checking-bacdive-datasets.html
+  pre-configuring-advanced-searches-and-retrieving-the-results: pre-configuring-advanced-searches-and-retrieving-the-results.html
 
