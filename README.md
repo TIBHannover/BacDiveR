@@ -8,9 +8,13 @@ This R package provides a programmatic interface to the [Bacterial Diversity Met
 
 Thus, BacDiveR can be the basis for a reproducible data analysis pipeline. See [TIBHannover.GitHub.io/BacDiveR][page] for more details, [/news] there for the changelog, and [GitHub.com/TIBHannover/BacDiveR][source] for the latest source code.
 
+Technically, it implements [BacDive's Web Service example client][BDex], updates
+it and uses more modern dependencies (compare the former to the `Imports` in the
+[`DESCRIPTION`](https://github.com/TIBHannover/BacDiveR/blob/master/DESCRIPTION)).
 It was also built to serve as a demonstration object during [TIB's "FAIR Data & Software" workshop][FDS].
 
 [BD]: https://bacdive.dsmz.de/
+[BDex]: https://bacdive.dsmz.de/api/bacdive/example/
 [DMSZ]: https://www.dsmz.de/about-us.html
 [FDS]: https://tibhannover.github.io/2018-07-09-FAIR-Data-and-Software/#schedule
 [/news]: https://tibhannover.github.io/BacDiveR/news/index.html
@@ -97,6 +101,17 @@ These seem to scrape **all** data, instead of retrieving specific datasets.
 - [@zorino's `microbe-dbs` (Python & Shell)](https://github.com/zorino/microbe-dbs)
 - [@EngqvistLab's Python script](https://github.com/EngqvistLab/fetch_microbial_growth_temperatures/tree/master/BacDive)
 - or generally: [GitHub.com/topics/bacdive](https://github.com/topics/bacdive)
+
+
+## Acknowledgements
+
+The initial development of this R packge was greatly supported by the BacDive
+providing example code beyond the [Web Service examples][BDex]. Thank you :-)
+During further development and testing, a number of errors in the data was
+discovered and reported by me and fixed. Moreover, several expe`R`ts advised me
+about modern dependencies, useful data structures and helped me debug: @sckott
+and @jotech. Thanks for your interest in this project and your support :-)
+
 
 # References
 
