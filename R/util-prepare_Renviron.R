@@ -5,7 +5,10 @@
 #'   `BacDive_password` manually.
 #' @export
 #'
-#' @examples \donttest{prepare_Renviron()}
+#' @examples
+#' \donttest{
+#' prepare_Renviron()
+#' }
 #' @keywords internal
 prepare_Renviron <- function() {
   r_env_file <- construct_Renviron_path()

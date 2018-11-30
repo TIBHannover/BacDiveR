@@ -11,7 +11,7 @@ download(URL)
 or a JSON list}
 }
 \value{
-The R object unserialised from the downloaded JSON
+The R object deserialised from the downloaded JSON
 }
 \description{
 Download Something from BacDive

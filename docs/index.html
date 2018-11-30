@@ -95,15 +95,15 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#bacdiver-lifecycle-doi" class="anchor"></a>BacDiveR <a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a> <a href="https://zenodo.org/record/1308060"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1308060.svg" alt="DOI"></a>
 </h1></div>
-<p>This R package provides a programmatic interface for the <a href="https://bacdive.dsmz.de/">Bacterial Diversity Metadatabase</a> (<a href="#references">Söhngen et al. 2014, 2016 &amp; 2018</a>) of the <a href="https://www.dsmz.de/about-us.html">DSMZ (German Collection of Microorganisms and Cell Cultures)</a>. BacDiveR helps you conduct your microbial research better and faster, by:</p>
+<p>This R package provides a programmatic interface to the <a href="https://bacdive.dsmz.de/">Bacterial Diversity Metadatabase</a> of the <a href="https://www.dsmz.de/about-us.html">DSMZ (German Collection of Microorganisms and Cell Cultures)</a>. BacDiveR helps you improve your research on bacteria and archaea by providing access to “structured information on […] their taxonomy, morphology, physiology, cultivation, geographic origin, application, interaction” and more (<a href="#references">Söhngen et al. 2016</a>). Specifically, you can:</p>
 <ul>
-<li><p>downloading the BacDive datasets you want to investigate off-line, and by</p></li>
-<li><p>providing you with a way to document and report your searches and downloads, in a reproducible manner (<code>.R</code> scripts and/or <code>.Rmd</code> files).</p></li>
+<li><p>download the BacDive data you need for offline investigation, and</p></li>
+<li><p>document your searchers and downloads in <code>.R</code> scripts, <code>.Rmd</code> files, etc.</p></li>
 </ul>
+<p>Thus, BacDiveR can be the basis for a reproducible data analysis pipeline. See <a href="https://tibhannover.github.io/BacDiveR/">TIBHannover.GitHub.io/BacDiveR</a> for more details, <a href="https://tibhannover.github.io/BacDiveR/news/index.html">/news</a> there for the changelog, and <a href="https://github.com/TIBHannover/BacDiveR/">GitHub.com/TIBHannover/BacDiveR</a> for the latest source code.</p>
 <p>It was also built to serve as a demonstration object during <a href="https://tibhannover.github.io/2018-07-09-FAIR-Data-and-Software/#schedule">TIB’s “FAIR Data &amp; Software” workshop</a>.</p>
-<p>See <a href="https://tibhannover.github.io/BacDiveR/">TIBHannover.GitHub.io/BacDiveR</a> for more details, <a href="https://tibhannover.github.io/BacDiveR/news/index.html">/news</a> there for the changelog, and <a href="https://github.com/TIBHannover/BacDiveR/">GitHub.com/TIBHannover/BacDiveR</a> for the latest source code.</p>
 <!-- Paste the above section into the release description
-together with the latest section of `NEWS.md` in order to usefull populate Zenodo.
+together with the latest section of `NEWS.md` in order to usefully populate Zenodo.
 Afterwards, remove the above from GitHub. -->
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -130,19 +130,21 @@ BacDive_password=YOUR_20_char_password</code></pre></div>
 <div id="how-to-cite" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-cite" class="anchor"></a>How to cite</h2>
-<p>Best use the <code>Cite as</code> or <code>Export</code> options presented on <a href="https://zenodo.org/record/1308060#invenio-csl">Zenodo.org/record/1308060</a>. If you want to import <a href="https://github.com/TIBHannover/BacDiveR/">this GitHub repo’s metadata</a> into a reference manager directly, try <a href="https://www.zotero.org/">Zotero</a> and its <a href="https://github.com/zotero/translators/blob/master/Github.js">GitHub translator</a>.</p>
-<p>You can also type <code>citation('BacDiveR')</code> into your R console and copy the resulting text or BibTeX snippet. Feel free to change that latter’s item type from <code>@Manual</code> to <code>@Software</code> ;-) <a href="https://github.com/FORCE11/FORCE11-sciwg">Support for that is being worked on</a>.</p>
+<p>Best execute <code><a href="https://www.rdocumentation.org/packages/utils/topics/citation">citation('BacDiveR')</a></code> in the R console and use its output because that ensures you are citing exactly the installed version. You can also use the <code>Cite as</code> or <code>Export</code> options presented on <a href="https://zenodo.org/record/1308060#invenio-csl">Zenodo.org/record/1308060</a>. If you want to import <a href="https://github.com/TIBHannover/BacDiveR/">this GitHub repo’s metadata</a> into a reference manager directly, I recommend <a href="https://www.zotero.org/">Zotero</a> and its <a href="https://github.com/zotero/translators/blob/master/Github.js">GitHub translator</a>. When using BibTeX, you might want to try changing the item type from to <code>@Software</code> ;-) <a href="https://github.com/FORCE11/FORCE11-sciwg">Support for that is being worked on</a>.</p>
+<p>Don’t forget to also <a href="https://bacdive.dsmz.de/about">cite BacDive itself</a> whenever you used their data, regardless of access method.</p>
 </div>
 <div id="known-issues-see-bugs-and-adrs" class="section level2">
 <h2 class="hasAnchor">
 <a href="#known-issues-see-bugs-and-adrs" class="anchor"></a>Known issues: see <a href="https://github.com/tibhannover/BacDiveR/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Aupdated-desc">bugs</a> and <a href="https://github.com/TIBHannover/BacDiveR/tree/master/vignettes">ADR</a>s</h2>
 </div>
-<div id="similar-tools-mostly-for-scraping-all-data" class="section level2">
+<div id="similar-tools" class="section level2">
 <h2 class="hasAnchor">
-<a href="#similar-tools-mostly-for-scraping-all-data" class="anchor"></a>Similar tools (mostly for scraping all data)</h2>
+<a href="#similar-tools" class="anchor"></a>Similar tools</h2>
+<p>These seem to scrape <strong>all</strong> data, instead of retrieving specific datasets.</p>
 <ul>
 <li>@cjm007’s <a href="https://github.com/cjm007/BacDive_"><code>BacDive_</code></a> &amp; <a href="https://github.com/cameronmartino/BacDivePy"><code>BacDivePy</code></a> (Python)</li>
 <li><a href="https://github.com/zorino/microbe-dbs">@zorino’s <code>microbe-dbs</code> (Python &amp; Shell)</a></li>
+<li><a href="https://github.com/EngqvistLab/fetch_microbial_growth_temperatures/tree/master/BacDive">@EngqvistLab’s Python script</a></li>
 <li>or generally: <a href="https://github.com/topics/bacdive">GitHub.com/topics/bacdive</a>
 </li>
 </ul>

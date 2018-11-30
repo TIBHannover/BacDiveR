@@ -63,7 +63,7 @@ test_that("extracting a single field from a taxon-wide search works", {
     unique(unlist(
       purrr::map(
         .x = Bac_hal_data,
-        .f = ~.x$culture_growth_condition$culture_temp$temp
+        .f = ~ .x$culture_growth_condition$culture_temp$temp
       )
     ))
   )

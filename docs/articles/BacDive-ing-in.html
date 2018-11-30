@@ -111,12 +111,12 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(BacDiveR)
 taxon_<span class="dv">1</span> &lt;-<span class="st"> "Bacillus halodurans"</span>
 Bac_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/retrieve_data.html">retrieve_data</a></span>(<span class="dt">searchTerm =</span> taxon_<span class="dv">1</span>) 
-<span class="co">#&gt;  Downloading BacDive IDs (1112 to 23701, but not necessarily contiguous): </span>
+<span class="co">#&gt;  Downloading BacDive IDs 1112 to 23701 (but not necessarily contiguously): </span>
 <span class="co">#&gt; 1112 1113 1114 1115 1116 1117 1118 1119 23692 23693 23694 23695 23696 23697 23698 23699 23700 23701</span></code></pre></div>
 <p>Suppose we want to compare the optimal growth temperatures of strains from the taxon <em>Bacillus halodurans</em> with another one. <code><a href="../reference/retrieve_data.html">retrieve_data()</a></code> with its default <code>searchType = taxon</code> will get you all taxon data in a single (albeit large) list of dataframes. Feel free to take a break while the computers do some work for you:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">taxon_<span class="dv">2</span> &lt;-<span class="st"> "Aneurinibacillus thermoaerophilus"</span>
 At_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/retrieve_data.html">retrieve_data</a></span>(taxon_<span class="dv">2</span>)
-<span class="co">#&gt;  Downloading BacDive IDs (11385 to 11399, but not necessarily contiguous): </span>
+<span class="co">#&gt;  Downloading BacDive IDs 11385 to 11399 (but not necessarily contiguously): </span>
 <span class="co">#&gt; 11385 11386 11387 11388 11389 11390 11391 11392 11393 11394 11395 11396 11397 11398 11399</span></code></pre></div>
 </div>
 <div id="extracting-data-fields" class="section level2">
