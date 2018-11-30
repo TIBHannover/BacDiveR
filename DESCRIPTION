@@ -1,31 +1,41 @@
 Package: BacDiveR
-Title: A Programmatic Interface For BacDive, The DSMZ's Bacterial Diversity Metadatabase
+Title: A Programmatic Interface For BacDive, The DSMZ's
+    Bacterial Diversity Metadatabase
 Version: 0.7.0
 Date: 2018-09-08
-Authors@R: person("Katrin", "Leinweber", email = "katrin.leinweber@tib.eu",
-                  role = c("aut", "cre"),
-                  comment = c(ORCID = "0000-0001-5135-5758"))
-Description: BacDive focuses on providing organism-linked information covering the multifarious aspects of bacterial biodiversity: taxonomic classification, morphology, physiology, cultivation, origin natural habitat and more, both for bacterial and archaeal strains. BacDiveR helps you investigate this data offline, and semi-automatically in R.
+Authors@R: 
+    person(given = "Katrin",
+           family = "Leinweber",
+           role = c("aut", "cre"),
+           email = "katrin.leinweber@tib.eu",
+           comment = c(ORCID = "0000-0001-5135-5758"))
+Description: BacDive focuses on providing organism-linked
+    information covering the multifarious aspects of bacterial
+    biodiversity: taxonomic classification, morphology, physiology,
+    cultivation, origin natural habitat and more, both for bacterial and
+    archaeal strains. BacDiveR helps you investigate this data offline,
+    and semi-automatically in R.
 License: MIT + file LICENSE
 URL: https://github.com/TIBHannover/BacDiveR
 BugReports: https://github.com/TIBHannover/BacDiveR/issues
-Encoding: UTF-8
-LazyData: true
-ByteCompile: true
-Suggests:
-    spelling (>= 1.2),
-    ggplot2 (>= 3.0.0),
-    knitr (>= 1.20),
-    magrittr (>= 1.5),
-    rmarkdown (>= 1.10),
-    testthat (>= 2.0.0)
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
 Imports: 
     dplyr (>= 0.7.6),
     httr (>= 1.3.0),
     jsonlite (>= 1.5),
     purrr (>= 0.2.5),
     utils (>= 3.5.0)
-VignetteBuilder: knitr
+Suggests:
+    ggplot2 (>= 3.0.0),
+    knitr (>= 1.20),
+    magrittr (>= 1.5),
+    rmarkdown (>= 1.10),
+    spelling (>= 1.2),
+    testthat (>= 2.0.0)
+VignetteBuilder: 
+    knitr
+ByteCompile: true
+Encoding: UTF-8
 Language: en-GB
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
