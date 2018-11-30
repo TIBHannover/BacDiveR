@@ -1,7 +1,7 @@
 Package: BacDiveR
 Title: A Programmatic Interface For BacDive, The DSMZ's
     Bacterial Diversity Metadatabase
-Version: 0.7.0
+Version: 0.7.3
 Date: 2018-09-08
 Authors@R: 
     person(given = "Katrin",
