@@ -7,7 +7,7 @@ test_that("Downloading a small 'advanced search' result works", {
   )
 })
 
-test_that("Trying a stupid advanced search yields an empty list", {
+test_that("Searching for something non-existant yields an empty list", {
   expect_equal(
     retrieve_search_results(queryURL = "https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams%5B78%5D%5Bcontenttype%5D=text&searchparams%5B78%5D%5Btypecontent%5D=contains&searchparams%5B78%5D%5Bsearchterm%5D=ABCDEFG&advsearch=search"),
     list()

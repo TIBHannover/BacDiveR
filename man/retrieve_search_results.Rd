@@ -20,6 +20,8 @@ an ambiguous \code{searchTerm} (most \code{taxon}s).
 Retrieve Results of an Advanced Search/Query
 }
 \examples{
-  \donttest{data_miller <- retrieve_search_results(queryURL = "https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams[78][contenttype]=text&searchparams[78][typecontent]=contains&searchparams[78][searchterm]=Miller&advsearch=search")}
+\donttest{
+data_miller <- retrieve_search_results(queryURL = "https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams[78][contenttype]=text&searchparams[78][typecontent]=contains&searchparams[78][searchterm]=Miller&advsearch=search")
+}
 
 }

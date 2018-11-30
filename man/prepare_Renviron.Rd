@@ -15,6 +15,8 @@ the .Renviron file so users can type in their \code{BacDive_email} and
 Prepare .Renviron File
 }
 \examples{
-\donttest{prepare_Renviron()}
+\donttest{
+prepare_Renviron()
+}
 }
 \keyword{internal}

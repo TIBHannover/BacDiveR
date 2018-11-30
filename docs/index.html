@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">BacDiveR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.4</span>
       </span>
     </div>
 
@@ -120,7 +120,7 @@ Afterwards, remove the above from GitHub. -->
 <li><p>Because the <a href="https://bacdive.dsmz.de/api/bacdive/registration/register/">BacDive API requires registration</a> please do that first and wait for DSMZ staff to grant you access.</p></li>
 <li><p>Once you have your login credentials, install the <a href="https://github.com/TIBHannover/BacDiveR/releases/latest">latest BacDiveR release</a> from GitHub with:</p></li>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">require</a></span>(<span class="st">'devtools'</span>)) <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">'devtools'</span>)
-devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">'TIBHannover/BacDiveR'</span>, <span class="dt">ref =</span> <span class="st">'v0.7.3'</span>)
+devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">'TIBHannover/BacDiveR'</span>, <span class="dt">ref =</span> <span class="st">'v0.7.4'</span>)
 <span class="co"># Please omit the `ref` only if you want to test the latest development version!</span></code></pre></div>
 <li>After installing, follow the instructions on the console to save your login credentials locally and restart R(Studio) or run:</li>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/file.edit">file.edit</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Sys.getenv">Sys.getenv</a></span>(<span class="st">'HOME'</span>), <span class="st">'.Renviron'</span>))</code></pre></div>
