@@ -14,11 +14,11 @@ test_that("Trying a stupid advanced search yields an empty list", {
   )
 })
 
-test_that("Inconsistent datasets get corrected", {
-  inconsistent_data <- retrieve_search_results(
-    "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams[20][contenttype]=text&searchparams[20][typecontent]=contains&searchparams[20][searchterm]=Sea+of+Japan&searchparams[17][searchterm]=Europe"
-  )
 
+queryURL <- "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams[20][contenttype]=text&searchparams[20][typecontent]=contains&searchparams[20][searchterm]=Sea+of+Japan&searchparams[17][searchterm]=Europe"
+
+test_that("Inconsistent datasets get corrected", {
+  inconsistent_data <- retrieve_search_results(queryURL)
   expect_false(is.null(inconsistent_data))
 })
 

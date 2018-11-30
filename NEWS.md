@@ -12,6 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 
 
+## BacDiveR 0.7.4
+
+### Fixed
+
+- A bug in the test suite.
+
+
 ## BacDiveR 0.7.3
 
 ### Changed
