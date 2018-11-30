@@ -4,7 +4,6 @@ warn_slow_download <- function(N_datasets) {
     max <- ceiling(N_datasets / 2)
 
     message(
-      paste0(
         "Downloading ",
         N_datasets,
         " datasets will probably take ",
@@ -28,7 +27,6 @@ warn_slow_download <- function(N_datasets) {
           " Maybe work on something else in the meantime ;-)",
           ifelse(min > 180, " Maybe go for a walk ;-)", "")
         )
-      )
     )
     # numbers based on a measurement of:
     #   retrieve_data(searchTerm = "Bacillus subtilis subtilis",

@@ -38,12 +38,9 @@ prepare_Renviron <- function() {
   # detect empty credential values/variables & prompt user to fill them
   if (any(grepl(paste0("^", start_of_line, "$"), readLines(r_env_file)))) {
     message(
-      paste(
-        r_env_file,
-        "prepared. If you don't see it open now, please run:\n
-        `file.edit(file.path(Sys.getenv('HOME'), '.Renviron'))`\n
-        and", message
-      )
+      r_env_file,
+      " prepared. If you don't see it open now, please run: `file.edit(file.path(Sys.getenv('HOME'), '.Renviron'))` and ",
+      message
     )
     file.edit(r_env_file)
   }

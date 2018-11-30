@@ -45,13 +45,13 @@ retrieve_data <- function(searchTerm,
     aggregate_datasets(payload)
   }
   else if (identical(payload$detail, "Not found")) {
-    if (identical(searchType, "bacdive_id")) {
-      warning(paste0("BacDive has no dataset with bacdive_id ", searchTerm, "."))
-    } else {
-      warning(paste0(
-        "BacDive has no result for ", searchType, " = ", searchTerm, ". Please check that both terms are correct, type '?retrieve_data' and read through the 'searchType' section to learn more."
-      ))
-    }
+    warning(
+      "BacDive responded: 'Not found' to our query for '",
+      searchType,
+      " = ",
+      searchTerm,
+      "'. Please double-check both these query parameters, or try https://BacDive.DSMZ.de/AdvSearch"
+    )
 
     list()
   }
@@ -105,7 +105,7 @@ sanitise_term <- function(searchTerm) {
 
 sanitise_type <- function(searchType) {
   if (!(searchType %in% c("bacdive_id", "culturecollectionno", "sequence", "taxon"))) {
-    stop(paste(searchType, "isn't a valid search against https://BacDive.DSMZ.de/api/bacdive/! Aborting...\nPlease read https://TIBHannover.GitHub.io/BacDiveR/#how-to-use"))
+    stop("'", searchType, "' isn't a valid search against https://BacDive.DSMZ.de/api/bacdive/! Aborting... Please read https://TIBHannover.GitHub.io/BacDiveR/#how-to-use")
   }
   else {
     searchType
