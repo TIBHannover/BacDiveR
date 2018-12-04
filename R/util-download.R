@@ -10,7 +10,7 @@ download <- function(URL) {
 
   cred <- get_credentials()
 
-  payload <- httr::GET(URL, httr::authenticate(cred[1], cred[2]))
-  payload <- httr::content(payload, as = "text", encoding = "UTF-8")
+  response <- httr::GET(URL, httr::authenticate(cred[1], cred[2]))
+  payload <- httr::content(response, as = "text", encoding = "UTF-8")
   jsonlite::fromJSON(payload)
 }

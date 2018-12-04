@@ -31,8 +31,8 @@ retrieve_search_results <- function(queryURL) {
   }
 
   cred <- get_credentials()
-  payload <- httr::GET(queryURL, httr::authenticate(cred[1], cred[2]))
-  payload <- httr::content(payload, as = "text", encoding = "UTF-8")
+  response <- httr::GET(queryURL, httr::authenticate(cred[1], cred[2]))
+  payload <- httr::content(response, as = "text", encoding = "UTF-8")
 
   if (grepl("^[[:digit:]]", payload)) {
     aggregate_datasets(
