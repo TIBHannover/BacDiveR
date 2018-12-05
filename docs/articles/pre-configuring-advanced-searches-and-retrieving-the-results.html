@@ -95,7 +95,7 @@
       <h1>Pre-Configuring Advanced Searches and Retrieving the Results</h1>
                         <h4 class="author">Katrin Leinweber</h4>
             
-            <h4 class="date">2018-11-30</h4>
+            <h4 class="date">2018-12-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/TIBHannover/BacDiveR/blob/master/vignettes/pre-configuring-advanced-searches-and-retrieving-the-results.Rmd"><code>vignettes/pre-configuring-advanced-searches-and-retrieving-the-results.Rmd</code></a></small>
       <div class="hidden name"><code>pre-configuring-advanced-searches-and-retrieving-the-results.Rmd</code></div>
@@ -106,21 +106,19 @@
     
 <p>Unfortunately, the BacDive Web Service does not allow SQL-like queries for the content of specific fields within the strain’s datasets. If you find the functionality explained in <a href="https://tibhannover.github.io/BacDiveR/articles/BacDive-ing-in.html">BacDive-ing in</a> too limited, please try the following, semi-automatic approach to using BacDiveR.</p>
 <ol style="list-style-type: decimal">
-<li>Visit <a href="https://bacdive.dsmz.de/advsearch">BacDive.DSMZ.de/AdvSearch</a> and prepare the query you are interested in.</li>
+<li>Visit <a href="https://bacdive.dsmz.de/advsearch">BacDive.DSMZ.de/AdvSearch</a> and prepare your search in that web interface. It enables SQL-like searches against the ca. 135 of BacDive’s accessible data fields.</li>
 </ol>
 <div class="figure">
 <img src="advanced-search.png" alt="Overview of the possible fields to query and their parameters (contains, exact, begins/ends with)"><p class="caption">Overview of the possible fields to query and their parameters (contains, exact, begins/ends with)</p>
 </div>
 <ol start="2" style="list-style-type: decimal">
-<li>Run your advanced search (query). The below example searches for all strains whose literature reference includes someone named “Miller”. <strong>Note the</strong> two “hits” on the right, and the now much longer <strong>URL</strong>. It contains/encodes all the terms and parameters of your advanced search.</li>
+<li>Run your advanced search (query). The example below searches for all strains that type a plant pathogenic species. <strong>Note the</strong> results list with the “hits” on the right, and the now much longer <strong>URL</strong>. It contains/encodes all the terms and parameters of your advanced search.</li>
 </ol>
-<div class="figure">
-<img src="advanced-search-Miller.png" alt="Advanced search results"><p class="caption">Advanced search results</p>
-</div>
+<p><a href="https://bacdive.dsmz.de/advsearch?advsearch=search&amp;site=advsearch&amp;searchparams%5B5%5D%5Bsearchterm%5D=1&amp;searchparams%5B156%5D%5Bsearchterm%5D=&amp;searchparams%5B158%5D%5Bsearchterm%5D=1"><img src="advanced-search-plant-pathogens.png" alt="Advanced search results"></a></p>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Copy the URL of the results page from your browser’s address bar. Alternatively, copy it from the “Download list of BacDive Ids” link to the top right of the “hits” list.</p></li>
-<li><p>Paste the copied URL into a call to the <code><a href="../reference/retrieve_search_results.html">retrieve_search_results("…")</a></code> function.</p></li>
-<li><p>Enjoy the list of downloaded datasets, just as you would after using <code><a href="../reference/retrieve_data.html">retrieve_data(searchTerm = ..., searchType = ...)</a></code>.</p></li>
+<li><p>Paste the copied URL into a call to the <code>data &lt;- retrieve_search_results("…")</code> function.</p></li>
+<li><p>Enjoy the list of downloaded datasets, just as you would after using <code>data &lt;- retrieve_data(searchTerm = ..., searchType = ...)</code>.</p></li>
 </ol>
 <div id="mass-downloading-datasets" class="section level2">
 <h2 class="hasAnchor">
