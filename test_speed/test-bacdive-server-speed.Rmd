@@ -94,7 +94,7 @@ test_speed(IDs, dir = "BD_JSONs_adv")
 ```
 
 A `Warning in dir.create ... already exists` does not matter, because existing
-files are overwritten. Thus, the `file.size` extraction operators on exactly what
+files are overwritten. Thus, the `file.size` extraction operates on exactly what
 was downloaded.
 
 
