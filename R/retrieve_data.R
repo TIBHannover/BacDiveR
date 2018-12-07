@@ -32,7 +32,7 @@ bd_retrieve_data <- function(searchTerm, searchType = "taxon") {
     names(payload) <- searchTerm
     return(payload)
   }
-  else if (is_ID_refererence(payload)) {
+  else if (is_ID_reference(payload)) {
     bd_retrieve_data(
       searchTerm = URLs_to_IDs(payload$url),
       searchType = "bacdive_id"
@@ -75,7 +75,7 @@ is_results_list <- function(payload) {
   identical(names(payload), c("count", "next", "previous", "results"))
 }
 
-is_ID_refererence <- function(payload) {
+is_ID_reference <- function(payload) {
   all.equal(nrow(payload), ncol(payload), 1) &&
     # class(payload) == "data.frame" &&
     names(payload) == "url"
