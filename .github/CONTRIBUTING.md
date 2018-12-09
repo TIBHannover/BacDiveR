@@ -42,7 +42,6 @@ though. What you want to write might have been already ;-)
 Contributions through pull requests are welcome, and will be replied to within 1 
 or 2 (non-holi)days.
 
-*  We recommend that you create a Git branch for each PR, preferably with an issue number prepended to the [branch name][bn].
 *  All added or modified code should follow RStudio's style guide. To apply
    it, you can use `styler::style_pkg()`, or select the code and press
    `Shift`+`CTRL`/`CMD`+`A` (or go to the "Code Tools" menu > "Reformat Code").
@@ -51,5 +50,8 @@ or 2 (non-holi)days.
 for documentation.  
 *  We use [testthat](https://cran.r-project.org/package=testthat). Contributions
 with test cases included are easier to accept.  
+*  Create a separate Git branch for each PR, preferably off the [`development`][dev]
+   branch and with its an issue number prepended to your [branch's name][bn].
 
 [bn]: https://github.com/tibhannover/BacDiveR/branches
+[dev]: https://github.com/TIBHannover/BacDiveR/tree/development

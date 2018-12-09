@@ -120,8 +120,9 @@ Afterwards, remove the above from GitHub. -->
 <li><p>Because the <a href="https://bacdive.dsmz.de/api/bacdive/registration/register/">BacDive API requires registration</a> please do that first and wait for DSMZ staff to grant you access.</p></li>
 <li><p>Once you have your login credentials, install the <a href="https://github.com/TIBHannover/BacDiveR/releases/latest">latest BacDiveR release</a> from GitHub with:</p></li>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">require</a></span>(<span class="st">'devtools'</span>)) <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">'devtools'</span>)
-devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">'TIBHannover/BacDiveR'</span>, <span class="dt">ref =</span> <span class="st">'v0.7.4'</span>)
-<span class="co"># Please omit the `ref` only if you want to test the latest development version!</span></code></pre></div>
+devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">'TIBHannover/BacDiveR'</span>)
+<span class="co"># If you want to help test the latest upcoming changes, add `ref = 'development'` there.</span></code></pre></div>
+<ol>
 <li>After installing, follow the instructions on the console to save your login credentials locally and restart R(Studio) or run:</li>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/file.edit">file.edit</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Sys.getenv">Sys.getenv</a></span>(<span class="st">'HOME'</span>), <span class="st">'.Renviron'</span>))</code></pre></div>
 <p>and make sure it contains the following:</p>
@@ -140,6 +141,11 @@ BacDive_password=YOUR_20_char_password</code></pre></div>
 <a href="#how-to-cite" class="anchor"></a>How to cite</h2>
 <p>Best execute <code><a href="https://www.rdocumentation.org/packages/utils/topics/citation">citation('BacDiveR')</a></code> in the R console and use its output because that ensures you are citing exactly the installed version. You can also use the <code>Cite as</code> or <code>Export</code> options presented on <a href="https://zenodo.org/record/1308060#invenio-csl">Zenodo.org/record/1308060</a>. If you want to import <a href="https://github.com/TIBHannover/BacDiveR/">this GitHub repo’s metadata</a> into a reference manager directly, I recommend <a href="https://www.zotero.org/">Zotero</a> and its <a href="https://github.com/zotero/translators/blob/master/Github.js">GitHub translator</a>. When using BibTeX, you might want to try changing the item type from to <code>@Software</code> ;-) <a href="https://github.com/FORCE11/FORCE11-sciwg">Support for that is being worked on</a>.</p>
 <p>Don’t forget to also <a href="https://bacdive.dsmz.de/about">cite BacDive itself</a> whenever you used their data, regardless of access method.</p>
+</div>
+<div id="how-to-contribute-see-contributing-md-file" class="section level2">
+<h2 class="hasAnchor">
+<a href="#how-to-contribute-see-contributing-md-file" class="anchor"></a>How to contribute: See <a href="/CONTRIBUTING.html"><code>CONTRIBUTING.md</code> file</a>
+</h2>
 </div>
 <div id="known-issues-see-bugs-and-adrs" class="section level2">
 <h2 class="hasAnchor">

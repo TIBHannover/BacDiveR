@@ -33,8 +33,8 @@ Afterwards, remove the above from GitHub. -->
 
 ``` r
 if(!require('devtools')) install.packages('devtools')
-devtools::install_github('TIBHannover/BacDiveR', ref = 'v0.7.4')
-# Please omit the `ref` only if you want to test the latest development version!
+devtools::install_github('TIBHannover/BacDiveR')
+# If you want to help test the latest upcoming changes, add `ref = 'development'` there.
 ```
 
 3.  After installing, follow the instructions on the console to save your login
@@ -77,6 +77,8 @@ want to try changing the item type from to `@Software` ;-)
 Don't forget to also [cite BacDive itself](https://bacdive.dsmz.de/about) whenever
 you used their data, regardless of access method.
 
+
+## How to contribute: See [`CONTRIBUTING.md` file](/.github/CONTRIBUTING.md)
 
 ## Known issues: see [bugs] and [ADR]s
 
