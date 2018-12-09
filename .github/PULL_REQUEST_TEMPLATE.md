@@ -23,7 +23,7 @@ down without the [ ], and/or striking them out with ~~...~~ is fine :-)
 - [ ] Move [`Unreleased` changes in `NEWS.md` to dedicated section](/NEWS.md#unreleased)
 - [ ] Copy those & the new version number to [new GitHub release](https://github.com/TIBHannover/BacDiveR/releases/new), together with the
 [`README.md`'s 1st paragraph](https://github.com/TIBHannover/BacDiveR/blame/master/README.md#L22-L24)
-- [ ] Increment the [SemVer.org] [number in `DESCRIPTION`](/DESCRIPTION#L3).
+- [ ] Increment the [SemVer.org] [number in the `DESCRIPTION` file](https://github.com/TIBHannover/BacDiveR/blob/master/DESCRIPTION#L4).
 
 [SemVer.org]: https://semver.org/
 
