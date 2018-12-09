@@ -53,7 +53,7 @@ the vignettes ["BacDive-ing in"][dive-in] and ["Pre-Configuring Advanced Searche
 [r_d]: https://tibhannover.github.io/BacDiveR/reference/retrieve_data.html
 [r_s_r]: https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html
 [dive-in]: https://tibhannover.github.io/BacDiveR/articles/BacDive-ing-in.html
-[adv-search]: https://tibhannover.github.io/BacDiveR/articles/advanced-search.html
+[adv-search]: https://tibhannover.github.io/BacDiveR/articles/pre-configuring-advanced-searches-and-retrieving-the-results.html
 
 
 ## How to cite
