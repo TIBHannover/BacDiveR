@@ -29,13 +29,8 @@ Afterwards, remove the above from GitHub. -->
     and wait for DSMZ staff to grant you access.
 
 2.  Once you have your login credentials, install the [latest BacDiveR release][releases]
-    from GitHub with:
-
-``` r
-if(!require('devtools')) install.packages('devtools')
-devtools::install_github('TIBHannover/BacDiveR')
-# If you want to help test the latest upcoming changes, add `ref = 'development'` there.
-```
+    from GitHub with: `if(!require('devtools')) install.packages('devtools'); devtools::install_github('TIBHannover/BacDiveR')`. If you want to help test the
+    latest upcoming changes, add `ref = 'development'` there.
 
 3.  After installing, follow the instructions on the console to save your login
     credentials locally and restart R(Studio) or run:
