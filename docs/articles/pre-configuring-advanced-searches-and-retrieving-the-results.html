@@ -112,9 +112,9 @@
 <img src="advanced-search.png" alt="Overview of the possible fields to query and their parameters (contains, exact, begins/ends with)"><p class="caption">Overview of the possible fields to query and their parameters (contains, exact, begins/ends with)</p>
 </div>
 <ol start="2" style="list-style-type: decimal">
-<li>Run your advanced search (query). The example below searches for all strains that type a plant pathogenic species. <strong>Note the</strong> results list with the “hits” on the right, and the now much longer <strong>URL</strong>. It contains/encodes all the terms and parameters of your advanced search.</li>
+<li>Run your advanced search (query). The example below searches for all strains that type a species pathogenic to both plant and human. <strong>Note the</strong> results list with the “hits” on the right, and the now much longer <strong>URL</strong>. It contains/encodes all the terms and parameters of your advanced search.</li>
 </ol>
-<p><a href="https://bacdive.dsmz.de/advsearch?advsearch=search&amp;site=advsearch&amp;searchparams%5B5%5D%5Bsearchterm%5D=1&amp;searchparams%5B156%5D%5Bsearchterm%5D=&amp;searchparams%5B158%5D%5Bsearchterm%5D=1"><img src="advanced-search-plant-pathogens.png" alt="Advanced search results"></a></p>
+<p><a href="https://bacdive.dsmz.de/advsearch?site=advsearch&amp;searchparams%5B5%5D%5Bsearchterm%5D=1&amp;searchparams%5B156%5D%5Bsearchterm%5D=1&amp;searchparams%5B158%5D%5Bsearchterm%5D=1&amp;advsearch=search"><img src="adv-search-plant-human-pathogens.png" alt="Advanced search results"></a></p>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Copy the URL of the results page from your browser’s address bar. Alternatively, copy it from the “Download list of BacDive Ids” link to the top right of the “hits” list.</p></li>
 <li><p>Paste the copied URL into a call to the <code>data &lt;- retrieve_search_results("…")</code> function.</p></li>
