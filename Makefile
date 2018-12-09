@@ -14,6 +14,7 @@ install:
 
 site: install docu
 	Rscript -e "pkgdown::build_site(document = FALSE)"
+	git update-index --assume-unchanged docs/articles/BacDive-ing-in_files/figure-html/ggplot-1.png
 
 cov:
 	Rscript -e "covr::package_coverage()"
