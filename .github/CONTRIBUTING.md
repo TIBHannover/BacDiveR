@@ -41,7 +41,7 @@ Contributions through pull requests are welcome, and will be replied to within 1
 or 2 (non-holi)days. Please:
 
 *  Create a separate Git branch for each PR, preferably off the [`development`][dev]
-   branch and with its an issue number prepended to your [branch's name][bn].
+   branch and with an issue number prepended to your [branch's name][bn].
 *  Style all added or modified code with `styler::style_pkg()`. Using RStudio's
    built-in `Shift`+`Ctrl/Cmd`+`A` is also fine ("Code Tools" menu > "Reformat Code").
 *  Run `devtools::document()` in case you modified any function documentation
