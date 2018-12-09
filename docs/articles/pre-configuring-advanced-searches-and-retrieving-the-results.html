@@ -131,9 +131,9 @@
 <h2 class="hasAnchor">
 <a href="#storing-datasets-offline" class="anchor"></a>Storing datasets offline</h2>
 <p>This is not a BacDiveR feature, but <code>base</code> R’s <code><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">saveRDS()</a></code> is particularly useful for offline-storage of lots of search results, because re-downloading them would take rather long. Continuing the Archaea example, the following code writes the dataset to a file, loads it again, and verifies the data integrity:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">saveRDS</a></span>(Archaea_data, <span class="st">"Archaea.rds"</span>, <span class="dt">version =</span> <span class="dv">3</span>)
-Archaea_data_stored &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">readRDS</a></span>(<span class="st">"Archaea.rds"</span>)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/identical">identical</a></span>(Archaea_data, Archaea_data_stored)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">saveRDS</a></span>(Archaea_data, <span class="st">"Archaea.rds"</span>, <span class="dt">version =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2">Archaea_data_stored &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">readRDS</a></span>(<span class="st">"Archaea.rds"</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/identical">identical</a></span>(Archaea_data, Archaea_data_stored)</a></code></pre></div>
 </div>
   </div>
 

@@ -74,9 +74,9 @@ Don't forget to also [cite BacDive itself](https://bacdive.dsmz.de/about) whenev
 you used their data, regardless of access method.
 
 
-## How to contribute: See [`CONTRIBUTING.md` file](https://github.com/TIBHannover/BacDiveR/blob/master/.github/CONTRIBUTING.md)
+## How to contribute: See [`CONTRIBUTING.md` file](https://github.com/TIBHannover/BacDiveR/blob/master/.github/CONTRIBUTING.md).
 
-## Known issues: see [bugs] and [ADR]s
+## Known issues: See [bugs] and [ADR]s.
 
 [ADR]: https://github.com/TIBHannover/BacDiveR/tree/master/vignettes
 [bugs]: https://github.com/tibhannover/BacDiveR/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Aupdated-desc
