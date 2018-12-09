@@ -69,7 +69,7 @@
         <li>
   <a href="index.html">
     <span class="fa fa-home fa-lg"></span>
-     
+
   </a>
 </li>
 <li>
@@ -78,7 +78,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -103,21 +103,21 @@
   <a href="news/index.html">Changelog</a>
 </li>
       </ul>
-      
+
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/TIBHannover/BacDiveR">
     <span class="fa fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
-      
+
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
       </header>
 
 <div class="row">
@@ -132,33 +132,32 @@
 <div id="improving-texts" class="section level3">
 <h3 class="hasAnchor">
 <a href="#improving-texts" class="anchor"></a>Improving texts</h3>
-<p>Small typos or grammatical errors in documentation may be edited directly using the GitHub web interface, so long as the changes are made in the <em>source</em> file.</p>
+<p>Small typos or grammatical errors in documentation may be edited directly using the GitHub web interface, so long as the changes are made in a <em>source</em> file.</p>
 <ul>
 <li>YES: you edit a roxygen comment in an <code>.R</code> file below <code>R/</code> or any <code>.Rmd</code> file.</li>
 <li>NO: you edit an <code>.Rd</code> file below <code>man/</code>.</li>
 </ul>
 <p>When in doubt, please proceed with:</p>
 </div>
-<div id="filing-issues-also-see-the-issue_template-md" class="section level3">
+<div id="filing-issues-see-also-issue_template-md" class="section level3">
 <h3 class="hasAnchor">
-<a href="#filing-issues-also-see-the-issue_template-md" class="anchor"></a>Filing issues (also see the <a href="https://github.com/tibhannover/BacDiveR/blob/master/.github/ISSUE_TEMPLATE.md"><code>ISSUE_TEMPLATE.md</code></a>)</h3>
+<a href="#filing-issues-see-also-issue_template-md" class="anchor"></a>Filing issues (See also: <a href="https://github.com/tibhannover/BacDiveR/blob/master/.github/ISSUE_TEMPLATE.md"><code>ISSUE_TEMPLATE.md</code></a>)</h3>
 <p>Please don’t hesitate to open an <a href="https://github.com/tibhannover/BacDiveR/issues/">issue</a> if you:</p>
 <p>a) want to ask a question,</p>
 <p>a) suggest a new feature,</p>
 <p>a) found a bug. Illustrating it with a <a href="https://www.tidyverse.org/help/#reprex">minimal, reproducible example</a> is extremely helpful for fixing it ;-)</p>
-<p>a) in other cases, such as wanting to discuss sending a substantial pull request.</p>
+<p>a) in other cases, such as wanting to discuss substantial changes before sending a pull request.</p>
 <p>Please spend a few minutes searching the <a href="https://github.com/tibhannover/BacDiveR/issues/">existing issues (also the closed ones)</a>, though. What you want to write might have been already ;-)</p>
 </div>
-<div id="sending-pull-requests-also-see-the-pull_request_template-md" class="section level3">
+<div id="sending-pull-requests-see-also-pull_request_template-md" class="section level3">
 <h3 class="hasAnchor">
-<a href="#sending-pull-requests-also-see-the-pull_request_template-md" class="anchor"></a>Sending pull requests (also see the <a href="https://github.com/tibhannover/BacDiveR/blob/master/.github/PULL_REQUEST_TEMPLATE.md"><code>PULL_REQUEST_TEMPLATE.md</code></a>)</h3>
-<p>Contributions through pull requests are welcome, and will be replied to within 1 or 2 (non-holi)days.</p>
+<a href="#sending-pull-requests-see-also-pull_request_template-md" class="anchor"></a>Sending pull requests (See also: <a href="https://github.com/tibhannover/BacDiveR/blob/master/.github/PULL_REQUEST_TEMPLATE.md"><code>PULL_REQUEST_TEMPLATE.md</code></a>)</h3>
+<p>Contributions through pull requests are welcome, and will be replied to within 1 or 2 (non-holi)days. Please:</p>
 <ul>
-<li>We recommend that you create a Git branch for each PR, preferably with an issue number prepended to the <a href="https://github.com/tibhannover/BacDiveR/branches">branch name</a>.</li>
-<li>All added or modified code should follow RStudio’s style guide. To apply it, you can use <code><a href="https://www.rdocumentation.org/packages/styler/topics/style_pkg">styler::style_pkg()</a></code>, or select the code and press <code>Shift</code>+<code>CTRL</code>/<code>CMD</code>+<code>A</code> (or go to the “Code Tools” menu &gt; “Reformat Code”).</li>
-<li>We use <a href="https://cran.r-project.org/package=roxygen2">roxygen2</a>, with <a href="https://cran.r-project.org/web/packages/roxygen2/vignettes/markdown.html">Markdown syntax</a>, for documentation.<br>
-</li>
-<li>We use <a href="https://cran.r-project.org/package=testthat">testthat</a>. Contributions with test cases included are easier to accept.</li>
+<li>Create a separate Git branch for each PR, preferably off the <a href="https://github.com/TIBHannover/BacDiveR/tree/development"><code>development</code></a> branch and with an issue number prepended to your <a href="https://github.com/tibhannover/BacDiveR/branches">branch’s name</a>.</li>
+<li>Style all added or modified code with <code><a href="https://www.rdocumentation.org/packages/styler/topics/style_pkg">styler::style_pkg()</a></code>. Using RStudio’s built-in <code>Shift</code>+<code>Ctrl/Cmd</code>+<code>A</code> is also fine (“Code Tools” menu &gt; “Reformat Code”).</li>
+<li>Run <code><a href="https://www.rdocumentation.org/packages/devtools/topics/document">devtools::document()</a></code> in case you modified any function documentation within a <code>#'</code>-denoted <a href="https://cran.r-project.org/package=roxygen2">roxygen2</a> block and commit any <code>.Rd</code> file changes to your PR branch.</li>
+<li>Add or modify tests if you add or modify code. We use <a href="https://cran.r-project.org/package=testthat">testthat</a> and contributions with test cases included are easier to accept.</li>
 </ul>
 </div>
 </div>
@@ -174,12 +173,12 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>
 
-  
+
 
   </body>
 </html>

@@ -28,11 +28,11 @@ the ca. 135 of BacDive's accessible data fields.
 ![Overview of the possible fields to query and their parameters (contains, exact, begins/ends with)](advanced-search.png)
 
 2. Run your advanced search (query). The example below searches for all strains
-that type a plant pathogenic species. **Note the** results list with the 
+that type a species pathogenic to both plant and human. **Note the** results list with the 
 "hits" on the right, and the now much longer **URL**. It contains/encodes all 
 the terms and parameters of your advanced search.
 
-[![Advanced search results](advanced-search-plant-pathogens.png)](https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B5%5D%5Bsearchterm%5D=1&searchparams%5B156%5D%5Bsearchterm%5D=&searchparams%5B158%5D%5Bsearchterm%5D=1)
+[![Advanced search results](adv-search-plant-human-pathogens.png)](https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams%5B5%5D%5Bsearchterm%5D=1&searchparams%5B156%5D%5Bsearchterm%5D=1&searchparams%5B158%5D%5Bsearchterm%5D=1&advsearch=search)
 
 3. Copy the URL of the results page from your browser's address bar. 
 Alternatively, copy it from the "Download list of BacDive Ids" link to the top
