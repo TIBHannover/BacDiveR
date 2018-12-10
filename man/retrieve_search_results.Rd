@@ -21,7 +21,7 @@ Retrieve Results of an Advanced Search/Query
 }
 \examples{
 \donttest{
-plant_human_pathogens <- retrieve_search_results(queryURL = "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams\%5B5\%5D\%5Bsearchterm\%5D=1&searchparams\%5B156\%5D\%5Bsearchterm\%5D=&searchparams\%5B158\%5D\%5Bsearchterm\%5D=1")
+plant_human_pathogens <- retrieve_search_results(queryURL = "https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams\%5B5\%5D\%5Bsearchterm\%5D=1&searchparams\%5B156\%5D\%5Bsearchterm\%5D=1&searchparams\%5B158\%5D\%5Bsearchterm\%5D=1&advsearch=search")
 }
 
 }
