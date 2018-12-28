@@ -5,7 +5,7 @@
 #'   `bacdive_id`), specifying what shall be searched for.
 #'
 #' @param searchType Mandatory character string that specifies which type of
-#'   search will be performed (technically, which API endpoint). Can be `taxon`
+#'   search will be performed (technically, which Web Service endpoint). Can be `taxon`
 #'   (default), `bacdive_id`, `sequence`, or `culturecollectionno`.
 #'
 #' @return A list of lists containing either a single BacDive dataset in case

@@ -2,7 +2,7 @@
 % Please edit documentation in R/util-construct_url.R
 \name{construct_url}
 \alias{construct_url}
-\title{Construct URLs of API searches}
+\title{Construct URLs of Web Service searches}
 \usage{
 construct_url(searchTerm, searchType = "bacdive_id")
 }
@@ -12,10 +12,10 @@ construct_url(searchTerm, searchType = "bacdive_id")
 \code{bacdive_id}), specifying what shall be searched for.}
 
 \item{searchType}{Mandatory character string that specifies which type of
-search will be performed (technically, which API endpoint). Can be \code{taxon}
+search will be performed (technically, which Web Service endpoint). Can be \code{taxon}
 (default), \code{bacdive_id}, \code{sequence}, or \code{culturecollectionno}.}
 }
 \description{
-Construct URLs of API searches
+Construct URLs of Web Service searches
 }
 \keyword{internal}

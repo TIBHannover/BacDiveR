@@ -1,4 +1,4 @@
-#' Construct URLs of API searches
+#' Construct URLs of Web Service searches
 #'
 #' @inheritParams retrieve_data
 #' @keywords internal

@@ -12,7 +12,7 @@ retrieve_data(searchTerm, searchType = "taxon")
 \code{bacdive_id}), specifying what shall be searched for.}
 
 \item{searchType}{Mandatory character string that specifies which type of
-search will be performed (technically, which API endpoint). Can be \code{taxon}
+search will be performed (technically, which Web Service endpoint). Can be \code{taxon}
 (default), \code{bacdive_id}, \code{sequence}, or \code{culturecollectionno}.}
 }
 \value{
