@@ -15,17 +15,16 @@ retrieve_search_results <- function(queryURL) {
 
   # guard against other URLs
   if (!grepl(pattern = "^https:\\/\\/bacdive\\.dsmz\\.de\\/advsearch", queryURL) |
-    !grepl("[?&]site=advsearch", queryURL) |
-    !grepl("[?&]advsearch=search", queryURL) |
-    !grepl("\\&searchparams", queryURL)) {
+      !grepl("[?&]site=advsearch", queryURL) |
+      !grepl("[?&]advsearch=search", queryURL) |
+      !grepl("\\&searchparams", queryURL)) {
     stop(
       "This isn't an advanced search URL from https://BacDive.DSMZ.de/advsearch! Aborting...\nPlease read https://TIBHannover.GitHub.io/BacDiveR/#how-to-use"
     )
   }
 
-  DL_param <- "&csv_bacdive_ids_advsearch=download"
-
   # ensure that file with result IDs gets downloaded
+  DL_param <- "&csv_bacdive_ids_advsearch=download"
   if (!grepl(pattern = paste0(DL_param, "$"), x = queryURL)) {
     queryURL <- paste0(queryURL, DL_param)
   }

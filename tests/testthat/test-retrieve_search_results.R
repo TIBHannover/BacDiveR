@@ -15,7 +15,8 @@ test_that("Searching for something non-existant yields an empty list", {
 })
 
 
-queryURL <- "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams[20][contenttype]=text&searchparams[20][typecontent]=contains&searchparams[20][searchterm]=Sea+of+Japan&searchparams[17][searchterm]=Europe"
+queryURL <-
+  "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams[20][contenttype]=text&searchparams[20][typecontent]=contains&searchparams[20][searchterm]=Sea+of+Japan&searchparams[17][searchterm]=Europe"
 
 test_that("Inconsistent datasets get corrected", {
   inconsistent_data <- retrieve_search_results(queryURL)
