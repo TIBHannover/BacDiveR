@@ -36,7 +36,7 @@ retrieve_data <- function(searchTerm,
 
   # expand taxon/species
   if (identical(searchType, "taxon") & grepl("\\s", searchTerm)) {
-    searchTerm <- gsub(pattern = "\\s", replacement = "/", searchTerm)
+    searchTerm <- sanitise_taxon(searchTerm)
   }
 
   payload <- download(construct_url(searchTerm, searchType))
@@ -118,4 +118,9 @@ sanitise_type <- function(searchType) {
   else {
     searchType
   }
+}
+
+
+sanitise_taxon <- function(searchTerm) {
+  gsub(pattern = "\\s", replacement = "/", searchTerm)
 }
