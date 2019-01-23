@@ -29,10 +29,29 @@
 #' }
 retrieve_data <- function(searchTerm,
                           searchType = "taxon") {
+  .Deprecated(
+    c(
+      "bd_retrieve_by_culture",
+      "bd_retrieve_by_sequence",
+      "bd_retrieve",
+      "bd_retrieve_by_taxon"
+    )
+  )
 
   # guard against invalid input
   searchTerm <- sanitise_term(searchTerm)
   searchType <- sanitise_type(searchType)
+
+  bd_retrieve_data(searchTerm, searchType)
+}
+
+#' Retrieve (a) Dataset(s) from BacDive
+#'
+#' @inheritParams retrieve_data
+#'
+#' @inherit return retrieve_data
+#' @export
+bd_retrieve_data <- function(searchTerm, searchType = "taxon") {
 
   # expand taxon/species
   if (identical(searchType, "taxon") & grepl("\\s", searchTerm)) {

@@ -3,7 +3,7 @@
 #' @param queryURL URL of a query prepared on [BacDive.DSMZ.de/AdvSearch](https://bacdive.dsmz.de/advsearch),
 #'   as explained in the vignette "Pre-Configuring Advanced Searches and Retrieving the Results".
 #'
-#' @inherit retrieve_data return
+#' @inherit bd_retrieve_data return
 #' @export
 #'
 #' @examples

@@ -35,19 +35,12 @@ test_that("aggregating a set of BacDive URLs works", {
 })
 
 
-test_that("Redirecting 'culturecollectionno' & 'sequence' searches to 'bacdive_id' works (#45)", {
-  expect_identical(
-    retrieve_data(
-      searchTerm = "DSM 319",
-      searchType = "culturecollectionno"
-    ),
-    retrieve_data(
-      searchTerm = "AJ000733",
-      searchType = "sequence"
-    ),
-    retrieve_data(
-      searchTerm = 717,
-      searchType = "bacdive_id"
+test_that(
+  "Redirecting 'culturecollectionno' & 'sequence' searches to 'bacdive_id' works (#45)", {
+    expect_identical(
+      bd_retrieve_by_culture(collection_no = "DSM 319"),
+      bd_retrieve_by_sequence(accession = "AJ000733"),
+      bd_retrieve(id = 717)
     )
   )
 })
@@ -55,7 +48,7 @@ test_that("Redirecting 'culturecollectionno' & 'sequence' searches to 'bacdive_i
 
 # test set with 2 strains
 Bac_hal <- "Bacillus halotolerans"
-Bac_hal_data <- retrieve_data(searchTerm = Bac_hal)
+Bac_hal_data <- bd_retrieve_by_taxon(name = Bac_hal)
 
 test_that("extracting a single field from a taxon-wide search works", {
   expect_equal(
@@ -86,7 +79,7 @@ test_that("Normalising invalid JSON whitespace works,
   # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1847/?format=json
   # contains "medium_composition": "Name: ISP 2 / Yeast Malt Agar (5265); 5265\r\nComposition
 
-  expect_type(retrieve_data("Roseomonas aerilata"),
+  expect_type(bd_retrieve_data("Roseomonas aerilata"),
     type = "list"
   )
   # https://bacdive.dsmz.de/api/bacdive/bacdive_id/76/?format=json
@@ -97,11 +90,11 @@ test_that("Normalising invalid JSON whitespace works,
 
 test_that("Trying to download a non-existent dataset yields warnings & empty list", {
   expect_warning(non_existant <-
-    retrieve_data(searchTerm = 999999999, searchType = "bacdive_id"))
-  expect_warning(blablub <- retrieve_data(searchTerm = "bla blub"))
+    bd_retrieve_data(searchTerm = 999999999, searchType = "bacdive_id"))
+  expect_warning(blablub <- bd_retrieve_data(searchTerm = "bla blub"))
   expect_equal(blablub, non_existant, list())
 })
 
 test_that("Fuzzing of searchTerm parameter produces error", {
-  expect_error(retrieve_data(Bac_hal, searchType = sample(letters, 1)))
+  expect_error(bd_retrieve_data(Bac_hal, searchType = sample(letters, 1)))
 })

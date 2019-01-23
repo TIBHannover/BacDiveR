@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deprecated
 
+- `retrieve_data()` will be turned into an internal function, see above.
 - `retrieve_search_results()`, see above.
 
 
