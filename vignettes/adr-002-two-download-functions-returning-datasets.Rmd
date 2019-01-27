@@ -44,7 +44,7 @@ a) the request types seem to form a funnel from search to URL/ID to dataset,
 we will ensure that all main functions return full dataset(s) by default.
 
 
-## Status: accepted
+## Status: deprecated in [v0.8.0](../news/#bacdive-080)
 
 
 ## Consequences

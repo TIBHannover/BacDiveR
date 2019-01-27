@@ -8,7 +8,7 @@ aggregate_result_URLs(results)
 }
 \arguments{
 \item{results}{A list of paginated URLs returned by an ambiguous
-\code{searchTerm} in \code{retrieve_data()}.}
+\code{bd_retrieve_…()} call.}
 }
 \value{
 An integer vector of all BacDive URLs within the results.

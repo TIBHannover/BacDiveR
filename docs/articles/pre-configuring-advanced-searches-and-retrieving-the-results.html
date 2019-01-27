@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">BacDiveR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
       </span>
     </div>
 
@@ -95,7 +95,7 @@
       <h1>Pre-Configuring Advanced Searches and Retrieving the Results</h1>
                         <h4 class="author">Katrin Leinweber</h4>
             
-            <h4 class="date">2018-12-09</h4>
+            <h4 class="date">2019-01-30</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/TIBHannover/BacDiveR/blob/master/vignettes/pre-configuring-advanced-searches-and-retrieving-the-results.Rmd"><code>vignettes/pre-configuring-advanced-searches-and-retrieving-the-results.Rmd</code></a></small>
       <div class="hidden name"><code>pre-configuring-advanced-searches-and-retrieving-the-results.Rmd</code></div>
@@ -118,22 +118,22 @@
 <ol start="3" style="list-style-type: decimal">
 <li><p>Copy the URL of the results page from your browser’s address bar. Alternatively, copy it from the “Download list of BacDive Ids” link to the top right of the “hits” list.</p></li>
 <li><p>Paste the copied URL into a call to the <code>data &lt;- retrieve_search_results("…")</code> function.</p></li>
-<li><p>Enjoy the list of downloaded datasets, just as you would after using <code>data &lt;- retrieve_data(searchTerm = ..., searchType = ...)</code>.</p></li>
+<li><p>Enjoy the list of downloaded datasets, just as you would after using <code>data &lt;- bd_retrieve_data(searchTerm = ..., searchType = ...)</code>.</p></li>
 </ol>
 <div id="mass-downloading-datasets" class="section level2">
 <h2 class="hasAnchor">
 <a href="#mass-downloading-datasets" class="anchor"></a>Mass-downloading datasets</h2>
-<p><code>retrieve_data(searchTerm = …, searchType = "taxon")</code> can be used to download all datasets for the genus or a specific species given in <code>…</code>. Broader searches are possible through the <a href="https://bacdive.dsmz.de/advsearch?advsearch=search&amp;site=advsearch&amp;searchparams%5B70%5D%5Bcontenttype%5D=text&amp;searchparams%5B70%5D%5Btypecontent%5D=contains&amp;searchparams%5B70%5D%5Bsearchterm%5D=archaea">advanced search, for example for all Archaea</a>:</p>
-<p><code>Archaea_data &lt;- retrieve_search_results("https://bacdive.dsmz.de/advsearch?advsearch=search&amp;site=advsearch&amp;searchparams%5B70%5D%5Bcontenttype%5D=text&amp;searchparams%5B70%5D%5Btypecontent%5D=contains&amp;searchparams%5B70%5D%5Bsearchterm%5D=archaea")</code></p>
+<p><code>bd_retrieve_data(searchTerm = …, searchType = "taxon")</code> can be used to download all datasets for the genus or a specific species given in <code>…</code>. Broader searches are possible through the <a href="https://bacdive.dsmz.de/advsearch?advsearch=search&amp;site=advsearch&amp;searchparams%5B70%5D%5Bcontenttype%5D=text&amp;searchparams%5B70%5D%5Btypecontent%5D=contains&amp;searchparams%5B70%5D%5Bsearchterm%5D=archaea">advanced search, for example for all Archaea</a>:</p>
+<p><code>Archaea_data &lt;- bd_retrieve_search_results("https://bacdive.dsmz.de/advsearch?advsearch=search&amp;site=advsearch&amp;searchparams%5B70%5D%5Bcontenttype%5D=text&amp;searchparams%5B70%5D%5Btypecontent%5D=contains&amp;searchparams%5B70%5D%5Bsearchterm%5D=archaea")</code></p>
 <p>Please note the messages about estimated download times for such large downloads.</p>
 </div>
 <div id="storing-datasets-offline" class="section level2">
 <h2 class="hasAnchor">
 <a href="#storing-datasets-offline" class="anchor"></a>Storing datasets offline</h2>
 <p>This is not a BacDiveR feature, but <code>base</code> R’s <code><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">saveRDS()</a></code> is particularly useful for offline-storage of lots of search results, because re-downloading them would take rather long. Continuing the Archaea example, the following code writes the dataset to a file, loads it again, and verifies the data integrity:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">saveRDS</a></span>(Archaea_data, <span class="st">"Archaea.rds"</span>, <span class="dt">version =</span> <span class="dv">3</span>)
-Archaea_data_stored &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">readRDS</a></span>(<span class="st">"Archaea.rds"</span>)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/identical">identical</a></span>(Archaea_data, Archaea_data_stored)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">saveRDS</a></span>(Archaea_data, <span class="st">"Archaea.rds"</span>, <span class="dt">version =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2">Archaea_data_stored &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">readRDS</a></span>(<span class="st">"Archaea.rds"</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/identical">identical</a></span>(Archaea_data, Archaea_data_stored)</a></code></pre></div>
 </div>
   </div>
 

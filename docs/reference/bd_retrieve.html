@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Prepare .Renviron File — prepare_Renviron • BacDiveR</title>
+<title>Retrieve (a) Dataset(s) from BacDive — bd_retrieve • BacDiveR</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="Prepare .Renviron File — prepare_Renviron" />
+<meta property="og:title" content="Retrieve (a) Dataset(s) from BacDive — bd_retrieve" />
 
-<meta property="og:description" content="Prepare .Renviron File" />
+<meta property="og:description" content="This function family replaces the old retrieve_data(searchTerm = &quot;…&quot;, searchType = &quot;…&quot;)
+function. It still works, but is deprecated and will be removed soon.
+Please update your scripts to these new functions!" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -126,32 +128,89 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Prepare .Renviron File</h1>
-    <small class="dont-index">Source: <a href='https://github.com/TIBHannover/BacDiveR/blob/master/R/util-prepare_Renviron.R'><code>R/util-prepare_Renviron.R</code></a></small>
-    <div class="hidden name"><code>prepare_Renviron.Rd</code></div>
+    <h1>Retrieve (a) Dataset(s) from BacDive</h1>
+    <small class="dont-index">Source: <a href='https://github.com/TIBHannover/BacDiveR/blob/master/R/bd_retrieve.R'><code>R/bd_retrieve.R</code></a>, <a href='https://github.com/TIBHannover/BacDiveR/blob/master/R/bd_retrieve_by_culture.R'><code>R/bd_retrieve_by_culture.R</code></a>, <a href='https://github.com/TIBHannover/BacDiveR/blob/master/R/bd_retrieve_by_sequence.R'><code>R/bd_retrieve_by_sequence.R</code></a>, and 2 more</small>
+    <div class="hidden name"><code>bd_retrieve.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Prepare .Renviron File</p>
+    <p>This function family replaces the old <code>retrieve_data(searchTerm = "…", searchType = "…")</code>
+function. It still works, but is deprecated and will be removed soon.
+Please update your scripts to these new functions!</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>prepare_Renviron</span>()</pre>
-        
+    <pre class="usage"><span class='fu'>bd_retrieve</span>(<span class='no'>id</span>)
+
+<span class='fu'>bd_retrieve_by_culture</span>(<span class='no'>collection_no</span>)
+
+<span class='fu'>bd_retrieve_by_sequence</span>(<span class='no'>accession</span>)
+
+<span class='fu'>bd_retrieve_taxon</span>(<span class='no'>name</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>id</th>
+      <td><p>Mandatory character string or integer. The BacDive strain ID
+whose data you want to retrieve.</p></td>
+    </tr>
+    <tr>
+      <th>collection_no</th>
+      <td><p>Mandatory character string. A culture collection
+number by which the associated dataset(s) wil be retrieved.</p></td>
+    </tr>
+    <tr>
+      <th>accession</th>
+      <td><p>Mandatory character string. A sequence accession number by
+which the associated dataset(s) wil be retrieved.</p></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><p>Mandatory character string, specifying the taxon. Abbreviations
+like "B. halotolerans" are not allowed!</p></td>
+    </tr>
+    </table>
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Doesn't return any value, but writes (to and if necessary, creates)
-the .Renviron file so users can type in their <code>BacDive_email</code> and
-<code>BacDive_password</code> manually.</p>
+    <p>A (large) list containing either a single BacDive dataset in case
+your parameter / search was unambiguous, or if ambiguous: all matching datasets.
+Read <a href='https://bacdive.dsmz.de/api/bacdive/'>BacDive.DSMZ.de/api/bacdive</a>
+to learn more.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>prepare_Renviron</span>()</div></pre>
+    <pre class="examples"># NOT RUN {
+\donttest{
+dataset_717 <- bd_retrieve(id = 717)
+dataset_717 <- bd_retrieve(id = "717")
+}
+# }
+# NOT RUN {
+\donttest{
+dataset_DSM_319 <- bd_retrieve_by_culture(collection_no = "DSM 319")
+}
+# }
+# NOT RUN {
+\donttest{
+dataset_AJ000733 <- bd_retrieve_by_sequence(accession = "AJ000733")
+}
+# }
+# NOT RUN {
+\donttest{
+datasets_Bh <- bd_retrieve_taxon(name = "Bacillus halotolerans")
+datasets_Bss <- bd_retrieve_taxon(name = "Bacillus subtilis subtilis")
+}
+# }
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
       

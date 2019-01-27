@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">BacDiveR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
       </span>
     </div>
 
@@ -127,9 +127,31 @@
       <small>Source: <a href='https://github.com/TIBHannover/BacDiveR/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="bacdiver-0-7-4" class="section level2">
+    <div id="bacdive-080" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bacdiver-0-7-4" class="anchor"></a>BacDiveR 0.7.4</h2>
+<a href="#bacdive-080" class="anchor"></a>Bacdive 0.8.0</h2>
+<div id="added-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#added-1" class="anchor"></a>Added</h3>
+<ul>
+<li>NEW API: The <code><a href="../reference/bd_retrieve.html">bd_retrieve()</a></code> family of functions will replace <code>retrieve_data()</code> soon. It consists of <code>bd_retrieve(id = …)</code>, <code>bd_retrieve_by_culture(collectionno = …)</code>, <code>bd_retrieve_by_sequence(accession = …)</code> and <code>bd_retrieve_taxon(name = …)</code> which is more auto-complete-friendly and should help avoid the internal need to sanitise inputs.</li>
+</ul>
+</div>
+<div id="deprecated-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#deprecated-1" class="anchor"></a>Deprecated</h3>
+<ul>
+<li>
+<code>retrieve_data()</code> has been replaced as described above.</li>
+<li>
+<code>retrieve_search_results()</code> has been renamed to <code><a href="../reference/bd_retrieve_by_search.html">bd_retrieve_by_search()</a></code>.</li>
+<li>Both old functions will be removed in the next major version. Please update your BacDiveR-using scripts and other downstream code.</li>
+</ul>
+</div>
+</div>
+    <div id="bacdiver-074" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bacdiver-074" class="anchor"></a>BacDiveR 0.7.4</h2>
 <div id="fixed-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#fixed-1" class="anchor"></a>Fixed</h3>
@@ -138,9 +160,9 @@
 </ul>
 </div>
 </div>
-    <div id="bacdiver-0-7-3" class="section level2">
+    <div id="bacdiver-073" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bacdiver-0-7-3" class="anchor"></a>BacDiveR 0.7.3</h2>
+<a href="#bacdiver-073" class="anchor"></a>BacDiveR 0.7.3</h2>
 <div id="changed-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#changed-1" class="anchor"></a>Changed</h3>
@@ -149,21 +171,21 @@
 </ul>
 </div>
 </div>
-    <div id="bacdiver-0-7-2" class="section level2">
+    <div id="bacdiver-072" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bacdiver-0-7-2" class="anchor"></a>BacDiveR 0.7.2</h2>
+<a href="#bacdiver-072" class="anchor"></a>BacDiveR 0.7.2</h2>
 <div id="changed-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#changed-2" class="anchor"></a>Changed</h3>
 <ul>
 <li>
-<code>retrieve_data</code> &amp; <code><a href="../reference/retrieve_search_results.html">retrieve_search_results()</a></code> now validate all inputs (fix <a href='https://github.com/TIBHannover/BacDiveR/issues/71'>#71</a> &amp; <a href='https://github.com/TIBHannover/BacDiveR/issues/78'>#78</a>)</li>
+<code>retrieve_data</code> &amp; <code>retrieve_search_results()</code> now validate all inputs (fix <a href='https://github.com/TIBHannover/BacDiveR/issues/71'>#71</a> &amp; <a href='https://github.com/TIBHannover/BacDiveR/issues/78'>#78</a>)</li>
 </ul>
 </div>
 </div>
-    <div id="bacdiver-0-7-1" class="section level2">
+    <div id="bacdiver-071" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bacdiver-0-7-1" class="anchor"></a>BacDiveR 0.7.1</h2>
+<a href="#bacdiver-071" class="anchor"></a>BacDiveR 0.7.1</h2>
 <div id="changed-3" class="section level3">
 <h3 class="hasAnchor">
 <a href="#changed-3" class="anchor"></a>Changed</h3>
@@ -174,12 +196,12 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
 </ul>
 </div>
 </div>
-    <div id="bacdiver-0-7-0" class="section level2">
+    <div id="bacdiver-070" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bacdiver-0-7-0" class="anchor"></a>BacDiveR 0.7.0</h2>
-<div id="added-1" class="section level3">
+<a href="#bacdiver-070" class="anchor"></a>BacDiveR 0.7.0</h2>
+<div id="added-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#added-1" class="anchor"></a>Added</h3>
+<a href="#added-2" class="anchor"></a>Added</h3>
 <ul>
 <li>A <a href="https://tibhannover.github.io/BacDiveR/articles/Semi-automatic-approach.html#mass-downloading-datasets">vignette section about mass-downloading datasets</a>.</li>
 </ul>
@@ -193,9 +215,9 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
 </ul>
 </div>
 </div>
-    <div id="bacdiver-0-6-1" class="section level2">
+    <div id="bacdiver-061" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bacdiver-0-6-1" class="anchor"></a>BacDiveR 0.6.1</h2>
+<a href="#bacdiver-061" class="anchor"></a>BacDiveR 0.6.1</h2>
 <div id="fixed-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#fixed-2" class="anchor"></a>Fixed</h3>
@@ -204,12 +226,12 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
 </ul>
 </div>
 </div>
-    <div id="bacdiver-0-6-0" class="section level2">
+    <div id="bacdiver-060" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bacdiver-0-6-0" class="anchor"></a>BacDiveR 0.6.0</h2>
-<div id="added-2" class="section level3">
+<a href="#bacdiver-060" class="anchor"></a>BacDiveR 0.6.0</h2>
+<div id="added-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#added-2" class="anchor"></a>Added</h3>
+<a href="#added-3" class="anchor"></a>Added</h3>
 <ul>
 <li>The vignette <a href="https://tibhannover.github.io/BacDiveR/articles/logic-checking-bacdive-datasets.html">Logic-Checking BacDive Datasets</a>
 </li>
@@ -220,13 +242,13 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
 <a href="#changed-5" class="anchor"></a>Changed</h3>
 <ul>
 <li>
-<code><a href="../reference/retrieve_search_results.html">retrieve_search_results()</a></code> now returns <code>NULL</code> when no results are found, in order to ease integration of datasets into <code>testthat</code> tests.</li>
+<code>retrieve_search_results()</code> now returns <code>NULL</code> when no results are found, in order to ease integration of datasets into <code>testthat</code> tests.</li>
 </ul>
 </div>
 </div>
-    <div id="bacdiver-0-5-1" class="section level2">
+    <div id="bacdiver-051" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bacdiver-0-5-1" class="anchor"></a>BacDiveR 0.5.1</h2>
+<a href="#bacdiver-051" class="anchor"></a>BacDiveR 0.5.1</h2>
 <div id="fixed-3" class="section level3">
 <h3 class="hasAnchor">
 <a href="#fixed-3" class="anchor"></a>Fixed</h3>
@@ -235,12 +257,12 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
 </ul>
 </div>
 </div>
-    <div id="bacdiver-0-5-0" class="section level2">
+    <div id="bacdiver-050" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bacdiver-0-5-0" class="anchor"></a>BacDiveR 0.5.0</h2>
-<div id="added-3" class="section level3">
+<a href="#bacdiver-050" class="anchor"></a>BacDiveR 0.5.0</h2>
+<div id="added-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#added-3" class="anchor"></a>Added</h3>
+<a href="#added-4" class="anchor"></a>Added</h3>
 <ul>
 <li>Syncing of release versions to Zenodo, starting with <a href="https://zenodo.org/record/1308061">10.5281/zenodo.1308061</a>
 </li>
@@ -250,13 +272,13 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
 <h3 class="hasAnchor">
 <a href="#changed-6" class="anchor"></a>Changed</h3>
 <ul>
-<li>The JSON downloads are no longer purged of all space characters pre-emptively to prevent jsonlite from complaining about invalid encoding (<a href='https://github.com/TIBHannover/BacDiveR/issues/43'>#43</a>). Instead, only <code>\r</code>, <code>\n</code> and <code>\t</code> are repaired to <code>\\r</code>, <code>\\n</code> and <code>\\t</code>, which jsonlite expects. This leads to different output (newline &amp; tabs, where previously only spaces occured)! Thus, if you are parsing BacDiveR output in any way, you may need to adjust that. Because I consider this unlikely given the “maturing” status, and because no API surface was changed, I don’t consider this a major change in the <a href="https://semver.org/">SemVer.org</a> sense.</li>
+<li>The JSON downloads are no longer purged of all space characters pre-emptively to prevent jsonlite from complaining about invalid encoding (<a href='https://github.com/TIBHannover/BacDiveR/issues/43'>#43</a>). Instead, only <code>\r</code>, <code>\n</code> and <code>\t</code> are repaired to <code>\\r</code>, <code>\\n</code> and <code>\\t</code>, which jsonlite expects. This leads to different output (newline &amp; tabs, where previously only spaces occurred)! Thus, if you are parsing BacDiveR output in any way, you may need to adjust that. Because I consider this unlikely given the “maturing” status, and because no API surface was changed, I don’t consider this a major change in the <a href="https://semver.org/">SemVer.org</a> sense.</li>
 </ul>
 </div>
 </div>
-    <div id="bacdiver-0-4-2" class="section level2">
+    <div id="bacdiver-042" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bacdiver-0-4-2" class="anchor"></a>BacDiveR 0.4.2</h2>
+<a href="#bacdiver-042" class="anchor"></a>BacDiveR 0.4.2</h2>
 <div id="fixed-4" class="section level3">
 <h3 class="hasAnchor">
 <a href="#fixed-4" class="anchor"></a>Fixed</h3>
@@ -265,9 +287,9 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
 </ul>
 </div>
 </div>
-    <div id="bacdiver-0-4-1" class="section level2">
+    <div id="bacdiver-041" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bacdiver-0-4-1" class="anchor"></a>BacDiveR 0.4.1</h2>
+<a href="#bacdiver-041" class="anchor"></a>BacDiveR 0.4.1</h2>
 <div id="changed-7" class="section level3">
 <h3 class="hasAnchor">
 <a href="#changed-7" class="anchor"></a>Changed</h3>
@@ -276,16 +298,16 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
 </ul>
 </div>
 </div>
-    <div id="bacdiver-0-4-0" class="section level2">
+    <div id="bacdiver-040" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bacdiver-0-4-0" class="anchor"></a>BacDiveR 0.4.0</h2>
-<div id="added-4" class="section level3">
+<a href="#bacdiver-040" class="anchor"></a>BacDiveR 0.4.0</h2>
+<div id="added-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#added-4" class="anchor"></a>Added</h3>
+<a href="#added-5" class="anchor"></a>Added</h3>
 <ul>
 <li>This changelog (see <a href='https://github.com/TIBHannover/BacDiveR/issues/41'>#41</a>)</li>
 <li>
-<code><a href="../reference/retrieve_search_results.html">retrieve_search_results()</a></code>, see <a href='https://github.com/TIBHannover/BacDiveR/issues/61'>#61</a></li>
+<code>retrieve_search_results()</code>, see <a href='https://github.com/TIBHannover/BacDiveR/issues/61'>#61</a></li>
 <li>Architecture Decision records, see <a href='https://github.com/TIBHannover/BacDiveR/issues/53'>#53</a> &amp; <code>/docs/arch/adr-*.md</code>
 </li>
 </ul>
@@ -295,14 +317,14 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
 <a href="#changed-8" class="anchor"></a>Changed</h3>
 <ul>
 <li>
-<code><a href="../reference/retrieve_data.html">retrieve_data()</a></code> now downloads the dataset(s) by default, not only the ID(s), see <a href='https://github.com/TIBHannover/BacDiveR/issues/54'>#54</a> &amp; <a href='https://github.com/TIBHannover/BacDiveR/issues/59'>#59</a></li>
+<code>retrieve_data()</code> now downloads the dataset(s) by default, not only the ID(s), see <a href='https://github.com/TIBHannover/BacDiveR/issues/54'>#54</a> &amp; <a href='https://github.com/TIBHannover/BacDiveR/issues/59'>#59</a></li>
 <li>Datasets in the aggregated (large) list are now named according to their <code>bacdive_ID</code>s (see <a href='https://github.com/TIBHannover/BacDiveR/issues/47'>#47</a>). Before, the lists were only numbered with <code>1</code>, <code>2</code>, <code>3</code>, etc.</li>
 </ul>
 </div>
 </div>
-    <div id="bacdiver-0-3-1" class="section level2">
+    <div id="bacdiver-031" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bacdiver-0-3-1" class="anchor"></a>BacDiveR 0.3.1</h2>
+<a href="#bacdiver-031" class="anchor"></a>BacDiveR 0.3.1</h2>
 <div id="fixed-5" class="section level3">
 <h3 class="hasAnchor">
 <a href="#fixed-5" class="anchor"></a>Fixed</h3>
@@ -310,9 +332,9 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
 <li>An error in the download of a single dataset found through its culture collection number (see <a href='https://github.com/TIBHannover/BacDiveR/issues/45'>#45</a>)</li>
 </ul>
 </div>
-<div id="added-5" class="section level3">
+<div id="added-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#added-5" class="anchor"></a>Added</h3>
+<a href="#added-6" class="anchor"></a>Added</h3>
 <ul>
 <li>Usable example / vignette in the README.md file (see <a href='https://github.com/TIBHannover/BacDiveR/issues/16'>#16</a>)</li>
 </ul>
@@ -324,19 +346,20 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#bacdiver-0-7-4">0.7.4</a></li>
-        <li><a href="#bacdiver-0-7-3">0.7.3</a></li>
-        <li><a href="#bacdiver-0-7-2">0.7.2</a></li>
-        <li><a href="#bacdiver-0-7-1">0.7.1</a></li>
-        <li><a href="#bacdiver-0-7-0">0.7.0</a></li>
-        <li><a href="#bacdiver-0-6-1">0.6.1</a></li>
-        <li><a href="#bacdiver-0-6-0">0.6.0</a></li>
-        <li><a href="#bacdiver-0-5-1">0.5.1</a></li>
-        <li><a href="#bacdiver-0-5-0">0.5.0</a></li>
-        <li><a href="#bacdiver-0-4-2">0.4.2</a></li>
-        <li><a href="#bacdiver-0-4-1">0.4.1</a></li>
-        <li><a href="#bacdiver-0-4-0">0.4.0</a></li>
-        <li><a href="#bacdiver-0-3-1">0.3.1</a></li>
+        <li><a href="#bacdive-080">0.8.0</a></li>
+        <li><a href="#bacdiver-074">0.7.4</a></li>
+        <li><a href="#bacdiver-073">0.7.3</a></li>
+        <li><a href="#bacdiver-072">0.7.2</a></li>
+        <li><a href="#bacdiver-071">0.7.1</a></li>
+        <li><a href="#bacdiver-070">0.7.0</a></li>
+        <li><a href="#bacdiver-061">0.6.1</a></li>
+        <li><a href="#bacdiver-060">0.6.0</a></li>
+        <li><a href="#bacdiver-051">0.5.1</a></li>
+        <li><a href="#bacdiver-050">0.5.0</a></li>
+        <li><a href="#bacdiver-042">0.4.2</a></li>
+        <li><a href="#bacdiver-041">0.4.1</a></li>
+        <li><a href="#bacdiver-040">0.4.0</a></li>
+        <li><a href="#bacdiver-031">0.3.1</a></li>
       </ul>
     </div>
   </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve (a) Dataset(s) from BacDive — retrieve_data • BacDiveR</title>
+<title>Retrieve the Results of an Advanced Search — bd_retrieve_by_search • BacDiveR</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="Retrieve (a) Dataset(s) from BacDive — retrieve_data" />
+<meta property="og:title" content="Retrieve the Results of an Advanced Search — bd_retrieve_by_search" />
 
-<meta property="og:description" content="Retrieve (a) Dataset(s) from BacDive" />
+<meta property="og:description" content="BacDive.DSMZ.de/AdvSearch returns a
+list of results, which you can retrieve in bulk via the URL of the results
+page. Please see the vignette &quot;Pre-Configuring Advanced Searches and Retrieving the Results&quot;." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">BacDiveR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
       </span>
     </div>
 
@@ -126,46 +128,45 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve (a) Dataset(s) from BacDive</h1>
-    <small class="dont-index">Source: <a href='https://github.com/TIBHannover/BacDiveR/blob/master/R/retrieve_data.R'><code>R/retrieve_data.R</code></a></small>
-    <div class="hidden name"><code>retrieve_data.Rd</code></div>
+    <h1>Retrieve the Results of an Advanced Search</h1>
+    <small class="dont-index">Source: <a href='https://github.com/TIBHannover/BacDiveR/blob/master/R/retrieve_search_results.R'><code>R/retrieve_search_results.R</code></a></small>
+    <div class="hidden name"><code>bd_retrieve_by_search.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Retrieve (a) Dataset(s) from BacDive</p>
+    <p><a href='https://bacdive.dsmz.de/advsearch'>BacDive.DSMZ.de/AdvSearch</a> returns a
+list of results, which you can retrieve in bulk via the URL of the results
+page. Please see the <a href='https://tibhannover.github.io/BacDiveR/articles/pre-configuring-advanced-searches-and-retrieving-the-results.html#mass-downloading-datasets'>vignette "Pre-Configuring Advanced Searches and Retrieving the Results"</a>.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>retrieve_data</span>(<span class='no'>searchTerm</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"taxon"</span>)</pre>
+    <pre class="usage"><span class='fu'>bd_retrieve_by_search</span>(<span class='no'>queryURL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>searchTerm</th>
-      <td><p>Mandatory character string (in case of <code>searchType = </code>
-<code>sequence</code>, <code>culturecollectionno</code> or <code>taxon</code>) or integer (in case of
-<code>bacdive_id</code>), specifying what shall be searched for.</p></td>
-    </tr>
-    <tr>
-      <th>searchType</th>
-      <td><p>Mandatory character string that specifies which type of
-search will be performed (technically, which Web Service endpoint). Can be <code>taxon</code>
-(default), <code>bacdive_id</code>, <code>sequence</code>, or <code>culturecollectionno</code>.</p></td>
+      <th>queryURL</th>
+      <td><p>Mandatory character string. URL the search results page.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list of lists containing either a single BacDive dataset in case
-the <code>searchTerm</code> was unambiguous (<code>bacdive_id</code>, <code>sequence</code>,
-<code>culturecollectionno</code>), or a large list containing all datasets that match
-an ambiguous <code>searchTerm</code> (most <code>taxon</code>s).</p>
+    <p>A (large) list containing either a single BacDive dataset in case
+your parameter / search was unambiguous, or if ambiguous: all matching datasets.
+Read <a href='https://bacdive.dsmz.de/api/bacdive/'>BacDive.DSMZ.de/api/bacdive</a>
+to learn more.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>dataset_717</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='fl'>717</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"bacdive_id"</span>)</div><div class='output co'>#&gt; <span class='message'>717 </span></div><div class='input'><span class='no'>dataset_DSM_319</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='st'>"DSM 319"</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"culturecollectionno"</span>)</div><div class='output co'>#&gt; <span class='message'>20319 </span></div><div class='output co'>#&gt; <span class='message'>717 </span></div><div class='input'><span class='no'>dataset_AJ000733</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='st'>"AJ000733"</span>, <span class='kw'>searchType</span> <span class='kw'>=</span> <span class='st'>"sequence"</span>)</div><div class='output co'>#&gt; <span class='message'>000733 </span></div><div class='output co'>#&gt; <span class='message'>717 </span></div><div class='input'><span class='no'>datasets_Bh</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_data</span>(<span class='kw'>searchTerm</span> <span class='kw'>=</span> <span class='st'>"Bacillus halotolerans"</span>)</div><div class='output co'>#&gt; <span class='message'> </span></div><div class='output co'>#&gt; <span class='message'>Downloading BacDive IDs 1095 to 1847 (but not necessarily contiguously): </span></div><div class='output co'>#&gt; <span class='message'>1095 </span></div><div class='output co'>#&gt; <span class='message'>1847 </span></div></pre>
+    <pre class="examples"># NOT RUN {
+\donttest{
+plant_pathogens <- bd_retrieve_by_search(queryURL = "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B5%5D%5Bsearchterm%5D=1&searchparams%5B156%5D%5Bsearchterm%5D=&searchparams%5B158%5D%5Bsearchterm%5D=1")
+}
+# }
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

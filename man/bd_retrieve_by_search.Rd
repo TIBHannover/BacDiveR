@@ -2,16 +2,23 @@
 % Please edit documentation in R/retrieve_search_results.R
 \name{bd_retrieve_by_search}
 \alias{bd_retrieve_by_search}
-\title{Retrieve Results of an Advanced Search/Query}
+\title{Retrieve the Results of an Advanced Search}
 \usage{
 bd_retrieve_by_search(queryURL)
 }
 \arguments{
-\item{queryURL}{URL of a query prepared on \href{https://bacdive.dsmz.de/advsearch}{BacDive.DSMZ.de/AdvSearch},
-as explained in the vignette "Pre-Configuring Advanced Searches and Retrieving the Results".}
+\item{queryURL}{Mandatory character string. URL the search results page.}
+}
+\value{
+A (large) list containing either a single BacDive dataset in case
+your parameter / search was unambiguous, or if ambiguous: all matching datasets.
+Read \href{https://bacdive.dsmz.de/api/bacdive/}{BacDive.DSMZ.de/api/bacdive}
+to learn more.
 }
 \description{
-Retrieve Results of an Advanced Search/Query
+\href{https://bacdive.dsmz.de/advsearch}{BacDive.DSMZ.de/AdvSearch} returns a
+list of results, which you can retrieve in bulk via the URL of the results
+page. Please see the \href{https://tibhannover.github.io/BacDiveR/articles/pre-configuring-advanced-searches-and-retrieving-the-results.html#mass-downloading-datasets}{vignette "Pre-Configuring Advanced Searches and Retrieving the Results"}.
 }
 \examples{
 \dontrun{

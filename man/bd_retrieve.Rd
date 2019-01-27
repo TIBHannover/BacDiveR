@@ -17,25 +17,28 @@ bd_retrieve_by_sequence(accession)
 bd_retrieve_taxon(name)
 }
 \arguments{
-\item{id}{Mandatory character string or numeric of the BacDive strain ID
+\item{id}{Mandatory character string or integer. The BacDive strain ID
 whose data you want to retrieve.}
 
-\item{collection_no}{Mandatory character string of the culture collection
-number.}
+\item{collection_no}{Mandatory character string. A culture collection
+number by which the associated dataset(s) wil be retrieved.}
 
-\item{accession}{Mandatory character string of a sequence accession number.}
+\item{accession}{Mandatory character string. A sequence accession number by
+which the associated dataset(s) wil be retrieved.}
 
 \item{name}{Mandatory character string, specifying the taxon. Abbreviations
 like "B. halotolerans" are not allowed!}
 }
 \value{
 A (large) list containing either a single BacDive dataset in case
-the search term was unambiguous, or if ambiguous: all matching datasets.
+your parameter / search was unambiguous, or if ambiguous: all matching datasets.
 Read \href{https://bacdive.dsmz.de/api/bacdive/}{BacDive.DSMZ.de/api/bacdive}
 to learn more.
 }
 \description{
-Retrieve (a) Dataset(s) from BacDive
+This function family replaces the old \code{retrieve_data(searchTerm = "…", searchType = "…")}
+function. It still works, but is deprecated and will be removed soon.
+Please update your scripts to these new functions!
 }
 \examples{
 \dontrun{
