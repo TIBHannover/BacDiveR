@@ -14,14 +14,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Bacdive 0.8.0
 
-### Changed
+### Added
 
-- `retrieve_search_results()` will be renamed to `bd_retrieve_by_search()`.
+- NEW API: The `bd_retrieve()` family of functions will replace `retrieve_data()`
+  soon. It consists of `bd_retrieve(id = …)`, `bd_retrieve_by_culture(collectionno = …)`,
+  `bd_retrieve_by_sequence(accession = …)` and `bd_retrieve_by_taxon(name = …)`
+  which is more auto-complete-friendly and should help avoid the internal need
+  to sanitise inputs.
 
 ### Deprecated
 
-- `retrieve_data()` will be turned into an internal function, see above.
-- `retrieve_search_results()`, see above.
+- `retrieve_data()` has been replaced as described above.
+- `retrieve_search_results()` has been renamed to `bd_retrieve_by_search()`.
+- Both old functions will be removed in the next major version. Please update
+  your BacDiveR-using scripts and other downstream code.
 
 
 ## BacDiveR 0.7.4

@@ -6,15 +6,6 @@
 \usage{
 construct_url(searchTerm, searchType = "bacdive_id")
 }
-\arguments{
-\item{searchTerm}{Mandatory character string (in case of \code{searchType = }
-\code{sequence}, \code{culturecollectionno} or \code{taxon}) or integer (in case of
-\code{bacdive_id}), specifying what shall be searched for.}
-
-\item{searchType}{Mandatory character string that specifies which type of
-search will be performed (technically, which Web Service endpoint). Can be \code{taxon}
-(default), \code{bacdive_id}, \code{sequence}, or \code{culturecollectionno}.}
-}
 \description{
 Construct URLs of Web Service searches
 }

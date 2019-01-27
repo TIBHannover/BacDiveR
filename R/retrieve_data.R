@@ -1,32 +1,4 @@
-#' Retrieve (a) Dataset(s) from BacDive
-#'
-#' @param searchTerm Mandatory character string (in case of `searchType = `
-#'   `sequence`, `culturecollectionno` or `taxon`) or integer (in case of
-#'   `bacdive_id`), specifying what shall be searched for.
-#'
-#' @param searchType Mandatory character string that specifies which type of
-#'   search will be performed (technically, which Web Service endpoint). Can be `taxon`
-#'   (default), `bacdive_id`, `sequence`, or `culturecollectionno`.
-#'
-#' @return A list of lists containing either a single BacDive dataset in case
-#'   the `searchTerm` was unambiguous (`bacdive_id`, `sequence`,
-#'   `culturecollectionno`), or a large list containing all datasets that match
-#'   an ambiguous `searchTerm` (most `taxon`s).
-#'
 #' @export
-#' @examples
-#' \donttest{
-#' dataset_717 <- retrieve_data(searchTerm = 717, searchType = "bacdive_id")
-#' }
-#' \donttest{
-#' dataset_DSM_319 <- retrieve_data(searchTerm = "DSM 319", searchType = "culturecollectionno")
-#' }
-#' \donttest{
-#' dataset_AJ000733 <- retrieve_data(searchTerm = "AJ000733", searchType = "sequence")
-#' }
-#' \donttest{
-#' datasets_Bh <- retrieve_data(searchTerm = "Bacillus halotolerans")
-#' }
 retrieve_data <- function(searchTerm,
                           searchType = "taxon") {
   .Deprecated(
@@ -45,11 +17,6 @@ retrieve_data <- function(searchTerm,
   bd_retrieve_data(searchTerm, searchType)
 }
 
-#' Retrieve (a) Dataset(s) from BacDive
-#'
-#' @inheritParams retrieve_data
-#'
-#' @inherit return retrieve_data
 #' @export
 bd_retrieve_data <- function(searchTerm, searchType = "taxon") {
 

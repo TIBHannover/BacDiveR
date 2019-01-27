@@ -10,7 +10,6 @@
 #' \donttest{
 #' plant_pathogens <- bd_retrieve_by_search(queryURL = "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B5%5D%5Bsearchterm%5D=1&searchparams%5B156%5D%5Bsearchterm%5D=&searchparams%5B158%5D%5Bsearchterm%5D=1")
 #' }
-#'
 bd_retrieve_by_search <- function(queryURL) {
 
   # guard against other URLs
@@ -42,4 +41,10 @@ bd_retrieve_by_search <- function(queryURL) {
     warning("No datasets found. Please check your advanced search and copy-paste the URL again.")
     list()
   } # needed for logic-checking datasets, see vignette
+}
+
+#' @export
+retrieve_search_results <- function(queryURL) {
+  .Deprecated("bd_retrieve_by_search")
+  bd_retrieve_by_search(queryURL)
 }
