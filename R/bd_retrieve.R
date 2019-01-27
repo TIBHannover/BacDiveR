@@ -14,10 +14,11 @@
 #'
 #' @export
 #' @examples
+#' \dontrun{
 #' \donttest{
 #' dataset_717 <- bd_retrieve(id = 717)
 #' dataset_717 <- bd_retrieve(id = "717")
-#' }
+#' }}
 #' @rdname bd_retrieve
 bd_retrieve <- function(id) {
   bd_retrieve_data(searchTerm = as.character(id), searchType = "bacdive_id")

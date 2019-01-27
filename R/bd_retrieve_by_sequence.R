@@ -3,9 +3,10 @@
 #'   which the associated dataset(s) wil be retrieved.
 #' @export
 #' @examples
+#' \dontrun{
 #' \donttest{
 #' dataset_AJ000733 <- bd_retrieve_by_sequence(accession = "AJ000733")
-#' }
+#' }}
 bd_retrieve_by_sequence <- function(accession) {
   bd_retrieve_data(searchTerm = accession, searchType = "sequence")
 }
