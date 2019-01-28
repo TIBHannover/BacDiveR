@@ -41,14 +41,14 @@ right of the "hits" list.
 1. Paste the copied URL into a call to the `data <- retrieve_search_results("…")` function.
 
 1. Enjoy the list of downloaded datasets, just as you would after using
-`data <- retrieve_data(searchTerm = ..., searchType = ...)`.
+`data <- bd_retrieve_data(searchTerm = ..., searchType = ...)`.
 
 [dive-in]: https://tibhannover.github.io/BacDiveR/articles/BacDive-ing-in.html
 
 
 ## Mass-downloading datasets
 
-`retrieve_data(searchTerm = …, searchType = "taxon")` can be used to download all
+`bd_retrieve_data(searchTerm = …, searchType = "taxon")` can be used to download all
 datasets for the genus or a specific species given in `…`. Broader searches are
 possible through the [advanced search, for example for all Archaea][archaea]:
 

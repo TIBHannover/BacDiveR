@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - NEW API: The `bd_retrieve()` family of functions will replace `retrieve_data()`
   soon. It consists of `bd_retrieve(id = …)`, `bd_retrieve_by_culture(collectionno = …)`,
-  `bd_retrieve_by_sequence(accession = …)` and `bd_retrieve_by_taxon(name = …)`
+  `bd_retrieve_by_sequence(accession = …)` and `bd_retrieve_taxon(name = …)`
   which is more auto-complete-friendly and should help avoid the internal need
   to sanitise inputs.
 

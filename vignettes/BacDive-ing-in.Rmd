@@ -31,18 +31,18 @@ returns a paginated list of strains that you can then access, download and analy
 ```{r taxon_Bac}
 library(BacDiveR)
 taxon_1 <- "Bacillus halodurans"
-Bac_data <- retrieve_data(searchTerm = taxon_1) 
+Bac_data <- bd_retrieve_taxon(name = taxon_1) 
 ```
 
 Suppose we want to compare the optimal growth temperatures of strains from the taxon
-*`r taxon_1`* with another one. `retrieve_data()` 
-with its default `searchType = taxon` will get you all taxon data in a single (albeit
+*`r taxon_1`* with another one. `bd_retrieve_taxon()` 
+will get you all taxon data in a single (albeit
 large) list of dataframes. Feel free to take a break while the computers
 do some work for you:
 
 ```{r taxon_At}
 taxon_2 <- "Aneurinibacillus thermoaerophilus"
-At_data <- retrieve_data(taxon_2)
+At_data <- bd_retrieve_taxon(name = taxon_2)
 ```
 
 

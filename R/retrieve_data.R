@@ -6,7 +6,7 @@ retrieve_data <- function(searchTerm,
       "bd_retrieve_by_culture",
       "bd_retrieve_by_sequence",
       "bd_retrieve",
-      "bd_retrieve_by_taxon"
+      "bd_retrieve_taxon"
     )
   )
 

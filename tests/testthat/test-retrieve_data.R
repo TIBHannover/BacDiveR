@@ -48,7 +48,7 @@ test_that(
 
 # test set with 2 strains
 Bac_hal <- "Bacillus halotolerans"
-Bac_hal_data <- bd_retrieve_by_taxon(name = Bac_hal)
+Bac_hal_data <- bd_retrieve_taxon(name = Bac_hal)
 
 test_that("extracting a single field from a taxon-wide search works", {
   expect_equal(
