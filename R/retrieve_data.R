@@ -33,7 +33,10 @@ bd_retrieve_data <- function(searchTerm, searchType = "taxon") {
     return(payload)
   }
   else if (is_ID_refererence(payload)) {
-    retrieve_data(searchTerm = URLs_to_IDs(payload$url), searchType = "bacdive_id")
+    bd_retrieve_data(
+      searchTerm = URLs_to_IDs(payload$url),
+      searchType = "bacdive_id"
+    )
   }
   else if (is_results_list(payload)) {
     aggregate_datasets(payload)
@@ -99,7 +102,11 @@ sanitise_term <- function(searchTerm) {
 
 sanitise_type <- function(searchType) {
   if (!(searchType %in% c("bacdive_id", "culturecollectionno", "sequence", "taxon"))) {
-    stop("'", searchType, "' isn't a valid search against https://BacDive.DSMZ.de/api/bacdive/! Aborting... Please read https://TIBHannover.GitHub.io/BacDiveR/#how-to-use")
+    stop(
+      "'",
+      searchType,
+      "' isn't a valid search against https://BacDive.DSMZ.de/api/bacdive/! Aborting... Please read https://TIBHannover.GitHub.io/BacDiveR/#how-to-use"
+    )
   }
   else {
     searchType

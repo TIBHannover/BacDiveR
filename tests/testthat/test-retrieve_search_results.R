@@ -27,6 +27,5 @@ test_that("Inconsistent datasets get corrected", {
 test_that("Fuzzing of queryURL parameter produces error", {
   fuzzy_URL <-
     paste0(sample(strsplit(queryURL, "")[[1]], size = nchar(queryURL)), collapse = "")
-  expect_error(bd_retrieve_by_search(fuzzy_URL)
-  )
+  expect_error(bd_retrieve_by_search(fuzzy_URL))
 })

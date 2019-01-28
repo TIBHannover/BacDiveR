@@ -42,8 +42,8 @@ test_that(
       bd_retrieve_by_sequence(accession = "AJ000733"),
       bd_retrieve(id = 717)
     )
-  )
-})
+  }
+)
 
 
 # test set with 2 strains

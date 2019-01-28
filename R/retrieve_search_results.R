@@ -11,7 +11,6 @@
 #' plant_pathogens <- bd_retrieve_by_search(queryURL = "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B5%5D%5Bsearchterm%5D=1&searchparams%5B156%5D%5Bsearchterm%5D=&searchparams%5B158%5D%5Bsearchterm%5D=1")
 #' }
 bd_retrieve_by_search <- function(queryURL) {
-
   # guard against other URLs
   if (!grepl(pattern = "^https:\\/\\/bacdive\\.dsmz\\.de\\/advsearch", queryURL) |
       !grepl("[?&]site=advsearch", queryURL) |
@@ -29,14 +28,14 @@ bd_retrieve_by_search <- function(queryURL) {
   }
 
   cred <- get_credentials()
-  response <- httr::GET(queryURL, httr::authenticate(cred[1], cred[2]))
-  payload <- httr::content(response, as = "text", encoding = "UTF-8")
+  response <-
+    httr::GET(queryURL, httr::authenticate(cred[1], cred[2]))
+  payload <-
+    httr::content(response, as = "text", encoding = "UTF-8")
 
   if (grepl("^[[:digit:]]", payload)) {
-    aggregate_datasets(
-      payload = strsplit(x = payload, split = "\\n")[[1]],
-      from_IDs = TRUE
-    )
+    aggregate_datasets(payload = strsplit(x = payload, split = "\\n")[[1]],
+                       from_IDs = TRUE)
   } else if (grepl("^<!DOCTYPE", payload)) {
     warning("No datasets found. Please check your advanced search and copy-paste the URL again.")
     list()
