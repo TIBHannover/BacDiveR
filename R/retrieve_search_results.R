@@ -8,10 +8,10 @@
 #'
 #' @examples
 #' \donttest{
-#' plant_pathogens <- retrieve_search_results(queryURL = "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B5%5D%5Bsearchterm%5D=1&searchparams%5B156%5D%5Bsearchterm%5D=&searchparams%5B158%5D%5Bsearchterm%5D=1")
+#' plant_pathogens <- bd_retrieve_by_search(queryURL = "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B5%5D%5Bsearchterm%5D=1&searchparams%5B156%5D%5Bsearchterm%5D=&searchparams%5B158%5D%5Bsearchterm%5D=1")
 #' }
 #'
-retrieve_search_results <- function(queryURL) {
+bd_retrieve_by_search <- function(queryURL) {
 
   # guard against other URLs
   if (!grepl(pattern = "^https:\\/\\/bacdive\\.dsmz\\.de\\/advsearch", queryURL) |
@@ -19,7 +19,7 @@ retrieve_search_results <- function(queryURL) {
       !grepl("[?&]advsearch=search", queryURL) |
       !grepl("\\&searchparams", queryURL)) {
     stop(
-      "This isn't an advanced search URL from https://BacDive.DSMZ.de/advsearch! Aborting...\nPlease read https://TIBHannover.GitHub.io/BacDiveR/#how-to-use"
+      "I'm sorry, but this doesn't seem like an advanced search URL from https://BacDive.DSMZ.de/advsearch! Aborting...\nPlease read https://TIBHannover.GitHub.io/BacDiveR/#how-to-use"
     )
   }
 
@@ -39,6 +39,7 @@ retrieve_search_results <- function(queryURL) {
       from_IDs = TRUE
     )
   } else if (grepl("^<!DOCTYPE", payload)) {
+    warning("No datasets found. Please check your advanced search and copy-paste the URL again.")
     list()
   } # needed for logic-checking datasets, see vignette
 }

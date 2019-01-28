@@ -12,6 +12,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 
 
+## Bacdive 0.8.0
+
+### Changed
+
+- `retrieve_search_results()` will be renamed to `bd_retrieve_by_search()`.
+
+### Deprecated
+
+- `retrieve_search_results()`, see above.
+
+
 ## BacDiveR 0.7.4
 
 ### Fixed
@@ -96,7 +107,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   to prevent jsonlite from complaining about invalid encoding (#43). Instead, 
   only `\r`, `\n` and `\t` are repaired to `\\r`, `\\n` and `\\t`, which jsonlite
   expects. This leads to different output (newline & tabs, where previously only
-  spaces occured)! Thus, if you are parsing BacDiveR output in any way, you may
+  spaces occurred)! Thus, if you are parsing BacDiveR output in any way, you may
   need to adjust that. Because I consider this unlikely given the "maturing" status,
   and because no API surface was changed, I don't consider this a major change
   in the [SemVer.org](https://semver.org/) sense.
