@@ -183,29 +183,7 @@ to learn more.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"># NOT RUN {
-\donttest{
-dataset_717 <- bd_retrieve(id = 717)
-dataset_717 <- bd_retrieve(id = "717")
-}
-# }
-# NOT RUN {
-\donttest{
-dataset_DSM_319 <- bd_retrieve_by_culture(collection_no = "DSM 319")
-}
-# }
-# NOT RUN {
-\donttest{
-dataset_AJ000733 <- bd_retrieve_by_sequence(accession = "AJ000733")
-}
-# }
-# NOT RUN {
-\donttest{
-datasets_Bh <- bd_retrieve_taxon(name = "Bacillus halotolerans")
-datasets_Bss <- bd_retrieve_taxon(name = "Bacillus subtilis subtilis")
-}
-# }
-</pre>
+    <pre class="examples"><div class='input'>  <span class='no'>dataset_717</span> <span class='kw'>&lt;-</span> <span class='fu'>bd_retrieve</span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>717</span>)</div><div class='output co'>#&gt; <span class='message'>717 </span></div><div class='input'>  <span class='no'>dataset_717</span> <span class='kw'>&lt;-</span> <span class='fu'>bd_retrieve</span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"717"</span>)</div><div class='output co'>#&gt; <span class='message'>717 </span></div><div class='input'>  <span class='no'>dataset_DSM_319</span> <span class='kw'>&lt;-</span> <span class='fu'>bd_retrieve_by_culture</span>(<span class='kw'>collection_no</span> <span class='kw'>=</span> <span class='st'>"DSM 319"</span>)</div><div class='output co'>#&gt; <span class='message'>20319 </span></div><div class='output co'>#&gt; <span class='message'>717 </span></div><div class='input'>  <span class='no'>dataset_AJ000733</span> <span class='kw'>&lt;-</span> <span class='fu'>bd_retrieve_by_sequence</span>(<span class='kw'>accession</span> <span class='kw'>=</span> <span class='st'>"AJ000733"</span>)</div><div class='output co'>#&gt; <span class='message'>000733 </span></div><div class='output co'>#&gt; <span class='message'>717 </span></div><div class='input'>  <span class='no'>datasets_Bh</span> <span class='kw'>&lt;-</span> <span class='fu'>bd_retrieve_taxon</span>(<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Bacillus halotolerans"</span>)</div><div class='output co'>#&gt; <span class='message'> </span></div><div class='output co'>#&gt; <span class='message'>Downloading BacDive IDs 1095 to 1847 (but not necessarily contiguously): </span></div><div class='output co'>#&gt; <span class='message'>1095 </span></div><div class='output co'>#&gt; <span class='message'>1847 </span></div><div class='input'>  <span class='no'>datasets_Thh</span> <span class='kw'>&lt;-</span> <span class='fu'>bd_retrieve_taxon</span>(<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Tetragenococcus halophilus halophilus"</span>)</div><div class='output co'>#&gt; <span class='message'> </span></div><div class='output co'>#&gt; <span class='message'>Downloading BacDive IDs 5253 to 5255 (but not necessarily contiguously): </span></div><div class='output co'>#&gt; <span class='message'>5253 </span></div><div class='output co'>#&gt; <span class='message'>5254 </span></div><div class='output co'>#&gt; <span class='message'>5255 </span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

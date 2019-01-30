@@ -21,8 +21,5 @@ list of results, which you can retrieve in bulk via the URL of the results
 page. Please see the \href{https://tibhannover.github.io/BacDiveR/articles/pre-configuring-advanced-searches-and-retrieving-the-results.html#mass-downloading-datasets}{vignette "Pre-Configuring Advanced Searches and Retrieving the Results"}.
 }
 \examples{
-\dontrun{
-\donttest{
-plant_pathogens <- bd_retrieve_by_search(queryURL = "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams\%5B5\%5D\%5Bsearchterm\%5D=1&searchparams\%5B156\%5D\%5Bsearchterm\%5D=&searchparams\%5B158\%5D\%5Bsearchterm\%5D=1")
-}}
+  plant_animal_pathogens <- bd_retrieve_by_search(queryURL = "https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams\%5B5\%5D\%5Bsearchterm\%5D=1&searchparams\%5B157\%5D\%5Bsearchterm\%5D=1&searchparams\%5B158\%5D\%5Bsearchterm\%5D=1&advsearch=search")
 }
