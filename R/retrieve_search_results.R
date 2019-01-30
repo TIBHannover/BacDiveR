@@ -1,9 +1,20 @@
-#' Retrieve Results of an Advanced Search/Query
+#' @export
+retrieve_search_results <- function(queryURL) {
+  .Deprecated("bd_retrieve_by_search")
+  bd_retrieve_by_search(queryURL)
+}
+
+#' Retrieve the Results of an Advanced Search
 #'
-#' @param queryURL URL of a query prepared on [BacDive.DSMZ.de/AdvSearch](https://bacdive.dsmz.de/advsearch),
-#'   as explained in the vignette "Pre-Configuring Advanced Searches and Retrieving the Results".
+#' [BacDive.DSMZ.de/AdvSearch](https://bacdive.dsmz.de/advsearch) returns a
+#' list of results, which you can retrieve in bulk via the URL of the results
+#' page. Please see the [vignette "Pre-Configuring Advanced Searches and
+#' Retrieving the Results"](https://tibhannover.github.io/BacDiveR/articles/pre-configuring-advanced-searches-and-retrieving-the-results.html#mass-downloading-datasets).
 #'
-#' @inherit bd_retrieve_data return
+#'
+#' @param queryURL Mandatory character string. URL the search results page.
+#'
+#' @inherit bd_retrieve return
 #' @export
 #'
 #' @examples
@@ -40,10 +51,4 @@ bd_retrieve_by_search <- function(queryURL) {
     warning("No datasets found. Please check your advanced search and copy-paste the URL again.")
     list()
   } # needed for logic-checking datasets, see vignette
-}
-
-#' @export
-retrieve_search_results <- function(queryURL) {
-  .Deprecated("bd_retrieve_by_search")
-  bd_retrieve_by_search(queryURL)
 }

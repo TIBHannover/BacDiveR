@@ -1,10 +1,14 @@
 #' Retrieve (a) Dataset(s) from BacDive
 #'
-#' @param id Mandatory character string or numeric of the BacDive strain ID
+#' This function family replaces the old `retrieve_data(searchTerm = "…", searchType = "…")`
+#' function. It still works, but is deprecated and will be removed soon.
+#' Please update your scripts to these new functions!
+#'
+#' @param id Mandatory character string or integer. The BacDive strain ID
 #'   whose data you want to retrieve.
 #'
 #' @return A (large) list containing either a single BacDive dataset in case
-#'   the search term was unambiguous, or if ambiguous: all matching datasets.
+#'   your parameter / search was unambiguous, or if ambiguous: all matching datasets.
 #'   Read [BacDive.DSMZ.de/api/bacdive](https://bacdive.dsmz.de/api/bacdive/)
 #'   to learn more.
 #'

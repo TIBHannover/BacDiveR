@@ -27,7 +27,7 @@ aggregate_datasets <- function(payload, from_IDs = FALSE) {
 #' Aggregate BacDive-URLs from a Paged List of Retrieved URLs
 #'
 #' @param results A list of paginated URLs returned by an ambiguous
-#'   `searchTerm` in `retrieve_data()`.
+#'   `bd_retrieve_…()` call.
 #'
 #' @return An integer vector of all BacDive URLs within the results.
 #' @keywords internal

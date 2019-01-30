@@ -29,10 +29,9 @@ warn_slow_download <- function(N_datasets) {
       )
     )
     # numbers based on a measurement of:
-    #   retrieve_data(searchTerm = "Bacillus subtilis subtilis",
-    #                 searchType = "taxon")
-    #   retrieve_data(searchTerm = "Pseudomonas")
-    #   retrieve_search_results("https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B70%5D%5Bcontenttype%5D=text&searchparams%5B70%5D%5Btypecontent%5D=contains&searchparams%5B70%5D%5Bsearchterm%5D=archaea")
+    #   bd_retrieve_taxon("Bacillus subtilis subtilis")
+    #   bd_retrieve_taxon("Pseudomonas")
+    #   bd_retrieve_by_search("https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B70%5D%5Bcontenttype%5D=text&searchparams%5B70%5D%5Btypecontent%5D=contains&searchparams%5B70%5D%5Bsearchterm%5D=archaea")
     #   retrieve_search_results("https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B70%5D%5Bcontenttype%5D=text&searchparams%5B70%5D%5Btypecontent%5D=contains&searchparams%5B70%5D%5Bsearchterm%5D=bacteria")
     # resulting in: 31.83312, 260.64956, 171.851 and 25353.37 s respectively, indicating a download
     # rate of about 2 to 4 datasets per second.
