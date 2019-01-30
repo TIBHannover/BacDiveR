@@ -1,6 +1,6 @@
 #' @rdname bd_retrieve
 #' @param collection_no Mandatory character string. A culture collection
-#'   number by which the associated dataset(s) wil be retrieved.
+#'   number by which the associated dataset(s) will be retrieved.
 #' @export
 #' @examples
 #' \dontrun{

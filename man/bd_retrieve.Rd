@@ -21,10 +21,10 @@ bd_retrieve_taxon(name)
 whose data you want to retrieve.}
 
 \item{collection_no}{Mandatory character string. A culture collection
-number by which the associated dataset(s) wil be retrieved.}
+number by which the associated dataset(s) will be retrieved.}
 
 \item{accession}{Mandatory character string. A sequence accession number by
-which the associated dataset(s) wil be retrieved.}
+which the associated dataset(s) will be retrieved.}
 
 \item{name}{Mandatory character string, specifying the taxon. Abbreviations
 like "B. halotolerans" are not allowed!}

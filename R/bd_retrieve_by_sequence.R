@@ -1,6 +1,6 @@
 #' @rdname bd_retrieve
 #' @param accession Mandatory character string. A sequence accession number by
-#'   which the associated dataset(s) wil be retrieved.
+#'   which the associated dataset(s) will be retrieved.
 #' @export
 #' @examples
 #' \dontrun{
