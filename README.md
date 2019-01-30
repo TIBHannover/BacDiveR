@@ -53,7 +53,7 @@ the vignettes ["BacDive-ing in"][dive-in] and ["Pre-Configuring Advanced Searche
 [r_d]: https://tibhannover.github.io/BacDiveR/reference/retrieve_data.html
 [r_s_r]: https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html
 [dive-in]: https://tibhannover.github.io/BacDiveR/articles/BacDive-ing-in.html
-[adv-search]: https://tibhannover.github.io/BacDiveR/articles/advanced-search.html
+[adv-search]: https://tibhannover.github.io/BacDiveR/articles/pre-configuring-advanced-searches-and-retrieving-the-results.html
 
 
 ## How to cite
@@ -74,9 +74,9 @@ Don't forget to also [cite BacDive itself](https://bacdive.dsmz.de/about) whenev
 you used their data, regardless of access method.
 
 
-## How to contribute: See [`CONTRIBUTING.md` file](https://github.com/TIBHannover/BacDiveR/blob/master/.github/CONTRIBUTING.md)
+## How to contribute: See [`CONTRIBUTING.md` file](https://github.com/TIBHannover/BacDiveR/blob/master/.github/CONTRIBUTING.md).
 
-## Known issues: see [bugs] and [ADR]s
+## Known issues: See [bugs] and [ADR]s.
 
 [ADR]: https://github.com/TIBHannover/BacDiveR/tree/master/vignettes
 [bugs]: https://github.com/tibhannover/BacDiveR/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Aupdated-desc

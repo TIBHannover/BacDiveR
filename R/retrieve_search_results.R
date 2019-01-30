@@ -33,8 +33,9 @@ bd_retrieve_by_search <- function(queryURL) {
     )
   }
 
-  # ensure that file with result IDs gets downloaded
   DL_param <- "&csv_bacdive_ids_advsearch=download"
+
+  # ensure that file with result IDs gets downloaded
   if (!grepl(pattern = paste0(DL_param, "$"), x = queryURL)) {
     queryURL <- paste0(queryURL, DL_param)
   }
