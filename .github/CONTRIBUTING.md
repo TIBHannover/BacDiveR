@@ -40,7 +40,7 @@ though. What you want to write might have been already ;-)
 Contributions through pull requests are welcome, and will be replied to within 1 
 or 2 (non-holi)days. Please:
 
-*  Create a separate Git branch for each PR, preferably off the [`development`][dev]
+*  Create a separate Git branch for each PR, preferably off the [`master`][master]
    branch and with an issue number prepended to your [branch's name][bn].
 *  Style all added or modified code with `styler::style_pkg()`. Using RStudio's
    built-in `Shift`+`Ctrl/Cmd`+`A` is also fine ("Code Tools" menu > "Reformat Code").
@@ -52,4 +52,4 @@ or 2 (non-holi)days. Please:
    with test cases included are easier to accept.  
 
 [bn]: https://github.com/tibhannover/BacDiveR/branches
-[dev]: https://github.com/TIBHannover/BacDiveR/tree/development
+[master]: https://github.com/TIBHannover/BacDiveR/tree/master
