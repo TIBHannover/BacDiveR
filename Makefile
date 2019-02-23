@@ -15,7 +15,6 @@ install:
 site: install docu
 	Rscript -e "pkgdown::clean_site()"
 	Rscript -e "pkgdown::build_site(document = FALSE)"
-	htmlproofer --allow_hash_href --http_status_ignore=403 docs/
 	git update-index --assume-unchanged \
 		docs/articles/BacDive-ing-in_files/figure-html/ggplot-1.png \
 		docs/arch/adrs-are-vignettes.md
