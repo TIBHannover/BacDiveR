@@ -45,6 +45,6 @@ prepare_Renviron <- function() {
       " prepared. If you don't see it open now, please run: `file.edit(file.path(Sys.getenv('HOME'), '.Renviron'))` and ",
       message
     )
-    file.edit(r_env_file)
+    utils::file.edit(r_env_file)
   }
 }
