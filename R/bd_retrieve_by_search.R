@@ -1,9 +1,3 @@
-#' @export
-retrieve_search_results <- function(queryURL) {
-  .Deprecated("bd_retrieve_by_search")
-  bd_retrieve_by_search(queryURL)
-}
-
 #' Retrieve the Results of an Advanced Search
 #'
 #' [BacDive.DSMZ.de/AdvSearch](https://bacdive.dsmz.de/advsearch) returns a

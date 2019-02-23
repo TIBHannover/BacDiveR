@@ -36,9 +36,7 @@ Read \href{https://bacdive.dsmz.de/api/bacdive/}{BacDive.DSMZ.de/api/bacdive}
 to learn more.
 }
 \description{
-This function family replaces the old \code{retrieve_data(searchTerm = "…", searchType = "…")}
-function. It still works, but is deprecated and will be removed soon.
-Please update your scripts to these new functions!
+Retrieve (a) Dataset(s) from BacDive
 }
 \examples{
   dataset_717 <- bd_retrieve(id = 717)

@@ -69,7 +69,7 @@ test_that("Normalising invalid JSON whitespace works,
   # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1847/?format=json
   # contains "medium_composition": "Name: ISP 2 / Yeast Malt Agar (5265); 5265\r\nComposition
 
-  expect_type(bd_retrieve_data("Roseomonas aerilata"),
+  expect_type(bd_retrieve_taxon("Roseomonas aerilata"),
     type = "list"
   )
   # https://bacdive.dsmz.de/api/bacdive/bacdive_id/76/?format=json
@@ -79,9 +79,8 @@ test_that("Normalising invalid JSON whitespace works,
 })
 
 test_that("Trying to download a non-existent dataset yields warnings & empty list", {
-  expect_warning(non_existant <-
-    bd_retrieve_data(searchTerm = 999999999, searchType = "bacdive_id"))
-  expect_warning(blablub <- bd_retrieve_data(searchTerm = "bla blub"))
+  expect_warning(non_existant <- bd_retrieve(id = 999999999))
+  expect_warning(blablub <- bd_retrieve_taxon(name = "bla blub"))
   expect_equal(blablub, non_existant, list())
 })
 

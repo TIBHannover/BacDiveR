@@ -1,9 +1,5 @@
 #' Retrieve (a) Dataset(s) from BacDive
 #'
-#' This function family replaces the old `retrieve_data(searchTerm = "…", searchType = "…")`
-#' function. It still works, but is deprecated and will be removed soon.
-#' Please update your scripts to these new functions!
-#'
 #' @param id Mandatory character string or integer. The BacDive strain ID
 #'   whose data you want to retrieve.
 #'
