@@ -61,7 +61,7 @@ Best execute `citation('BacDiveR')` in the R console and use its output because 
 ensures you are citing exactly the installed version.
 
 You can also use the `Cite as`
-or `Export` options presented on [Zenodo.org/record/1308060][zenodo]. If you want
+or `Export` options on [the appropriate Zenodo record][zenodo]. If you want
 to import [this GitHub repo's metadata][GH] into a reference manager directly, I
 recommend [Zotero] and its [GitHub translator][zotGH]. Please double-check, that
 the citation refers to the same version number that you ran your analysis with.
