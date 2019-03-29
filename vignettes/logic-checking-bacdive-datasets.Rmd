@@ -38,10 +38,17 @@ and a portion of those was corrected in [BacDive's 04.07.2018 release](https://b
 
 ```{r data}
 library(BacDiveR)
-  
+
+mismatch <- c("Japan", "Europe")
+
 inconsistent_data <- retrieve_search_results(
-  "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams[20][contenttype]=text&searchparams[20][typecontent]=contains&searchparams[20][searchterm]=Sea+of+Japan&searchparams[17][searchterm]=Europe"
+  paste0(
+    "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams[20][contenttype]=text&searchparams[20][typecontent]=contains&searchparams[20][searchterm]=",
+    mismatch[1],
+    "&searchparams[17][searchterm]=",
+    mismatch[2]
   )
+)
 ```
 
 As long as this specific inconsistency is not fixed, the above should display:
