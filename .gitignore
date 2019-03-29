@@ -37,7 +37,8 @@ vignettes/*.pdf
 .Rproj.user
 
 ### custom ignores
-BD_data/
+BD_*/
+test_*/
 inst/doc
 bacdive.R
 *.pdf
