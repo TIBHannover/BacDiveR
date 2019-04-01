@@ -26,7 +26,7 @@ consistency of data should be evaluated and monitored as well. Using [BacDive's 
 and [BacDiveR's `retrieve_search_results()`](https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html)
 several examples of geographic inconsistencies have been found. Presumably due to
 an overly strict location-to-country-to-continent mapping, several samples collected
-from seas neighbouring Russia (like the [Sea of Japan)](https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams%5B20%5D%5Bcontenttype%5D=text&searchparams%5B20%5D%5Btypecontent%5D=contains&searchparams%5B20%5D%5Bsearchterm%5D=Sea+of+Japan&searchparams%5B100%5D%5Bcontenttype%5D=text&searchparams%5B100%5D%5Btypecontent%5D=contains&searchparams%5B100%5D%5Bsearchterm%5D=&searchparams%5B17%5D%5Bsearchterm%5D=Europe&advsearch=search),
+from seas neighbouring Russia (like the [Sea of Japan)](https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams[20][typecontent]=contains&searchparams[20][searchterm]=Sea+of+Japan&searchparams[17][searchterm]=Europe&advsearch=search),
 were assigned to Europe.
 
 ![Two datasets with a geo-logic fault (pun intended)](BacDive-geo-logic-fault.png)
@@ -43,10 +43,10 @@ mismatched <- list(location = "Japan", continent = "Europe")
 
 inconsistent_data <- retrieve_search_results(
   paste0(
-    "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams[20][contenttype]=text&searchparams[20][typecontent]=contains&searchparams[20][searchterm]=",
-    mismatched$location,
-    "&searchparams[17][searchterm]=",
-    mismatched$continent
+    "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch",
+    "&searchparams[20][typecontent]=contains",
+    "&searchparams[20][searchterm]=", mismatched$location,
+    "&searchparams[17][searchterm]=", mismatched$continent
   )
 )
 ```
