@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 
 Just as the correctness of data analysis code should be tested automatically, the
 consistency of data should be evaluated and monitored as well. Using [BacDive's advanced search](https://bacdive.dsmz.de/AdvSearch)
-and [BacDiveR's `retrieve_search_results()`](https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html)
+and [BacDiveR's `bd_retrieve_by_search()`](https://tibhannover.github.io/BacDiveR/reference/bd_retrieve_by_search.html)
 several examples of geographic inconsistencies have been found. Presumably due to
 an overly strict location-to-country-to-continent mapping, several samples collected
 from seas neighbouring Russia (like the [Sea of Japan)](https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams[20][typecontent]=contains&searchparams[20][searchterm]=Sea+of+Japan&searchparams[17][searchterm]=Europe&advsearch=search),
@@ -41,7 +41,7 @@ library(BacDiveR)
 
 mismatched <- list(location = "Japan", continent = "Europe")
 
-inconsistent_data <- retrieve_search_results(
+inconsistent_data <- bd_retrieve_by_search(
   paste0(
     "https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch",
     "&searchparams[20][typecontent]=contains",
@@ -58,7 +58,7 @@ some should be found and downloaded here.
 ## How to test datasets
 
 If a BacDive user finds an inconsistency within the datasets they use, BacDiveR's
-`retrieve_search_results()` can be used to construct a test-case for such a problem.
+`bd_retrieve_by_search()` can be used to construct a test-case for such a problem.
 In the following example, the test fails as long as BacDive contains datasets with
 the above-described discrepancy between the `geo_loc_name` and `continent` fields.
 

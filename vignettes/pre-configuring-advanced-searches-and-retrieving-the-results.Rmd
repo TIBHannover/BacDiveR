@@ -38,7 +38,7 @@ the terms and parameters of your advanced search.
 Alternatively, copy it from the "Download list of BacDive Ids" link to the top
 right of the "hits" list.
 
-1. Paste the copied URL into a call to the `data <- retrieve_search_results("…")` function.
+1. Paste the copied URL into a call to the `data <- bd_retrieve_by_search("…")` function.
 
 1. Enjoy the list of downloaded datasets, just as you would after using
 `data <- bd_retrieve_data(searchTerm = ..., searchType = ...)`.
@@ -52,7 +52,7 @@ right of the "hits" list.
 datasets for the genus or a specific species given in `…`. Broader searches are
 possible through the [advanced search, for example for all Archaea][archaea]:
 
-`Archaea_data <- bd_retrieve_search_results("https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B70%5D%5Bcontenttype%5D=text&searchparams%5B70%5D%5Btypecontent%5D=contains&searchparams%5B70%5D%5Bsearchterm%5D=archaea")`
+`Archaea_data <- bd_retrieve_by_search("https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B70%5D%5Bcontenttype%5D=text&searchparams%5B70%5D%5Btypecontent%5D=contains&searchparams%5B70%5D%5Bsearchterm%5D=archaea")`
 
 Please note the messages about estimated download times for such large downloads.
 
