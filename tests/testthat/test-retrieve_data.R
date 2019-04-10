@@ -47,15 +47,15 @@ test_that(
 
 
 # test set with 2 strains
-Bac_hal <- "Bacillus halotolerans"
-Bac_hal_data <- bd_retrieve_taxon(name = Bac_hal)
+rare <- "Acinetobacter courvalinii"
+rare_data <- bd_retrieve_taxon(name = rare)
 
 test_that("extracting a single field from a taxon-wide search works", {
   expect_equal(
-    c("30", "15-45", "32", "37", "28"),
+    c("30", "15-37"),
     unique(unlist(
       purrr::map(
-        .x = Bac_hal_data,
+        .x = rare_data,
         .f = ~ .x$culture_growth_condition$culture_temp$temp
       )
     ))
@@ -64,8 +64,8 @@ test_that("extracting a single field from a taxon-wide search works", {
 
 test_that("any dataset returned by BacDiveR is named with its ID", {
   expect_equal(
-    names(Bac_hal_data),
-    c("1095", "1847")
+    names(rare_data),
+    c("139534", "139535")
   )
   # https://bacdive.dsmz.de/advsearch?advsearch=search&site=advsearch&searchparams%5B73%5D%5Bcontenttype%5D=text&searchparams%5B73%5D%5Btypecontent%5D=exact&searchparams%5B73%5D%5Bsearchterm%5D=Bacillus+halotolerans&csv_bacdive_ids_advsearch=download
 })
@@ -73,7 +73,7 @@ test_that("any dataset returned by BacDiveR is named with its ID", {
 test_that("Normalising invalid JSON whitespace works,
           for both multi- and single-species taxons", {
   expect_type(
-    object = Bac_hal_data,
+    object = rare_data,
     type = "list"
   )
   # https://bacdive.dsmz.de/api/bacdive/bacdive_id/1847/?format=json
