@@ -12,7 +12,7 @@ test_that("BacDive database remained unchanged", {
 
 B_subtilis_IDs <-
   download(
-    "https://bacdive.dsmz.de/api/bacdive/taxon/Bacillus/subtilis/subtilis/?format=json"
+    "https://bacdive.dsmz.de/api/bacdive/taxon/Bacillus/subtilis/?format=json"
   )
 
 test_that("taxon search returns paged results list", {
