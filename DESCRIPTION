@@ -8,12 +8,12 @@ Authors@R:
            role = c("aut", "cre"),
            email = "katrin.leinweber@tib.eu",
            comment = c(ORCID = "0000-0001-5135-5758"))
-Description: BacDive focuses on providing organism-linked
+Description: 'BacDive' focuses on providing organism-linked
     information covering the multifarious aspects of bacterial
     biodiversity: taxonomic classification, morphology, physiology,
     cultivation, origin natural habitat and more, both for bacterial and
-    archaeal strains. BacDiveR helps you investigate this data offline,
-    and semi-automatically in R.
+    archaeal strains (see Söhngen et al. (2014) <doi:10.1093/nar/gkt1058>).
+    BacDiveR helps you investigate this data offline, and semi-automatically in R.
 License: MIT + file LICENSE
 URL: https://github.com/TIBHannover/BacDiveR
 BugReports: https://github.com/TIBHannover/BacDiveR/issues
