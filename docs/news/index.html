@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">BacDiveR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.1</span>
       </span>
     </div>
 
@@ -127,6 +127,19 @@
       <small>Source: <a href='https://github.com/TIBHannover/BacDiveR/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="bacdiver-081" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bacdiver-081" class="anchor"></a>BacDiveR 0.8.1</h2>
+<div id="changed-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#changed-1" class="anchor"></a>Changed</h3>
+<ul>
+<li>Warning message about no data being found is more informative now</li>
+<li>Documentation to follow BacDive’s database updates</li>
+<li>Use pandoc 2.7.2 to generate the website</li>
+</ul>
+</div>
+</div>
     <div id="bacdiver-080" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bacdiver-080" class="anchor"></a>BacDiveR 0.8.0</h2>
@@ -163,9 +176,9 @@
     <div id="bacdiver-073" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bacdiver-073" class="anchor"></a>BacDiveR 0.7.3</h2>
-<div id="changed-1" class="section level3">
+<div id="changed-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#changed-1" class="anchor"></a>Changed</h3>
+<a href="#changed-2" class="anchor"></a>Changed</h3>
 <ul>
 <li>Warnings, errors and message are now more concisely/informatively/strongly worded.</li>
 </ul>
@@ -174,9 +187,9 @@
     <div id="bacdiver-072" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bacdiver-072" class="anchor"></a>BacDiveR 0.7.2</h2>
-<div id="changed-2" class="section level3">
+<div id="changed-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#changed-2" class="anchor"></a>Changed</h3>
+<a href="#changed-3" class="anchor"></a>Changed</h3>
 <ul>
 <li>
 <code>retrieve_data</code> &amp; <code>retrieve_search_results()</code> now validate all inputs (fix <a href='https://github.com/TIBHannover/BacDiveR/issues/71'>#71</a> &amp; <a href='https://github.com/TIBHannover/BacDiveR/issues/78'>#78</a>)</li>
@@ -186,9 +199,9 @@
     <div id="bacdiver-071" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bacdiver-071" class="anchor"></a>BacDiveR 0.7.1</h2>
-<div id="changed-3" class="section level3">
+<div id="changed-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#changed-3" class="anchor"></a>Changed</h3>
+<a href="#changed-4" class="anchor"></a>Changed</h3>
 <ul>
 <li>The combined use of
 a) <a href="https://cran.r-project.org/package=RCurl">RCurl</a> for downloading JSON-encoded data from BacDive with
@@ -206,9 +219,9 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
 <li>A <a href="https://tibhannover.github.io/BacDiveR/articles/pre-configuring-advanced-searches-and-retrieving-the-results.html#mass-downloading-datasets">vignette section about mass-downloading datasets</a>.</li>
 </ul>
 </div>
-<div id="changed-4" class="section level3">
+<div id="changed-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#changed-4" class="anchor"></a>Changed</h3>
+<a href="#changed-5" class="anchor"></a>Changed</h3>
 <ul>
 <li>Instead of stopping with an error if a search returns no results, BacDiveR now only warns about this case and returns an empty list (<a href='https://github.com/TIBHannover/BacDiveR/issues/93'>#93</a>).</li>
 <li>Estimated download times are now reported before all downloads longer than ca. 30 seconds (<a href='https://github.com/TIBHannover/BacDiveR/issues/84'>#84</a>).</li>
@@ -237,9 +250,9 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
 </li>
 </ul>
 </div>
-<div id="changed-5" class="section level3">
+<div id="changed-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#changed-5" class="anchor"></a>Changed</h3>
+<a href="#changed-6" class="anchor"></a>Changed</h3>
 <ul>
 <li>
 <code>retrieve_search_results()</code> now returns <code>NULL</code> when no results are found, in order to ease integration of datasets into <code>testthat</code> tests.</li>
@@ -268,9 +281,9 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
 </li>
 </ul>
 </div>
-<div id="changed-6" class="section level3">
+<div id="changed-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#changed-6" class="anchor"></a>Changed</h3>
+<a href="#changed-7" class="anchor"></a>Changed</h3>
 <ul>
 <li>The JSON downloads are no longer purged of all space characters pre-emptively to prevent jsonlite from complaining about invalid encoding (<a href='https://github.com/TIBHannover/BacDiveR/issues/43'>#43</a>). Instead, only <code>\r</code>, <code>\n</code> and <code>\t</code> are repaired to <code>\\r</code>, <code>\\n</code> and <code>\\t</code>, which jsonlite expects. This leads to different output (newline &amp; tabs, where previously only spaces occurred)! Thus, if you are parsing BacDiveR output in any way, you may need to adjust that. Because I consider this unlikely given the “maturing” status, and because no API surface was changed, I don’t consider this a major change in the <a href="https://semver.org/">SemVer.org</a> sense.</li>
 </ul>
@@ -290,9 +303,9 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
     <div id="bacdiver-041" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bacdiver-041" class="anchor"></a>BacDiveR 0.4.1</h2>
-<div id="changed-7" class="section level3">
+<div id="changed-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#changed-7" class="anchor"></a>Changed</h3>
+<a href="#changed-8" class="anchor"></a>Changed</h3>
 <ul>
 <li>Don’t run all function docu examples, and limit their output on the <a href="https://tibhannover.github.io/BacDiveR/reference/retrieve_data.html">reference</a> <a href="https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html">pages</a> (see <a href='https://github.com/TIBHannover/BacDiveR/issues/52'>#52</a>)</li>
 </ul>
@@ -312,9 +325,9 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
 </li>
 </ul>
 </div>
-<div id="changed-8" class="section level3">
+<div id="changed-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#changed-8" class="anchor"></a>Changed</h3>
+<a href="#changed-9" class="anchor"></a>Changed</h3>
 <ul>
 <li>
 <code>retrieve_data()</code> now downloads the dataset(s) by default, not only the ID(s), see <a href='https://github.com/TIBHannover/BacDiveR/issues/54'>#54</a> &amp; <a href='https://github.com/TIBHannover/BacDiveR/issues/59'>#59</a></li>
@@ -346,6 +359,7 @@ b) <a href="https://cran.r-project.org/package=jsonlite">jsonlite</a> for conver
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#bacdiver-081">0.8.1</a></li>
         <li><a href="#bacdiver-080">0.8.0</a></li>
         <li><a href="#bacdiver-074">0.7.4</a></li>
         <li><a href="#bacdiver-073">0.7.3</a></li>

@@ -10,12 +10,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Programmatic Interface For The DSMZ' Bacterial Diversity Metadatabase">
-<meta property="og:description" content="BacDive focuses on providing organism-linked
+<meta property="og:description" content="'BacDive' focuses on providing organism-linked
     information covering the multifarious aspects of bacterial
     biodiversity: taxonomic classification, morphology, physiology,
     cultivation, origin natural habitat and more, both for bacterial and
-    archaeal strains. BacDiveR helps you investigate this data offline,
-    and semi-automatically in R.">
+    archaeal strains (see Söhngen et al. (2014) &lt;doi:10.1093/nar/gkt1058&gt;).
+    BacDiveR helps you investigate this data offline, and semi-automatically in R.">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">BacDiveR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.1</span>
       </span>
     </div>
 
@@ -117,7 +117,7 @@ Afterwards, remove the above from GitHub. -->
 <ol>
 <li><p>Because the <a href="https://bacdive.dsmz.de/api/bacdive/registration/register/">BacDive Web Service requires registration</a> please do that first and wait for DSMZ staff to grant you access.</p></li>
 <li><p>Once you have your login credentials, install the <a href="https://github.com/TIBHannover/BacDiveR/releases/latest">latest BacDiveR release</a> from GitHub with: <code>if(!require('devtools')) install.packages('devtools'); devtools::install_github('TIBHannover/BacDiveR')</code>.</p></li>
-<li><p>After installing, follow the instructions on the console to save your login credentials locally and restart R(Studio) or run <code><a href="https://www.rdocumentation.org/packages/usethis/topics/edit">usethis::edit_r_environ()</a></code> and ensure it contains the following:</p></li>
+<li><p>After installing, follow the instructions on the console to save your login credentials locally and restart R(Studio) or run <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ()</a></code> and ensure it contains the following:</p></li>
 </ol>
 <pre><code>BacDive_email=your.email@provider.org
 BacDive_password=YOUR_20_char_password</code></pre>
@@ -132,7 +132,7 @@ BacDive_password=YOUR_20_char_password</code></pre>
 <h2 class="hasAnchor">
 <a href="#how-to-cite" class="anchor"></a>How to cite</h2>
 <p>Best execute <code><a href="https://www.rdocumentation.org/packages/utils/topics/citation">citation('BacDiveR')</a></code> in the R console and use its output because that ensures you are citing exactly the installed version.</p>
-<p>You can also use the <code>Cite as</code> or <code>Export</code> options presented on <a href="https://zenodo.org/record/1308060#invenio-csl">Zenodo.org/record/1308060</a>. If you want to import <a href="https://github.com/TIBHannover/BacDiveR/">this GitHub repo’s metadata</a> into a reference manager directly, I recommend <a href="https://www.zotero.org/">Zotero</a> and its <a href="https://github.com/zotero/translators/blob/master/Github.js">GitHub translator</a>. Please double-check, that the citation refers to the same version number that you ran your analysis with.</p>
+<p>You can also use the <code>Cite as</code> or <code>Export</code> options on <a href="https://zenodo.org/record/1308060#invenio-csl">the appropriate Zenodo record</a>. If you want to import <a href="https://github.com/TIBHannover/BacDiveR/">this GitHub repo’s metadata</a> into a reference manager directly, I recommend <a href="https://www.zotero.org/">Zotero</a> and its <a href="https://github.com/zotero/translators/blob/master/Github.js">GitHub translator</a>. Please double-check, that the citation refers to the same version number that you ran your analysis with.</p>
 <p>When using BibTeX, you may want to try changing the item type from to <code>@Software</code> ;-) <a href="https://github.com/FORCE11/FORCE11-sciwg">Support for that is being worked on</a>.</p>
 <p>Don’t forget to also <a href="https://bacdive.dsmz.de/about">cite BacDive itself</a> whenever you used their data, regardless of access method.</p>
 </div>

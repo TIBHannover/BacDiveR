@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">BacDiveR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.1</span>
       </span>
     </div>
 
@@ -95,7 +95,7 @@
       <h1>Logic-Checking BacDive Datasets</h1>
                         <h4 class="author">Katrin Leinweber</h4>
             
-            <h4 class="date">2019-02-23</h4>
+            <h4 class="date">2019-04-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/TIBHannover/BacDiveR/blob/master/vignettes/logic-checking-bacdive-datasets.Rmd"><code>vignettes/logic-checking-bacdive-datasets.Rmd</code></a></small>
       <div class="hidden name"><code>logic-checking-bacdive-datasets.Rmd</code></div>
@@ -107,27 +107,31 @@
 <div id="example-of-a-data-inconsistency" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-of-a-data-inconsistency" class="anchor"></a>Example of a data inconsistency</h2>
-<p>Just as the correctness of data analysis code should be tested automatically, the consistency of data should be evaluated and monitored as well. Using <a href="https://bacdive.dsmz.de/AdvSearch">BacDive’s advanced search</a> and <a href="https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html">BacDiveR’s <code>retrieve_search_results()</code></a> several examples of geographic inconsistencies have been found. Presumably due to an overly strict location-to-country-to-continent mapping, several samples collected from seas neighbouring Russia (like the <a href="https://bacdive.dsmz.de/advsearch?site=advsearch&amp;searchparams%5B20%5D%5Bcontenttype%5D=text&amp;searchparams%5B20%5D%5Btypecontent%5D=contains&amp;searchparams%5B20%5D%5Bsearchterm%5D=Sea+of+Japan&amp;searchparams%5B100%5D%5Bcontenttype%5D=text&amp;searchparams%5B100%5D%5Btypecontent%5D=contains&amp;searchparams%5B100%5D%5Bsearchterm%5D=&amp;searchparams%5B17%5D%5Bsearchterm%5D=Europe&amp;advsearch=search">Sea of Japan)</a>, were assigned to Europe.</p>
+<p>Just as the correctness of data analysis code should be tested automatically, the consistency of data should be evaluated and monitored as well. Using <a href="https://bacdive.dsmz.de/AdvSearch">BacDive’s advanced search</a> and <a href="https://tibhannover.github.io/BacDiveR/reference/bd_retrieve_by_search.html">BacDiveR’s <code><a href="../reference/bd_retrieve_by_search.html">bd_retrieve_by_search()</a></code></a> several examples of geographic inconsistencies have been found. Presumably due to an overly strict location-to-country-to-continent mapping, several samples collected from seas neighbouring Russia (like the <a href="https://bacdive.dsmz.de/advsearch?site=advsearch&amp;searchparams%5B20%5D%5Btypecontent%5D=contains&amp;searchparams%5B20%5D%5Bsearchterm%5D=Sea+of+Japan&amp;searchparams%5B17%5D%5Bsearchterm%5D=Europe&amp;advsearch=search">Sea of Japan)</a>, were assigned to Europe.</p>
 <div class="figure">
 <img src="BacDive-geo-logic-fault.png" alt="Two datasets with a geo-logic fault (pun intended)"><p class="caption">Two datasets with a geo-logic fault (pun intended)</p>
 </div>
-<p>While one may debate where exactly border between Asia and Europe runs through Russia, it is clear that its Eastern shoreline is located well within Asia. These and other datasets with East Russian locations have been reported to the BacDive team and a portion of those was corrected in <a href="https://bacdive.dsmz.de/news">BacDive’s 04.07.2018 release</a>.</p>
+<p>While one may debate where exactly in Russia the Asian-European border is located, it is clear that its Eastern shoreline is located well within Asia. These and other datasets with East Russian locations have been reported to the BacDive team and a portion of those was corrected in <a href="https://bacdive.dsmz.de/news">BacDive’s 04.07.2018 release</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(BacDiveR)</a>
-<a class="sourceLine" id="cb1-2" title="2">  </a>
-<a class="sourceLine" id="cb1-3" title="3">inconsistent_data &lt;-<span class="st"> </span><span class="kw">retrieve_search_results</span>(</a>
-<a class="sourceLine" id="cb1-4" title="4">  <span class="st">"https://bacdive.dsmz.de/advsearch?advsearch=search&amp;site=advsearch&amp;searchparams[20][contenttype]=text&amp;searchparams[20][typecontent]=contains&amp;searchparams[20][searchterm]=Sea+of+Japan&amp;searchparams[17][searchterm]=Europe"</span></a>
-<a class="sourceLine" id="cb1-5" title="5">  )</a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="co">#&gt; Warning: 'retrieve_search_results' is deprecated.</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="co">#&gt; Use 'bd_retrieve_by_search' instead.</span></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="co">#&gt; See help("Deprecated")</span></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt; Downloading BacDive IDs 131115 to 139987 (but not necessarily contiguously):</span></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="co">#&gt; 131115 139987</span></a></code></pre></div>
-<p>As long as this specific inconsistency is not fixed, the above should display: <code>Downloading BacDive IDs: 131115 139987</code>.</p>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3">mismatched &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">location =</span> <span class="st">"Japan"</span>, <span class="dt">continent =</span> <span class="st">"Europe"</span>)</a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5">inconsistent_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/bd_retrieve_by_search.html">bd_retrieve_by_search</a></span>(</a>
+<a class="sourceLine" id="cb1-6" title="6">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(</a>
+<a class="sourceLine" id="cb1-7" title="7">    <span class="st">"https://bacdive.dsmz.de/advsearch?advsearch=search&amp;site=advsearch"</span>,</a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="st">"&amp;searchparams[20][typecontent]=contains"</span>,</a>
+<a class="sourceLine" id="cb1-9" title="9">    <span class="st">"&amp;searchparams[20][searchterm]="</span>, mismatched<span class="op">$</span>location,</a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="st">"&amp;searchparams[17][searchterm]="</span>, mismatched<span class="op">$</span>continent</a>
+<a class="sourceLine" id="cb1-11" title="11">  )</a>
+<a class="sourceLine" id="cb1-12" title="12">)</a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt; Downloading BacDive IDs 131115 to 139987 (but not necessarily contiguously):</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt; 131115 139987</span></a></code></pre></div>
+<p>As long as this specific inconsistency is not corrected in the datasets, some should be found and downloaded here.</p>
 </div>
 <div id="how-to-test-datasets" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-test-datasets" class="anchor"></a>How to test datasets</h2>
-<p>If a BacDive user finds an inconsistency within the datasets they use, BacDiveR’s <code>retrieve_search_results()</code> can be used to construct a test-case for such a problem. In the following example, the test fails as long as BacDive contains datasets with the above-described discrepancy between the <code>geo_loc_name</code> and <code>continent</code> fields.</p>
+<p>If a BacDive user finds an inconsistency within the datasets they use, BacDiveR’s <code><a href="../reference/bd_retrieve_by_search.html">bd_retrieve_by_search()</a></code> can be used to construct a test-case for such a problem. In the following example, the test fails as long as BacDive contains datasets with the above-described discrepancy between the <code>geo_loc_name</code> and <code>continent</code> fields.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(testthat)</a>
 <a class="sourceLine" id="cb2-2" title="2"></a>
 <a class="sourceLine" id="cb2-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/testthat/topics/test_that">test_that</a></span>(<span class="st">"No inconsistent datasets exist"</span>, {</a>
