@@ -43,11 +43,9 @@ bd_retrieve_data <- function(searchTerm, searchType = "taxon") {
   }
   else if (identical(payload$detail, "Not found")) {
     warning(
-      "BacDive responded: 'Not found' to our query for '",
-      searchType,
-      " = ",
-      searchTerm,
-      "'. Please double-check both these query parameters, or try https://BacDive.DSMZ.de/AdvSearch"
+      "BacDive responded: '", payload$detail,
+      "' to our last search for '", searchTerm,
+      "'. Please double-check this parameter or try https://TIBHannover.GitHub.io/BacDiveR/articles/pre-configuring-advanced-searches-and-retrieving-the-results.html"
     )
 
     list()
