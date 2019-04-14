@@ -12,6 +12,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 
 
+## BacDiveR 0.8.1
+
+### Changed
+
+- Warning message about no data being found is more informative now
+- Documentation to follow BacDive's database updates
+- Use pandoc 2.7.2 to generate the website
+
+
 ## BacDiveR 0.8.0
 
 ### Added
