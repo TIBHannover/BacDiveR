@@ -11,6 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
+## BacDiveR 0.9.0
+
+### Changed
+
+- NEW API: The deprecations announced in v0.8.0 are now completed: The
+  `bd_retrieve()` family of functions has replaced `retrieve_data()` and
+  `retrieve_search_results()` has been renamed to `bd_retrieve_by_search()`,
+  see #96. **Please update scripts and other downstream code that use BacDiveR.**
+- `purrr` is no longer an imported / required dependency, but only suggested
+  due to use in the [introductory vignette], see #98.
+  
+[introductory vignette]: ../articles/BacDive-ing-in.html#extracting-data-fields
+
 
 ## BacDiveR 0.8.1
 
