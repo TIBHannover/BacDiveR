@@ -95,7 +95,7 @@
       <h1>Logic-Checking BacDive Datasets</h1>
                         <h4 class="author">Katrin Leinweber</h4>
             
-            <h4 class="date">2019-04-14</h4>
+            <h4 class="date">2019-04-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/TIBHannover/BacDiveR/blob/master/vignettes/logic-checking-bacdive-datasets.Rmd"><code>vignettes/logic-checking-bacdive-datasets.Rmd</code></a></small>
       <div class="hidden name"><code>logic-checking-bacdive-datasets.Rmd</code></div>
@@ -135,7 +135,7 @@
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(testthat)</a>
 <a class="sourceLine" id="cb2-2" title="2"></a>
 <a class="sourceLine" id="cb2-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/testthat/topics/test_that">test_that</a></span>(<span class="st">"No inconsistent datasets exist"</span>, {</a>
-<a class="sourceLine" id="cb2-4" title="4">  <span class="kw"><a href="https://www.rdocumentation.org/packages/testthat/topics/inheritance-expectations">expect_null</a></span>(inconsistent_data)</a>
+<a class="sourceLine" id="cb2-4" title="4">  <span class="kw"><a href="https://www.rdocumentation.org/packages/testthat/topics/expect_null">expect_null</a></span>(inconsistent_data)</a>
 <a class="sourceLine" id="cb2-5" title="5">})</a>
 <a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt; Error: Test failed: 'No inconsistent datasets exist'</span></a>
 <a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt; * `inconsistent_data` is not null.</span></a></code></pre></div>

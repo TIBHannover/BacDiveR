@@ -96,7 +96,7 @@
             <h3 class="subtitle">Retrieving data(sets) from BacDive</h3>
                         <h4 class="author">Katrin Leinweber</h4>
             
-            <h4 class="date">2019-04-14</h4>
+            <h4 class="date">2019-04-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/TIBHannover/BacDiveR/blob/master/vignettes/BacDive-ing-in.Rmd"><code>vignettes/BacDive-ing-in.Rmd</code></a></small>
       <div class="hidden name"><code>BacDive-ing-in.Rmd</code></div>
@@ -156,13 +156,17 @@
 <a href="#plotting-the-extracted-data" class="anchor"></a>Plotting the extracted data</h2>
 <p>Before visualising the data, we need to create a dataframe of the two datasets.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"ggplot2"</span>)</a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt; Warning: package 'ggplot2' was built under R version 3.5.2</span></a>
-<a class="sourceLine" id="cb4-3" title="3"></a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span>(temperature_Bac, temperature_At) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-5" title="5"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> taxon, <span class="dt">y =</span> temp_C)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-6" title="6"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_boxplot">geom_boxplot</a></span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-7" title="7"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_jitter">geom_jitter</a></span>(<span class="dt">height =</span> <span class="dv">0</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt; notch went outside hinges. Try setting notch=FALSE.</span></a></code></pre></div>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt; Registered S3 methods overwritten by 'ggplot2':</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt;   method         from </span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt;   [.quosures     rlang</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt;   c.quosures     rlang</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt;   print.quosures rlang</span></a>
+<a class="sourceLine" id="cb4-7" title="7"></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span>(temperature_Bac, temperature_At) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> taxon, <span class="dt">y =</span> temp_C)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_boxplot">geom_boxplot</a></span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_jitter">geom_jitter</a></span>(<span class="dt">height =</span> <span class="dv">0</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="co">#&gt; notch went outside hinges. Try setting notch=FALSE.</span></a></code></pre></div>
 <p><img src="BacDive-ing-in_files/figure-html/ggplot-1.png" width="700"></p>
 <p>And thus we find, that <em>Aneurinibacillus thermoaerophilus</em> contains strains with different growth optima (note the groups of data <em>points</em>), even up to the 50-something-°C-range as the <code>thermo</code>-part in its name suggest). On the other hand, all <em>Bacillus halodurans</em> strains known to BacDive were found to grow best at the lower temperature of 31.2727273°C. Thanks to the notch in <em>Aneurinibacillus thermoaerophilus</em>’s box, we can also say that there is a significant difference between the temperature ranges of these two taxons, even before digging into the numbers:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(temperature_Bac<span class="op">$</span>temp_C)</a>
