@@ -2,7 +2,7 @@ aggregate_datasets <- function(payload, from_IDs = FALSE) {
   if (from_IDs) {
     warn_slow_download(length(payload))
     IDs <- payload
-    URLs <- purrr::map_chr(.x = IDs, .f = construct_url)
+    URLs <- lapply(X = IDs, FUN = construct_url)
   }
   else {
     warn_slow_download(payload$count)
@@ -17,7 +17,7 @@ aggregate_datasets <- function(payload, from_IDs = FALSE) {
     max(as.integer(IDs)),
     " (but not necessarily contiguously): "
   )
-  taxon_data <- purrr::map(URLs, download)
+  taxon_data <- lapply(X = URLs, download)
   names(taxon_data) <- IDs
 
   taxon_data
