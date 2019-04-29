@@ -10,3 +10,4 @@ git:
 before_install:
   - echo "BacDive_email=$ID" > ~/.Renviron
   - echo "BacDive_password=$PW" >> ~/.Renviron
+  - tlmgr install texinfo
