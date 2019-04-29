@@ -1,5 +1,6 @@
 #' @keywords internal
 bd_retrieve_data <- function(searchTerm, searchType) {
+  stopifnot(searchType %in% c("bacdive_id", "culturecollectionno", "sequence", "taxon"))
 
   # expand taxon/species
   if (identical(searchType, "taxon") & grepl("\\s", searchTerm)) {
