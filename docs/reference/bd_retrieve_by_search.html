@@ -161,7 +161,15 @@ to learn more.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='no'>plant_animal_pathogens</span> <span class='kw'>&lt;-</span> <span class='fu'>bd_retrieve_by_search</span>(<span class='kw'>queryURL</span> <span class='kw'>=</span> <span class='st'>"https://bacdive.dsmz.de/advsearch?site=advsearch&amp;searchparams%5B5%5D%5Bsearchterm%5D=1&amp;searchparams%5B157%5D%5Bsearchterm%5D=1&amp;searchparams%5B158%5D%5Bsearchterm%5D=1&amp;advsearch=search"</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading BacDive IDs 1906 to 14356 (but not necessarily contiguously): </span></div><div class='output co'>#&gt; <span class='message'>1906 </span></div><div class='output co'>#&gt; <span class='message'>14356 </span></div></pre>
+    <pre class="examples"><div class='input'>  <span class='no'>plant_animal_pathogens</span> <span class='kw'>&lt;-</span>
+    <span class='fu'>bd_retrieve_by_search</span>(
+      <span class='kw'>queryURL</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste</a></span>(
+        <span class='st'>"https://bacdive.dsmz.de/advsearch?site=advsearchsearch"</span>,
+        <span class='st'>"params%5B5%5D%5Bsearchterm%5D=1"</span>,
+        <span class='st'>"searchparams%5B157%5D%5Bsearchterm%5D=1"</span>,
+        <span class='st'>"searchparams%5B158%5D%5Bsearchterm%5D=1"</span>,
+        <span class='st'>"advsearch=search"</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"&amp;"</span>)
+        )</div><div class='output co'>#&gt; <span class='warning'>Warning: No datasets found. Please check your advanced search and copy-paste the URL again.</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

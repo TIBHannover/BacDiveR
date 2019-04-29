@@ -56,11 +56,8 @@ is_results_list <- function(payload) {
 }
 
 is_ID_reference <- function(payload) {
-  all.equal(nrow(payload), ncol(payload), 1) &&
-    # class(payload) == "data.frame" &&
-    names(payload) == "url"
-  # && grepl("https://bacdive.dsmz.de/api/bacdive/bacdive_id/\\d+/",
-  #          payload$url)
+  all.equal(nrow(payload), ncol(payload), 1) &
+    "url" %in% names(payload)
 }
 
 

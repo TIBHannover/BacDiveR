@@ -12,7 +12,15 @@
 #' @export
 #'
 #' @examples
-#'   plant_animal_pathogens <- bd_retrieve_by_search(queryURL = "https://bacdive.dsmz.de/advsearch?site=advsearch&searchparams%5B5%5D%5Bsearchterm%5D=1&searchparams%5B157%5D%5Bsearchterm%5D=1&searchparams%5B158%5D%5Bsearchterm%5D=1&advsearch=search")
+#'   plant_animal_pathogens <-
+#'     bd_retrieve_by_search(
+#'       queryURL = paste(
+#'         "https://bacdive.dsmz.de/advsearch?site=advsearchsearch",
+#'         "params%5B5%5D%5Bsearchterm%5D=1",
+#'         "searchparams%5B157%5D%5Bsearchterm%5D=1",
+#'         "searchparams%5B158%5D%5Bsearchterm%5D=1",
+#'         "advsearch=search", sep = "&")
+#'         )
 bd_retrieve_by_search <- function(queryURL) {
   # guard against other URLs
   if (!grepl(pattern = "^https:\\/\\/bacdive\\.dsmz\\.de\\/advsearch", queryURL) |
