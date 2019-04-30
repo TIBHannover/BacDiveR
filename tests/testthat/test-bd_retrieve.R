@@ -1,4 +1,4 @@
-context("test-retrieve_data.R")
+context("test-bd_retrieve.R")
 
 B_subtilis_IDs <-
   download(

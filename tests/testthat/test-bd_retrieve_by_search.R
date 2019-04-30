@@ -1,4 +1,4 @@
-context("test-retrieve_search_results.R")
+context("test-bd_retrieve_by_search.R")
 
 test_that("Downloading a small 'advanced search' result works", {
   expect_type(
