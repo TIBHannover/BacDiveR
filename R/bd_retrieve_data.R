@@ -1,11 +1,7 @@
 #' @keywords internal
 bd_retrieve_data <- function(searchTerm, searchType) {
-  stopifnot(searchType %in% c("bacdive_id", "culturecollectionno", "sequence", "taxon"))
-
-  # expand taxon/species
-  if (identical(searchType, "taxon") & grepl("\\s", searchTerm)) {
-    searchTerm <- sanitise_taxon(searchTerm)
-  }
+  searchType <- sanitise_type(searchType)
+  searchTerm <- sanitise_term(searchTerm, searchType)
 
   payload <- download(construct_url(searchTerm, searchType))
 
@@ -61,7 +57,7 @@ is_ID_reference <- function(payload) {
 }
 
 
-sanitise_term <- function(searchTerm) {
+sanitise_term <- function(searchTerm, searchType) {
   if (grepl(
     pattern = "[^[:alnum:] ]",
     x = searchTerm,
@@ -71,6 +67,9 @@ sanitise_term <- function(searchTerm) {
     stop(
       "Illegal character detected! My apologies, but your search can only contain letters, numbers and white-space. Abbreviating genus names (e.g. 'B. subtilis') is not supported. Please spell out your searchTerm ('Bacillus subtilis'), don't use any 'special' characters and try again."
     )
+  } else if (identical(searchType, "taxon") & grepl("\\s", searchTerm)) {
+    gsub(pattern = "\\s", replacement = "/", searchTerm)
+    # expand "Taxon species" to "taxon/species"
   } else {
     searchTerm
   }
@@ -88,11 +87,6 @@ sanitise_type <- function(searchType) {
   else {
     searchType
   }
-}
-
-
-sanitise_taxon <- function(searchTerm) {
-  gsub(pattern = "\\s", replacement = "/", searchTerm)
 }
 
 
