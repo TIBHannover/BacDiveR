@@ -1,29 +1,7 @@
-#' @export
-retrieve_data <- function(searchTerm,
-                          searchType = "taxon") {
-  .Deprecated(
-    c(
-      "bd_retrieve_by_culture",
-      "bd_retrieve_by_sequence",
-      "bd_retrieve",
-      "bd_retrieve_taxon"
-    )
-  )
-
-  # guard against invalid input
-  searchTerm <- sanitise_term(searchTerm)
+#' @keywords internal
+bd_retrieve_data <- function(searchTerm, searchType) {
   searchType <- sanitise_type(searchType)
-
-  bd_retrieve_data(searchTerm, searchType)
-}
-
-#' @export
-bd_retrieve_data <- function(searchTerm, searchType = "taxon") {
-
-  # expand taxon/species
-  if (identical(searchType, "taxon") & grepl("\\s", searchTerm)) {
-    searchTerm <- sanitise_taxon(searchTerm)
-  }
+  searchTerm <- sanitise_term(searchTerm, searchType)
 
   payload <- download(construct_url(searchTerm, searchType))
 
@@ -43,11 +21,9 @@ bd_retrieve_data <- function(searchTerm, searchType = "taxon") {
   }
   else if (identical(payload$detail, "Not found")) {
     warning(
-      "BacDive responded: 'Not found' to our query for '",
-      searchType,
-      " = ",
-      searchTerm,
-      "'. Please double-check both these query parameters, or try https://BacDive.DSMZ.de/AdvSearch"
+      "BacDive responded: '", payload$detail,
+      "' to our last search for '", searchTerm,
+      "'. Please double-check this parameter or try https://TIBHannover.GitHub.io/BacDiveR/articles/pre-configuring-advanced-searches-and-retrieving-the-results.html"
     )
 
     list()
@@ -76,15 +52,12 @@ is_results_list <- function(payload) {
 }
 
 is_ID_reference <- function(payload) {
-  all.equal(nrow(payload), ncol(payload), 1) &&
-    # class(payload) == "data.frame" &&
-    names(payload) == "url"
-  # && grepl("https://bacdive.dsmz.de/api/bacdive/bacdive_id/\\d+/",
-  #          payload$url)
+  all.equal(nrow(payload), ncol(payload), 1) &
+    "url" %in% names(payload)
 }
 
 
-sanitise_term <- function(searchTerm) {
+sanitise_term <- function(searchTerm, searchType) {
   if (grepl(
     pattern = "[^[:alnum:] ]",
     x = searchTerm,
@@ -94,6 +67,9 @@ sanitise_term <- function(searchTerm) {
     stop(
       "Illegal character detected! My apologies, but your search can only contain letters, numbers and white-space. Abbreviating genus names (e.g. 'B. subtilis') is not supported. Please spell out your searchTerm ('Bacillus subtilis'), don't use any 'special' characters and try again."
     )
+  } else if (identical(searchType, "taxon") & grepl("\\s", searchTerm)) {
+    gsub(pattern = "\\s", replacement = "/", searchTerm)
+    # expand "Taxon species" to "taxon/species"
   } else {
     searchTerm
   }
@@ -114,6 +90,16 @@ sanitise_type <- function(searchType) {
 }
 
 
-sanitise_taxon <- function(searchTerm) {
-  gsub(pattern = "\\s", replacement = "/", searchTerm)
+construct_url <- function(searchTerm,
+                          searchType = "bacdive_id") {
+  utils::URLencode(
+    paste0(
+      "https://bacdive.dsmz.de/api/bacdive/",
+      searchType,
+      "/",
+      searchTerm,
+      "/",
+      "?format=json"
+    )
+  )
 }

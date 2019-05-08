@@ -1,6 +1,9 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 language: R
+r:
+  - release
+  - devel
 sudo: false
 cache: packages
 
@@ -10,3 +13,4 @@ git:
 before_install:
   - echo "BacDive_email=$ID" > ~/.Renviron
   - echo "BacDive_password=$PW" >> ~/.Renviron
+  - tlmgr install texinfo

@@ -4,7 +4,7 @@ author: "Katrin Leinweber"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{"ADR 2: Two download functions that return full datasets by default"}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -44,7 +44,7 @@ a) the request types seem to form a funnel from search to URL/ID to dataset,
 we will ensure that all main functions return full dataset(s) by default.
 
 
-## Status: deprecated in [v0.8.0](../news/#bacdive-080)
+## Status: Removed in [v0.9.0](../news/#bacdiver-090)
 
 
 ## Consequences

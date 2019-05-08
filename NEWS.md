@@ -1,7 +1,3 @@
-All notable changes to this project will be documented in this file.
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
 ## Unreleased
 
 ### Added
@@ -10,6 +6,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 ### Fixed
 ### Security
+
+## BacDiveR 0.9.0
+
+All notable changes to this project will be documented in this file.
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+### Changed
+
+- NEW API: The deprecations announced in v0.8.0 are now completed: The
+  `bd_retrieve()` family of functions has replaced `retrieve_data()` and
+  `retrieve_search_results()` has been renamed to `bd_retrieve_by_search()`,
+  see #96. **Please update scripts and other downstream code that use BacDiveR.**
+- `purrr` is no longer an imported / required dependency, but only suggested
+  due to use in the [introductory vignette], see #98.
+  
+[introductory vignette]: ../articles/BacDive-ing-in.html#extracting-data-fields
+
+
+## BacDiveR 0.8.1
+
+### Changed
+
+- Warning message about no data being found is more informative now
+- Documentation to follow BacDive's database updates
+- Use pandoc 2.7.2 to generate the website
 
 
 ## BacDiveR 0.8.0
