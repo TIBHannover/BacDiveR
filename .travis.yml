@@ -14,3 +14,9 @@ before_install:
   - echo "BacDive_email=$ID" > ~/.Renviron
   - echo "BacDive_password=$PW" >> ~/.Renviron
   - tlmgr install texinfo
+
+before_deploy: Rscript -e 'remotes::install_cran("pkgdown")'
+deploy:
+  provider: script
+  script: Rscript -e 'pkgdown::deploy_site_github()'
+  skip_cleanup: true
