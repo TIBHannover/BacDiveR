@@ -93,13 +93,12 @@ sanitise_type <- function(searchType) {
 construct_url <- function(searchTerm,
                           searchType = "bacdive_id") {
   utils::URLencode(
-    paste0(
-      "https://bacdive.dsmz.de/api/bacdive/",
+    paste(
+      "https://bacdive.dsmz.de/api/bacdive",
       searchType,
-      "/",
       searchTerm,
-      "/",
-      "?format=json"
+      "?format=json",
+      sep = "/"
     )
   )
 }
