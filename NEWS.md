@@ -154,8 +154,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Don't run all function docu examples, and limit their output on the 
-  [reference](https://tibhannover.github.io/BacDiveR/reference/retrieve_data.html) 
-  [pages](https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html)
+  [reference](https://tibhannover.github.io/BacDiveR/reference/bd_retrieve.html)
+  [pages](https://tibhannover.github.io/BacDiveR/reference/bd_retrieve_by_search.html)
   (see #52)
 
 

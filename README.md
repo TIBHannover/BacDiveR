@@ -49,8 +49,8 @@ There are two main functions: [`retrieve_data()`][r_d] and [`retrieve_search_res
 Please click on their names to read their docu, and find real-life examples in
 the vignettes ["BacDive-ing in"][dive-in] and ["Pre-Configuring Advanced Searches"][adv-search].
 
-[r_d]: https://tibhannover.github.io/BacDiveR/reference/retrieve_data.html
-[r_s_r]: https://tibhannover.github.io/BacDiveR/reference/retrieve_search_results.html
+[r_d]: https://tibhannover.github.io/BacDiveR/reference/bd_retrieve.html
+[r_s_r]: https://tibhannover.github.io/BacDiveR/reference/bd_retrieve_by_search.html
 [dive-in]: https://tibhannover.github.io/BacDiveR/articles/BacDive-ing-in.html
 [adv-search]: https://tibhannover.github.io/BacDiveR/articles/pre-configuring-advanced-searches-and-retrieving-the-results.html
 
