@@ -7,12 +7,14 @@
 #'
 #' @return The R object deserialised from the downloaded JSON
 #' @keywords internal
+#' @import httr
+#' @importFrom jsonlite fromJSON
 download <- function(URL, user = get_credentials()[1], password = get_credentials()[2]) {
   message(URLs_to_IDs(URL), " ", appendLF = FALSE)
 
-  response <- httr::GET(URL, httr::authenticate(user, password))
-  payload <- httr::content(response, as = "text", encoding = "UTF-8")
-  data <- jsonlite::fromJSON(payload)
+  response <- GET(URL, authenticate(user, password))
+  payload <- content(response, as = "text", encoding = "UTF-8")
+  data <- fromJSON(payload)
 
   if (response$status_code == 403) {
     stop(paste(data, "\nCheck your .Renviron file, and try copy-pasting your login credentials into https://bacdive.dsmz.de/api/bacdive/ to test them. Correct as necessary and try your data download again."))
