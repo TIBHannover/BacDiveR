@@ -7,6 +7,13 @@
 ### Fixed
 ### Security
 
+
+## BacDiveR 0.9.1
+
+### Fixed
+
+- Expose a previously silent download error (#110; Thanks to @jfy133!)
+
 ## BacDiveR 0.9.0
 
 All notable changes to this project will be documented in this file.

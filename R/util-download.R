@@ -12,5 +12,11 @@ download <- function(URL, user = get_credentials()[1], password = get_credential
 
   response <- httr::GET(URL, httr::authenticate(user, password))
   payload <- httr::content(response, as = "text", encoding = "UTF-8")
-  jsonlite::fromJSON(payload)
+  data <- jsonlite::fromJSON(payload)
+
+  if (response$status_code == 403) {
+    stop(paste(data, "\nCheck your .Renviron file, and try copy-pasting your login credentials into https://bacdive.dsmz.de/api/bacdive/ to test them. Correct as necessary and try your data download again."))
+  } else {
+    return(data)
+  }
 }
