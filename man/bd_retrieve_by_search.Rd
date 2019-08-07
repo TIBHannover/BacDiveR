@@ -21,13 +21,15 @@ list of results, which you can retrieve in bulk via the URL of the results
 page. Please see the \href{https://tibhannover.github.io/BacDiveR/articles/pre-configuring-advanced-searches-and-retrieving-the-results.html#mass-downloading-datasets}{vignette "Pre-Configuring Advanced Searches and Retrieving the Results"}.
 }
 \examples{
-  plant_animal_pathogens <-
-    bd_retrieve_by_search(
-      queryURL = paste(
-        "https://bacdive.dsmz.de/advsearch?site=advsearchsearch",
-        "params\%5B5\%5D\%5Bsearchterm\%5D=1",
-        "searchparams\%5B157\%5D\%5Bsearchterm\%5D=1",
-        "searchparams\%5B158\%5D\%5Bsearchterm\%5D=1",
-        "advsearch=search", sep = "&")
-        )
+plant_animal_pathogens <-
+  bd_retrieve_by_search(
+    queryURL = paste(
+      "https://bacdive.dsmz.de/advsearch?site=advsearchsearch",
+      "params\%5B5\%5D\%5Bsearchterm\%5D=1",
+      "searchparams\%5B157\%5D\%5Bsearchterm\%5D=1",
+      "searchparams\%5B158\%5D\%5Bsearchterm\%5D=1",
+      "advsearch=search",
+      sep = "&"
+    )
+  )
 }

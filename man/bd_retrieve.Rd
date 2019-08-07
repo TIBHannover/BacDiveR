@@ -39,10 +39,10 @@ to learn more.
 Retrieve (a) Dataset(s) from BacDive
 }
 \examples{
-  dataset_717 <- bd_retrieve(id = 717)
-  dataset_717 <- bd_retrieve(id = "717")
-  dataset_DSM_319 <- bd_retrieve_by_culture(collection_no = "DSM 319")
-  dataset_AJ000733 <- bd_retrieve_by_sequence(accession = "AJ000733")
-  datasets_Bh <- bd_retrieve_taxon(name = "Bacillus halotolerans")
-  datasets_Thh <- bd_retrieve_taxon(name = "Tetragenococcus halophilus halophilus")
+dataset_717 <- bd_retrieve(id = 717)
+dataset_717 <- bd_retrieve(id = "717")
+dataset_DSM_319 <- bd_retrieve_by_culture(collection_no = "DSM 319")
+dataset_AJ000733 <- bd_retrieve_by_sequence(accession = "AJ000733")
+datasets_Bh <- bd_retrieve_taxon(name = "Bacillus halotolerans")
+datasets_Thh <- bd_retrieve_taxon(name = "Tetragenococcus halophilus halophilus")
 }
