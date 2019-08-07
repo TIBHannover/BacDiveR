@@ -14,6 +14,12 @@
 
 - Expose a previously silent download error (#110; Thanks to @jfy133!)
 
+### Changed
+
+- Repair outdated links in documentation
+- Improve some code sections in minor ways
+
+
 ## BacDiveR 0.9.0
 
 All notable changes to this project will be documented in this file.
