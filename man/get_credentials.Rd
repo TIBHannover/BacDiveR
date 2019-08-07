@@ -7,7 +7,8 @@
 get_credentials()
 }
 \value{
-A vector or the two character strings \code{BacDive_email} and \code{BacDive_password} representing those two environment variables.
+A vector or the two character strings \code{BacDive_email}
+and \code{BacDive_password} representing those two environment variables.
 }
 \description{
 Read BacDive Login Credentials from .Renviron

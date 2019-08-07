@@ -12,23 +12,27 @@
 #' @export
 #'
 #' @examples
-#'   plant_animal_pathogens <-
-#'     bd_retrieve_by_search(
-#'       queryURL = paste(
-#'         "https://bacdive.dsmz.de/advsearch?site=advsearchsearch",
-#'         "params%5B5%5D%5Bsearchterm%5D=1",
-#'         "searchparams%5B157%5D%5Bsearchterm%5D=1",
-#'         "searchparams%5B158%5D%5Bsearchterm%5D=1",
-#'         "advsearch=search", sep = "&")
-#'         )
+#' plant_animal_pathogens <-
+#'   bd_retrieve_by_search(
+#'     queryURL = paste(
+#'       "https://bacdive.dsmz.de/advsearch?site=advsearchsearch",
+#'       "params%5B5%5D%5Bsearchterm%5D=1",
+#'       "searchparams%5B157%5D%5Bsearchterm%5D=1",
+#'       "searchparams%5B158%5D%5Bsearchterm%5D=1",
+#'       "advsearch=search",
+#'       sep = "&"
+#'     )
+#'   )
 bd_retrieve_by_search <- function(queryURL) {
   # guard against other URLs
   if (!grepl(pattern = "^https:\\/\\/bacdive\\.dsmz\\.de\\/advsearch", queryURL) |
-      !grepl("[?&]site=advsearch", queryURL) |
-      !grepl("[?&]advsearch=search", queryURL) |
-      !grepl("\\&searchparams", queryURL)) {
+    !grepl("[?&]site=advsearch", queryURL) |
+    !grepl("[?&]advsearch=search", queryURL) |
+    !grepl("\\&searchparams", queryURL)) {
     stop(
-      "I'm sorry, but this doesn't seem like an advanced search URL from https://BacDive.DSMZ.de/advsearch! Aborting...\nPlease read https://TIBHannover.GitHub.io/BacDiveR/#how-to-use"
+      "I'm sorry, but this doesn't seem like an advanced search URL from
+ https://BacDive.DSMZ.de/advsearch! Aborting...\nPlease read
+ https://TIBHannover.GitHub.io/BacDiveR/#how-to-use"
     )
   }
 
@@ -46,8 +50,10 @@ bd_retrieve_by_search <- function(queryURL) {
     httr::content(response, as = "text", encoding = "UTF-8")
 
   if (grepl("^[[:digit:]]", payload)) {
-    aggregate_datasets(payload = strsplit(x = payload, split = "\\n")[[1]],
-                       from_IDs = TRUE)
+    aggregate_datasets(
+      payload = strsplit(x = payload, split = "\\n")[[1]],
+      from_IDs = TRUE
+    )
   } else if (grepl("^<!DOCTYPE", payload)) {
     warning("No datasets found. Please check your advanced search and copy-paste the URL again.")
     list()
