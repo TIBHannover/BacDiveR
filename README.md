@@ -4,7 +4,7 @@ This R package provides a programmatic interface to the [Bacterial Diversity Met
 
 - download the BacDive data you need for offline investigation, and
 
-- document your searchers and downloads in `.R` scripts, `.Rmd` files, etc.
+- document your searches and downloads in `.R` scripts, `.Rmd` files, etc.
 
 Thus, BacDiveR can be the basis for a reproducible data analysis pipeline. See [TIBHannover.GitHub.io/BacDiveR][page] for more details, [/news] there for the changelog, and [GitHub.com/TIBHannover/BacDiveR][source] for the latest source code.
 
