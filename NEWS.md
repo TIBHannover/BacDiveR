@@ -9,6 +9,8 @@
 
 - A cleaner solution for bug #110 was implemented, which does not
   rely on supplying `user` and `password` arguments in `download()`.
+- `download()` now checks for valid BacDive URLs to prevent
+  exfiltration of credentials to a non-BacDive domain.
 
 ## BacDiveR 0.9.1
 

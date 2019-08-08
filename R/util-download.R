@@ -10,6 +10,13 @@
 #' @import httr
 #' @importFrom jsonlite fromJSON
 download <- function(URL) {
+
+  # Check for valid BacDive URL
+  if (!grepl("^https:\\/\\/bacdive\\.dsmz\\.de\\/api\\/bacdive", URL) |
+    !grepl("?format=json$", URL)) {
+    stop("I refuse to connect to", URL, "because it's not a BacDive URL!")
+  }
+
   message(URLs_to_IDs(URL), " ", appendLF = FALSE)
   cred <- get_credentials()
 
