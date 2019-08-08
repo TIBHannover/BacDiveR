@@ -13,10 +13,7 @@
 prepare_Renviron <- function() {
   r_env_file <- construct_Renviron_path()
 
-  if (!file.exists(r_env_file)) {
-    file.create(r_env_file)
-    Sys.chmod(r_env_file, mode = "0600")
-  }
+  if (!file.exists(r_env_file)) create_new(r_env_file)
 
   message <-
     "add your BacDive login credentials.\n# See https://github.com/tibhannover/BacDiveR/\n# for more installation instructions."
@@ -47,4 +44,9 @@ prepare_Renviron <- function() {
     )
     utils::file.edit(r_env_file)
   }
+}
+
+create_new <- function(r_env_file) {
+  file.create(r_env_file)
+  Sys.chmod(r_env_file, mode = "0600")
 }

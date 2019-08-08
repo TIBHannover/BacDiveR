@@ -4,8 +4,7 @@
 \alias{download}
 \title{Download Something from BacDive}
 \usage{
-download(URL, user = get_credentials()[1],
-  password = get_credentials()[2])
+download(URL)
 }
 \arguments{
 \item{URL}{A correctly encoded character string, either from construct_url()
@@ -15,6 +14,6 @@ or a JSON list}
 The R object deserialised from the downloaded JSON
 }
 \description{
-Both \code{user} and \code{password} are read from the .Renviron file by default.
+Both \code{user} and \code{password} are read from the .Renviron file.
 }
 \keyword{internal}

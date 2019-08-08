@@ -7,6 +7,8 @@
 ### Fixed
 ### Security
 
+- A cleaner solution for bug #110 was implemented, which does not
+  rely on supplying `user` and `password` arguments in `download()`.
 
 ## BacDiveR 0.9.1
 
