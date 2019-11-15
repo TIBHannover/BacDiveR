@@ -26,7 +26,8 @@ test_that("aggregating a set of BacDive URLs works", {
 
 
 test_that(
-  "Redirecting 'culturecollectionno' & 'sequence' searches to 'bacdive_id' works (#45)", {
+  "Redirecting 'culturecollectionno' & 'sequence' searches to 'bacdive_id' works (#45)",
+  {
     expect_identical(
       bd_retrieve_by_culture(collection_no = "DSM 319"),
       bd_retrieve_by_sequence(accession = "AJ000733"),

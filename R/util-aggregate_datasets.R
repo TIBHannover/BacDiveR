@@ -45,5 +45,6 @@ aggregate_result_URLs <- function(results) {
 }
 
 
-URLs_to_IDs <- function(URLs)
+URLs_to_IDs <- function(URLs) {
   gsub(pattern = "\\D", "", URLs)
+}

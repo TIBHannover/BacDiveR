@@ -31,7 +31,7 @@ returns a paginated list of strains that you can then access, download and analy
 ```{r taxon_Bac}
 library(BacDiveR)
 taxon_1 <- "Bacillus halodurans"
-Bac_data <- bd_retrieve_taxon(name = taxon_1) 
+Bac_data <- bd_retrieve_taxon(name = taxon_1)
 ```
 
 Suppose we want to compare the optimal growth temperatures of strains from the taxon
@@ -66,18 +66,18 @@ a) the function's output is "piped" into the next function.
 Note the ` ~ .x` prepended to the path `$culture_growth_condition$culture_temp$temp`! This is `map()`'s way of indicating that each element in the piped-in `dataset` will be accessed at that path.
 
 ```{r extract}
-library(magrittr) 
- 
+library(magrittr)
+
 extract_temps <- function(dataset, taxon_name) {
-  purrr::map(.x = dataset, .f = ~.x$culture_growth_condition$culture_temp$temp) %>% 
+  purrr::map(.x = dataset, .f = ~ .x$culture_growth_condition$culture_temp$temp) %>%
   unlist() %>%
   as.numeric() %>%
   data.frame(temp_C = ., taxon = rep(taxon_name, length(.))) %>%
   return()
 }
 
-temperature_Bac <- extract_temps(Bac_data, taxon_1) 
-temperature_At <- extract_temps(At_data, taxon_2) 
+temperature_Bac <- extract_temps(Bac_data, taxon_1)
+temperature_At <- extract_temps(At_data, taxon_2)
 ``` 
 
 Keep in mind, that in case of growth temperatures, a range may also be given 
@@ -92,7 +92,7 @@ Before visualising the data, we need to create a dataframe of the two datasets.
 ```{r ggplot}
 library("ggplot2")
 
-rbind(temperature_Bac, temperature_At) %>% 
+rbind(temperature_Bac, temperature_At) %>%
   ggplot(aes(x = taxon, y = temp_C)) +
   geom_boxplot(notch = TRUE) +
   geom_jitter(height = 0, alpha = 0.5)
