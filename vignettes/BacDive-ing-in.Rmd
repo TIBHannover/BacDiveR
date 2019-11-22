@@ -50,7 +50,7 @@ At_data <- bd_retrieve_taxon(name = taxon_2)
 
 We wanted the growth temperatures, right? As with any other database field, you 
 now need to determine its path within the list data structure that BacDiveR 
-returned to you. Use either
+returned to you. Use any of these methods:
 
 a) RStudio's `Environment > Data` viewer, or
 a) `str(Bac_data)`, or
@@ -72,8 +72,7 @@ extract_temps <- function(dataset, taxon_name) {
   purrr::map(.x = dataset, .f = ~ .x$culture_growth_condition$culture_temp$temp) %>%
   unlist() %>%
   as.numeric() %>%
-  data.frame(temp_C = ., taxon = rep(taxon_name, length(.))) %>%
-  return()
+  tibble::tibble(temp_C = ., taxon = taxon_name)
 }
 
 temperature_Bac <- extract_temps(Bac_data, taxon_1)
@@ -103,6 +102,26 @@ And thus we find, that *`r taxon_2`* contains strains with different growth opti
 ```{r}
 summary(temperature_Bac$temp_C)
 summary(temperature_At$temp_C)
+```
+
+## Another example: Extracting NCBI-IDs
+
+Again, we need to look up the path of the data fields of interests, using one of the above-listed methods.
+`NCBI_Gi` can be replaced by `seq_acc_num`.
+
+```{r NCBI}
+extract_NCBI_IDs <- function(dataset, taxon_name) {
+  purrr::map(.x = dataset, .f = ~ .x$molecular_biology$sequence$NCBI_Gi) %>%
+    unlist() %>%
+    tibble::tibble(
+      BacDive_ID = names(.),
+      NCBI_Gi = .,
+      taxon = taxon_name
+    )
+}
+
+NCBI_IDs_Bac <- extract_NCBI_IDs(Bac_data, taxon_1)
+NCBI_IDs_At <- extract_NCBI_IDs(At_data, taxon_2)
 ```
 
 [magrittr]: https://cran.r-project.org/package=magrittr
