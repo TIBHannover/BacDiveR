@@ -71,3 +71,12 @@ saveRDS(Archaea_data, "Archaea.rds", version = 3)
 Archaea_data_stored <- readRDS("Archaea.rds")
 identical(Archaea_data, Archaea_data_stored)
 ```
+
+
+```{r}
+ Archaea_data %>% 
+  tibble::as.tibble() %>% 
+  tidyr::pivot_longer(cols = names(Archaea_data), names_to = "bacdive_id", values_to = "data") %>% 
+  tidyr::unnest_longer(data)
+```
+

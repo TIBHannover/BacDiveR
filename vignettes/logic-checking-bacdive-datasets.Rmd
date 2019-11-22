@@ -49,6 +49,11 @@ inconsistent_data <- bd_retrieve_by_search(
     "&searchparams[17][searchterm]=", mismatched$continent
   )
 )
+
+inconsistent_data %>% 
+  tibble::as.tibble() %>% 
+  tidyr::pivot_longer(cols = names(inconsistent_data), names_to = "bacdive_id", values_to = "data") %>% 
+  tidyr::unnest_longer(data)
 ```
 
 As long as this specific inconsistency is not corrected in the datasets,
