@@ -1,3 +1,8 @@
+---
+name: default
+about: "Catch-all template for all seasons"
+---
+
 <!--
 Please start with a brief description what this issue is about. Are you
 reporting a problem, asking a question, requesting a new feature, starting a
