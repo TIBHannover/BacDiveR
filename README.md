@@ -55,14 +55,12 @@ the vignettes ["BacDive-ing in"][dive-in] and ["Pre-Configuring Advanced Searche
 [adv-search]: https://tibhannover.github.io/BacDiveR/articles/pre-configuring-advanced-searches-and-retrieving-the-results.html
 
 
-## How to cite
+## How to cite => See [`Cite as` & `Export` on Zenodo][zenodo]
 
-Best execute `citation('BacDiveR')` in the R console and use its output because that
+You can also run `citation('BacDiveR')` in the R console and use its output because that
 ensures you are citing exactly the installed version.
 
-You can also use the `Cite as`
-or `Export` options on [the appropriate Zenodo record][zenodo]. If you want
-to import [this GitHub repo's metadata][GH] into a reference manager directly, I
+If you want to import [this repo's metadata][GH] into a reference manager directly, I
 recommend [Zotero] and its [GitHub translator][zotGH]. Please double-check, that
 the citation refers to the same version number that you ran your analysis with.
 
