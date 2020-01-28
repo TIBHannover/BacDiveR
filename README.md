@@ -55,7 +55,7 @@ the vignettes ["BacDive-ing in"][dive-in] and ["Pre-Configuring Advanced Searche
 [adv-search]: https://tibhannover.github.io/BacDiveR/articles/pre-configuring-advanced-searches-and-retrieving-the-results.html
 
 
-## How to cite => See [`Cite as` & `Export` on Zenodo][zenodo]
+## How to cite: See [`Cite as` & `Export` on Zenodo][zenodo]
 
 You can also run `citation('BacDiveR')` in the R console and use its output because that
 ensures you are citing exactly the installed version.
