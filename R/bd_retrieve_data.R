@@ -63,7 +63,7 @@ sanitise_term <- function(searchTerm, searchType) {
     x = searchTerm,
     ignore.case = TRUE
   ) |
-    grepl("(true|false|nil)", searchTerm, ignore.case = TRUE)) {
+    grepl("\\b(true|false|nil)\\b", searchTerm, ignore.case = TRUE)) {
     stop(
       "Illegal character detected! My apologies, but your search can only contain letters, numbers and white-space. Abbreviating genus names (e.g. 'B. subtilis') is not supported. Please spell out your searchTerm ('Bacillus subtilis'), don't use any 'special' characters and try again."
     )

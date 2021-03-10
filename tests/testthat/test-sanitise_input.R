@@ -10,4 +10,5 @@ test_that("Taxon species is escaped to taxon/species", {
 
 test_that("Normal searchTerm is return without sanitation", {
   expect_identical(sanitise_term("Bacillus", "taxon"), "Bacillus")
+  expect_identical(sanitise_term("Cellulomonas xylanilytica", "taxon"), "Cellulomonas/xylanilytica")
 })
